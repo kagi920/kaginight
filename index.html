@@ -59,7 +59,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 </head>
 <body>
 <canvas id="gl"></canvas>
-<div class="nogl" id="nogl">この端末では WebGL が使えません。Safari か Chrome の最新版で開いてください。</div>
+<div class="nogl" id="nogl">このブラウザでは描画できませんでした。お使いのブラウザを最新版にして開き直してください。</div>
 <div class="ui">
   <div class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></div>
   <button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button>
@@ -74,20 +74,20 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
   </div>
   <section class="sheet" id="online" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
     <h2>ONLINE<small>配信 — 遠くから、同じ時刻に</small></h2>
-    <p class="meta">NEXT / <b>COMING SOON</b><br>PLACE / <b>iPhone</b></p>
+    <p class="meta">NEXT / <b>COMING SOON</b><br>PLACE / <b>スマホ・PC どちらでも</b></p>
     <a class="bar" id="lnk-online" href="#online">参加 URL は開催前にここで公開<span>›</span></a>
-    <ol class="steps"><li><i>1</i><span>日時に、参加 URL を Safari で開く。携帯回線でよい。</span></li><li><i>2</i><span>音を出す。鍵山の実打で KAGI が叩き始める。</span></li><li><i>3</i><span>右の金の鍵でタップして返す。左の二重リングでよける。</span></li><li><i>4</i><span>結果と録画を持ち帰る。</span></li></ol>
+    <ol class="steps"><li><i>1</i><span>日時に、参加 URL をスマホか PC のブラウザで開く。携帯回線でよい。</span></li><li><i>2</i><span>音を出す。鍵山の実打で KAGI が叩き始める。</span></li><li><i>3</i><span>右の金の鍵でタップして返す。左の二重リングでよける。</span></li><li><i>4</i><span>結果と録画を持ち帰る。</span></li></ol>
     <p class="note">日時と参加 URL は、決まり次第ここでお知らせします。</p>
   </section>
   <section class="sheet" id="live" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
     <h2>LIVE<small>現地 — 撮りながら、参加する</small></h2>
     <p class="meta">NEXT / <b>COMING SOON</b><br>LAST / <b>2026.07.17</b> unravel tokyo（六本木）<br>KAGI NIGHT 2026 Vol.1「衝突の夜」</p>
     <a class="bar ghost" id="lnk-live" href="#live">会場で QR を読む<span>›</span></a>
-    <ol class="steps"><li><i>1</i><span>QR を読む。iPhone が参加画面になる。</span></li><li><i>2</i><span>撮影しながら、演奏に同期した歌詞と映像と額縁を見る。</span></li><li><i>3</i><span>タップで参加する。</span></li><li><i>4</i><span>結果と録画を持ち帰る。</span></li></ol>
+    <ol class="steps"><li><i>1</i><span>QR を読む。手元のスマホが参加画面になる。</span></li><li><i>2</i><span>撮影しながら、演奏に同期した歌詞と映像と額縁を見る。</span></li><li><i>3</i><span>タップで参加する。</span></li><li><i>4</i><span>結果と録画を持ち帰る。</span></li></ol>
   </section>
   <section class="sheet" id="support" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
     <h2>KEY<small>KAGI ROOM — 鍵山喬一の部屋に入る鍵</small></h2>
-    <p class="meta">OPEN / <b>COMING SOON</b><br>PLACE / <b>iPhone</b></p>
+    <p class="meta">OPEN / <b>COMING SOON</b><br>PLACE / <b>スマホ・PC どちらでも</b></p>
     <a class="bar" id="lnk-room" href="#support">鍵を受け取る<span>›</span></a>
     <ol class="steps"><li><i>1</i><span>配信の案内が、部屋の人に先に届く。</span></li><li><i>2</i><span>制作の途中が、そのまま置かれる。</span></li><li><i>3</i><span>部屋の人だけの夜がある。</span></li></ol>
     <p class="note">鍵の渡し方は、開く日にここでお知らせします。</p>
@@ -297,7 +297,7 @@ var blurfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uTex;uni
 var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;',
 'vec3 aces(vec3 x){return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);}',
 'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=s+b*uStr*uMask;gl_FragColor=vec4(aces(c*1.0),1.0);}'].join('\n');
-var prog,bprog,blurp,compp;try{prog=prg(vs,fs);bprog=prg(bvs,bfs);blurp=prg(bvs,blurfs);compp=prg(bvs,compfs);}catch(err){if(window.console)console.error('KN shader',err);if(nogl){nogl.textContent='この端末のブラウザでは描画できませんでした。Chrome の最新版で開き直してください。';nogl.style.display='flex';}return;}
+var prog,bprog,blurp,compp;try{prog=prg(vs,fs);bprog=prg(bvs,bfs);blurp=prg(bvs,blurfs);compp=prg(bvs,compfs);}catch(err){if(window.console)console.error('KN shader',err);if(nogl){nogl.textContent='このブラウザでは描画できませんでした。お使いのブラウザを最新版にして開き直してください。';nogl.style.display='flex';}return;}
 var BL={uTex:gl.getUniformLocation(blurp,'uTex'),uDir:gl.getUniformLocation(blurp,'uDir'),a:gl.getAttribLocation(blurp,'aXY')};
 var CP={uScene:gl.getUniformLocation(compp,'uScene'),uBloom:gl.getUniformLocation(compp,'uBloom'),uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),a:gl.getAttribLocation(compp,'aXY')};
 function mkTex(w,h){var t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return t;}
