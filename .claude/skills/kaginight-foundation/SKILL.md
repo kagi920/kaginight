@@ -58,6 +58,8 @@ description: KAGI NIGHT（XR Drummer 鍵山喬一）のホームページ・BASE
 - iPhone Safari はマナースイッチで Web Audio が消音 → SOUND と同じタップで無音 `<audio>` を loop 再生。中断後は `touchend` で `ctx.resume()`。
 - 貼り付けページのコピー処理が assert で止まると古い版が残る → 版番号を見出しに出し、`html.unescape` で往復一致を検証。
 - ヘッドレスで暗いのは正常。明るさはスクショで判断せず、実機の報告を優先。
+- Android の一部 GPU はフラグメントシェーダーの `highp` を持たない → `#ifdef GL_FRAGMENT_PRECISION_HIGH` で切替。mediump では時間を `t % 周期` で渡す。シェーダー失敗時は黒画面でなく `#nogl` の案内を出す。
+- Chrome の縦スライダーは `writing-mode:vertical-lr` に加えて `-webkit-appearance:slider-vertical` も付ける（旧 Chrome 用）。
 - この環境から note.com・x.com・Wayback・Pages API は届かない。URL は鍵山に聞く。
 
 ## 提案のしかた

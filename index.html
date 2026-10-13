@@ -15,7 +15,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 #gl{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
 #gl.drag{cursor:grabbing}
 .ui{position:fixed;inset:0;pointer-events:none}
-.ui>*{pointer-events:auto}
+.ui>*{pointer-events:auto;touch-action:manipulation}
 .mark{position:absolute;left:22px;top:calc(18px + env(safe-area-inset-top,0px));font-family:var(--f-en);font-size:1.05rem;letter-spacing:.2em;line-height:1.2}
 .mark small{display:block;font-family:var(--f-jp);font-size:.62rem;letter-spacing:.22em;color:var(--muted);margin-top:.35rem}
 .snd{position:absolute;left:22px;top:calc(72px + env(safe-area-inset-top,0px));appearance:none;border:1px solid var(--rule);background:var(--glass);color:var(--fg);font-family:var(--f-data);font-size:.62rem;letter-spacing:.2em;padding:.45rem .7rem;border-radius:999px;cursor:pointer}
@@ -29,7 +29,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .hit::after{content:"";width:3px;height:30px;background:#fff5dc;border-radius:2px}
 .hit:active{transform:scale(.94)}
 .dial{position:absolute;left:22px;bottom:calc(96px + env(safe-area-inset-bottom,0px));display:flex;flex-direction:column;align-items:center;gap:8px}
-.dial input{writing-mode:vertical-lr;direction:rtl;width:28px;height:150px;accent-color:var(--gold);background:transparent}
+.dial input{-webkit-appearance:slider-vertical;writing-mode:vertical-lr;direction:rtl;width:28px;height:150px;accent-color:var(--gold);background:transparent}
 .dial span{font-family:var(--f-data);font-size:.6rem;letter-spacing:.2em;color:var(--muted)}
 .dial .top{color:var(--fg)}
 .sheet{position:absolute;left:50%;bottom:0;transform:translate(-50%,110%);width:min(560px,calc(100% - 24px));max-height:70%;overflow:auto;border:1px solid var(--rule);border-radius:18px 18px 0 0;background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:2;padding:1.2rem 1.2rem calc(96px + env(safe-area-inset-bottom,0px));transition:transform .45s cubic-bezier(.2,.8,.2,1)}
@@ -176,7 +176,7 @@ window.KN=function(opts){
 var pre=opts.pre||'';
 var stage=opts.stage?document.getElementById(opts.stage):null;
 var canvas=document.getElementById(opts.canvas);if(!canvas)return;
-var gl=canvas.getContext('webgl',{ antialias:false, alpha:false, premultipliedAlpha:false, powerPreference:'high-performance' });
+var gl=canvas.getContext('webgl',{ antialias:false, alpha:false, premultipliedAlpha:false, powerPreference:'high-performance' })||canvas.getContext('experimental-webgl',{ antialias:false, alpha:false, premultipliedAlpha:false });
 var nogl=document.getElementById(pre+'nogl');
 if(!gl){if(nogl)nogl.style.display='flex';return;}
 var MOB=window.matchMedia&&window.matchMedia('(pointer:coarse)').matches;
@@ -277,9 +277,9 @@ var vs=[
 ' float sz=aSize*uDpr*(2.6/dist)*(1.0+0.25*uCharge*body);if(k>2.5&&body<0.5)sz*=1.0+0.5*uHit;if(k>3.5&&k<4.5)sz*=1.0+0.8*pulse;gl_PointSize=sz;}'
 ].join('\n');
 var fs=[
-'precision highp float;varying vec3 vCol;varying float vAlpha;varying float vKind;uniform float uTime;',
+'#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif','varying vec3 vCol;varying float vAlpha;varying float vKind;uniform float uTimeF;',
 'void main(){vec2 q=gl_PointCoord-0.5;float d=length(q);float a;',
-' if(vKind>2.5&&vKind<3.5){float cr=max(smoothstep(0.08,0.0,abs(q.x))*smoothstep(0.5,0.1,abs(q.y)),smoothstep(0.08,0.0,abs(q.y))*smoothstep(0.5,0.1,abs(q.x)));a=cr*(0.6+0.4*sin(uTime*3.0+vCol.r*20.0));}',
+' if(vKind>2.5&&vKind<3.5){float cr=max(smoothstep(0.08,0.0,abs(q.x))*smoothstep(0.5,0.1,abs(q.y)),smoothstep(0.08,0.0,abs(q.y))*smoothstep(0.5,0.1,abs(q.x)));a=cr*(0.6+0.4*sin(uTimeF*3.0+vCol.r*20.0));}',
 ' else{a=smoothstep(0.5,0.12,d);}if(a<0.01)discard;gl_FragColor=vec4(vCol,a*vAlpha);}'
 ].join('\n');
 // background: deep water, lighter toward the surface, faint shafts
@@ -297,7 +297,7 @@ var blurfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uTex;uni
 var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;',
 'vec3 aces(vec3 x){return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);}',
 'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=s+b*uStr*uMask;gl_FragColor=vec4(aces(c*1.0),1.0);}'].join('\n');
-var prog=prg(vs,fs),bprog=prg(bvs,bfs),blurp=prg(bvs,blurfs),compp=prg(bvs,compfs);
+var prog,bprog,blurp,compp;try{prog=prg(vs,fs);bprog=prg(bvs,bfs);blurp=prg(bvs,blurfs);compp=prg(bvs,compfs);}catch(err){if(window.console)console.error('KN shader',err);if(nogl){nogl.textContent='この端末のブラウザでは描画できませんでした。Chrome の最新版で開き直してください。';nogl.style.display='flex';}return;}
 var BL={uTex:gl.getUniformLocation(blurp,'uTex'),uDir:gl.getUniformLocation(blurp,'uDir'),a:gl.getAttribLocation(blurp,'aXY')};
 var CP={uScene:gl.getUniformLocation(compp,'uScene'),uBloom:gl.getUniformLocation(compp,'uBloom'),uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),a:gl.getAttribLocation(compp,'aXY')};
 function mkTex(w,h){var t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return t;}
@@ -310,7 +310,7 @@ var A={};function buf(name,data,sz){var b=gl.createBuffer();gl.bindBuffer(gl.ARR
 buf('aP',pos,4);buf('aC0',c0,3);buf('aC1',c1,3);buf('aCS',cs,3);buf('aKind',kind,1);buf('aPhase',phase,1);buf('aSize',size,1);
 pos=c0=c1=cs=kind=phase=size=null;
 var bb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);var bloc=gl.getAttribLocation(bprog,'aXY');
-var U={};['uProj','uView','uTime','uPhase','uSplit','uHit','uDpr','uGlow','uIntro','uModel','uDim','uCharge'].forEach(function(n){U[n]=gl.getUniformLocation(prog,n);});
+var U={};['uProj','uView','uTime','uTimeF','uPhase','uSplit','uHit','uDpr','uGlow','uIntro','uModel','uDim','uCharge'].forEach(function(n){U[n]=gl.getUniformLocation(prog,n);});
 var BU={uTime:gl.getUniformLocation(bprog,'uTime'),uAsp:gl.getUniformLocation(bprog,'uAsp')};
 function bindPoints(){gl.useProgram(prog);for(var n in A){var a=A[n];gl.bindBuffer(gl.ARRAY_BUFFER,a.b);gl.enableVertexAttribArray(a.loc);gl.vertexAttribPointer(a.loc,a.sz,gl.FLOAT,false,0,0);}}
 /* ---------- camera / interaction ---------- */
@@ -366,10 +366,10 @@ function frame(now){
   var t=now/1000,asp=canvas.width/canvas.height;
   intro=reduce?1:Math.min(1,(now-introT0)/3400);if(intro>=1&&!introDone){introDone=true;strike();}
   gl.bindFramebuffer(gl.FRAMEBUFFER,FB.scene.f);gl.viewport(0,0,canvas.width,canvas.height);
-  gl.disable(gl.BLEND);gl.useProgram(bprog);gl.uniform1f(BU.uTime,t);gl.uniform1f(BU.uAsp,asp);quad(bprog,bloc);
+  gl.disable(gl.BLEND);gl.useProgram(bprog);gl.uniform1f(BU.uTime,t%628.3185);gl.uniform1f(BU.uAsp,asp);quad(bprog,bloc);
   gl.enable(gl.BLEND);bindPoints();
   gl.uniformMatrix4fv(U.uProj,false,persp(asp<1?0.95/Math.sqrt(asp):0.95,asp,0.1,50));gl.uniformMatrix4fv(U.uView,false,view());
-  gl.uniform1f(U.uTime,t);gl.uniform1f(U.uSplit,split);gl.uniform1f(U.uHit,hit);gl.uniform1f(U.uDpr,dpr);gl.uniform1f(U.uIntro,intro);
+  gl.uniform1f(U.uTime,t);gl.uniform1f(U.uTimeF,t%209.4395);gl.uniform1f(U.uSplit,split);gl.uniform1f(U.uHit,hit);gl.uniform1f(U.uDpr,dpr);gl.uniform1f(U.uIntro,intro);
   // swim: each medusa rises with its own stroke; the hero only bobs in place
   var V=view();var PR=persp(asp<1?0.95/Math.sqrt(asp):0.95,asp,0.1,50);var order=[],chSum=0;
   for(var mi=0;mi<med.length;mi++){var m=med[mi];
