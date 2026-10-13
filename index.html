@@ -18,6 +18,8 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .ui>*{pointer-events:auto}
 .mark{position:absolute;left:22px;top:calc(18px + env(safe-area-inset-top,0px));font-family:var(--f-en);font-size:1.05rem;letter-spacing:.2em;line-height:1.2}
 .mark small{display:block;font-family:var(--f-jp);font-size:.62rem;letter-spacing:.22em;color:var(--muted);margin-top:.35rem}
+.snd{position:absolute;left:22px;top:calc(72px + env(safe-area-inset-top,0px));appearance:none;border:1px solid var(--rule);background:var(--glass);color:var(--fg);font-family:var(--f-data);font-size:.62rem;letter-spacing:.2em;padding:.45rem .7rem;border-radius:999px;cursor:pointer}
+.snd[aria-pressed="true"]{border-color:var(--gold);color:var(--gold)}
 .hint{position:absolute;right:22px;top:calc(22px + env(safe-area-inset-top,0px));font-family:var(--f-data);font-size:.62rem;letter-spacing:.18em;color:var(--muted);text-align:right;line-height:1.9;opacity:.85}
 .dock{z-index:3;position:absolute;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;align-items:center;gap:10px;padding:8px;border:1px solid var(--rule);border-radius:999px;background:var(--glass);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .dock button,.dock a{appearance:none;border:0;background:transparent;color:var(--fg);text-decoration:none;display:inline-block;font-family:var(--f-data);font-size:.72rem;letter-spacing:.2em;padding:.7rem 1rem;border-radius:999px;cursor:pointer}
@@ -60,6 +62,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 <div class="nogl" id="nogl">この端末では WebGL が使えません。Safari か Chrome の最新版で開いてください。</div>
 <div class="ui">
   <div class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></div>
+  <button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button>
   <div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>
   <div class="dial"><span class="top">融</span><input id="split" type="range" min="0" max="100" value="100" orient="vertical" aria-label="分離と融合"><span>分</span></div>
   <button class="hit" id="hit" aria-label="一打"></button>
@@ -103,6 +106,60 @@ const LINKS={
   const set=(id,url,label)=>{const a=document.getElementById(id);if(!a)return;if(url){a.href=url;a.target='_blank';a.rel='noopener';if(label)a.firstChild.textContent=label;}};
   set('lnk-online',LINKS.online,'参加 URL を開く');set('lnk-live',LINKS.live,'参加画面を開く');set('lnk-room',LINKS.room,'鍵を受け取る');
   set('lnk-ks',LINKS.ks);set('lnk-km',LINKS.km);set('lnk-kl',LINKS.kl);set('lnk-tee',LINKS.tee);set('lnk-shop',LINKS.shop);
+})();
+/* KAGI NIGHT sound: a procedural underwater loop (Web Audio, no files).
+   D dorian pads that change every swim of the medusa, a sub kick on each contraction, soft ticks, glass arpeggio,
+   and a snare-like hit when the visitor taps. Starts only from the SOUND button. */
+window.KN_AUDIO=(function(){
+var ctx=null,on=false,master,comp,wet,dry,conv,padBus,padFilter,lfo,lfoGain,delay,fb,cycleStart=0,chordIdx=-1,timer=null,nextTick=0,nextArp=0,lastKick=0;
+var CH=[ [36.71,[146.83,174.61,220.00,261.63,329.63]],   // Dm9  (D2 root)
+         [43.65,[174.61,220.00,261.63,329.63,392.00]],   // Fmaj7(9)
+         [49.00,[196.00,233.08,293.66,349.23,440.00]],   // Gm7(11)
+         [55.00,[220.00,261.63,329.63,392.00,493.88]] ]; // Am7(9)
+var padVoices=[],subOsc=null,subGain=null;
+function mkIR(sec,decay){var n=Math.floor(ctx.sampleRate*sec),b=ctx.createBuffer(2,n,ctx.sampleRate);for(var c=0;c<2;c++){var d=b.getChannelData(c);for(var i=0;i<n;i++){d[i]=(Math.random()*2-1)*Math.pow(1-i/n,decay);}}return b;}
+function noiseBuf(sec){var n=Math.floor(ctx.sampleRate*sec),b=ctx.createBuffer(1,n,ctx.sampleRate),d=b.getChannelData(0);for(var i=0;i<n;i++)d[i]=Math.random()*2-1;return b;}
+var NB=null;
+function init(){
+  ctx=new (window.AudioContext||window.webkitAudioContext)();
+  master=ctx.createGain();master.gain.value=0.0;comp=ctx.createDynamicsCompressor();comp.threshold.value=-18;comp.ratio.value=3;
+  master.connect(comp);comp.connect(ctx.destination);
+  conv=ctx.createConvolver();conv.buffer=mkIR(3.2,2.4);wet=ctx.createGain();wet.gain.value=0.38;dry=ctx.createGain();dry.gain.value=0.8;
+  conv.connect(wet);wet.connect(master);dry.connect(master);
+  padFilter=ctx.createBiquadFilter();padFilter.type='lowpass';padFilter.frequency.value=900;padFilter.Q.value=0.7;
+  lfo=ctx.createOscillator();lfo.frequency.value=0.07;lfoGain=ctx.createGain();lfoGain.gain.value=260;lfo.connect(lfoGain);lfoGain.connect(padFilter.frequency);lfo.start();
+  padBus=ctx.createGain();padBus.gain.value=0.5;padBus.connect(padFilter);padFilter.connect(dry);padFilter.connect(conv);
+  delay=ctx.createDelay(1.0);delay.delayTime.value=0.375;fb=ctx.createGain();fb.gain.value=0.35;delay.connect(fb);fb.connect(delay);delay.connect(conv);delay.connect(dry);
+  NB=noiseBuf(1.0);
+  subGain=ctx.createGain();subGain.gain.value=0.0;subOsc=ctx.createOscillator();subOsc.type='sine';subOsc.frequency.value=CH[0][0];subOsc.connect(subGain);subGain.connect(dry);subOsc.start();
+}
+function pad(chord,t){
+  // fade out old voices
+  for(var i=0;i<padVoices.length;i++){var v=padVoices[i];v.g.gain.cancelScheduledValues(t);v.g.gain.setTargetAtTime(0,t,1.2);v.o.forEach(function(o){o.stop(t+5);});}
+  padVoices=[];
+  var notes=CH[chord][1];
+  for(var n=0;n<notes.length;n++){var g=ctx.createGain();g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(0.09,t+1.6);g.connect(padBus);var oscs=[];
+    [[ 'triangle',-6],['sawtooth',5],['triangle',0]].forEach(function(s,k){var o=ctx.createOscillator();o.type=s[0];o.frequency.value=notes[n];o.detune.value=s[1]+(k===1?0:0);var og=ctx.createGain();og.gain.value=s[0]==='sawtooth'?0.35:0.8;o.connect(og);og.connect(g);o.start(t);oscs.push(o);});
+    padVoices.push({g:g,o:oscs});}
+  subOsc.frequency.setTargetAtTime(CH[chord][0],t,0.3);subGain.gain.setTargetAtTime(0.16,t,0.8);
+}
+function kickSound(t){var o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(92,t);o.frequency.exponentialRampToValueAtTime(38,t+0.28);g.gain.setValueAtTime(0.9,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.75);o.connect(g);g.connect(dry);g.connect(conv);o.start(t);o.stop(t+0.8);
+  var n=ctx.createBufferSource();n.buffer=NB;var ng=ctx.createGain();ng.gain.setValueAtTime(0.25,t);ng.gain.exponentialRampToValueAtTime(0.001,t+0.03);var f=ctx.createBiquadFilter();f.type='lowpass';f.frequency.value=1800;n.connect(f);f.connect(ng);ng.connect(dry);n.start(t);n.stop(t+0.05);}
+function tick(t,accent){var n=ctx.createBufferSource();n.buffer=NB;var f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=accent?5200:7000;f.Q.value=1.2;var g=ctx.createGain();g.gain.setValueAtTime(accent?0.09:0.05,t);g.gain.exponentialRampToValueAtTime(0.001,t+(accent?0.07:0.04));n.connect(f);f.connect(g);g.connect(dry);g.connect(conv);n.start(t);n.stop(t+0.1);}
+function glass(t){if(chordIdx<0)return;var notes=CH[chordIdx][1];var f=notes[Math.floor(Math.random()*notes.length)]*(Math.random()<0.5?2:4);var o=ctx.createOscillator(),g=ctx.createGain();o.type='triangle';o.frequency.value=f;g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(0.11,t+0.02);g.gain.exponentialRampToValueAtTime(0.001,t+0.9);o.connect(g);g.connect(delay);g.connect(dry);o.start(t);o.stop(t+1);}
+function hitSound(t){var n=ctx.createBufferSource();n.buffer=NB;var f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=1800;f.Q.value=0.8;var g=ctx.createGain();g.gain.setValueAtTime(0.5,t);g.gain.exponentialRampToValueAtTime(0.001,t+0.2);n.connect(f);f.connect(g);g.connect(dry);g.connect(conv);n.start(t);n.stop(t+0.25);
+  var o=ctx.createOscillator(),og=ctx.createGain();o.type='sine';o.frequency.setValueAtTime(190,t);o.frequency.exponentialRampToValueAtTime(110,t+0.12);og.gain.setValueAtTime(0.45,t);og.gain.exponentialRampToValueAtTime(0.001,t+0.16);o.connect(og);og.connect(dry);o.start(t);o.stop(t+0.2);
+  padFilter.frequency.cancelScheduledValues(t);padFilter.frequency.setValueAtTime(2600,t);padFilter.frequency.exponentialRampToValueAtTime(900,t+1.4);}
+function schedule(){if(!on)return;var now=ctx.currentTime;
+  // fallback kick if the visual never calls kick()
+  if(now-lastKick>5.6)kick();
+  while(nextTick<now+0.25){var k=Math.round((nextTick-cycleStart)/1.25);tick(nextTick,k%4===0);nextTick+=1.25;}
+  while(nextArp<now+0.25){if(Math.random()<0.65)glass(nextArp);nextArp+=0.625;}}
+function kick(){if(!on)return;var t=ctx.currentTime+0.01;cycleStart=t;lastKick=t;kickSound(t);chordIdx=(chordIdx+1)%CH.length;pad(chordIdx,t);nextTick=t+1.25;nextArp=t+0.3125;}
+function hit(){if(!on)return;hitSound(ctx.currentTime+0.005);}
+function start(){if(!ctx)init();if(ctx.state==='suspended')ctx.resume();on=true;master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(0.5,ctx.currentTime,1.5);kick();if(!timer)timer=setInterval(schedule,100);}
+function stop(){if(!ctx)return;on=false;master.gain.setTargetAtTime(0,ctx.currentTime,0.8);if(timer){clearInterval(timer);timer=null;}}
+return { start:start, stop:stop, toggle:function(){on?stop():start();}, kick:kick, hit:hit, isOn:function(){return on;} };
 })();
 /* KAGI NIGHT point-cloud engine (raw WebGL1, ES5). One medusa whose points are the nine keys blended.
    Bell motion after holtsetio/aurelia (MIT): a sinusoidally contracting hemisphere whose contraction
@@ -251,7 +308,7 @@ var BU={uTime:gl.getUniformLocation(bprog,'uTime'),uAsp:gl.getUniformLocation(bp
 function bindPoints(){gl.useProgram(prog);for(var n in A){var a=A[n];gl.bindBuffer(gl.ARRAY_BUFFER,a.b);gl.enableVertexAttribArray(a.loc);gl.vertexAttribPointer(a.loc,a.sz,gl.FLOAT,false,0,0);}}
 /* ---------- camera / interaction ---------- */
 var yaw=0.6,pitch=0.18,dist=3.4,vyaw=0,vpitch=0,dragging=false,lx=0,ly=0,moved=0,pinch0=0,dist0=dist,down=0;
-var split=1,splitT=1,hit=0,simT=0,intro=0,introT0=performance.now(),introDone=false,lastT=performance.now();
+var lastCycle=-1;var split=1,splitT=1,hit=0,simT=0,intro=0,introT0=performance.now(),introDone=false,lastT=performance.now();
 var dpr=Math.min(window.devicePixelRatio||1,MOB?1.5:2);var ptr={x:9,y:9};
 /* medusae: index 0 is the hero (the one who hits); the rest swim upward and return from below */
 var INST=MOB?4:7,med=[];
@@ -271,8 +328,9 @@ canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',
 canvas.addEventListener('wheel',function(e){if(stage&&!e.ctrlKey)return;e.preventDefault();dist=Math.max(1.8,Math.min(6,dist*(1+e.deltaY*0.0015)));},{ passive:false });
 canvas.addEventListener('touchstart',function(e){if(e.touches.length===2){pinch0=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);dist0=dist;}},{ passive:true });
 canvas.addEventListener('touchmove',function(e){if(e.touches.length===2){var d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);dist=Math.max(1.8,Math.min(6,dist0*pinch0/d));dragging=false;}},{ passive:true });
-function strike(){hit=1;simT=2.1;med[0].charge=1;}   // phase jumps to just before the contraction
+function strike(){hit=1;simT=2.1;med[0].charge=1;if(window.KN_AUDIO)KN_AUDIO.hit();lastCycle=Math.floor(simT*0.2-0.875);}   // phase jumps to just before the contraction
 var hitBtn=document.getElementById(pre+'hit');if(hitBtn)hitBtn.addEventListener('click',strike);
+var sndBtn=document.getElementById(pre+'snd');if(sndBtn)sndBtn.addEventListener('click',function(){if(!window.KN_AUDIO)return;KN_AUDIO.toggle();sndBtn.textContent='SOUND · '+(KN_AUDIO.isOn()?'ON':'OFF');sndBtn.setAttribute('aria-pressed',KN_AUDIO.isOn()?'true':'false');});
 var splitEl=document.getElementById(pre+'split');if(splitEl)splitEl.addEventListener('input',function(e){splitT=e.target.value/100;});
 /* ---------- sheets ---------- */
 var root=stage||document;
@@ -314,6 +372,7 @@ function frame(now){
     m.charge+=(1-Math.min(Math.max(0,dd-0.18*m.sc)*2.5,1))*0.05*dtf;m.charge=Math.min(m.charge,1);m.charge*=Math.pow(0.95,dtf);chSum+=m.charge;
     m.off+=dt*0.2*m.charge*0.6;
     var php=((simT*0.2+m.off)%1.0)*6.2832;m.ph=php;
+    if(m.hero){var cyc=Math.floor(simT*0.2-0.875);if(cyc>lastCycle){lastCycle=cyc;if(window.KN_AUDIO)KN_AUDIO.kick();}}
     if(!m.hero){m.y+=(1.0+Math.sin(php+4.4)*0.35)*0.22*dt*(1.0+hit*0.6);if(m.y>4.5)spawn(m,false);}else{m.y=0.08*Math.sin(php+4.4);}
     m.mat=model(m,t);var vz=V[2]*m.x+V[6]*m.y+V[10]*m.z+V[14];order.push({m:m,z:vz});}
   order.sort(function(a,b){return a.z-b.z;});
