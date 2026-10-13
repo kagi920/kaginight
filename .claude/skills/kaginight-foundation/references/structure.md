@@ -7,7 +7,7 @@
 - 左下 `#split`: 縦スライダー 融（100）↔ 分（0）
 - 右下 `#hit`: 金の円、一打
 - 下 `.dock`: ONLINE / LIVE / GOODS（BASE へ外部リンク）/ KEY
-- シート `#online` `#live` `#support`（KEY）: `.meta` に NEXT / PLACE、`.bar` が導線、`.steps` が 4 手順
+- シート `#online` `#live` `#support`（KEY）: `.meta` に NEXT / PLACE（PLACE は「スマホ・PC どちらでも」）、`.bar` が導線、`.steps` が 4 手順
 
 ## LINKS のキー
 `online` 配信参加 URL / `live` 現地 QR の URL / `room` KAGI ROOM / `ks` `km` `kl` KEY S/M/L / `tee` `shop` BASE。空なら導線文言は変えない。
