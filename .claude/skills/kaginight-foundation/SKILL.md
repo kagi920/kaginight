@@ -45,7 +45,7 @@ description: KAGI NIGHT（XR Drummer 鍵山喬一）のホームページ・BASE
 3. **BASE 一式を再生成**: 元テーマ（鍵山が貼ったもの、無改変）＋ `<body … class="shop template">` 直後に挿入ブロック＋最初の `</header>` 直後に紹介文と扉。
 4. **検査**: ブロックタグ `{block:X}` と `{/block:X}` の数が一致、必須タグあり、CSS は全部セミコロン終端、JS エラー 0。
 5. **実機想定の検証**: Playwright（`--use-gl=swiftshader`）で 390×844 のスクショ、iPhone UA で SOUND をタップして `state==='running'`、出力 RMS が 0 より大きいこと。
-6. **公開**: `index.html` を repo に commit → `git push -u origin main`。貼り付けページ（1 ボタンコピー）は見出しの版番号を上げてから再公開。鍵山には「⌘R で開き直す」と「BASE は全文を貼り直す」を毎回伝える。
+6. **公開**: `VERSION` を上げ、両ページ右下の版番号を焼き込んでから commit → `git push -u origin main`。GitHub Actions の「pages build and deployment」が success になったことを確認。貼り付けページは見出しも同じ版にして再公開。鍵山には「右下の版番号で確認」とだけ伝える（`docs/CHANGELOG.md` に追記）。
 7. **報告**: 何が変わったか 3 行、鍵山がやる操作 1〜3 手、保留の判断事項。
 
 ## 落とし穴（実際に踏んだもの）

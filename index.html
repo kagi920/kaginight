@@ -54,6 +54,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .note{font-size:.78rem;color:var(--muted);font-family:"Noto Sans JP",var(--f-jp);margin:.6rem 0 0}
 .nogl{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:2rem;font-family:"Noto Sans JP",var(--f-jp)}
 @media (max-width:640px){.hint{display:none}.dock button{padding:.7rem .7rem;font-size:.66rem}.dial input{height:120px}.goods{grid-template-columns:repeat(3,1fr)}.sheet{max-height:62%}}
+.ver{position:absolute;right:12px;bottom:calc(6px + env(safe-area-inset-bottom,0px));font-family:var(--f-data);font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.6;pointer-events:none}
 @media (prefers-reduced-motion: reduce){.sheet{transition:none}}
 </style>
 </head>
@@ -64,6 +65,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
   <div class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></div>
   <button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button>
   <div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>
+  <div class="ver" id="ver">v14</div>
   <div class="dial"><span class="top">融</span><input id="split" type="range" min="0" max="100" value="100" orient="vertical" aria-label="分離と融合"><span>分</span></div>
   <button class="hit" id="hit" aria-label="一打"></button>
   <div class="dock" role="tablist">
