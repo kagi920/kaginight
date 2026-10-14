@@ -316,7 +316,12 @@ function bindPoints(){gl.useProgram(prog);for(var n in A){var a=A[n];gl.bindBuff
 /* ---------- camera / interaction ---------- */
 var yaw=0.6,pitch=0.18,dist=3.4,vyaw=0,vpitch=0,dragging=false,lx=0,ly=0,moved=0,pinch0=0,dist0=dist,down=0;
 var lastCycle=-1;var split=1,splitT=1,hit=0,simT=0,intro=0,introT0=performance.now(),introDone=false,lastT=performance.now();
-var dpr=Math.min(window.devicePixelRatio||1,MOB?1.5:2);var ptr={x:9,y:9};
+var dprBase=Math.min(window.devicePixelRatio||1,MOB?1.5:2),dpr=dprBase;var ptr={x:9,y:9};
+/* motion kernels (after the 3D motion reference study): damped-spring lens with dolly compensation, temporal echoes of the bell on a strike,
+   bounded pointer parallax, frame-rate independent smoothing, and a quality tier with hysteresis. The hero's look is unchanged at rest. */
+var FOV0=0.95,lens=0,lensV=0,echoA=0,parX=0,parY=0,ema=16.7,hiN=0,loN=0,tier=0,NE=MOB?2:3;
+function fovNow(){return FOV0*(1+lens*0.55);}
+function distNow(){return dist*Math.tan(FOV0/2)/Math.tan(fovNow()/2);}
 /* medusae: index 0 is the hero (the one who hits); the rest swim upward and return from below */
 var INST=MOB?4:7,med=[];
 function spawn(m,first){m.x=(rnd()-.5)*5.5;m.z=-1.0-rnd()*3.5;m.y=first?(rnd()-.5)*7:-4.5-rnd()*2;m.sc=0.3+rnd()*0.35;m.off=rnd()*5;m.seed=rnd()*100;m.yaw=rnd()*6.28;}
@@ -335,7 +340,7 @@ canvas.addEventListener('pointerup',up);canvas.addEventListener('pointercancel',
 canvas.addEventListener('wheel',function(e){if(stage&&!e.ctrlKey)return;e.preventDefault();dist=Math.max(1.8,Math.min(6,dist*(1+e.deltaY*0.0015)));},{ passive:false });
 canvas.addEventListener('touchstart',function(e){if(e.touches.length===2){pinch0=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);dist0=dist;}},{ passive:true });
 canvas.addEventListener('touchmove',function(e){if(e.touches.length===2){var d=Math.hypot(e.touches[0].clientX-e.touches[1].clientX,e.touches[0].clientY-e.touches[1].clientY);dist=Math.max(1.8,Math.min(6,dist0*pinch0/d));dragging=false;}},{ passive:true });
-function strike(){hit=1;simT=2.1;med[0].charge=1;if(window.KN_AUDIO)KN_AUDIO.hit();lastCycle=Math.floor(simT*0.2-0.875);}   // phase jumps to just before the contraction
+function strike(){hit=1;simT=2.1;med[0].charge=1;lensV+=3.2;echoA=1;if(window.KN_AUDIO)KN_AUDIO.hit();lastCycle=Math.floor(simT*0.2-0.875);}   // phase jumps to just before the contraction
 var hitBtn=document.getElementById(pre+'hit');if(hitBtn)hitBtn.addEventListener('click',strike);
 var sndBtn=document.getElementById(pre+'snd');if(sndBtn)sndBtn.addEventListener('click',function(){if(!window.KN_AUDIO)return;KN_AUDIO.toggle();var onn=KN_AUDIO.isOn();sndBtn.textContent='SOUND · '+(onn?'ON':'OFF');sndBtn.setAttribute('aria-pressed',onn?'true':'false');var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);var hint=document.getElementById(pre+'sndhint');if(onn&&ios){if(!hint){hint=document.createElement('div');hint.id=pre+'sndhint';hint.style.cssText='position:absolute;z-index:4;max-width:220px;padding:.45rem .7rem;border:1px solid rgba(236,233,226,.14);border-radius:10px;background:rgba(12,12,18,.75);color:#ece9e2;font:500 .68rem/1.6 "Noto Sans JP",sans-serif;letter-spacing:.06em;pointer-events:none';sndBtn.parentNode.appendChild(hint);}var r=sndBtn.getBoundingClientRect(),pr=sndBtn.parentNode.getBoundingClientRect();hint.style.left=(r.left-pr.left)+'px';hint.style.top=(r.bottom-pr.top+8)+'px';hint.textContent='鳴らない時は、本体横のスイッチ（マナー）を OFF にして音量を上げる';hint.style.display='block';clearTimeout(hint._t);hint._t=setTimeout(function(){hint.style.display='none';},7000);}else if(hint){hint.style.display='none';}});
 var splitEl=document.getElementById(pre+'split');if(splitEl)splitEl.addEventListener('input',function(e){splitT=e.target.value/100;});
@@ -352,26 +357,30 @@ Array.prototype.forEach.call(document.querySelectorAll('[data-kn-open]'),functio
 /* ---------- matrices ---------- */
 function persp(f,asp,n,fa){var t=1/Math.tan(f/2);return[t/asp,0,0,0,0,t,0,0,0,0,(fa+n)/(n-fa),-1,0,0,2*fa*n/(n-fa),0];}
 function mul(a,b){var o=[];for(var q=0;q<16;q++)o[q]=0;for(var i=0;i<4;i++)for(var j=0;j<4;j++)for(var k=0;k<4;k++)o[j*4+i]+=a[k*4+i]*b[j*4+k];return o;}
-function view(){var cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);var r1=[cy,0,-sy,0,0,1,0,0,sy,0,cy,0,0,0,0,1];var r2=[1,0,0,0,0,cp,sp,0,0,-sp,cp,0,0,0,0,1];var m=mul(r2,r1);m[13]-=0.15;m[14]-=dist;return m;}
+function view(){var cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);var r1=[cy,0,-sy,0,0,1,0,0,sy,0,cy,0,0,0,0,1];var r2=[1,0,0,0,0,cp,sp,0,0,-sp,cp,0,0,0,0,1];var m=mul(r2,r1);m[12]-=parX;m[13]-=0.15+parY;m[14]-=distNow();return m;}
 /* ---------- loop ---------- */
 gl.enable(gl.BLEND);gl.disable(gl.DEPTH_TEST);
 var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 var visible=true,running=false;
 function frame(now){
   running=false;
-  var dtf=Math.min(100,now-lastT)/16.7;lastT=now;var dt=dtf/60;
-  if(!dragging){yaw+=0.0014+vyaw;vyaw*=0.92;pitch+=vpitch;vpitch*=0.9;pitch=Math.max(-0.6,Math.min(1.1,pitch));}
+  var dtf=Math.min(100,now-lastT)/16.7;var dt=dtf/60;
+  if(!dragging){yaw+=0.0014*dtf+vyaw;vyaw*=Math.pow(0.92,dtf);pitch+=vpitch;vpitch*=Math.pow(0.9,dtf);pitch=Math.max(-0.6,Math.min(1.1,pitch));}
+  var ms=Math.min(100,now-lastT);ema+=(ms-ema)*0.05;if(ema>26){hiN++;loN=0;}else if(ema<17){loN++;hiN=0;}else{hiN=0;loN=0;}
+  if(hiN>60&&tier<1){tier=1;dpr=Math.min(dprBase,1.0);resize();hiN=0;}else if(loN>300&&tier>0){tier=0;dpr=dprBase;resize();loN=0;}
+  var sdt=Math.min(dt,0.05),kS=22,cS=2*Math.sqrt(kS)*0.6;lensV+=(-kS*lens-cS*lensV)*sdt;lens+=lensV*sdt;lens=Math.max(-0.15,Math.min(0.6,lens));echoA*=Math.pow(0.04,dt);
+  var tx=(ptr.x>5?0:ptr.x)*0.05,ty=(ptr.y>5?0:ptr.y)*0.03,kp=1-Math.exp(-dt/0.3);parX+=(tx-parX)*kp;parY+=(ty-parY)*kp;
   split+=(splitT-split)*(1-Math.pow(0.92,dtf));hit*=Math.pow(0.9,dtf);
   simT+=dt*(1.0+hit*0.6);   // aurelia: one swim every five seconds
-  var t=now/1000,asp=canvas.width/canvas.height;
+  lastT=now;var t=now/1000,asp=canvas.width/canvas.height;
   intro=reduce?1:Math.min(1,(now-introT0)/3400);if(intro>=1&&!introDone){introDone=true;strike();}
   gl.bindFramebuffer(gl.FRAMEBUFFER,FB.scene.f);gl.viewport(0,0,canvas.width,canvas.height);
   gl.disable(gl.BLEND);gl.useProgram(bprog);gl.uniform1f(BU.uTime,t%628.3185);gl.uniform1f(BU.uAsp,asp);quad(bprog,bloc);
   gl.enable(gl.BLEND);bindPoints();
-  gl.uniformMatrix4fv(U.uProj,false,persp(asp<1?0.95/Math.sqrt(asp):0.95,asp,0.1,50));gl.uniformMatrix4fv(U.uView,false,view());
+  var FV=fovNow();gl.uniformMatrix4fv(U.uProj,false,persp(asp<1?FV/Math.sqrt(asp):FV,asp,0.1,50));gl.uniformMatrix4fv(U.uView,false,view());
   gl.uniform1f(U.uTime,t);gl.uniform1f(U.uTimeF,t%209.4395);gl.uniform1f(U.uSplit,split);gl.uniform1f(U.uHit,hit);gl.uniform1f(U.uDpr,dpr);gl.uniform1f(U.uIntro,intro);
   // swim: each medusa rises with its own stroke; the hero only bobs in place
-  var V=view();var PR=persp(asp<1?0.95/Math.sqrt(asp):0.95,asp,0.1,50);var order=[],chSum=0;
+  var V=view();var PR=persp(asp<1?FV/Math.sqrt(asp):FV,asp,0.1,50);var order=[],chSum=0;
   for(var mi=0;mi<med.length;mi++){var m=med[mi];
     // pointer charge (aurelia): a medusa near the pointer speeds up and glows cold
     var cx=V[0]*m.x+V[4]*m.y+V[8]*m.z+V[12],cy=V[1]*m.x+V[5]*m.y+V[9]*m.z+V[13],cz=V[2]*m.x+V[6]*m.y+V[10]*m.z+V[14];
@@ -383,7 +392,11 @@ function frame(now){
     if(!m.hero){m.y+=(1.0+Math.sin(php+4.4)*0.35)*0.22*dt*(1.0+hit*0.6);if(m.y>4.5)spawn(m,false);}else{m.y=0.08*Math.sin(php+4.4);}
     m.mat=model(m,t);var vz=V[2]*m.x+V[6]*m.y+V[10]*m.z+V[14];order.push({m:m,z:vz});}
   order.sort(function(a,b){return a.z-b.z;});
-  for(var oi=0;oi<order.length;oi++){var mm=order[oi].m;gl.uniformMatrix4fv(U.uModel,false,mm.mat);gl.uniform1f(U.uPhase,mm.ph);gl.uniform1f(U.uDim,mm.hero?1.0:0.55);gl.uniform1f(U.uCharge,mm.charge);
+  for(var oi=0;oi<order.length;oi++){var mm=order[oi].m;
+    if(mm.hero&&echoA>0.02&&tier===0){var fw=[-V[2],-V[6],-V[10]];gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.uniform1f(U.uCharge,0.0);
+      for(var ei=NE;ei>=1;ei--){var em=mm.mat.slice(0),es=Math.exp(-ei*0.12);for(var q=0;q<12;q++)em[q]*=es;em[12]+=fw[0]*ei*0.35;em[13]+=fw[1]*ei*0.35;em[14]+=fw[2]*ei*0.35;
+        gl.uniformMatrix4fv(U.uModel,false,em);gl.uniform1f(U.uPhase,mm.ph-ei*0.5);gl.uniform1f(U.uDim,0.42*echoA*Math.exp(-ei*0.4));gl.uniform1f(U.uGlow,0.5);gl.drawArrays(gl.POINTS,0,NB);}}
+    gl.uniformMatrix4fv(U.uModel,false,mm.mat);gl.uniform1f(U.uPhase,mm.ph);gl.uniform1f(U.uDim,mm.hero?1.0:0.55);gl.uniform1f(U.uCharge,mm.charge);
     gl.uniform1f(U.uGlow,1.0);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.POINTS,0,NB);
     gl.uniform1f(U.uGlow,mm.hero?0.28:0.18);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.drawArrays(gl.POINTS,0,NB);
     if(mm.hero){gl.uniform1f(U.uGlow,1.0);gl.drawArrays(gl.POINTS,NB,NL);}}

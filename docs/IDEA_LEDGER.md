@@ -15,9 +15,12 @@
 | 6 | ページ構成: ヒーロー → BASE 必須ロゴ（金枠）＋HOME/ABOUT/CONTACT → 紹介文 → **5 つの扉**（ONLINE / LIVE / KEY / PROFILE / CONTACT）→ GOODS → フッター | 完成 |
 | 7 | **商品は同じページに並べない**。GOODS は商品検索 App の検索ページへ飛ばす。無い場合だけ一覧を表示 | 完成 |
 | 8 | 文章は**お客さん向け**。「準備中」「決まってない」「何も売っていない」は書かない。KEY（KAGI ROOM）は COMING SOON として価格を出さない | 完成 |
+| 10 | **3D モーション参照の学習を反映（v13）**: 一打で画角が開き距離を補正して主役の大きさを保つレンズ（dolly compensation、減衰ばね）、鐘の残像を視線奥行きに沿って 2〜3 体、ポインタ視差、時定数ベースの平滑化、フレーム時間のヒステリシス付き画質段階。主役の静止時の見た目は不変 | 完成 |
 | 9 | 稼ぎ方は **note の有料記事**（既存アカウントを使う）と **受注生産・在庫ゼロのグッズ** | 承認済み（「ノートいいよ」「曲もいいよ」） |
 
 ## 2. 元ネタ・参照
+
+- 鍵山からの引き継ぎ資料（KAGI XR の A/B 検証・Charakuru・費用・Anatomy 原則）は `docs/kagixr_handoff/`。これはライブ演奏システム（Mac 演奏者画面＋iPhone 参加）の話で、ホームページのクラゲとは別系統。混同しない。
 
 - 参考: https://holtsetio.com/lab/aurelia/ （コード https://github.com/holtsetio/aurelia 、MIT）
 - 鍵山の公開リポジトリ: AeroDrumsOSCBridge（MIDI→OSC `/drum/*` 9000）、VisionDrumOSC（UDP 受信、7 アバター）、EtherealJellyfish（2025-07）
