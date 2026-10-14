@@ -28,7 +28,7 @@
 
 ## 3. 保留（鍵山の判断待ち）
 
-- note の URL（`note.com/〇〇〇`）。もらえば KEY / PROFILE の導線に入れる
+- （解決）note は https://note.com/kagi03 。KEY シートからリンク済み（v14）
 - 「水の夜」T シャツ絵柄（print_jellyfish_A）と販売先（BASE オリジナルプリント App か SUZURI）
 - 金の鍵ロゴ 3 案、XR DRUMMER T シャツの版下
 - 商品検索 App を入れるか（GOODS を一覧ページにするため）
