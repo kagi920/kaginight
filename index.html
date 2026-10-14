@@ -3,23 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="KAGI NIGHT — XR DRUMMER 鍵山喬一。配信と現地、どちらからでも叩く人として参加できる。">
+<meta name="description" content="XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="keywords" content="XR ドラマー, 鍵山喬一, KAGI NIGHT, ドラム, リズム, グルーヴ, XR ライブ, 配信ライブ, 東京">
 <meta name="theme-color" content="#07070b">
 <link rel="canonical" href="https://kagi920.github.io/kaginight/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="KAGI NIGHT — XR DRUMMER 鍵山喬一">
-<meta property="og:description" content="ドラムの実打をそのまま信号にして、映像と空間と人を動かす。配信からも、現地からも、叩く人として参加できる夜。">
+<meta property="og:title" content="KAGI NIGHT｜XR ドラマー 鍵山喬一">
+<meta property="og:description" content="XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。">
 <meta property="og:url" content="https://kagi920.github.io/kaginight/">
 <meta property="og:image" content="https://kagi920.github.io/kaginight/og.png">
 <meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
 <meta property="og:locale" content="ja_JP">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@KAGI920">
-<meta name="twitter:title" content="KAGI NIGHT — XR DRUMMER 鍵山喬一">
-<meta name="twitter:description" content="ドラムの実打をそのまま信号にして、映像と空間と人を動かす。">
+<meta name="twitter:title" content="KAGI NIGHT｜XR ドラマー 鍵山喬一">
+<meta name="twitter:description" content="ドラムとリズムとグルーヴを XR の空間へ。叩く人として参加できる夜。">
 <meta name="twitter:image" content="https://kagi920.github.io/kaginight/og.png">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"鍵山喬一","alternateName":"Kyoichi Kagiyama","jobTitle":"XR Drummer","description":"ドラマー。cocobat、アーバンギャルドの元メンバー。ドラムの実打をそのまま信号にして、映像と空間と人を動かす。KAGI NIGHT 主催。","url":"https://kagi920.github.io/kaginight/","sameAs":["https://x.com/KAGI920","https://github.com/kagi920","https://note.com/kagi03","https://www.instagram.com/kagi03/","https://ja.wikipedia.org/wiki/%E9%8D%B5%E5%B1%B1%E5%96%AC%E4%B8%80"]}</script>
-<title>KAGI NIGHT</title>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Person","name":"鍵山喬一","alternateName":"Kyoichi Kagiyama","jobTitle":"XR Drummer","description":"ドラムとリズムとグルーヴを XR の空間へ持ち込むドラマー。埼玉県出身。cocobat、航空電子、アーバンギャルドを経て、多くのアーティストのサポートドラマーとして活動。KAGI NIGHT 主催。","knowsAbout":["ドラム","リズム","グルーヴ","XR ライブ","配信ライブ"],"url":"https://kagi920.github.io/kaginight/","sameAs":["https://x.com/KAGI920","https://github.com/kagi920","https://note.com/kagi03","https://www.instagram.com/kagi03/","https://ja.wikipedia.org/wiki/%E9%8D%B5%E5%B1%B1%E5%96%AC%E4%B8%80"]}</script>
+<title>KAGI NIGHT｜XR ドラマー 鍵山喬一 — ドラム・リズム・グルーヴを XR へ</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Serif+JP:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 /* Single dark stage by choice. One living body (WebGL point cloud) and a thin glass UI. */
@@ -30,7 +32,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 #gl.drag{cursor:grabbing}
 .ui{position:fixed;inset:0;pointer-events:none}
 .ui>*{pointer-events:auto;touch-action:manipulation}
-.mark{position:absolute;left:22px;top:calc(18px + env(safe-area-inset-top,0px));font-family:var(--f-en);font-size:1.05rem;letter-spacing:.2em;line-height:1.2}
+.mark{margin:0;font-weight:500;position:absolute;left:22px;top:calc(18px + env(safe-area-inset-top,0px));font-family:var(--f-en);font-size:1.05rem;letter-spacing:.2em;line-height:1.2}
 .mark small{display:block;font-family:var(--f-jp);font-size:.62rem;letter-spacing:.22em;color:var(--muted);margin-top:.35rem}
 .top{position:absolute;left:22px;top:calc(72px + env(safe-area-inset-top,0px));display:flex;gap:8px;align-items:center}
 .snd{appearance:none;border:1px solid var(--rule);background:var(--glass);color:var(--fg);font-family:var(--f-data);font-size:.62rem;letter-spacing:.2em;padding:.45rem .7rem;border-radius:999px;cursor:pointer}
@@ -77,12 +79,13 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 </head>
 <body>
 <canvas id="gl"></canvas>
+<noscript><p style="position:fixed;left:16px;right:16px;top:40%;text-align:center">XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。 出演・XR 演出の制作・配信チケットのご相談は X（@KAGI920）へ。</p></noscript>
 <div class="nogl" id="nogl">このブラウザでは描画できませんでした。お使いのブラウザを最新版にして開き直してください。</div>
 <div class="ui">
-  <div class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></div>
+  <h1 class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></h1>
   <div class="top"><button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button><button class="snd" id="prof" type="button" data-sheet="profile" aria-expanded="false">PROFILE</button></div>
   <div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>
-  <div class="ver" id="ver">v16</div>
+  <div class="ver" id="ver">v17</div>
   <div class="dial"><span class="top">融</span><input id="split" type="range" min="0" max="100" value="100" orient="vertical" aria-label="分離と融合"><span>分</span></div>
   <button class="hit" id="hit" aria-label="一打"></button>
   <div class="dock" role="tablist">
@@ -94,19 +97,19 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
   </div>
   <section class="sheet" id="work" aria-hidden="true"><button class="x" type="button" aria-label="閉じる">×</button>
     <h2>WORK<small>依頼 — 出演・制作・共同研究</small></h2>
-    <p class="meta">できること / <b>出演</b>（ドラム、XR ドラム）<br><b>制作</b>（実打で動く映像と空間の設計）<br><b>共同研究・講演</b>（身体と計算機）</p>
+    <p class="meta">できること / <b>出演</b>（ソロ・サポート・イベントサポート）<br><b>XR 演出の制作</b><br><b>自主企画の配信チケット</b><br><b>その他の制作</b>、<b>その他</b>のご相談も</p>
     <a class="bar" id="lnk-x" href="https://x.com/KAGI920" target="_blank" rel="noopener">X でメッセージを送る（@KAGI920）<span>›</span></a>
     <a class="bar ghost" id="lnk-inq" href="https://kaginight.base.shop/inquiry" target="_blank" rel="noopener">フォームから問い合わせる<span>›</span></a>
     <ol class="steps"><li><i>1</i><span>日時・場所・内容を一行で。</span></li><li><i>2</i><span>予算の有無（未定でよい）。</span></li><li><i>3</i><span>返事は鍵山本人から届く。</span></li></ol>
-    <p class="note">経歴・写真・機材の条件などの資料は、依頼のやりとりの中でお送りします。</p>
+    <p class="note">経歴や写真などの資料は、やりとりの中でお送りします。</p>
   </section>
   <section class="sheet" id="profile" aria-hidden="true"><button class="x" type="button" aria-label="閉じる">×</button>
     <h2>PROFILE<small>鍵山喬一 — XR DRUMMER</small></h2>
-    <p class="meta">ドラマー。cocobat、アーバンギャルドの元メンバー。<br>ドラムの実打をそのまま信号にして、映像と空間と人を動かす。<br>KAGI NIGHT 主催。</p>
-    <ol class="steps"><li><i>DEV</i><span>自作の演奏システムを公開中: AeroDrumsOSCBridge、VisionDrumOSC、EtherealJellyfish（<a href="https://github.com/kagi920" target="_blank" rel="noopener">GitHub</a>）</span></li></ol>
-    <p class="meta" style="margin-top:1rem">RESEARCH / <b>参照している研究</b></p>
-    <ol class="steps"><li><i>1</i><span>打楽器の演奏では 10 ms 前後の遅れが限界になる — <a href="https://qmro.qmul.ac.uk/xmlui/handle/123456789/44614" target="_blank" rel="noopener">Jack ほか 2018, Music Perception</a></span></li><li><i>2</i><span>配信でも演者とのつながりは届く。観客どうしの一体感は届きにくい — <a href="https://doi.org/10.3389/fpsyg.2021.647929" target="_blank" rel="noopener">Onderdijk ほか 2021, Frontiers in Psychology</a></span></li><li><i>3</i><span>クラゲは収縮のあとの受動的な回復で距離を稼ぐ — <a href="https://doi.org/10.1073/pnas.1306983110" target="_blank" rel="noopener">Gemmell ほか 2013, PNAS</a></span></li><li><i>4</i><span>演奏入力から音・映像への対応づけの設計 — <a href="https://doi.org/10.1017/S1355771802002030" target="_blank" rel="noopener">Hunt &amp; Wanderley 2002, Organised Sound</a></span></li><li><i>＋</i><span><a href="https://github.com/kagi920/kaginight/blob/main/docs/RESEARCH_SPEC.md" target="_blank" rel="noopener">文献一覧（368 件）</a></span></li></ol>
+    <p class="meta">ドラムとリズムとグルーヴを、XR の空間へ持ち込むドラマー。<br>埼玉県出身。1998 年ごろから都内のライブハウスで叩きはじめ、cocobat、航空電子、アーバンギャルドを経て、多くのアーティストのサポートドラマーとして活動。<br>いまは、実際に叩いた一打がそのまま光と空間と人の動きになる夜「KAGI NIGHT」を企画し、XR ドラムという表現と、その発想を広げている。</p>
+    <ol class="steps"><li><i>1</i><span>ドラム。ソロでも、バンドやイベントのサポートでも。</span></li><li><i>2</i><span>リズムとグルーヴの設計。曲や場に合わせて、どう揺らすか。</span></li><li><i>3</i><span>XR ライブの発想と演出。叩く人を増やす仕掛けを考える。</span></li></ol>
     <a class="bar ghost" href="https://note.com/kagi03" target="_blank" rel="noopener">note で読む<span>›</span></a>
+    <a class="bar ghost" href="https://x.com/KAGI920" target="_blank" rel="noopener">X（@KAGI920）<span>›</span></a>
+    <a class="bar ghost" href="https://www.instagram.com/kagi03/" target="_blank" rel="noopener">Instagram（@kagi03）<span>›</span></a>
   </section>
   <section class="sheet" id="online" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
     <h2>ONLINE<small>配信 — 遠くから、同じ時刻に</small></h2>
