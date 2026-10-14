@@ -4,6 +4,7 @@
 
 | 版 | 日付 | 変更 |
 |---|---|---|
+| v21 | 2026-10-14 | PROFILE の経歴文を v17 の一文に戻し、航空電子を JUDGEMENT に置換（鍵山の指示） |
 | v20 | 2026-10-14 | 鍵山の指示で PROFILE から航空電子を削除（cocobat・JUDGEMENT・アーバンギャルドは残す） |
 | v19 | 2026-10-14 | PROFILE に JUDGEMENT（2010 結成）とアーバンギャルド（2011–2014 正式加入）を明記（出典: Wikipedia 鍵山喬一、岸田教団&THE明星ロケッツ 非公式 Wiki、ichigo の note）。構造化データに memberOf を追加 |
 | v18 | 2026-10-14 | X・Instagram との連結: 本人確認リンク（rel=me）、LIVE に X 共有ボタン、ONLINE にフォロー導線、twitter:creator。仕様は docs/SOCIAL_LINK_SPEC_v1.md |
