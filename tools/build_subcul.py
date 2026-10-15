@@ -1,97 +1,85 @@
-import re,sys,pathlib
+# Direction C: art-pop subculture at 30% — Shiota-style red threads (web + thread medusae), red accent, light red grade.
+# No new words. No Showa/underground poster devices. Hero jellyfish geometry, motion and sound untouched.
+import pathlib,sys
 src=pathlib.Path('/home/user/kaginight/index.html').read_text()
 out=src
 def rep(old,new,count=1):
     global out
-    n=out.count(old)
-    assert n==count,(old[:60],n)
-    out=out.replace(old,new)
-
-# 0. preview: noindex, title
+    n=out.count(old); assert n==count,(old[:70],n); out=out.replace(old,new)
+OUT=sys.argv[1] if len(sys.argv)>1 else '/home/user/kaginight/subcul/index.html'
 rep('<meta name="robots" content="index,follow,max-image-preview:large">','<meta name="robots" content="noindex,nofollow">')
-# 1. fonts: add Shippori Mincho B1 (retro mincho) + DotGothic16 (bitmap)
-rep('family=IBM+Plex+Mono:wght@400;500&display=swap','family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@700;800&family=DotGothic16&display=swap')
-# 2. tokens: 60/30/10 → 30% = 朱 + retro type + screen tone. --mix is the layer strength (0..1), default .3
 rep(':root{--bg:#07070b;--fg:#ece9e2;--muted:#9a9ea6;--rule:rgba(236,233,226,.14);--gold:#d9a84a;--red:#c8102e;--glass:rgba(12,12,18,.55);',
-    ':root{--bg:#07070b;--fg:#ece9e2;--muted:#9a9ea6;--rule:rgba(236,233,226,.14);--gold:#d9a84a;--red:#c8102e;--glass:rgba(12,12,18,.55);--mix:.5;--sub:#e8432e;--sub-ink:#d7321f;--f-sub:"Shippori Mincho B1","Noto Serif JP",serif;--f-dot:"DotGothic16","IBM Plex Mono",monospace;')
-# 3. CSS additions (appended before </style>): texture layers, seal, vertical strip, type swaps
+    ':root{--bg:#07070b;--fg:#ece9e2;--muted:#9a9ea6;--rule:rgba(236,233,226,.14);--gold:#d9a84a;--red:#c8102e;--glass:rgba(12,12,18,.55);--mix:.3;--sub:#e8432e;--sub-ink:#d7321f;')
 css='''
-/* ---- サブカル層（30%）: 網点と粒子はキャンバスにだけ掛かる（UI は上） */
+/* ---- 赤い糸（塩田千春の参照）: 画面を渡る細い糸の網と結び目。UI の上には掛けない ---- */
 .ui{z-index:2}
-/* : 朱・レトロ明朝・ドット書体・網点・判子・縦書き。クラゲの形と動きは触らない ---- */
-.tone{position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(circle,rgba(255,232,214,.9) 0 .8px,transparent 1.5px);background-size:5px 5px;opacity:calc(var(--mix)*.5)}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:calc(var(--mix)*.4);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 .93 0 0 0 0 .86 0 0 0 .5 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");background-size:160px 160px}
-.mark{font-family:var(--f-sub);font-weight:800;letter-spacing:.12em}
-.mark small{font-family:var(--f-sub);font-weight:700;color:var(--sub);letter-spacing:.3em}
-.seal{position:absolute;left:22px;top:calc(120px + env(safe-area-inset-top,0px));width:46px;height:46px;border:2px solid var(--sub);border-radius:50%;color:var(--sub);font-family:var(--f-sub);font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center;transform:rotate(-9deg);opacity:calc(.55 + var(--mix));pointer-events:none;box-shadow:inset 0 0 0 1px rgba(232,67,46,.35)}
-.tate{position:absolute;right:16px;top:calc(96px + env(safe-area-inset-top,0px));writing-mode:vertical-rl;font-family:var(--f-sub);font-weight:700;font-size:.82rem;letter-spacing:.34em;color:var(--sub);opacity:calc(.5 + var(--mix));pointer-events:none;text-shadow:0 0 12px rgba(232,67,46,.35)}
-.hint{top:calc(26px + env(safe-area-inset-top,0px));font-family:var(--f-dot);letter-spacing:.12em;font-size:.7rem}
-.snd,.dial span,.ver{font-family:var(--f-dot);letter-spacing:.12em}
-.snd{font-size:.72rem;border-radius:3px}
+.web{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:calc(var(--mix)*1.6)}
+.web line{stroke:var(--sub);stroke-width:1;vector-effect:non-scaling-stroke;stroke-linecap:round}
+.web circle{fill:var(--sub)}
+.mark small{color:var(--sub)}
 .snd[aria-pressed="true"]{border-color:var(--sub);color:var(--sub)}
-.ver{font-size:.66rem;opacity:.75;color:var(--sub)}
-.dock{border-radius:6px;border-color:rgba(232,67,46,.45)}
-.dock button,.dock a{border-radius:3px}
 .dock button[aria-expanded="true"]{background:var(--sub-ink);color:#fff}
-.hit{border-color:var(--sub);background:radial-gradient(circle,rgba(232,67,46,.42),rgba(217,168,74,.05) 70%)}
-.hit::after{background:#fff1e8}
 .dial input{accent-color:var(--sub)}
-.sheet{border-radius:4px 4px 0 0;border-top:3px solid var(--sub)}
-.sheet h2{font-family:var(--f-sub);font-weight:800;letter-spacing:.14em}
-.sheet h2 small{font-family:var(--f-sub);color:var(--sub);letter-spacing:.26em}
+.sheet{border-top:1px solid var(--sub)}
+.sheet h2 small{color:var(--sub)}
 .meta b{color:var(--sub)}
-.bar{background:var(--sub-ink);color:#fff;border:1px solid var(--sub-ink)}
+.bar{background:var(--sub-ink);color:#fff}
 .bar.ghost{background:transparent;color:var(--fg);border:1px solid var(--fg)}
-.steps i{font-family:var(--f-sub);font-weight:800;color:var(--sub)}
+.steps i{color:var(--sub)}
 .steps a{color:var(--sub);border-bottom-color:rgba(232,67,46,.5)}
-@media (max-width:640px){.tate{font-size:.74rem;top:calc(90px + env(safe-area-inset-top,0px));right:12px}.seal{width:40px;height:40px;font-size:1.05rem}}
-@media (max-width:380px){.tate{display:none}}
-@media (prefers-reduced-motion: reduce){.tone,.grain{display:none}}
-.tate{font-size:1.9rem;letter-spacing:.16em;text-orientation:upright;top:calc(150px + env(safe-area-inset-top,0px));right:14px;opacity:calc(.35 + var(--mix));font-weight:800;text-shadow:0 0 18px rgba(232,67,46,.55),2px 2px 0 rgba(0,0,0,.6)}
-.obi{position:absolute;left:-60px;top:calc(238px + env(safe-area-inset-top,0px));transform:rotate(-14deg);background:var(--sub-ink);color:#fff;font-family:var(--f-sub);font-weight:800;font-size:.8rem;letter-spacing:.22em;padding:.5rem 4rem .5rem 5rem;white-space:nowrap;pointer-events:none;box-shadow:0 2px 0 #7a1a0f,0 0 0 2px rgba(255,241,232,.08);opacity:calc(.3 + var(--mix)*1.2)}
-.ticker{position:absolute;left:0;right:0;bottom:calc(270px + env(safe-area-inset-bottom,0px));height:22px;overflow:hidden;border-top:1px solid rgba(232,67,46,.55);border-bottom:1px solid rgba(232,67,46,.55);background:rgba(7,7,11,.55);pointer-events:none;opacity:calc(.2 + var(--mix)*1.4)}
-.tk{display:inline-flex;white-space:nowrap;animation:tk 26s linear infinite;font-family:var(--f-dot);font-size:.78rem;line-height:22px;letter-spacing:.14em;color:var(--sub);text-shadow:0 0 8px rgba(232,67,46,.6)}
-.tk span{padding-right:2em}
-@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.mark{text-shadow:3px 3px 0 var(--sub-ink)}
-.mark small{color:#fff;background:var(--sub-ink);display:table;padding:.15rem .5rem;margin-top:.45rem;letter-spacing:.26em}
-.dock{background:rgba(7,7,11,.72);border:2px solid var(--sub);box-shadow:4px 4px 0 var(--sub-ink)}
-.dock button,.dock a{font-family:var(--f-dot);font-size:.8rem;letter-spacing:.12em}
-.snd{border:1px solid var(--sub);box-shadow:2px 2px 0 var(--sub-ink)}
-.hit{box-shadow:3px 3px 0 var(--sub-ink)}
-.sheet{border:2px solid var(--sub);border-bottom:0;box-shadow:0 -6px 0 var(--sub-ink)}
-.sheet h2{text-shadow:2px 2px 0 var(--sub-ink)}
-.sheet h2 small{text-shadow:none}
-.bar{box-shadow:3px 3px 0 #7a1a0f}
-.bar.ghost{box-shadow:3px 3px 0 rgba(236,233,226,.35)}
-@media (max-width:640px){.tate{font-size:1.5rem;top:calc(150px + env(safe-area-inset-top,0px))}.dock button,.dock a{font-size:.7rem;padding:.7rem .5rem}.obi{top:calc(226px + env(safe-area-inset-top,0px));font-size:.72rem}.ticker{bottom:calc(262px + env(safe-area-inset-bottom,0px))}}
-@media (max-width:380px){.tate{display:block;font-size:1.4rem}.dock button,.dock a{font-size:.62rem;padding:.65rem .38rem}}
-@media (prefers-reduced-motion: reduce){.tk{animation:none}}
+.ver{color:var(--sub);opacity:.8}
+@media (prefers-reduced-motion: reduce){.web{display:none}}
 </style>'''
 rep('@media (prefers-reduced-motion: reduce){.sheet{transition:none}}\n</style>','@media (prefers-reduced-motion: reduce){.sheet{transition:none}}'+css)
-# 4. markup: texture layers + seal + vertical strip; version stamp
-rep('<canvas id="gl"></canvas>','<canvas id="gl"></canvas>\n<div class="tone" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>')
-rep('<div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>','<div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>\n  <div class="seal" aria-hidden="true">夜</div>\n  <div class="tate" aria-hidden="true">XR ドラマー 鍵山喬一</div>\n  <div class="obi" aria-hidden="true"><span>配信からも、現地からも、叩く人として参加できる</span></div>\n  <div class="ticker" aria-hidden="true"><div class="tk"><span>XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。　</span><span>XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。　</span></div></div>')
-rep('<div class="ver" id="ver">v21</div>','<div class="ver" id="ver">v22 preview · 30%</div>')
-# 5. composite shader: risograph two-ink (朱 + 墨) with 45° halftone and slight off-register, mixed in by uMix
+rep('<canvas id="gl"></canvas>','<canvas id="gl"></canvas>\n<svg class="web" id="web" aria-hidden="true"></svg>')
+rep('<div class="ver" id="ver">v21</div>','<div class="ver" id="ver">v22 preview C · 30%</div>')
+# --- vertex shader: thread mode (lines drawn in red, no point sprite)
+rep("'varying vec3 vCol;varying float vAlpha;varying float vKind;',\n'float hash(float n){return fract(sin(n)*43758.5453);}',",
+    "'varying vec3 vCol;varying float vAlpha;varying float vKind;varying float vThr;uniform float uThread;',\n'float hash(float n){return fract(sin(n)*43758.5453);}',")
+rep("' float sz=aSize*uDpr*(2.6/dist)*(1.0+0.25*uCharge*body);if(k>2.5&&body<0.5)sz*=1.0+0.5*uHit;if(k>3.5&&k<4.5)sz*=1.0+0.8*pulse;gl_PointSize=sz;}'",
+    "' vThr=uThread;if(uThread>0.5){vCol=vec3(0.96,0.14,0.12)*mix(1.0,1.5,uGlow);vAlpha=0.5*uDim*mix(0.25,1.0,fog)*mix(0.3,1.0,ie);}',\n"
+    "' float sz=aSize*uDpr*(2.6/dist)*(1.0+0.25*uCharge*body);if(k>2.5&&body<0.5)sz*=1.0+0.5*uHit;if(k>3.5&&k<4.5)sz*=1.0+0.8*pulse;gl_PointSize=sz;}'")
+# --- fragment shader: thread branch
+rep("'#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif','varying vec3 vCol;varying float vAlpha;varying float vKind;uniform float uTimeF;',\n'void main(){vec2 q=gl_PointCoord-0.5;float d=length(q);float a;',",
+    "'#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif','varying vec3 vCol;varying float vAlpha;varying float vKind;varying float vThr;uniform float uTimeF;',\n'void main(){if(vThr>0.5){gl_FragColor=vec4(vCol,vAlpha);return;}vec2 q=gl_PointCoord-0.5;float d=length(q);float a;',")
+# --- uniforms list
+rep("['uProj','uView','uTime','uTimeF','uPhase','uSplit','uHit','uDpr','uGlow','uIntro','uModel','uDim','uCharge']","['uProj','uView','uTime','uTimeF','uPhase','uSplit','uHit','uDpr','uGlow','uIntro','uModel','uDim','uCharge','uThread']")
+# --- geometry offsets for line strips (tentacles are contiguous, ordered along the strand)
+rep("var N=kind.length, NL=160+880+NPL, NB=N-NL;","var N=kind.length, NL=160+880+NPL, NB=N-NL;var OT=NS+NI, OA=NS+NI+TN*TL+MR;")
+# --- thread medusae: every other non-hero (indices 1 and 3) swims as red thread
+rep("for(var mi=0;mi<INST;mi++){var m={x:0,y:0,z:0,sc:1,off:0,seed:7,yaw:0,hero:mi===0,charge:0};if(mi>0)spawn(m,true);med.push(m);}",
+    "for(var mi=0;mi<INST;mi++){var m={x:0,y:0,z:0,sc:1,off:0,seed:7,yaw:0,hero:mi===0,charge:0,thread:(mi===1||mi===3)};if(mi>0)spawn(m,true);med.push(m);}")
+# --- draw: thread medusa = line strips (bell chords, 20 tentacle strands, 4 oral-arm ribbons) + dim points
+rep("    gl.uniformMatrix4fv(U.uModel,false,mm.mat);gl.uniform1f(U.uPhase,mm.ph);gl.uniform1f(U.uDim,mm.hero?1.0:0.55);gl.uniform1f(U.uCharge,mm.charge);\n    gl.uniform1f(U.uGlow,1.0);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.POINTS,0,NB);",
+    "    gl.uniformMatrix4fv(U.uModel,false,mm.mat);gl.uniform1f(U.uPhase,mm.ph);gl.uniform1f(U.uDim,mm.hero?1.0:0.55);gl.uniform1f(U.uCharge,mm.charge);\n"
+    "    if(mm.thread&&window.KN_MIX>0.001){gl.uniform1f(U.uThread,1.0);gl.uniform1f(U.uGlow,1.0);gl.uniform1f(U.uDim,Math.min(1,window.KN_MIX*3.0));gl.blendFunc(gl.SRC_ALPHA,gl.ONE);\n"
+    "      gl.drawArrays(gl.LINE_STRIP,0,420);for(var tk=0;tk<TN;tk++)gl.drawArrays(gl.LINE_STRIP,OT+tk*TL,TL);for(var ak=0;ak<4;ak++)gl.drawArrays(gl.LINE_STRIP,OA+ak*AR,160);\n"
+    "      gl.uniform1f(U.uThread,0.0);gl.uniform1f(U.uDim,0.12);gl.uniform1f(U.uGlow,0.4);gl.drawArrays(gl.POINTS,0,NB);continue;}\n"
+    "    gl.uniform1f(U.uGlow,1.0);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.POINTS,0,NB);")
+# --- composite: light red grade (duotone without dots), mixed by uMix*0.6
 rep("var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;',",
-    "var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;uniform float uMix;uniform float uDprC;uniform float uJit;',")
+    "var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;uniform float uMix;',")
 rep("'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=s+b*uStr*uMask;gl_FragColor=vec4(aces(c*1.0),1.0);}'].join('\\n');",
     "'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=aces(s+b*uStr*uMask);',\n"
-    "' /* サブカル層: リソグラフ風 2 色刷り（朱＋墨）、45 度の網点、版ずれ。uMix で混ぜる。形と動きは不変 */',\n"
-    "' float l=dot(c,vec3(0.299,0.587,0.114));vec3 s2=texture2D(uScene,vUv+vec2(0.006,0.002)*uMix*uJit).rgb+texture2D(uBloom,vUv+vec2(0.006,0.002)*uMix*uJit).rgb*uStr*uMask;float l2=dot(aces(s2),vec3(0.299,0.587,0.114));',\n"
-    "' vec3 sumi=vec3(0.03,0.02,0.035);vec3 shu=vec3(0.95,0.25,0.14);vec3 kami=vec3(0.99,0.95,0.87);',\n"
-    "' vec2 p=gl_FragCoord.xy/(uDprC*6.5);vec2 g=fract(mat2(0.7071,-0.7071,0.7071,0.7071)*p)-0.5;float r=length(g);',\n"
-    "' float dotA=smoothstep(0.52*sqrt(l2)+0.09,0.52*sqrt(l2)-0.09,r);float dotB=smoothstep(0.5*l*l+0.07,0.5*l*l-0.07,r);',\n"
-    "' vec3 tone=mix(sumi,shu,dotA);tone=mix(tone,kami,dotB*smoothstep(0.45,0.95,l));',\n"
-    "' gl_FragColor=vec4(mix(c,tone,uMix),1.0);}'].join('\\n');")
+    "' /* 赤の階調（網点なし）: 影を赤黒へ、中間を朱へ寄せる。uMix*0.6 で混ぜる */',\n"
+    "' float l=dot(c,vec3(0.299,0.587,0.114));vec3 tone=mix(vec3(0.04,0.02,0.035),vec3(0.93,0.26,0.18),smoothstep(0.0,0.62,l));tone=mix(tone,vec3(0.99,0.95,0.88),smoothstep(0.62,1.0,l));',\n"
+    "' gl_FragColor=vec4(mix(c,tone,uMix*0.6),1.0);}'].join('\\n');")
 rep("uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),a:gl.getAttribLocation(compp,'aXY')};",
-    "uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),uMix:gl.getUniformLocation(compp,'uMix'),uDprC:gl.getUniformLocation(compp,'uDprC'),uJit:gl.getUniformLocation(compp,'uJit'),a:gl.getAttribLocation(compp,'aXY')};")
+    "uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),uMix:gl.getUniformLocation(compp,'uMix'),a:gl.getAttribLocation(compp,'aXY')};")
 rep("gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);quad(compp,CP.a);",
-    "gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);gl.uniform1f(CP.uMix,window.KN_MIX||0.0);gl.uniform1f(CP.uDprC,dpr);var jt=t%7.0;gl.uniform1f(CP.uJit,1.0+(jt<0.14?3.5:0.0));quad(compp,CP.a);")
-# 6. mix control from URL (?mix=0.3) → CSS var + shader uniform. Owner compares strengths by URL only.
+    "gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);gl.uniform1f(CP.uMix,window.KN_MIX||0.0);quad(compp,CP.a);")
+# --- mix from URL + red-thread web (seeded, redrawn on resize)
 rep("KN({ pre:'', stage:null, canvas:'gl' });",
-    "(function(){var m=parseFloat(new URLSearchParams(location.search).get('mix'));if(!(m>=0&&m<=1))m=0.5;window.KN_MIX=m;document.documentElement.style.setProperty('--mix',m);var v=document.getElementById('ver');if(v)v.textContent='v22 preview B · '+Math.round(m*100)+'%';})();\nKN({ pre:'', stage:null, canvas:'gl' });")
-pathlib.Path('/home/user/kaginight/subcul').mkdir(exist_ok=True)
-pathlib.Path('/home/user/kaginight/subcul/index.html').write_text(out)
+    """(function(){var m=parseFloat(new URLSearchParams(location.search).get('mix'));if(!(m>=0&&m<=1))m=0.3;window.KN_MIX=m;document.documentElement.style.setProperty('--mix',m);var v=document.getElementById('ver');if(v)v.textContent='v22 preview C · '+Math.round(m*100)+'%';
+/* 赤い糸の網: 画面の縁から中央付近へ渡る糸。線の数は mix に比例（0.3 で 22 本）。結び目は糸の上に 3 つ */
+var svg=document.getElementById('web');if(!svg)return;var sd=7;function r(){sd=(sd*9301+49297)%233280;return sd/233280;}
+function draw(){var W=innerWidth,H=innerHeight;svg.setAttribute('viewBox','0 0 '+W+' '+H);var n=Math.round(m*74),s='';sd=7;
+  function edge(){var e=r();return e<0.25?[r()*W,0]:e<0.5?[W,r()*H]:e<0.75?[r()*W,H]:[0,r()*H];}
+  for(var i=0;i<n;i++){var a=edge(),b=(r()<0.55)?edge():[W*(0.5+(r()-0.5)*0.5),H*(0.52+(r()-0.5)*0.4)];s+='<line x1="'+a[0].toFixed(0)+'" y1="'+a[1].toFixed(0)+'" x2="'+b[0].toFixed(0)+'" y2="'+b[1].toFixed(0)+'" stroke-opacity="'+(0.25+r()*0.35).toFixed(2)+'"/>';
+    if(i%7===3){var t=0.3+r()*0.4;s+='<circle cx="'+(a[0]+(b[0]-a[0])*t).toFixed(0)+'" cy="'+(a[1]+(b[1]-a[1])*t).toFixed(0)+'" r="'+(2+r()*2).toFixed(1)+'"/>';}}
+  svg.innerHTML=s;}
+draw();addEventListener('resize',draw);})();
+KN({ pre:'', stage:null, canvas:'gl' });""")
+pathlib.Path(OUT).parent.mkdir(exist_ok=True,parents=True)
+pathlib.Path(OUT).write_text(out)
 print('ok',len(out))
