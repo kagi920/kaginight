@@ -58,6 +58,7 @@ description: KAGI NIGHT（XR Drummer 鍵山喬一）のホームページ・BASE
 - Chrome の `backdrop-filter` が BASE 内で四角い残像を作る → ステージ内では使わない。
 - ハッシュアンカーは `overflow:hidden` のステージをスクロールさせる → `[data-kn-open]` クリックで JS が開き、`stage.scrollTop=0` を固定。
 - iPhone Safari はマナースイッチで Web Audio が消音 → SOUND と同じタップで無音 `<audio>` を loop 再生。中断後は `touchend` で `ctx.resume()`。
+- **BASE のテーマは 150,000 文字が上限**（超えると保存できない）。差し込みは `tools/assemble_base.py` で縮める（コメント・字下げ・空行を削除。元テーマは触らない）。148,000 字を超えたら assert で止まる。
 - 貼り付けページのコピー処理が assert で止まると古い版が残る → 版番号を見出しに出し、`html.unescape` で往復一致を検証。
 - ヘッドレスで暗いのは正常。明るさはスクショで判断せず、実機の報告を優先。
 - Android の一部 GPU はフラグメントシェーダーの `highp` を持たない → `#ifdef GL_FRAGMENT_PRECISION_HIGH` で切替。mediump では時間を `t % 周期` で渡す。シェーダー失敗時は黒画面でなく `#nogl` の案内を出す。
