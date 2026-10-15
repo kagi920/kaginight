@@ -47,7 +47,7 @@ css='''
 @media (max-width:640px){.tate{font-size:.74rem;top:calc(90px + env(safe-area-inset-top,0px));right:12px}.seal{width:40px;height:40px;font-size:1.05rem}}
 @media (max-width:380px){.tate{display:none}}
 @media (prefers-reduced-motion: reduce){.tone,.grain{display:none}}
-.tate{font-size:2.1rem;letter-spacing:.18em;top:calc(150px + env(safe-area-inset-top,0px));right:14px;opacity:calc(.35 + var(--mix));font-weight:800;text-shadow:0 0 18px rgba(232,67,46,.55),2px 2px 0 rgba(0,0,0,.6)}
+.tate{font-size:1.9rem;letter-spacing:.16em;text-orientation:upright;top:calc(150px + env(safe-area-inset-top,0px));right:14px;opacity:calc(.35 + var(--mix));font-weight:800;text-shadow:0 0 18px rgba(232,67,46,.55),2px 2px 0 rgba(0,0,0,.6)}
 .obi{position:absolute;left:-60px;top:calc(238px + env(safe-area-inset-top,0px));transform:rotate(-14deg);background:var(--sub-ink);color:#fff;font-family:var(--f-sub);font-weight:800;font-size:.8rem;letter-spacing:.22em;padding:.5rem 4rem .5rem 5rem;white-space:nowrap;pointer-events:none;box-shadow:0 2px 0 #7a1a0f,0 0 0 2px rgba(255,241,232,.08);opacity:calc(.3 + var(--mix)*1.2)}
 .ticker{position:absolute;left:0;right:0;bottom:calc(270px + env(safe-area-inset-bottom,0px));height:22px;overflow:hidden;border-top:1px solid rgba(232,67,46,.55);border-bottom:1px solid rgba(232,67,46,.55);background:rgba(7,7,11,.55);pointer-events:none;opacity:calc(.2 + var(--mix)*1.4)}
 .tk{display:inline-flex;white-space:nowrap;animation:tk 26s linear infinite;font-family:var(--f-dot);font-size:.78rem;line-height:22px;letter-spacing:.14em;color:var(--sub);text-shadow:0 0 8px rgba(232,67,46,.6)}
@@ -64,14 +64,14 @@ css='''
 .sheet h2 small{text-shadow:none}
 .bar{box-shadow:3px 3px 0 #7a1a0f}
 .bar.ghost{box-shadow:3px 3px 0 rgba(236,233,226,.35)}
-@media (max-width:640px){.tate{font-size:1.7rem;top:calc(150px + env(safe-area-inset-top,0px))}.dock button,.dock a{font-size:.7rem;padding:.7rem .5rem}.obi{top:calc(226px + env(safe-area-inset-top,0px));font-size:.72rem}.ticker{bottom:calc(262px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:640px){.tate{font-size:1.5rem;top:calc(150px + env(safe-area-inset-top,0px))}.dock button,.dock a{font-size:.7rem;padding:.7rem .5rem}.obi{top:calc(226px + env(safe-area-inset-top,0px));font-size:.72rem}.ticker{bottom:calc(262px + env(safe-area-inset-bottom,0px))}}
 @media (max-width:380px){.tate{display:block;font-size:1.4rem}.dock button,.dock a{font-size:.62rem;padding:.65rem .38rem}}
 @media (prefers-reduced-motion: reduce){.tk{animation:none}}
 </style>'''
 rep('@media (prefers-reduced-motion: reduce){.sheet{transition:none}}\n</style>','@media (prefers-reduced-motion: reduce){.sheet{transition:none}}'+css)
 # 4. markup: texture layers + seal + vertical strip; version stamp
 rep('<canvas id="gl"></canvas>','<canvas id="gl"></canvas>\n<div class="tone" aria-hidden="true"></div><div class="grain" aria-hidden="true"></div>')
-rep('<div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>','<div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>\n  <div class="seal" aria-hidden="true">夜</div>\n  <div class="tate" aria-hidden="true">鍵山喬一の夜</div>\n  <div class="obi" aria-hidden="true"><span>XR DRUMMER ── 叩く人として参加できる</span></div>\n  <div class="ticker" aria-hidden="true"><div class="tk"><span>KAGI NIGHT ／ XR ドラマー 鍵山喬一 ／ ドラム・リズム・グルーヴを XR の空間へ ／ 配信からも、現地からも ／ 叩く人として参加できる夜 ／ </span><span>KAGI NIGHT ／ XR ドラマー 鍵山喬一 ／ ドラム・リズム・グルーヴを XR の空間へ ／ 配信からも、現地からも ／ 叩く人として参加できる夜 ／ </span></div></div>')
+rep('<div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>','<div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>\n  <div class="seal" aria-hidden="true">夜</div>\n  <div class="tate" aria-hidden="true">XR ドラマー 鍵山喬一</div>\n  <div class="obi" aria-hidden="true"><span>配信からも、現地からも、叩く人として参加できる</span></div>\n  <div class="ticker" aria-hidden="true"><div class="tk"><span>XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。　</span><span>XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。　</span></div></div>')
 rep('<div class="ver" id="ver">v21</div>','<div class="ver" id="ver">v22 preview · 30%</div>')
 # 5. composite shader: risograph two-ink (朱 + 墨) with 45° halftone and slight off-register, mixed in by uMix
 rep("var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;',",
