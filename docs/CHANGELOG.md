@@ -72,3 +72,9 @@
 - 段を増やす: 3 回叩くごとに **元 → 赤い糸 → 緑の糸の鍵 → 塵 → 元**。塵は主役が解けて漂う状態（組み上がりの逆）。
 - `?mat=thread|key|dust` で最初からその段。検証: JS エラー 0。実クリック経路で 1→2→3→0→1 の循環。BASE 版はブロック開閉一致、必須タグあり、貼り付けページ往復一致。
 - v26 追記: BASE が「テーマは 150,000 文字以内」で拒否（v26 全文 150,912 字）。差し込み側だけコメント・字下げ・空行を削って 146,886 字に。元テーマは無改変。組み立ては `tools/assemble_base.py`（ブロック開閉・必須タグ・148,000 字以内・貼り付けページ往復を assert）。縮めた差し込みは単体で読み込み検証（エラー 0、合図判定 OK）。
+
+## v27（2026-10-15）— 発見性（検索・SNS）
+- 監査 `docs/SEO_AUDIT_v1.md`。ラボ計測で、Google Fonts の CSS 61.7 KB → 3.6 KB、フォントファイル 35 → 3（使っている字だけに絞る）、LCP 2,156 → 1,228 ms、load 2,717 → 1,806 ms。OG 画像 832 KB → 87 KB（og.jpg）。
+- 構造化データを WebSite ＋ Person（画像つき）＋ MusicEvent（KAGI NIGHT 2026 Vol.1、2026-07-17、unravel tokyo）の graph に。og:image:alt / twitter:image:alt、preconnect、sitemap の lastmod。
+- 見た目・言葉・振る舞いは v26 と同じ。BASE 版は 15 万字上限のため字形サブセットを入れず（中身は同じ、版番号のみ v27）。
+- 鍵山の判断待ち: 本文の草案（§5）、Search Console、被リンク依頼（Metropolis・MoguraVR）、Wikipedia 外部リンク、訪問計測、本人写真。
