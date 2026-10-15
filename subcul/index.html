@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Noto+Serif+JP:wght@500;700&family=IBM+Plex+Mono:wght@400;500&family=Shippori+Mincho+B1:wght@700;800&family=DotGothic16&display=swap">
 <style>
 /* Single dark stage by choice. One living body (WebGL point cloud) and a thin glass UI. */
-:root{--bg:#07070b;--fg:#ece9e2;--muted:#9a9ea6;--rule:rgba(236,233,226,.14);--gold:#d9a84a;--red:#c8102e;--glass:rgba(12,12,18,.55);--mix:.3;--sub:#e8432e;--sub-ink:#d7321f;--f-sub:"Shippori Mincho B1","Noto Serif JP",serif;--f-dot:"DotGothic16","IBM Plex Mono",monospace;
+:root{--bg:#07070b;--fg:#ece9e2;--muted:#9a9ea6;--rule:rgba(236,233,226,.14);--gold:#d9a84a;--red:#c8102e;--glass:rgba(12,12,18,.55);--mix:.5;--sub:#e8432e;--sub-ink:#d7321f;--f-sub:"Shippori Mincho B1","Noto Serif JP",serif;--f-dot:"DotGothic16","IBM Plex Mono",monospace;
   --f-en:"Playfair Display",Georgia,serif;--f-jp:"Noto Serif JP","Hiragino Mincho ProN",serif;--f-data:"IBM Plex Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
 html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hidden;font-family:var(--f-jp)}
 #gl{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none;cursor:grab}
@@ -79,8 +79,8 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 /* ---- サブカル層（30%）: 網点と粒子はキャンバスにだけ掛かる（UI は上） */
 .ui{z-index:2}
 /* : 朱・レトロ明朝・ドット書体・網点・判子・縦書き。クラゲの形と動きは触らない ---- */
-.tone{position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(circle,rgba(255,236,220,.55) 0 .55px,transparent .95px);background-size:3px 3px;opacity:calc(var(--mix)*.42);mix-blend-mode:overlay}
-.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:calc(var(--mix)*.22);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 .93 0 0 0 0 .86 0 0 0 .5 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");background-size:160px 160px;mix-blend-mode:screen}
+.tone{position:fixed;inset:0;pointer-events:none;z-index:1;background-image:radial-gradient(circle,rgba(255,232,214,.9) 0 .8px,transparent 1.5px);background-size:5px 5px;opacity:calc(var(--mix)*.5)}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:1;opacity:calc(var(--mix)*.4);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 .93 0 0 0 0 .86 0 0 0 .5 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>");background-size:160px 160px}
 .mark{font-family:var(--f-sub);font-weight:800;letter-spacing:.12em}
 .mark small{font-family:var(--f-sub);font-weight:700;color:var(--sub);letter-spacing:.3em}
 .seal{position:absolute;left:22px;top:calc(120px + env(safe-area-inset-top,0px));width:46px;height:46px;border:2px solid var(--sub);border-radius:50%;color:var(--sub);font-family:var(--f-sub);font-weight:800;font-size:1.25rem;display:flex;align-items:center;justify-content:center;transform:rotate(-9deg);opacity:calc(.55 + var(--mix));pointer-events:none;box-shadow:inset 0 0 0 1px rgba(232,67,46,.35)}
@@ -107,6 +107,26 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 @media (max-width:640px){.tate{font-size:.74rem;top:calc(90px + env(safe-area-inset-top,0px));right:12px}.seal{width:40px;height:40px;font-size:1.05rem}}
 @media (max-width:380px){.tate{display:none}}
 @media (prefers-reduced-motion: reduce){.tone,.grain{display:none}}
+.tate{font-size:2.1rem;letter-spacing:.18em;top:calc(150px + env(safe-area-inset-top,0px));right:14px;opacity:calc(.35 + var(--mix));font-weight:800;text-shadow:0 0 18px rgba(232,67,46,.55),2px 2px 0 rgba(0,0,0,.6)}
+.obi{position:absolute;left:-60px;top:calc(238px + env(safe-area-inset-top,0px));transform:rotate(-14deg);background:var(--sub-ink);color:#fff;font-family:var(--f-sub);font-weight:800;font-size:.8rem;letter-spacing:.22em;padding:.5rem 4rem .5rem 5rem;white-space:nowrap;pointer-events:none;box-shadow:0 2px 0 #7a1a0f,0 0 0 2px rgba(255,241,232,.08);opacity:calc(.3 + var(--mix)*1.2)}
+.ticker{position:absolute;left:0;right:0;bottom:calc(270px + env(safe-area-inset-bottom,0px));height:22px;overflow:hidden;border-top:1px solid rgba(232,67,46,.55);border-bottom:1px solid rgba(232,67,46,.55);background:rgba(7,7,11,.55);pointer-events:none;opacity:calc(.2 + var(--mix)*1.4)}
+.tk{display:inline-flex;white-space:nowrap;animation:tk 26s linear infinite;font-family:var(--f-dot);font-size:.78rem;line-height:22px;letter-spacing:.14em;color:var(--sub);text-shadow:0 0 8px rgba(232,67,46,.6)}
+.tk span{padding-right:2em}
+@keyframes tk{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.mark{text-shadow:3px 3px 0 var(--sub-ink)}
+.mark small{color:#fff;background:var(--sub-ink);display:table;padding:.15rem .5rem;margin-top:.45rem;letter-spacing:.26em}
+.dock{background:rgba(7,7,11,.72);border:2px solid var(--sub);box-shadow:4px 4px 0 var(--sub-ink)}
+.dock button,.dock a{font-family:var(--f-dot);font-size:.8rem;letter-spacing:.12em}
+.snd{border:1px solid var(--sub);box-shadow:2px 2px 0 var(--sub-ink)}
+.hit{box-shadow:3px 3px 0 var(--sub-ink)}
+.sheet{border:2px solid var(--sub);border-bottom:0;box-shadow:0 -6px 0 var(--sub-ink)}
+.sheet h2{text-shadow:2px 2px 0 var(--sub-ink)}
+.sheet h2 small{text-shadow:none}
+.bar{box-shadow:3px 3px 0 #7a1a0f}
+.bar.ghost{box-shadow:3px 3px 0 rgba(236,233,226,.35)}
+@media (max-width:640px){.tate{font-size:1.7rem;top:calc(150px + env(safe-area-inset-top,0px))}.dock button,.dock a{font-size:.7rem;padding:.7rem .5rem}.obi{top:calc(226px + env(safe-area-inset-top,0px));font-size:.72rem}.ticker{bottom:calc(262px + env(safe-area-inset-bottom,0px))}}
+@media (max-width:380px){.tate{display:block;font-size:1.4rem}.dock button,.dock a{font-size:.62rem;padding:.65rem .38rem}}
+@media (prefers-reduced-motion: reduce){.tk{animation:none}}
 </style>
 </head>
 <body>
@@ -119,7 +139,9 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
   <div class="top"><button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button><button class="snd" id="prof" type="button" data-sheet="profile" aria-expanded="false">PROFILE</button></div>
   <div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>
   <div class="seal" aria-hidden="true">夜</div>
-  <div class="tate" aria-hidden="true">叩く人として参加できる夜</div>
+  <div class="tate" aria-hidden="true">鍵山喬一の夜</div>
+  <div class="obi" aria-hidden="true"><span>XR DRUMMER ── 叩く人として参加できる</span></div>
+  <div class="ticker" aria-hidden="true"><div class="tk"><span>KAGI NIGHT ／ XR ドラマー 鍵山喬一 ／ ドラム・リズム・グルーヴを XR の空間へ ／ 配信からも、現地からも ／ 叩く人として参加できる夜 ／ </span><span>KAGI NIGHT ／ XR ドラマー 鍵山喬一 ／ ドラム・リズム・グルーヴを XR の空間へ ／ 配信からも、現地からも ／ 叩く人として参加できる夜 ／ </span></div></div>
   <div class="ver" id="ver">v22 preview · 30%</div>
   <div class="dial"><span class="top">融</span><input id="split" type="range" min="0" max="100" value="100" orient="vertical" aria-label="分離と融合"><span>分</span></div>
   <button class="hit" id="hit" aria-label="一打"></button>
@@ -373,19 +395,19 @@ function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(
 function prg(v,f){var p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,v));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,f));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p;}
 var blurfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uTex;uniform vec2 uDir;',
 'void main(){vec3 c=texture2D(uTex,vUv).rgb*0.227;c+=(texture2D(uTex,vUv+uDir*1.385).rgb+texture2D(uTex,vUv-uDir*1.385).rgb)*0.316;c+=(texture2D(uTex,vUv+uDir*3.231).rgb+texture2D(uTex,vUv-uDir*3.231).rgb)*0.070;gl_FragColor=vec4(c,1.0);}'].join('\n');
-var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;uniform float uMix;uniform float uDprC;',
+var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;uniform float uMix;uniform float uDprC;uniform float uJit;',
 'vec3 aces(vec3 x){return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);}',
 'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=aces(s+b*uStr*uMask);',
 ' /* サブカル層: リソグラフ風 2 色刷り（朱＋墨）、45 度の網点、版ずれ。uMix で混ぜる。形と動きは不変 */',
-' float l=dot(c,vec3(0.299,0.587,0.114));vec3 s2=texture2D(uScene,vUv+vec2(0.0035,0.0012)*uMix).rgb+texture2D(uBloom,vUv+vec2(0.0035,0.0012)*uMix).rgb*uStr*uMask;float l2=dot(aces(s2),vec3(0.299,0.587,0.114));',
-' vec3 sumi=vec3(0.03,0.02,0.035);vec3 shu=vec3(0.91,0.27,0.18);vec3 kami=vec3(0.99,0.95,0.87);',
-' vec2 p=gl_FragCoord.xy/(uDprC*4.5);vec2 g=fract(mat2(0.7071,-0.7071,0.7071,0.7071)*p)-0.5;float r=length(g);',
+' float l=dot(c,vec3(0.299,0.587,0.114));vec3 s2=texture2D(uScene,vUv+vec2(0.006,0.002)*uMix*uJit).rgb+texture2D(uBloom,vUv+vec2(0.006,0.002)*uMix*uJit).rgb*uStr*uMask;float l2=dot(aces(s2),vec3(0.299,0.587,0.114));',
+' vec3 sumi=vec3(0.03,0.02,0.035);vec3 shu=vec3(0.95,0.25,0.14);vec3 kami=vec3(0.99,0.95,0.87);',
+' vec2 p=gl_FragCoord.xy/(uDprC*6.5);vec2 g=fract(mat2(0.7071,-0.7071,0.7071,0.7071)*p)-0.5;float r=length(g);',
 ' float dotA=smoothstep(0.52*sqrt(l2)+0.09,0.52*sqrt(l2)-0.09,r);float dotB=smoothstep(0.5*l*l+0.07,0.5*l*l-0.07,r);',
 ' vec3 tone=mix(sumi,shu,dotA);tone=mix(tone,kami,dotB*smoothstep(0.45,0.95,l));',
 ' gl_FragColor=vec4(mix(c,tone,uMix),1.0);}'].join('\n');
 var prog,bprog,blurp,compp;try{prog=prg(vs,fs);bprog=prg(bvs,bfs);blurp=prg(bvs,blurfs);compp=prg(bvs,compfs);}catch(err){if(window.console)console.error('KN shader',err);if(nogl){nogl.textContent='このブラウザでは描画できませんでした。お使いのブラウザを最新版にして開き直してください。';nogl.style.display='flex';}return;}
 var BL={uTex:gl.getUniformLocation(blurp,'uTex'),uDir:gl.getUniformLocation(blurp,'uDir'),a:gl.getAttribLocation(blurp,'aXY')};
-var CP={uScene:gl.getUniformLocation(compp,'uScene'),uBloom:gl.getUniformLocation(compp,'uBloom'),uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),uMix:gl.getUniformLocation(compp,'uMix'),uDprC:gl.getUniformLocation(compp,'uDprC'),a:gl.getAttribLocation(compp,'aXY')};
+var CP={uScene:gl.getUniformLocation(compp,'uScene'),uBloom:gl.getUniformLocation(compp,'uBloom'),uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),uMix:gl.getUniformLocation(compp,'uMix'),uDprC:gl.getUniformLocation(compp,'uDprC'),uJit:gl.getUniformLocation(compp,'uJit'),a:gl.getAttribLocation(compp,'aXY')};
 function mkTex(w,h){var t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return t;}
 function mkFB(w,h){var t=mkTex(w,h),f=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,f);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,t,0);gl.bindFramebuffer(gl.FRAMEBUFFER,null);return{f:f,t:t,w:w,h:h};}
 var FB={scene:null,a:null,b:null};
@@ -490,7 +512,7 @@ function frame(now){
   gl.disable(gl.BLEND);blurPass(FB.scene,FB.a,1,0);blurPass(FB.a,FB.b,0,1);blurPass(FB.b,FB.a,2,0);blurPass(FB.a,FB.b,0,2);
   gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,canvas.width,canvas.height);gl.useProgram(compp);
   gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,FB.scene.t);gl.uniform1i(CP.uScene,0);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,FB.b.t);gl.uniform1i(CP.uBloom,1);
-  var ch=Math.min(1,chSum/med.length*2.0);gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);gl.uniform1f(CP.uMix,window.KN_MIX||0.0);gl.uniform1f(CP.uDprC,dpr);quad(compp,CP.a);gl.activeTexture(gl.TEXTURE0);
+  var ch=Math.min(1,chSum/med.length*2.0);gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);gl.uniform1f(CP.uMix,window.KN_MIX||0.0);gl.uniform1f(CP.uDprC,dpr);var jt=t%7.0;gl.uniform1f(CP.uJit,1.0+(jt<0.14?3.5:0.0));quad(compp,CP.a);gl.activeTexture(gl.TEXTURE0);
   if(visible&&!reduce)tick();
 }
 function tick(){if(!running){running=true;requestAnimationFrame(frame);}}
@@ -498,7 +520,7 @@ tick();
 if(stage&&'IntersectionObserver' in window){new IntersectionObserver(function(en){visible=en[0].isIntersecting;if(visible)tick();},{ threshold:0.05 }).observe(stage);}
 if(reduce){canvas.addEventListener('pointermove',tick);}
 };
-(function(){var m=parseFloat(new URLSearchParams(location.search).get('mix'));if(!(m>=0&&m<=1))m=0.3;window.KN_MIX=m;document.documentElement.style.setProperty('--mix',m);var v=document.getElementById('ver');if(v)v.textContent='v22 preview · '+Math.round(m*100)+'%';})();
+(function(){var m=parseFloat(new URLSearchParams(location.search).get('mix'));if(!(m>=0&&m<=1))m=0.5;window.KN_MIX=m;document.documentElement.style.setProperty('--mix',m);var v=document.getElementById('ver');if(v)v.textContent='v22 preview B · '+Math.round(m*100)+'%';})();
 KN({ pre:'', stage:null, canvas:'gl' });
 </script>
 </body>
