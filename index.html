@@ -76,18 +76,37 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .ver{position:absolute;right:12px;bottom:calc(6px + env(safe-area-inset-bottom,0px));font-family:var(--f-data);font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.6;pointer-events:none}
 @media (max-width:380px){.dock{gap:4px;padding:6px}.dock button,.dock a{padding:.65rem .42rem;font-size:.56rem;letter-spacing:.12em}}
 @media (prefers-reduced-motion: reduce){.sheet{transition:none}}
-html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,.6)}
+/* ---- 三つ叩くと夜が変わる: スキン（赤い糸・吊るした鍵）。html.skin のときだけ効く。主役には掛けない ---- */
+html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,.6);}
+.ui{z-index:2;}
+.web{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:1;opacity:0;transition:opacity 2.4s ease;}
+html.skin .web{opacity:1;}
+.web line{stroke:#e8432e;stroke-width:1.3;vector-effect:non-scaling-stroke;stroke-linecap:round;}
+.web circle{fill:#e8432e;}
+.web .key{fill:none;stroke:#d9a84a;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;transform-box:fill-box;transform-origin:50% 0;animation:knsway 4.2s ease-in-out infinite alternate;}
+.web .key.b{stroke:#fff1e8;stroke-width:1.6;}
+.web .hang{stroke:#e8432e;stroke-width:1;}
+@keyframes knsway{from{transform:rotate(-6deg);}to{transform:rotate(6deg);}}
+html.skin .mark small,html.skin .ver,html.skin .sheet h2 small,html.skin .meta b,html.skin .steps i{color:#e8432e;}
+html.skin .sheet{border-top:1px solid #e8432e;}
+html.skin .bar{background:#d7321f;color:#fff !important;}
+html.skin .bar.ghost{background:transparent;color:#ece9e2 !important;}
+html.skin .dock button[aria-expanded="true"]{background:#d7321f;color:#fff;}
+html.skin .snd[aria-pressed="true"]{border-color:#e8432e;color:#e8432e;}
+html.skin .dial input{accent-color:#e8432e;}
+@media (prefers-reduced-motion: reduce){.web{display:none;}.web .key{animation:none;}}
 </style>
 </head>
 <body>
 <canvas id="gl"></canvas>
+<svg class="web" id="web" aria-hidden="true"></svg>
 <noscript><p style="position:fixed;left:16px;right:16px;top:40%;text-align:center">XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。 出演・XR 演出の制作・配信チケットのご相談は X（@KAGI920）へ。</p></noscript>
 <div class="nogl" id="nogl">このブラウザでは描画できませんでした。お使いのブラウザを最新版にして開き直してください。</div>
 <div class="ui">
   <h1 class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></h1>
   <div class="top"><button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button><button class="snd" id="prof" type="button" data-sheet="profile" aria-expanded="false">PROFILE</button></div>
   <div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>
-  <div class="ver" id="ver">v23</div>
+  <div class="ver" id="ver">v24</div>
   <div class="dial"><span class="top">融</span><input id="split" type="range" min="0" max="100" value="100" orient="vertical" aria-label="分離と融合"><span>分</span></div>
   <button class="hit" id="hit" aria-label="一打"></button>
   <div class="dock" role="tablist">
@@ -139,7 +158,6 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
 </div>
 <script>
 /* ===== ここだけ差し替える（URL が決まったら入れる。空なら「準備中」のまま） ===== */
-const KNOCK=[1,0.5,0.5];   // 合図のリズム（叩く間隔の比。鍵山のリズムに差し替える）
 const LINKS={
   online:'',   // 配信の参加 URL（前回ライブと同じ形式）
   live:'',     // 現地で読んだ QR の URL
@@ -265,12 +283,12 @@ var gems=[[.85,.66,.29],[.91,.44,.69],[.62,.42,1],[1,1,1]];for(i=0;i<160;i++){ze
 for(var r=0;r<4;r++)for(i=0;i<220;i++){az=i/220*6.2832;var rr=0.12+r*0.14;push([Math.cos(az)*rr,0.12,Math.sin(az)*rr*0.55,0],6,i/220,1.6,[.85,.66,.29],[.85,.66,.29],[.85,.66,.29]);}
 // 10 plankton: drifting motes in the water
 var NPL=MOB?350:600;for(i=0;i<NPL;i++){push([(rnd()-.5)*7,(rnd()-.5)*6,(rnd()-.5)*7,0],10,rnd(),1.2+rnd()*2.2,[.75,.85,1],[.75,.85,1],[.75,.85,1]);}
-var N=kind.length, NL=160+880+NPL, NB=N-NL;
+var N=kind.length, NL=160+880+NPL, NB=N-NL;var OT=NS+NI, OA=NS+NI+TN*TL+MR;
 /* ---------- shaders ---------- */
 var vs=[
 'attribute vec4 aP;attribute vec3 aC0;attribute vec3 aC1;attribute vec3 aCS;attribute float aKind;attribute float aPhase;attribute float aSize;',
 'uniform mat4 uProj;uniform mat4 uView;uniform float uTime;uniform float uPhase;uniform float uSplit;uniform float uHit;uniform float uDpr;uniform float uGlow;uniform float uIntro;uniform mat4 uModel;uniform float uDim;uniform float uCharge;',
-'varying vec3 vCol;varying float vAlpha;varying float vKind;',
+'varying vec3 vCol;varying float vAlpha;varying float vKind;varying float vThr;uniform float uThread;',
 'float hash(float n){return fract(sin(n)*43758.5453);}',
 // aurelia bell: contraction wave delayed by zenith, riffled margin
 'vec3 bell(float ze,float az,float ph,float bottom){float sa=sin(az),ca=cos(az);',
@@ -321,11 +339,12 @@ var vs=[
 ' vCol*=bright;vAlpha=base*uGlow*uDim*mix(0.2,1.0,fog);vKind=k;vCol*=mix(1.0,1.35,uGlow);',
 ' if(k<0.5)vAlpha*=mix(0.55,1.0,1.0-smoothstep(0.85,1.0,ze));',
 ' vAlpha*=mix(0.3,1.0,ie);if(k>=3.0&&body<0.5&&k<9.5)vAlpha*=smoothstep(0.7,1.0,uIntro);',
+' vThr=uThread;if(uThread>0.5){vCol=vec3(0.96,0.14,0.12)*mix(1.0,1.5,uGlow);vAlpha=0.5*uDim*mix(0.25,1.0,fog)*mix(0.3,1.0,ie);}',
 ' float sz=aSize*uDpr*(2.6/dist)*(1.0+0.25*uCharge*body);if(k>2.5&&body<0.5)sz*=1.0+0.5*uHit;if(k>3.5&&k<4.5)sz*=1.0+0.8*pulse;gl_PointSize=sz;}'
 ].join('\n');
 var fs=[
-'#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif','varying vec3 vCol;varying float vAlpha;varying float vKind;uniform float uTimeF;',
-'void main(){vec2 q=gl_PointCoord-0.5;float d=length(q);float a;',
+'#ifdef GL_FRAGMENT_PRECISION_HIGH','precision highp float;','#else','precision mediump float;','#endif','varying vec3 vCol;varying float vAlpha;varying float vKind;varying float vThr;uniform float uTimeF;',
+'void main(){if(vThr>0.5){gl_FragColor=vec4(vCol,vAlpha);return;}vec2 q=gl_PointCoord-0.5;float d=length(q);float a;',
 ' if(vKind>2.5&&vKind<3.5){float cr=max(smoothstep(0.08,0.0,abs(q.x))*smoothstep(0.5,0.1,abs(q.y)),smoothstep(0.08,0.0,abs(q.y))*smoothstep(0.5,0.1,abs(q.x)));a=cr*(0.6+0.4*sin(uTimeF*3.0+vCol.r*20.0));}',
 ' else{a=smoothstep(0.5,0.12,d);}if(a<0.01)discard;gl_FragColor=vec4(vCol,a*vAlpha);}'
 ].join('\n');
@@ -341,12 +360,14 @@ function sh(t,s){var o=gl.createShader(t);gl.shaderSource(o,s);gl.compileShader(
 function prg(v,f){var p=gl.createProgram();gl.attachShader(p,sh(gl.VERTEX_SHADER,v));gl.attachShader(p,sh(gl.FRAGMENT_SHADER,f));gl.linkProgram(p);if(!gl.getProgramParameter(p,gl.LINK_STATUS))throw new Error(gl.getProgramInfoLog(p));return p;}
 var blurfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uTex;uniform vec2 uDir;',
 'void main(){vec3 c=texture2D(uTex,vUv).rgb*0.227;c+=(texture2D(uTex,vUv+uDir*1.385).rgb+texture2D(uTex,vUv-uDir*1.385).rgb)*0.316;c+=(texture2D(uTex,vUv+uDir*3.231).rgb+texture2D(uTex,vUv-uDir*3.231).rgb)*0.070;gl_FragColor=vec4(c,1.0);}'].join('\n');
-var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;',
+var compfs=['precision mediump float;varying vec2 vUv;uniform sampler2D uScene;uniform sampler2D uBloom;uniform float uStr;uniform vec3 uMask;uniform float uMix;',
 'vec3 aces(vec3 x){return clamp((x*(2.51*x+0.03))/(x*(2.43*x+0.59)+0.14),0.0,1.0);}',
-'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=s+b*uStr*uMask;gl_FragColor=vec4(aces(c*1.0),1.0);}'].join('\n');
+'void main(){vec3 s=texture2D(uScene,vUv).rgb;vec3 b=texture2D(uBloom,vUv).rgb;vec3 c=aces(s+b*uStr*uMask);',
+' float l=dot(c,vec3(0.299,0.587,0.114));vec3 tone=mix(vec3(0.04,0.02,0.035),vec3(0.93,0.26,0.18),smoothstep(0.0,0.62,l));tone=mix(tone,vec3(0.99,0.95,0.88),smoothstep(0.62,1.0,l));',
+' float keep=1.0-smoothstep(0.22,0.55,l);gl_FragColor=vec4(mix(c,tone,uMix*0.7*keep),1.0);}'].join('\n');
 var prog,bprog,blurp,compp;try{prog=prg(vs,fs);bprog=prg(bvs,bfs);blurp=prg(bvs,blurfs);compp=prg(bvs,compfs);}catch(err){if(window.console)console.error('KN shader',err);if(nogl){nogl.textContent='このブラウザでは描画できませんでした。お使いのブラウザを最新版にして開き直してください。';nogl.style.display='flex';}return;}
 var BL={uTex:gl.getUniformLocation(blurp,'uTex'),uDir:gl.getUniformLocation(blurp,'uDir'),a:gl.getAttribLocation(blurp,'aXY')};
-var CP={uScene:gl.getUniformLocation(compp,'uScene'),uBloom:gl.getUniformLocation(compp,'uBloom'),uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),a:gl.getAttribLocation(compp,'aXY')};
+var CP={uScene:gl.getUniformLocation(compp,'uScene'),uBloom:gl.getUniformLocation(compp,'uBloom'),uStr:gl.getUniformLocation(compp,'uStr'),uMask:gl.getUniformLocation(compp,'uMask'),uMix:gl.getUniformLocation(compp,'uMix'),a:gl.getAttribLocation(compp,'aXY')};
 function mkTex(w,h){var t=gl.createTexture();gl.bindTexture(gl.TEXTURE_2D,t);gl.texImage2D(gl.TEXTURE_2D,0,gl.RGBA,w,h,0,gl.RGBA,gl.UNSIGNED_BYTE,null);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE);gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE);return t;}
 function mkFB(w,h){var t=mkTex(w,h),f=gl.createFramebuffer();gl.bindFramebuffer(gl.FRAMEBUFFER,f);gl.framebufferTexture2D(gl.FRAMEBUFFER,gl.COLOR_ATTACHMENT0,gl.TEXTURE_2D,t,0);gl.bindFramebuffer(gl.FRAMEBUFFER,null);return{f:f,t:t,w:w,h:h};}
 var FB={scene:null,a:null,b:null};
@@ -357,7 +378,7 @@ var A={};function buf(name,data,sz){var b=gl.createBuffer();gl.bindBuffer(gl.ARR
 buf('aP',pos,4);buf('aC0',c0,3);buf('aC1',c1,3);buf('aCS',cs,3);buf('aKind',kind,1);buf('aPhase',phase,1);buf('aSize',size,1);
 pos=c0=c1=cs=kind=phase=size=null;
 var bb=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,bb);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1]),gl.STATIC_DRAW);var bloc=gl.getAttribLocation(bprog,'aXY');
-var U={};['uProj','uView','uTime','uTimeF','uPhase','uSplit','uHit','uDpr','uGlow','uIntro','uModel','uDim','uCharge'].forEach(function(n){U[n]=gl.getUniformLocation(prog,n);});
+var U={};['uProj','uView','uTime','uTimeF','uPhase','uSplit','uHit','uDpr','uGlow','uIntro','uModel','uDim','uCharge','uThread'].forEach(function(n){U[n]=gl.getUniformLocation(prog,n);});
 var BU={uTime:gl.getUniformLocation(bprog,'uTime'),uAsp:gl.getUniformLocation(bprog,'uAsp')};
 function bindPoints(){gl.useProgram(prog);for(var n in A){var a=A[n];gl.bindBuffer(gl.ARRAY_BUFFER,a.b);gl.enableVertexAttribArray(a.loc);gl.vertexAttribPointer(a.loc,a.sz,gl.FLOAT,false,0,0);}}
 /* ---------- camera / interaction ---------- */
@@ -367,12 +388,12 @@ var dprBase=Math.min(window.devicePixelRatio||1,MOB?1.5:2),dpr=dprBase;var ptr={
 /* motion kernels (after the 3D motion reference study): damped-spring lens with dolly compensation, temporal echoes of the bell on a strike,
    bounded pointer parallax, frame-rate independent smoothing, and a quality tier with hysteresis. The hero's look is unchanged at rest. */
 var FOV0=0.95,lens=0,lensV=0,echoA=0,parX=0,parY=0,ema=16.7,hiN=0,loN=0,tier=0,NE=MOB?2:3;
-/* 一分の不在: 90 秒見た人にだけ一度、主役が塵に解けて消え、戻る（intro の組み上がりを逆に使う） */
+/* 一分の不在: 90 秒見た人にだけ一度、主役が塵に解けて消え、戻る */
 var gone=0,goneT=-1,goneDone=false,seenT=0,GONE_AFTER=(function(){var g=parseFloat(new URLSearchParams(location.search).get('gone'));return g>0?g:90;})();
-/* 合図: 金の鍵を KNOCK の比で叩くと、夜が応える */
-var taps=[],KDBG=/[?&]knock=1/.test(location.search);function knock(now){taps.push(now);if(taps.length>KNOCK.length+1)taps.shift();if(taps.length<KNOCK.length+1)return false;var iv=[],num=0,den=0;for(var i=1;i<taps.length;i++)iv.push(taps[i]-taps[i-1]);for(var q=0;q<iv.length;q++){num+=iv[q]*KNOCK[q];den+=KNOCK[q]*KNOCK[q];}var base=num/den;var ok=base>=200&&base<=1600;var worst=0;for(var j=0;j<iv.length;j++){var e=Math.abs(iv[j]/base-KNOCK[j])/Math.max(0.5,KNOCK[j]);if(e>worst)worst=e;}if(worst>0.35)ok=false;if(KDBG){var v=document.getElementById(pre+'ver');if(v)v.textContent=iv.map(function(x){return (x/base).toFixed(2);}).join(' ')+(ok?' ok':' x');}if(!ok)return false;taps=[];return true;}
+/* 合図: 金の鍵を 3 回続けて叩く（間隔 140〜900 ms、ほぼ均等）。夜が息を止め、スキンが切り替わる */
+var taps=[];function knock(now){taps.push(now);if(taps.length>3)taps.shift();if(taps.length<3)return false;var a=taps[1]-taps[0],b=taps[2]-taps[1];if(a<140||a>900||b<140||b>900)return false;var r=a/b;if(r<0.5||r>2.0)return false;taps=[];return true;}
 var ansT=-1,breath=0;function answer(){ansT=performance.now();document.documentElement.classList.add('known');try{localStorage.setItem('kn_known','1');}catch(e){}}
-function answerNow(){var ph0=(2.1*0.2)%1;for(var i=0;i<med.length;i++){var m=med[i];m.off=((ph0-simT*0.2)%1+1)%1;m.charge=1;}simT=2.1;lastCycle=Math.floor(simT*0.2-0.875);lensV+=7.0;echoA=1;hit=1;if(window.KN_AUDIO){KN_AUDIO.kick();KN_AUDIO.hit();}}
+function answerNow(){var ph0=(2.1*0.2)%1;for(var i=0;i<med.length;i++){var m=med[i];m.off=((ph0-simT*0.2)%1+1)%1;m.charge=1;}simT=2.1;lastCycle=Math.floor(simT*0.2-0.875);lensV+=7.0;echoA=1;hit=1;if(window.KN_AUDIO){KN_AUDIO.kick();KN_AUDIO.hit();}if(window.KN_SKIN)KN_SKIN.toggle();}
 try{if(localStorage.getItem('kn_known'))document.documentElement.classList.add('known');}catch(e){}
 window.KN_TEST={knock:function(ts){taps=[];var r=false;for(var i=0;i<ts.length;i++)r=knock(ts[i])||r;return r;},gone:function(){return gone;},taps:function(){return taps.length;},breath:function(){return breath;}};
 function fovNow(){return FOV0*(1+lens*0.55);}
@@ -380,7 +401,7 @@ function distNow(){return dist*Math.tan(FOV0/2)/Math.tan(fovNow()/2);}
 /* medusae: index 0 is the hero (the one who hits); the rest swim upward and return from below */
 var INST=MOB?4:7,med=[];
 function spawn(m,first){m.x=(rnd()-.5)*5.5;m.z=-1.0-rnd()*3.5;m.y=first?(rnd()-.5)*7:-4.5-rnd()*2;m.sc=0.3+rnd()*0.35;m.off=rnd()*5;m.seed=rnd()*100;m.yaw=rnd()*6.28;}
-for(var mi=0;mi<INST;mi++){var m={x:0,y:0,z:0,sc:1,off:0,seed:7,yaw:0,hero:mi===0,charge:0};if(mi>0)spawn(m,true);med.push(m);}
+for(var mi=0;mi<INST;mi++){var m={x:0,y:0,z:0,sc:1,off:0,seed:7,yaw:0,hero:mi===0,charge:0,thread:false};if(mi>0)spawn(m,true);med.push(m);}
 function rotX(a){var c=Math.cos(a),s=Math.sin(a);return[1,0,0,0,0,c,s,0,0,-s,c,0,0,0,0,1];}
 function rotZ(a){var c=Math.cos(a),s=Math.sin(a);return[c,s,0,0,-s,c,0,0,0,0,1,0,0,0,0,1];}
 function rotY(a){var c=Math.cos(a),s=Math.sin(a);return[c,0,-s,0,0,1,0,0,s,0,c,0,0,0,0,1];}
@@ -456,6 +477,9 @@ function frame(now){
         gl.uniformMatrix4fv(U.uModel,false,em);gl.uniform1f(U.uPhase,mm.ph-ei*0.5);gl.uniform1f(U.uDim,0.42*echoA*Math.exp(-ei*0.4));gl.uniform1f(U.uGlow,0.5);gl.drawArrays(gl.POINTS,0,NB);}}
     gl.uniform1f(U.uIntro,mm.hero?Math.min(intro,1-gone):intro);
     gl.uniformMatrix4fv(U.uModel,false,mm.mat);gl.uniform1f(U.uPhase,mm.ph);gl.uniform1f(U.uDim,(mm.hero?1.0:0.55)*(1.0-0.88*breath));gl.uniform1f(U.uCharge,mm.charge);
+    if(!mm.hero&&window.KN_MIX>0.05){gl.uniform1f(U.uThread,1.0);gl.uniform1f(U.uGlow,1.0);gl.uniform1f(U.uDim,Math.min(1,window.KN_MIX)*(1.0-0.88*breath));gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+      gl.drawArrays(gl.LINE_STRIP,0,420);for(var tk=0;tk<TN;tk++)gl.drawArrays(gl.LINE_STRIP,OT+tk*TL,TL);for(var ak=0;ak<4;ak++)gl.drawArrays(gl.LINE_STRIP,OA+ak*AR,160);
+      gl.uniform1f(U.uThread,0.0);gl.uniform1f(U.uDim,0.55*(1.0-Math.min(1,window.KN_MIX))*(1.0-0.88*breath)+0.06);gl.uniform1f(U.uGlow,0.4);gl.drawArrays(gl.POINTS,0,NB);continue;}
     gl.uniform1f(U.uGlow,1.0);gl.blendFunc(gl.SRC_ALPHA,gl.ONE_MINUS_SRC_ALPHA);gl.drawArrays(gl.POINTS,0,NB);
     gl.uniform1f(U.uGlow,mm.hero?0.28:0.18);gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.drawArrays(gl.POINTS,0,NB);
     if(mm.hero){gl.uniform1f(U.uGlow,1.0);gl.drawArrays(gl.POINTS,NB,NL);}}
@@ -463,7 +487,7 @@ function frame(now){
   gl.disable(gl.BLEND);blurPass(FB.scene,FB.a,1,0);blurPass(FB.a,FB.b,0,1);blurPass(FB.b,FB.a,2,0);blurPass(FB.a,FB.b,0,2);
   gl.bindFramebuffer(gl.FRAMEBUFFER,null);gl.viewport(0,0,canvas.width,canvas.height);gl.useProgram(compp);
   gl.activeTexture(gl.TEXTURE0);gl.bindTexture(gl.TEXTURE_2D,FB.scene.t);gl.uniform1i(CP.uScene,0);gl.activeTexture(gl.TEXTURE1);gl.bindTexture(gl.TEXTURE_2D,FB.b.t);gl.uniform1i(CP.uBloom,1);
-  var ch=Math.min(1,chSum/med.length*2.0);gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);quad(compp,CP.a);gl.activeTexture(gl.TEXTURE0);
+  var ch=Math.min(1,chSum/med.length*2.0);gl.uniform1f(CP.uStr,0.42);gl.uniform3f(CP.uMask,1.0-ch*0.5,1.0-ch*0.6,1.0);gl.uniform1f(CP.uMix,window.KN_MIX||0.0);quad(compp,CP.a);gl.activeTexture(gl.TEXTURE0);
   if(visible&&!reduce)tick();
 }
 function tick(){if(!running){running=true;requestAnimationFrame(frame);}}
@@ -471,6 +495,24 @@ tick();
 if(stage&&'IntersectionObserver' in window){new IntersectionObserver(function(en){visible=en[0].isIntersecting;if(visible)tick();},{ threshold:0.05 }).observe(stage);}
 if(reduce){canvas.addEventListener('pointermove',tick);}
 };
+(function(){
+/* スキン制御: KN_SKIN.toggle() で 120% と 0 を切り替える。?skin=on で最初からオン。 */
+var LEVEL=1.2,cur=0,target=(/[?&]skin=on/.test(location.search))?LEVEL:0,lastTick=performance.now();window.KN_MIX=0;window.KN_OVER=0;
+var ver=document.getElementById('ver'),root=document.documentElement,base=ver?ver.textContent:'';
+setInterval(function(){var nw=performance.now(),dt=Math.min(0.5,(nw-lastTick)/1000);lastTick=nw;cur+=(target-cur)*(1-Math.exp(-dt/1.2));if(Math.abs(target-cur)<0.004)cur=target;window.KN_MIX=Math.min(1,cur);window.KN_OVER=Math.max(0,cur-1);var on=target>0;if(on!==root.classList.contains('skin'))root.classList.toggle('skin',on);if(ver)ver.textContent=on?base+' · 120%':base;},50);
+window.KN_SKIN={on:function(){return target>0;},set:function(v){target=v?LEVEL:0;},toggle:function(){target=target>0?0:LEVEL;}};
+/* 赤い糸の網と、糸から吊るしたドアの鍵（鍵山のアイコン） */
+var svg=document.getElementById('web');if(!svg)return;var sd=7;function r(){sd=(sd*9301+49297)%233280;return sd/233280;}
+var KEY='M0 0a6 6 0 1 0 0.01 0M0 6v30M0 26h7M0 32h5M0 36h8';
+function draw(){var W=svg.clientWidth||innerWidth,H=svg.clientHeight||innerHeight;svg.setAttribute('viewBox','0 0 '+W+' '+H);var n=Math.round(LEVEL*62),s='',knots=[];sd=7;
+  function edge(){var e=r();return e<0.25?[r()*W,0]:e<0.5?[W,r()*H]:e<0.75?[r()*W,H]:[0,r()*H];}
+  for(var i=0;i<n;i++){var a=edge(),b=(r()<0.55)?edge():[W*(0.5+(r()-0.5)*0.5),H*(0.52+(r()-0.5)*0.4)];s+='<line x1="'+a[0].toFixed(0)+'" y1="'+a[1].toFixed(0)+'" x2="'+b[0].toFixed(0)+'" y2="'+b[1].toFixed(0)+'" stroke-opacity="'+(0.3+r()*0.4).toFixed(2)+'"/>';
+    if(i%6===2){var t=0.25+r()*0.5;knots.push([a[0]+(b[0]-a[0])*t,a[1]+(b[1]-a[1])*t]);}}
+  for(var k=0;k<knots.length;k++){var kx=knots[k][0],ky=knots[k][1];if(ky>H*0.78||ky<H*0.08||kx<W*0.06||kx>W*0.94)continue;var len=18+r()*40,sc=(0.8+r()*0.6)*(W<640?0.85:1);
+    s+='<circle cx="'+kx.toFixed(0)+'" cy="'+ky.toFixed(0)+'" r="2.4"/><line class="hang" x1="'+kx.toFixed(0)+'" y1="'+ky.toFixed(0)+'" x2="'+kx.toFixed(0)+'" y2="'+(ky+len).toFixed(0)+'"/>';
+    s+='<g transform="translate('+kx.toFixed(0)+' '+(ky+len).toFixed(0)+') scale('+sc.toFixed(2)+')"><g class="key'+(k%3===1?' b':'')+'" style="animation-delay:-'+(r()*4).toFixed(1)+'s"><path d="'+KEY+'"/></g></g>';}
+  svg.innerHTML=s;}
+draw();addEventListener('resize',draw);})();
 KN({ pre:'', stage:null, canvas:'gl' });
 </script>
 </body>
