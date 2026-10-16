@@ -157,7 +157,7 @@ const LINKS={
   latest:'',   // X の最新の投稿の URL（入れると PROFILE に「X の最新の投稿」が出る。毎週差し替える）
   goat:'',     // GoatCounter のコード（例 'kaginight'）。入れると訪問計測が動く
   cf:'',       // Cloudflare Web Analytics の token。入れると訪問計測が動く
-  online:'',   // 配信の参加 URL（前回ライブと同じ形式）
+  online:"https://kagi-macbook-pro-1.tail1a5040.ts.net/kagi-xr/",   // 配信の参加 URL（前回ライブと同じ形式）
   live:'',     // 現地で読んだ QR の URL
   room:'',     // KAGI ROOM（コミュニティ App の会員ページ）
   note:'https://note.com/kagi03',   // 鍵山の note（記事）
@@ -167,7 +167,7 @@ const LINKS={
 };
 (function(){
   const set=(id,url,label)=>{const a=document.getElementById(id);if(!a)return;if(url){a.href=url;a.target='_blank';a.rel='noopener';if(label)a.firstChild.textContent=label;}};
-  set('lnk-online',LINKS.online,'参加 URL を開く');set('lnk-live',LINKS.live,'参加画面を開く');set('lnk-room',LINKS.room,'鍵を受け取る');
+  set('lnk-online',LINKS.online,'配信ライブを開く');set('lnk-live',LINKS.live,'参加画面を開く');set('lnk-room',LINKS.room,'鍵を受け取る');
   set('lnk-ks',LINKS.ks);if(LINKS.latest){const la=document.getElementById('lnk-latest');if(la){la.href=LINKS.latest;la.hidden=false;}}if(LINKS.goat){const g=document.createElement('script');g.async=true;g.src='https://gc.zgo.at/count.js';g.setAttribute('data-goatcounter','https://'+LINKS.goat+'.goatcounter.com/count');document.head.appendChild(g);}if(LINKS.cf){const c=document.createElement('script');c.defer=true;c.src='https://static.cloudflareinsights.com/beacon.min.js';c.setAttribute('data-cf-beacon',JSON.stringify({token:LINKS.cf}));document.head.appendChild(c);}set('lnk-km',LINKS.km);set('lnk-kl',LINKS.kl);set('lnk-tee',LINKS.tee);set('lnk-shop',LINKS.shop);
 })();
 /* KAGI NIGHT sound: a procedural underwater loop (Web Audio, no files).
