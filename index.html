@@ -8,6 +8,7 @@
 <meta name="keywords" content="XR ドラマー, 鍵山喬一, KAGI NIGHT, ドラム, リズム, グルーヴ, XR ライブ, 配信ライブ, 東京">
 <meta name="theme-color" content="#07070b">
 <link rel="canonical" href="https://kagi920.github.io/kaginight/">
+<!-- Search Console の所有権確認: 鍵山が受け取った <meta name="google-site-verification" content="…"> をこの行の下に貼る -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="KAGI NIGHT｜XR ドラマー 鍵山喬一">
 <meta property="og:description" content="XR ドラマー 鍵山喬一。ドラムとリズムとグルーヴを XR の空間へ。配信からも、現地からも、叩く人として参加できる夜 KAGI NIGHT。">
@@ -82,6 +83,8 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .ver{position:absolute;right:12px;bottom:calc(6px + env(safe-area-inset-bottom,0px));font-family:var(--f-data);font-size:.55rem;letter-spacing:.14em;color:var(--muted);opacity:.6;pointer-events:none}
 @media (max-width:380px){.dock{gap:4px;padding:6px}.dock button,.dock a{padding:.65rem .42rem;font-size:.56rem;letter-spacing:.12em}}
 @media (prefers-reduced-motion: reduce){.sheet{transition:none}}
+.about{margin:1rem 0 0;padding-top:.8rem;border-top:1px solid var(--rule);font-family:"Noto Sans JP",var(--f-jp);font-size:.84rem;line-height:1.9}
+.about p{margin:0 0 .6rem}
 html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,.6)}
 </style>
 </head>
@@ -93,7 +96,7 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
   <h1 class="mark">KAGI NIGHT<small>XR DRUMMER 鍵山喬一</small></h1>
   <div class="top"><button class="snd" id="snd" type="button" aria-pressed="false">SOUND · OFF</button><button class="snd" id="prof" type="button" data-sheet="profile" aria-expanded="false">PROFILE</button></div>
   <div class="hint">DRAG · ROTATE<br>PINCH · ZOOM<br>TAP · HIT</div>
-  <div class="ver" id="ver">v27</div>
+  <div class="ver" id="ver">v28</div>
   <div class="dial"><span class="top">融</span><input id="split" type="range" min="0" max="100" value="100" orient="vertical" aria-label="分離と融合"><span>分</span></div>
   <button class="hit" id="hit" aria-label="一打"></button>
   <div class="dock" role="tablist">
@@ -118,6 +121,7 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
     <a class="bar ghost" href="https://note.com/kagi03" target="_blank" rel="me noopener">note で読む<span>›</span></a>
     <a class="bar ghost" href="https://x.com/KAGI920" target="_blank" rel="me noopener">X（@KAGI920）<span>›</span></a>
     <a class="bar ghost" href="https://www.instagram.com/kagi03/" target="_blank" rel="me noopener">Instagram（@kagi03）<span>›</span></a>
+    <a class="bar ghost" id="lnk-latest" href="https://x.com/KAGI920" target="_blank" rel="noopener" hidden>X の最新の投稿<span>›</span></a>
   </section>
   <section class="sheet" id="online" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
     <h2>ONLINE<small>配信 — 遠くから、同じ時刻に</small></h2>
@@ -133,6 +137,7 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
     <a class="bar ghost" id="lnk-live" href="#live">会場で QR を読む<span>›</span></a>
     <a class="bar ghost" href="https://x.com/intent/post?text=KAGI+NIGHT+%E2%80%94+XR+%E3%83%89%E3%83%A9%E3%83%9E%E3%83%BC+%E9%8D%B5%E5%B1%B1%E5%96%AC%E4%B8%80%E3%81%AE%E5%A4%9C%E3%80%82%E5%8F%A9%E3%81%8F%E4%BA%BA%E3%81%A8%E3%81%97%E3%81%A6%E5%8F%82%E5%8A%A0%E3%81%A7%E3%81%8D%E3%82%8B%E3%80%82&amp;url=https%3A%2F%2Fkagi920.github.io%2Fkaginight%2F&amp;hashtags=KAGINIGHT%2CXR%E3%83%89%E3%83%A9%E3%83%9E%E3%83%BC" target="_blank" rel="noopener">X で友だちに知らせる<span>›</span></a>
     <ol class="steps"><li><i>1</i><span>QR を読む。手元のスマホが参加画面になる。</span></li><li><i>2</i><span>撮影しながら、演奏に同期した歌詞と映像と額縁を見る。</span></li><li><i>3</i><span>タップで参加する。</span></li><li><i>4</i><span>結果と録画を持ち帰る。</span></li></ol>
+    <div class="about"><p>KAGI NIGHT は、XR ドラマー 鍵山喬一が企画する夜。鍵山が実際に叩いた一打が、そのまま光と空間と人の動きになる。</p><p>配信からは、スマホか PC のブラウザで参加する。現地では、会場で QR を読んで参加する。どちらも、見るだけでなく、叩く人として参加できる。</p><p>これまでに、KAGI NIGHT 2022（渋谷 B.Y.G）、KAGI NIGHT 2026 Vol.1「衝突の夜」（六本木 unravel tokyo）を開催。</p><p>鍵山喬一は埼玉県出身。1998 年ごろから都内のライブハウスで叩きはじめ、cocobat、JUDGEMENT、アーバンギャルドを経て、多くのアーティストのサポートドラマーとして活動している。</p></div>
   </section>
   <section class="sheet" id="support" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
     <h2>KEY<small>KAGI ROOM — 鍵山喬一の部屋に入る鍵</small></h2>
@@ -146,6 +151,9 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
 <script>
 /* ===== ここだけ差し替える（URL が決まったら入れる。空なら「準備中」のまま） ===== */
 const LINKS={
+  latest:'',   // X の最新の投稿の URL（入れると PROFILE に「X の最新の投稿」が出る。毎週差し替える）
+  goat:'',     // GoatCounter のコード（例 'kaginight'）。入れると訪問計測が動く
+  cf:'',       // Cloudflare Web Analytics の token。入れると訪問計測が動く
   online:'',   // 配信の参加 URL（前回ライブと同じ形式）
   live:'',     // 現地で読んだ QR の URL
   room:'',     // KAGI ROOM（コミュニティ App の会員ページ）
@@ -157,7 +165,7 @@ const LINKS={
 (function(){
   const set=(id,url,label)=>{const a=document.getElementById(id);if(!a)return;if(url){a.href=url;a.target='_blank';a.rel='noopener';if(label)a.firstChild.textContent=label;}};
   set('lnk-online',LINKS.online,'参加 URL を開く');set('lnk-live',LINKS.live,'参加画面を開く');set('lnk-room',LINKS.room,'鍵を受け取る');
-  set('lnk-ks',LINKS.ks);set('lnk-km',LINKS.km);set('lnk-kl',LINKS.kl);set('lnk-tee',LINKS.tee);set('lnk-shop',LINKS.shop);
+  set('lnk-ks',LINKS.ks);if(LINKS.latest){const la=document.getElementById('lnk-latest');if(la){la.href=LINKS.latest;la.hidden=false;}}if(LINKS.goat){const g=document.createElement('script');g.async=true;g.src='https://gc.zgo.at/count.js';g.setAttribute('data-goatcounter','https://'+LINKS.goat+'.goatcounter.com/count');document.head.appendChild(g);}if(LINKS.cf){const c=document.createElement('script');c.defer=true;c.src='https://static.cloudflareinsights.com/beacon.min.js';c.setAttribute('data-cf-beacon',JSON.stringify({token:LINKS.cf}));document.head.appendChild(c);}set('lnk-km',LINKS.km);set('lnk-kl',LINKS.kl);set('lnk-tee',LINKS.tee);set('lnk-shop',LINKS.shop);
 })();
 /* KAGI NIGHT sound: a procedural underwater loop (Web Audio, no files).
    D dorian pads that change every swim of the medusa, a sub kick on each contraction, soft ticks, glass arpeggio,

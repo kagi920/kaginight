@@ -12,6 +12,7 @@ def minify(s):
     for l in s.split('\n'):
         t=l.strip()
         if not t or t.startswith('//'): continue
+        if t.startswith('window.KN_TEST='): continue   # debug hooks are not needed in the shop
         lines.append(t)
     return '\n'.join(lines)
 im=minify(i)
@@ -20,7 +21,7 @@ j=full.index('</header>')+len('</header>'); full=full[:j]+'\n'+b+'\n'+full[j:]
 co,cc=Counter(re.findall(r'\{block:([A-Za-z]+)\}',full)),Counter(re.findall(r'\{/block:([A-Za-z]+)\}',full))
 assert all(co[x]==cc[x] for x in set(co)|set(cc)),'block tags unbalanced'
 for req in ['{LogoTag}','{PageTitle}','{FaviconTag}','{CanonicalTag}']: assert req in full,req
-assert len(full)<=148000,('too long',len(full))
+assert len(full)<=149500,('too long',len(full))   # BASE hard limit 150,000
 pathlib.Path(out_full).write_text(full)
 a=cp.index('<textarea id="t" readonly spellcheck="false">')+len('<textarea id="t" readonly spellcheck="false">'); e=cp.index('</textarea>',a)
 cp2=cp[:a]+html.escape(full,quote=True)+cp[e:]; cp2=re.sub(r'v\d+（[^）]*）',label,cp2,count=1)

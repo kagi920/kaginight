@@ -78,3 +78,11 @@
 - 構造化データを WebSite ＋ Person（画像つき）＋ MusicEvent（KAGI NIGHT 2026 Vol.1、2026-07-17、unravel tokyo）の graph に。og:image:alt / twitter:image:alt、preconnect、sitemap の lastmod。
 - 見た目・言葉・振る舞いは v26 と同じ。BASE 版は 15 万字上限のため字形サブセットを入れず（中身は同じ、版番号のみ v27）。
 - 鍵山の判断待ち: 本文の草案（§5）、Search Console、被リンク依頼（Metropolis・MoguraVR）、Wikipedia 外部リンク、訪問計測、本人写真。
+
+## v28（2026-10-16）— 本文・計測の受け口・最新投稿の枠
+- 鍵山「数字が見える状態と本文はやっといて。概要リンクもやっといて」。
+- LIVE の扉の末尾に KAGI NIGHT の説明文（310 字。監査書 §5 の草案どおり。直しはいつでも）。
+- 計測の受け口: head に Search Console タグの貼り場所、差し替え表に `goat`（GoatCounter）と `cf`（Cloudflare Web Analytics）。文字列を入れた時だけ計測スクリプトを読み込む。
+- PROFILE に「X の最新の投稿」バー。差し替え表の `latest` に URL を入れた時だけ表示。
+- 外部リンク依頼の文面 `docs/LINK_REQUESTS_v1.md`（送るのは鍵山）。
+- 検証: JS エラー 0、LIVE の本文表示、バーは既定で非表示、外部スクリプトは未読込。BASE 版は 149,500 字以内（デバッグ用の KN_TEST を除去）。
