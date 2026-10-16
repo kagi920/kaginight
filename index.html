@@ -57,7 +57,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .dial input{-webkit-appearance:slider-vertical;writing-mode:vertical-lr;direction:rtl;width:28px;height:150px;accent-color:var(--gold);background:transparent}
 .dial span{font-family:var(--f-data);font-size:.6rem;letter-spacing:.2em;color:var(--muted)}
 .dial .top{color:var(--fg)}
-.sheet{position:absolute;left:50%;bottom:0;transform:translate(-50%,110%);width:min(560px,calc(100% - 24px));max-height:70%;overflow:auto;border:1px solid var(--rule);border-radius:18px 18px 0 0;background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:2;padding:1.2rem 1.2rem calc(96px + env(safe-area-inset-bottom,0px));transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+.sheet{box-sizing:border-box;position:absolute;left:50%;bottom:0;transform:translate(-50%,110%);width:min(560px,calc(100% - 24px));max-height:70%;overflow:auto;border:1px solid var(--rule);border-radius:18px 18px 0 0;background:var(--glass);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);z-index:2;padding:1.2rem 1.2rem calc(96px + env(safe-area-inset-bottom,0px));transition:transform .45s cubic-bezier(.2,.8,.2,1)}
 .sheet.open{transform:translate(-50%,0)}
 .sheet h2{font-family:var(--f-en);font-weight:600;font-size:1.4rem;letter-spacing:.08em;margin:0 0 .3rem}
 .sheet h2 small{display:block;font-family:var(--f-jp);font-size:.5em;letter-spacing:.22em;color:var(--muted);margin-top:.3em}
@@ -65,6 +65,7 @@ html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);overflow:hid
 .meta{letter-spacing:.14em;font-size:.92rem;line-height:2;margin:.6rem 0 1rem}
 .meta b{font-weight:700}
 .bar{display:flex;justify-content:space-between;align-items:center;background:var(--fg);color:#07070b;padding:.9rem 1.1rem;letter-spacing:.14em;font-size:.9rem;text-decoration:none;margin-top:.6rem}
+.bar[hidden]{display:none}
 .bar.ghost{background:transparent;color:var(--fg);border:1px solid var(--fg)}
 .steps{margin:.8rem 0 0;padding:0;list-style:none;border-top:1px solid var(--rule)}
 .steps li{display:grid;grid-template-columns:2em 1fr;gap:.4rem;padding:.5rem 0;border-bottom:1px solid var(--rule);font-size:.88rem;font-family:"Noto Sans JP",var(--f-jp)}
@@ -111,7 +112,7 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
     <p class="meta">できること / <b>出演</b>（ソロ・サポート・イベントサポート）<br><b>XR 演出の制作</b><br><b>自主企画の配信チケット</b><br><b>その他の制作</b>、<b>その他</b>のご相談も</p>
     <a class="bar" id="lnk-x" href="https://x.com/KAGI920" target="_blank" rel="me noopener">X でメッセージを送る（@KAGI920）<span>›</span></a>
     <a class="bar ghost" id="lnk-inq" href="https://kaginight.base.shop/inquiry" target="_blank" rel="noopener">フォームから問い合わせる<span>›</span></a>
-    <ol class="steps"><li><i>1</i><span>日時・場所・内容を一行で。</span></li><li><i>2</i><span>予算の有無（未定でよい）。</span></li><li><i>3</i><span>返事は鍵山本人から届く。</span></li></ol>
+    <ol class="steps"><li><i>1</i><span>予算の有無（未定でよい）。</span></li><li><i>2</i><span>返事は鍵山本人から届く。</span></li></ol>
     <p class="note">経歴や写真などの資料は、やりとりの中でお送りします。</p>
   </section>
   <section class="sheet" id="profile" aria-hidden="true"><button class="x" type="button" aria-label="閉じる">×</button>
@@ -121,6 +122,8 @@ html.known .hit{box-shadow:0 0 0 6px rgba(7,7,11,.65),0 0 0 7px rgba(217,168,74,
     <a class="bar ghost" href="https://note.com/kagi03" target="_blank" rel="me noopener">note で読む<span>›</span></a>
     <a class="bar ghost" href="https://x.com/KAGI920" target="_blank" rel="me noopener">X（@KAGI920）<span>›</span></a>
     <a class="bar ghost" href="https://www.instagram.com/kagi03/" target="_blank" rel="me noopener">Instagram（@kagi03）<span>›</span></a>
+    <a class="bar ghost" id="lnk-archive" href="https://kagi03.tumblr.com/" target="_blank" rel="me noopener">過去の活動アーカイブ（Tumblr）<span>›</span></a>
+    <p class="note">当時のプロフィール・機材・活動記録です。現在の情報とは異なる場合があります。</p>
     <a class="bar ghost" id="lnk-latest" href="https://x.com/KAGI920" target="_blank" rel="noopener" hidden>X の最新の投稿<span>›</span></a>
   </section>
   <section class="sheet" id="online" aria-hidden="true"><button class="x" aria-label="閉じる">×</button>
