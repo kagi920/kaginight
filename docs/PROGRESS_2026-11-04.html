@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>KAGI NIGHT 進捗 2026-11-04</title>
+<style>
+:root{--bg:#0b1020;--fg:#d6dcea;--mute:#8a94ad;--line:#232b45;--acc:#e8d6a8;--warn:#f08a7a;--ok:#8fd3a8}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.75 -apple-system,"Hiragino Sans","Noto Sans JP",sans-serif}
+header{position:sticky;top:0;background:rgba(11,16,32,.96);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+header h1{font-size:16px;margin:0;color:var(--acc);font-weight:600}
+header input{flex:1;min-width:200px;background:#121a33;border:1px solid var(--line);color:var(--fg);padding:8px 10px;border-radius:6px;font-size:15px}
+header small{color:var(--mute)}
+main{max-width:900px;margin:0 auto;padding:16px}
+section{border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin:12px 0;overflow-x:auto}
+section.hide{display:none}
+h2{font-size:17px;margin:0 0 8px;color:var(--acc)}
+h3{font-size:15px;margin:14px 0 6px}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th,td{border-bottom:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+th{color:var(--mute);font-weight:500}
+code{background:#121a33;padding:1px 5px;border-radius:4px;font-size:13px}
+a{color:var(--acc)}
+.warn{color:var(--warn)}.ok{color:var(--ok)}.mute{color:var(--mute)}
+mark{background:#5a4a1a;color:#fff;padding:0 2px}
+ul{padding-left:20px;margin:6px 0}
+li{margin:3px 0}
+#none{display:none;color:var(--mute);padding:24px;text-align:center}
+</style>
+</head>
+<body>
+<header>
+<h1>KAGI NIGHT 進捗 2026-11-04</h1>
+<input id="q" type="search" placeholder="検索（例: sitemap, 計測, note, 判断）" autocomplete="off">
+<small id="cnt"></small>
+</header>
+<main>
+
+<section>
+<h2>0. 現在地（一行）</h2>
+<p>ホームページ本体は 2026-10-17 に <a href="https://kaginight.pages.dev/">kaginight.pages.dev</a>（Cloudflare Pages）へ移り、このリポジトリの <code>index.html</code> は転送だけになった。それ以降 18 日間、リポジトリに変更はない。公開 PR・Issue は 0。</p>
+<table>
+<tr><th>項目</th><th>状態</th></tr>
+<tr><td>main の最終コミット</td><td>2026-10-17 <code>8f36f76</code> 転送化（著者 kagi920）</td></tr>
+<tr><td>最後の完全な HP ソース</td><td>2026-10-16 <code>9f39993</code>（v28、71,793 バイト）。<code>git show 9f39993:index.html</code> で取り出せる</td></tr>
+<tr><td>GitHub Pages デプロイ</td><td>46 回連続 success（最新は転送版）</td></tr>
+<tr><td>作業ブランチ</td><td><code>claude/epic-allen-zhsluu</code> は main と同一（差分 0）</td></tr>
+<tr><td>この文書以外の今日の変更</td><td>なし</td></tr>
+</table>
+</section>
+
+<section>
+<h2>1. 完了した成果（v8 → v28、2026-10-13 〜 10-16）</h2>
+<table>
+<tr><th>領域</th><th>到達点</th></tr>
+<tr><td>クラゲのエンジン</td><td>生 WebGL1 の点群クラゲ、組み上がり演出、一打、融／分ダイヤル。Android の精度切替と失敗時案内（v11）。レンズ・残像・視差・時定数平滑化・画質段階（v13）</td></tr>
+<tr><td>音</td><td>手続き生成ループ（D ドリアン）。SOUND ボタンからのみ。iPhone マナースイッチ回避（v10）</td></tr>
+<tr><td>5 つの扉と文章</td><td>ONLINE / LIVE / GOODS / KEY / PROFILE / WORK。文章は鍵山の指示で確定（v17〜v21）。LIVE に KAGI NIGHT の説明文 310 字（v28）</td></tr>
+<tr><td>サブカル演出</td><td>3 回叩くと主役が 赤い糸 → 緑の糸の鍵 → 塵 → 元 に変わる（v26）。画面に貼る案（v22 preview、v24）は却下済みで禁則化</td></tr>
+<tr><td>発見性</td><td>フォント 35 → 3 ファイル、OG 画像 832 KB → 87 KB、構造化データ（WebSite / Person / MusicEvent）、rel=me、X 共有バー（v18、v27）</td></tr>
+<tr><td>計測の受け口</td><td>Search Console タグの貼り場所、<code>LINKS.goat</code>（GoatCounter）、<code>LINKS.cf</code>（Cloudflare）。文字列を入れた時だけ動く（v28）</td></tr>
+<tr><td>BASE 版</td><td><code>tools/assemble_base.py</code> で 150,000 字上限の内側に自動縮小。ブロック開閉・必須タグを assert</td></tr>
+<tr><td>文書</td><td>CHANGELOG、IDEA_LEDGER、研究仕様（368 文献）、収益戦略、note 戦略と 90 日計画、X 検証仕様、SEO 監査、被リンク依頼文、KAGI XR 引き継ぎ</td></tr>
+<tr><td>禁則の明文化</td><td>外向き操作は一言ごとに許可、他人のリポジトリ不可、visualgate-livesystem 不可、PR を作らない（スキルに記録）</td></tr>
+</table>
+</section>
+
+<section>
+<h2>2. 移転で生じた不整合（直すべき箇所）</h2>
+<p class="warn">正本が pages.dev に移ったのに、周辺が旧 URL のままになっている。</p>
+<table>
+<tr><th>#</th><th>場所</th><th>いま</th><th>あるべき</th></tr>
+<tr><td>1</td><td><code>sitemap.xml</code></td><td>loc が <code>kagi920.github.io/kaginight/</code></td><td><code>robots.txt</code> は pages.dev のサイトマップを指しているので、loc も pages.dev に揃える（または pages.dev 側の sitemap に一本化）</td></tr>
+<tr><td>2</td><td><code>README.md</code></td><td>「公開 URL は kagi920.github.io」「main の index.html がそのまま公開」</td><td>正本は pages.dev、GitHub Pages は転送、と書き直す</td></tr>
+<tr><td>3</td><td>基盤スキル <code>SKILL.md</code></td><td>独自 HP の場所を GitHub Pages とし、公開手順も Pages 前提</td><td>pages.dev のデプロイ経路（どのリポジトリ／どの操作で反映するか）を追記。これが未確定だと次の更新作業ができない</td></tr>
+<tr><td>4</td><td><code>docs/LINK_REQUESTS_v1.md</code></td><td>依頼文 3 通の URL が旧 URL</td><td>送る前に pages.dev に差し替える（未送信なら実害なし）</td></tr>
+<tr><td>5</td><td><code>VERSION</code></td><td>27</td><td>v28 が出ているので 28。移転版は番号をどう扱うか決める</td></tr>
+<tr><td>6</td><td>HP ソースの所在</td><td>このリポジトリの HEAD に完全版がない</td><td>pages.dev が別リポジトリかダッシュボード直アップロードかを確定し、スキルと README に書く。無ければ v28 ソースを <code>9f39993</code> から復元して管理下に置く</td></tr>
+</table>
+<p class="mute">index.html の <code>noindex</code> は転送ページなので妥当。canonical と OG はすでに pages.dev を指している。</p>
+</section>
+
+<section>
+<h2>3. 空のままの差し替え表（LINKS、v28 時点）</h2>
+<table>
+<tr><th>キー</th><th>役割</th><th>状態</th></tr>
+<tr><td><code>online</code></td><td>配信参加 URL</td><td class="ok">入っている（Tailscale の KAGI XR 観客ページ）</td></tr>
+<tr><td><code>note</code> <code>x</code> <code>inquiry</code> <code>shop</code> <code>tee</code></td><td>note・X・依頼・BASE</td><td class="ok">入っている</td></tr>
+<tr><td><code>latest</code></td><td>X の最新投稿バー</td><td class="warn">空。毎週差し替える運用が未開始</td></tr>
+<tr><td><code>goat</code> / <code>cf</code></td><td>訪問計測</td><td class="warn">空。数字はまだ一つも取れていない</td></tr>
+<tr><td><code>live</code> <code>room</code> <code>ks</code> <code>km</code> <code>kl</code></td><td>現地 QR、KAGI ROOM、KEY 商品</td><td class="warn">空。商品と部屋が未定のため</td></tr>
+</table>
+</section>
+
+<section>
+<h2>4. 鍵山の判断待ち（文書に記録済みのもの）</h2>
+<ul>
+<li><b>正本の所在</b>: pages.dev のソースをどこで管理しているか（§2-6）。これが最優先。</li>
+<li><b>計測</b>: Cloudflare Web Analytics の token か GoatCounter のコード。pages.dev なら Cloudflare の計測は無料で、token を <code>LINKS.cf</code> に入れるだけ。</li>
+<li><b>Search Console</b>: 所有確認タグ。入れる場所は v28 で用意済み。</li>
+<li><b>被リンク依頼の送信</b>: Metropolis、MoguraVR、Wikipedia ノート。文面は用意済み。送るのは鍵山。</li>
+<li><b>本人写真 1 枚</b>: Person.image と OG に使う。顔出しの可否は鍵山。</li>
+<li><b>X</b>: 表示名・自己紹介・固定投稿の更新案は X 検証仕様に用意済み。現状の数字は GPT の export 待ち。Premium 加入は費用が出るので鍵山の判断。</li>
+<li><b>note 90 日計画</b>: 第 1 週「鍵山喬一は何をしているか」から未着手。</li>
+<li><b>グッズ</b>: 「水の夜」T シャツ絵柄と販売先、金の鍵ロゴ 3 案、商品検索 App の導入。</li>
+<li><b>KAGI ROOM</b>: 開く日と中身。</li>
+</ul>
+</section>
+
+<section>
+<h2>5. 今日のセッション（2026-11-04）</h2>
+<ul>
+<li>X の投稿 2 件（@skytearss、@nyx_tech_ai）の本文取得を試みたが、この環境のネットワーク設定で x.com・公式 oEmbed・syndication・ミラー全部が拒否され、Web 検索でも未索引。<span class="warn">内容は未取得</span>。本文の貼り付けか、環境の Allowed domains に <code>x.com</code> を追加すれば再試行できる。</li>
+<li>kaginight.pages.dev と kagi920.github.io もこの環境からは開けない（同じ理由）。稼働確認は鍵山の実機で。</li>
+<li>この進捗文書を追加。コミットは手元のブランチのみ。push は鍵山の「push して」があるまでしない（スキルの禁則）。</li>
+</ul>
+</section>
+
+<section>
+<h2>6. 推奨する次の一手（推し 1 つ）</h2>
+<p><b>正本の所在を確定し、旧 URL を全部 pages.dev に揃える。</b> 理由は 2 つ。被リンク依頼・Search Console・構造化データはすべて URL を軸にしており、二つの URL が混在すると評価が割れる。もう一つ、HP のソースがリポジトリにないままでは、次の演出追加もスキル手順も動かせない。鍵山がやる操作は「pages.dev のデプロイ元を教える」の 1 手。残りの書き換え（§2 の 1〜5）はこちらで 1 コミットにまとめられる。</p>
+</section>
+
+<div id="none">該当なし</div>
+</main>
+<script>
+(function(){
+  var q=document.getElementById('q'),secs=[].slice.call(document.querySelectorAll('main section')),cnt=document.getElementById('cnt'),none=document.getElementById('none');
+  secs.forEach(function(s){s.dataset.html=s.innerHTML;s.dataset.text=s.textContent.toLowerCase();});
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  function run(){
+    var t=q.value.trim().toLowerCase(),n=0;
+    secs.forEach(function(s){
+      if(!t){s.innerHTML=s.dataset.html;s.classList.remove('hide');n++;return;}
+      if(s.dataset.text.indexOf(t)<0){s.classList.add('hide');return;}
+      s.classList.remove('hide');n++;
+      var re=new RegExp('('+esc(q.value.trim())+')','gi');
+      s.innerHTML=s.dataset.html.replace(/>([^<]+)</g,function(m,txt){return '>'+txt.replace(re,'<mark>$1</mark>')+'<';});
+    });
+    cnt.textContent=t?n+' / '+secs.length+' 節':'';
+    none.style.display=n?'none':'block';
+  }
+  q.addEventListener('input',run);
+  try{var h=location.hash.slice(1);if(h){q.value=decodeURIComponent(h);run();}}catch(e){}
+})();
+</script>
+</body>
+</html>
