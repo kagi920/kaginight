@@ -33,8 +33,8 @@ li{margin:3px 0}
 <body>
 <header>
 <h1>KAGI NIGHT 進捗 2026-11-04</h1>
-<input id="q" type="search" placeholder="検索（例: sitemap, 計測, note, 判断）" autocomplete="off">
-<small id="cnt"></small>
+<input id="q" type="search" aria-label="文書内検索" placeholder="検索（例: sitemap, 計測, note, 判断）" autocomplete="off">
+<small id="cnt" aria-live="polite"></small>
 </header>
 <main>
 
@@ -45,8 +45,8 @@ li{margin:3px 0}
 <tr><th>項目</th><th>状態</th></tr>
 <tr><td>main の最終コミット</td><td>2026-10-17 <code>8f36f76</code> 転送化（著者 kagi920）</td></tr>
 <tr><td>最後の完全な HP ソース</td><td>2026-10-16 <code>9f39993</code>（v28、71,793 バイト）。<code>git show 9f39993:index.html</code> で取り出せる</td></tr>
-<tr><td>GitHub Pages デプロイ</td><td>46 回連続 success（最新は転送版）</td></tr>
-<tr><td>作業ブランチ</td><td><code>claude/epic-allen-zhsluu</code> は main と同一（差分 0）</td></tr>
+<tr><td>GitHub Pages デプロイ</td><td>46 回中 42 success・4 cancelled。直近 14 回は連続 success（最新は転送版）</td></tr>
+<tr><td>作業ブランチ</td><td><code>claude/epic-allen-zhsluu</code> は main と同一（この文書を除き差分 0）</td></tr>
 <tr><td>この文書以外の今日の変更</td><td>なし</td></tr>
 </table>
 </section>
@@ -123,7 +123,7 @@ li{margin:3px 0}
 <p><b>正本の所在を確定し、旧 URL を全部 pages.dev に揃える。</b> 理由は 2 つ。被リンク依頼・Search Console・構造化データはすべて URL を軸にしており、二つの URL が混在すると評価が割れる。もう一つ、HP のソースがリポジトリにないままでは、次の演出追加もスキル手順も動かせない。鍵山がやる操作は「pages.dev のデプロイ元を教える」の 1 手。残りの書き換え（§2 の 1〜5）はこちらで 1 コミットにまとめられる。</p>
 </section>
 
-<div id="none">該当なし</div>
+<div id="none" aria-live="polite">該当なし</div>
 </main>
 <script>
 (function(){
@@ -136,8 +136,15 @@ li{margin:3px 0}
       if(!t){s.innerHTML=s.dataset.html;s.classList.remove('hide');n++;return;}
       if(s.dataset.text.indexOf(t)<0){s.classList.add('hide');return;}
       s.classList.remove('hide');n++;
-      var re=new RegExp('('+esc(q.value.trim())+')','gi');
-      s.innerHTML=s.dataset.html.replace(/>([^<]+)</g,function(m,txt){return '>'+txt.replace(re,'<mark>$1</mark>')+'<';});
+      s.innerHTML=s.dataset.html;
+      var re=new RegExp(esc(q.value.trim()),'gi'),w=document.createTreeWalker(s,NodeFilter.SHOW_TEXT),nodes=[],nd;
+      while(nd=w.nextNode())nodes.push(nd);
+      nodes.forEach(function(tn){
+        var txt=tn.nodeValue;if(!re.test(txt))return;re.lastIndex=0;
+        var frag=document.createDocumentFragment(),last=0,m;
+        while(m=re.exec(txt)){frag.appendChild(document.createTextNode(txt.slice(last,m.index)));var mk=document.createElement('mark');mk.textContent=m[0];frag.appendChild(mk);last=m.index+m[0].length;if(!m[0])re.lastIndex++;}
+        frag.appendChild(document.createTextNode(txt.slice(last)));tn.parentNode.replaceChild(frag,tn);
+      });
     });
     cnt.textContent=t?n+' / '+secs.length+' 節':'';
     none.style.display=n?'none':'block';
