@@ -70,12 +70,23 @@ if has('CLAUDE.md'):
         fails.append('CLAUDE.md: 絶対指示の台帳を取り込む行（@.claude/STANDING_ORDERS.md だけの行）があること')
     if '```' in read('CLAUDE.md'):
         fails.append('CLAUDE.md: コードの囲み（```）を使わないこと（囲みの中の取り込み行は読み込まれない）')
-for i in range(1, 8):
+for i in range(1, 9):
     must('.claude/STANDING_ORDERS.md', '\n## O-%02d ' % i, '絶対指示 O-%02d が残っていること' % i)
 for i in range(1, 4):
     must('.claude/FAILURE_LOG.md', '\n## F-%02d ' % i, '失敗 F-%02d の記録が残っていること' % i)
 for needle in ('実装者ではない', 'この状況で／こうすると／こうなるからダメ', '判定: `OK` か `NG`', 'tools: Read, Grep, Glob, Bash'):
     must('.claude/agents/critical-reviewer.md', needle, 'レビュー担当の定義が残っていること')
+
+# --- push の宛先: origin があるなら、その push 用 URL がすべて鍵山のリポジトリであること（台帳 O-08） ---
+# 見るのはこの clone の origin だけ。ほかの remote、git 以外の道具による push、ホスト名までは見ない。
+try:
+    r = subprocess.run(['git', '-C', str(ROOT), 'remote', 'get-url', '--push', '--all', 'origin'], capture_output=True, timeout=30)
+    urls = r.stdout.decode('utf-8', 'replace').split() if r.returncode == 0 else []
+except (OSError, subprocess.TimeoutExpired):
+    urls = []
+for url in urls:
+    if not re.search(r'[:/]kagi920/kaginight(\.git)?/?$', url):
+        fails.append('git remote origin: push の宛先が kagi920/kaginight ではない（%s）。push・マージをしないこと' % url[:80])
 
 # --- 設定: フックが番人に正しく配線され、切られていないこと ---
 GUARD = 'tools/claude_guard.py'
