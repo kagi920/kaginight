@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Claude 品質仕様書 v1</title>
+<style>
+:root{--bg:#f6f4ee;--fg:#1c2230;--mut:#5d6677;--rule:#d8d3c4;--card:#fff;--acc:#8a6a1c;--ok:#1f6b45;--warn:#8a5a00;--ng:#9b2c2c;--hit:#ffe58a}
+@media (prefers-color-scheme:dark){:root{--bg:#050914;--fg:#dbe3f2;--mut:#93a0b8;--rule:#232c40;--card:#0c1322;--acc:#e8d6a8;--ok:#6fd0a0;--warn:#e8c06a;--ng:#f09a9a;--hit:#6b5410}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.85 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+header{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--rule);padding:12px 16px}
+header div{max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0;flex:1 1 220px}
+#q{flex:2 1 240px;min-width:0;padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}
+#n{color:var(--mut);font-size:.85rem;min-width:5em;text-align:right}
+main{max-width:900px;margin:0 auto;padding:8px 16px 80px}
+section{border-bottom:1px solid var(--rule);padding:18px 0}
+h2{font-size:1.05rem;margin:0 0 8px;color:var(--acc)}
+h3{font-size:.95rem;margin:16px 0 4px}
+p,ul,ol{margin:6px 0}ul,ol{padding-left:1.3em}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:560px}
+th,td{border:1px solid var(--rule);padding:7px 9px;vertical-align:top;text-align:left}
+th{background:var(--card)}
+code{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.88em;word-break:break-all}
+a{color:var(--acc);word-break:break-all}
+.ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}.ng{color:var(--ng);font-weight:700}
+.meta{color:var(--mut);font-size:.85rem}
+blockquote{margin:6px 0;padding:4px 12px;border-left:3px solid var(--rule);color:var(--mut);font-size:.9rem}
+mark{background:var(--hit);color:inherit;border-radius:2px}
+[hidden]{display:none}
+</style>
+</head>
+<body>
+<header><div>
+<h1>Claude 品質仕様書 v1</h1>
+<input id="q" type="search" placeholder="検索（打つたびに絞り込み）" aria-label="この文書を検索" autocomplete="off">
+<span id="n" aria-live="polite"></span>
+</div></header>
+<main>
+
+<section>
+<h2>0. この文書について</h2>
+<p class="meta">作成 2026-11-10 ／ 対象 kaginight リポジトリで動く Claude Code（Fable 5.2 ほか） ／ 版 v1</p>
+<p>鍵山喬一の報告「直すところと直さないところがある」「ここを直してと言うと他を壊す」「やるなと言ったことをやる」「以前の指示を覚えていない」に対して、何が分かっていて、何をリポジトリに入れたかを残す。</p>
+<p>区分は 3 つ。<span class="ok">確認済</span>＝出典のページを開いて読んだ。<span class="warn">言い回しが違う</span>＝出典はあるが、広まっている言い方と中身が違う。<span class="ng">未確認</span>＝この環境から出典に届かず、確かめられなかった。未確認のものは根拠に使っていない。</p>
+</section>
+
+<section>
+<h2>1. 結論</h2>
+<ol>
+<li><b>指示は会話に置くと消える。</b>圧縮や別セッションで消えるのは、会話の中だけで伝えた指示。リポジトリ直下の <code>CLAUDE.md</code> は毎回読み込まれ、圧縮後も読み直される（確認済）。だから絶対指示は台帳としてファイルに置いた。</li>
+<li><b>文章の決まりは「守るかもしれない」まで。</b>公式の説明でも <code>CLAUDE.md</code> は強制ではなく文脈。例外のない決まりはフック（機械の関所）に入れるのが公式の推奨（確認済）。だから禁則・回帰検査・終了前の監査をフックにした。</li>
+<li><b>Claude Code は Fable 5.2 を medium で動かす。</b>API の既定は high。公式は、長い作業の途中で終わる現象が low と medium で起きやすいと書き、難しいコーディングと長い作業に high を勧めている（確認済）。だからこのリポジトリの設定を high にした。</li>
+<li><b>要約を信じず差分を読む。</b>公式の実験（「このコードベースはあなたのもの」という所有の一文を入れた条件）で、ついでのリファクタリングを禁じる一文があっても余計な変更が残り、終わりの要約は小さな変更を書き落とした。公式の勧めは「要約だけでなく差分を見る」（確認済）。このリポジトリの指示には所有の一文を入れていない。そのうえで、終了前に差分と要件を突き合わせる段と、実装者以外のレビューを入れた。</li>
+<li><b>「Fable 5.2 は物忘れする・雑」という公式の発表はない。</b>あるのは未確認の利用者報告だけ。公式の資料はむしろ「決まりを書かれた通りに守る」と書いている。原因を断定せず、仕組みの側で塞いだ。</li>
+</ol>
+</section>
+
+<section>
+<h2>2. 症状と、入れた対策</h2>
+<div class="tw"><table>
+<tr><th>症状（鍵山の報告）</th><th>仕組みとして言えること</th><th>入れた対策</th></tr>
+<tr><td>以前の指示を覚えていない</td><td>会話だけの指示は圧縮・別セッションで消える。<code>CLAUDE.md</code> は残る</td><td><code>CLAUDE.md</code> ＋ 絶対指示の台帳 <code>.claude/STANDING_ORDERS.md</code>（取り込み）。訂正を受けたら同じターンで台帳に追記</td></tr>
+<tr><td>直すところと直さないところがある</td><td>medium では途中で終わりやすい。終わりの要約は当てにならない</td><td>effort を high に。終了前フックが「要件ごとに 済／未 と証拠」を求める</td></tr>
+<tr><td>ここを直すと他が壊れる</td><td>文章の決まりは強制ではない。公式の実験でも、条件によっては範囲を限る一文があっても余計な変更が残った（7 章）</td><td>回帰検査 <code>tools/check_invariants.py</code>（落ちていたら終了を差し戻す。同じ落ち方につき 3 回まで）。差分の突き合わせ。実装者以外のレビュー</td></tr>
+<tr><td>やるなと言ったことをやる</td><td>文章の決まりは強制ではない</td><td>機械で止められる禁則はフックで止める（操作前に遮断）。そのほかは台帳に理由つきで残す</td></tr>
+<tr><td>急に質が落ちる</td><td>判定に触れると別のモデル（Opus 5／Opus 4.8）へ自動で切り替わり、そのまま続く</td><td><code>switchModelsOnFlag: false</code>（対話できるときは切り替える前にたずねる）</td></tr>
+<tr><td>同じ失敗の繰り返し</td><td>失敗の記録がどこにも残らない</td><td>失敗台帳 <code>.claude/FAILURE_LOG.md</code>。直近 8 件を開始時に読み込ませる。依頼のたびに「訂正なら同じターンで追記」の決まりを添える</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>3. 作業の型（最重要）</h2>
+<p><b>実装 → 実装者デバッグ → 他者コードレビュー → 本番反映</b>。どんな内容でもこの順を通す。</p>
+<ol>
+<li>実装: 依頼を番号つきの要件に分ける。触るのは要件に必要な箇所だけ。</li>
+<li>実装者デバッグ: 自分で動かす。回帰検査と基盤スキルの検査を走らせる。</li>
+<li>他者コードレビュー: <code>critical-reviewer</code> に依頼文と差分だけを渡す。指摘は「この状況で、こうすると、こうなるからダメ」。NG は直して再レビュー。</li>
+<li>本番反映: OK のあと。レビュー後に変更を足したら、足した分をもう一度レビューする。push・公開・貼り付けは、その操作ごとに鍵山の明示の一言があってから。</li>
+</ol>
+<p>この仕組み自体もこの型で作った。レビューの各回の判定と、指摘ごとに直した内容は 9 章に残した。</p>
+</section>
+
+<section>
+<h2>4. 入れたファイル</h2>
+<div class="tw"><table>
+<tr><th>ファイル</th><th>役割</th></tr>
+<tr><td><code>CLAUDE.md</code></td><td>毎セッション読み込まれる常設指示。作業の型、直すときの決まり、覚えさせ方。末尾で台帳を取り込む</td></tr>
+<tr><td><code>.claude/STANDING_ORDERS.md</code></td><td>鍵山の絶対指示の台帳（O-01〜）。追記だけ。理由と確かめ方つき</td></tr>
+<tr><td><code>.claude/FAILURE_LOG.md</code></td><td>失敗台帳（F-01〜）。起きたこと・原因・再発防止</td></tr>
+<tr><td><code>.claude/settings.json</code></td><td>effort を high、モデル自動切替の停止、フック 4 つの配線</td></tr>
+<tr><td><code>tools/claude_guard.py</code></td><td>フックの中身。開始時に失敗台帳を読み込み／依頼ごとに型と「訂正なら追記」の決まりを添える／禁則の対象の名前を含む操作を遮断／終了前に回帰検査と自己監査</td></tr>
+<tr><td><code>tools/check_invariants.py</code></td><td>回帰検査。転送ページ、基盤スキルの禁則、台帳の各項目、フックの配線と設定値、番人の自己試験を機械で確かめる</td></tr>
+<tr><td><code>.claude/agents/critical-reviewer.md</code></td><td>実装者とは別の目でレビューする担当の定義</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>5. 鍵山さんがやること</h2>
+<ul>
+<li><b>直らなかったら、そのまま言う。</b>言い方は自由。訂正だと分かれば、失敗台帳に 1 件追記する決まりになっている。追記されたかは、報告か <code>.claude/FAILURE_LOG.md</code> で確かめられる。</li>
+<li><b>「今後ずっと」の指示は「台帳に入れて」と言う。</b><code>.claude/STANDING_ORDERS.md</code> に 1 件足される。機械で確かめられるものは回帰検査にも入る。</li>
+<li><b>報告は「要件ごとの 済／未」を見る。</b>未や未確認が正直に書かれているかが判断の材料になる。</li>
+<li>手元のアプリが古いと別の問題が出るという利用者報告がある（7 章）。<code>claude --version</code> と <code>claude update</code> で版を確かめる。</li>
+</ul>
+</section>
+
+<section>
+<h2>6. 効く範囲と限界</h2>
+<ul>
+<li>この仕組みは kaginight リポジトリで動くセッションに効く。ほかのリポジトリ、claude.ai の普通のチャットには効かない。そちらは同じ内容を各リポジトリの <code>CLAUDE.md</code> か、アプリの個人設定に入れる必要がある。</li>
+<li>フックは、リポジトリが 1 つのクラウドセッションと手元の Claude Code で動く。プロジェクト内のクラウドスレッドと、複数リポジトリのセッションでは、リポジトリのフックは読まれない（確認済）。その場合も <code>CLAUDE.md</code> の決まりは文章として残る。</li>
+<li>フックが止められるのは機械で判定できるものだけ。「クラゲを変えない」のような中身の禁則は、検査に足せる形（残すべき文字列など）にしたものだけ機械で守れる。</li>
+<li>回帰検査は、検査に書いた事実しか守らない。公開中のサイト本体はこのリポジトリの外（<code>index.html</code> は転送だけ）なので、サイト本体の回帰は対象外。</li>
+<li>ほかのチャットを常時見張る機能はない。同じ台帳をすべてのセッションが読む、という形で揃えている。</li>
+<li>訂正かどうかは機械では判定していない（言葉の一致で判定する方式は、試験で見逃しと誤反応が多く、やめた）。訂正のターンに失敗台帳へ本当に追記されたかも、機械では確かめていない。</li>
+<li>レビューの OK と push は、機械ではつないでいない。命令の文字列を見て push を止める関所を一度作ったが、commit 文に push という語があるだけで commit を止め、別の経路の push は通す、という欠陥がレビューで見つかり、外した。レビューを通すことと、push の前に鍵山の一言を待つことは、文章の決まり（台帳 O-01・O-07）で守る。レビューを受けたかは終了前の監査がたずね、外に出る操作を待つことは依頼ごとの型が毎回添える。</li>
+<li>禁則の名前の関所は、うっかりを止めるもの。名前を書かずに親フォルダごと一覧する、といった回り道までは止められない。逆に、名前を含むシェルの命令・検索・エージェントへの依頼は、このリポジトリ内の文書に対するものでも止まる（編集の道具は通る）。</li>
+<li>回帰検査の差し戻しは、同じ落ち方につき 3 回まで。差し戻しの文面で「直せないなら落ちている検査をそのまま報告する」よう求める。3 回のあとは、検査が落ちたままでも終了できる。次に監査が出るときは、落ちている旨が監査の項目に加わる。セッションの前から落ちていた場合は、新しいセッションごとに 3 回差し戻される。</li>
+<li>回帰検査が番人について実際に動かして確かめるのは、名前の関所と、依頼ごとの型の出力だけ。終了前の検査と監査は、該当する記述が残っているかを見るだけなので、中身を骨抜きにする変更までは検出できない。台帳も、項目の見出しが残っているかを見るだけで、本文の書き換えは検出できない。フックを非同期にする設定や、レビュー担当の道具の行への書き足しも検出できない。</li>
+<li>終了前の監査は、開始の記録がないセッションでは最初の終了時点を基準にする（それより前の commit は対象外）。差し戻し（回帰検査によるものを含む）のあとに続けて終了するときは監査を出さないので、そのターンの変更の監査は次のターンの終了時に出る。そこでセッションが終われば出ない。git が使えない場所では監査は出ない。</li>
+<li>モデル自動切替の停止は、対話のない実行（一括実行など）では、たずねる代わりにエラーで止まる。</li>
+<li>effort を high にすると、出力が増えて消費も増える。戻すには <code>.claude/settings.json</code> の <code>effortLevel</code> を消し、あわせて回帰検査 <code>tools/check_invariants.py</code> の effortLevel の行も消す（検査が high か xhigh であることを確かめているため）。</li>
+</ul>
+</section>
+
+<section>
+<h2>7. 裏取りの結果</h2>
+<h3>確認済（出典のページを開いて読んだ）</h3>
+<ul>
+<li>Claude Code の既定の effort は Fable 5.2 で medium。API の既定は high。</li>
+<li>長い作業で仕事が残ったままターンを終える現象があり、low と medium で起きやすい。公式の勧めは「high から始める」。</li>
+<li><code>effortLevel</code>（low／medium／high／xhigh。max は不可）と <code>switchModelsOnFlag</code> は、リポジトリの <code>.claude/settings.json</code> に書ける。</li>
+<li>判定に触れた依頼は、生物学なら Opus 5、サイバーセキュリティなら Opus 4.8 でやり直され、その後もそのモデルで続く。</li>
+<li><code>CLAUDE.md</code> は開始時に読み込まれ、圧縮後に読み直される。目安は 200 行以内。長いと守られにくくなる。矛盾する指示があると、どちらかが勝手に選ばれることがある。</li>
+<li>毎回必ず起きてほしいことはフックに入れる、が公式の推奨。</li>
+<li>公式の実験: 所有の一文（このコードベースはあなたのもの）を入れた条件では、ついでのリファクタリングを禁じる一文が同じ指示の中にあっても、約 3 分の 1 の試行で重複コードがまとめられた。所有の一文がない条件では 1 割未満。所有の一文の条件で、終わりの要約は大きな変更は書くが、小さな変更をよく落とした。「要約だけでなく差分を見る」。</li>
+<li>公式の実験: 最後まで続けさせる文面を入れると、medium で、仕事を残して終わるセッションが約半分になった。出力は約 3 割増えた。</li>
+</ul>
+<h3>言い回しが違う（貼られた資料の主張と、原文の差）</h3>
+<ul>
+<li><span class="warn">「完遂条件を明示すると未完了が半減」</span> → 半減は本当だが、効いたのは完遂条件ではなく「最後まで続ける」文面。「残りを並べて止まる」終わり方は減らなかった。</li>
+<li><span class="warn">「自由に直していいと書くと既存機能を勝手に変える」</span> → その文言は原文にない。原文は「このコードベースはあなたのもの」という所有の一文の話で、入れると 6〜10 回に 1 回、既存機能の振る舞いが変わった。なお「もっと自由に動け」という一般の指示は何も変えなかった、という記述は別の実験（慎重すぎる振る舞いの話）のもの。</li>
+<li><span class="warn">「古い指示への過剰な従属」</span> → 原文は、積み重なった慎重な指示を忠実に守りすぎて、要らない確認を求める、という話。指示を忘れる・無視するという記述ではない。</li>
+</ul>
+<h3>未確認（この環境から出典に届かなかった。根拠に使っていない）</h3>
+<ul>
+<li><span class="ng">System Card の数値すべて</span>: FrontierCode 2.0 の effort 別（34.2／37.6／45.3／49.1／45.7）、ProgramBench（85.6／87.6／91.2）、「68% が文脈を使い切った」「残量を示すと 91.6%」「11.2%」、切替 53% など。PDF の置き場に届かなかった。</li>
+<li><span class="ng">arXiv の 4 本</span>（2607.10849、2608.07776、2610.31946、2610.14766）: arxiv.org に届かず、題・著者・中身のどれも確かめていない。ID が間違いだという意味ではない。</li>
+<li><span class="ng">「Fable 5.2 は物忘れが多い・雑になった」を Anthropic が認めた</span>、という事実は見つからなかった。</li>
+<li>直すと別の場所が壊れる現象を数字で測った資料は、開いて確かめられたものがなかった。いちばん近いのは上の公式の実験。</li>
+</ul>
+<h3>利用者の報告（GitHub anthropics/claude-code。未確認、Anthropic の返答なし。2026-11-10 時点で open）</h3>
+<ul>
+<li><a href="https://github.com/anthropics/claude-code/issues/108754">#108754</a> Fable 5.2 が常設の決まりを 5.1 より守るわけではない、という報告。</li>
+<li><a href="https://github.com/anthropics/claude-code/issues/108601">#108601</a> 長いセッションで、書かれた常設指示に反する行動が圧縮をまたいで繰り返される、という報告。題名にあるモデルは Opus 5.5 と Fable 5.1 で、Fable 5.2 でも再発したという追記がある。報告者は、フックが同じ振る舞いを何度も止めることになった、と書いている（止めても繰り返された）。操作前に止めるフックについての第三者のコメントは別の環境での経験で、この種の決まりでは試していないとのこと。文面は取得ツールの要約なので、元のページで確かめること。</li>
+<li><a href="https://github.com/anthropics/claude-code/issues/108640">#108640</a> デスクトップ内蔵の 2.1.317 が Fable 5.2 を 200K の文脈で動かす、という報告（単体の 2.1.321 では 1M）。</li>
+</ul>
+</section>
+
+<section>
+<h2>8. 出典</h2>
+<ul>
+<li>Prompting Claude Fable 5.2 — <a href="https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/prompting-claude-fable-5-2">platform.claude.com/…/prompting-claude-fable-5-2</a></li>
+<li>Effort — <a href="https://platform.claude.com/docs/en/build-with-claude/effort">platform.claude.com/…/effort</a></li>
+<li>Claude Code モデル設定 — <a href="https://code.claude.com/docs/en/model-config">code.claude.com/docs/en/model-config</a></li>
+<li>Claude Code 設定リファレンス — <a href="https://code.claude.com/docs/en/settings-reference">code.claude.com/docs/en/settings-reference</a></li>
+<li>Claude Code フック — <a href="https://code.claude.com/docs/en/hooks">code.claude.com/docs/en/hooks</a></li>
+<li>Claude Code メモリ（CLAUDE.md） — <a href="https://code.claude.com/docs/en/memory">code.claude.com/docs/en/memory</a></li>
+<li>Claude Code ベストプラクティス — <a href="https://code.claude.com/docs/en/best-practices">code.claude.com/docs/en/best-practices</a></li>
+<li>クラウドセッションでの設定 — <a href="https://code.claude.com/docs/en/settings">code.claude.com/docs/en/settings</a></li>
+</ul>
+<p class="meta">確認日はすべて 2026-11-10。ページの文面は取得ツールが要約して返すことがあり、引用は一字一句の写しではない。</p>
+</section>
+
+<section>
+<h2>9. この仕組み自体のレビュー記録</h2>
+<p>1 回目の判定は NG。実装者とは別のエージェントが、依頼文と差分だけを受け取って審査した。指摘と直した内容:</p>
+<div class="tw"><table>
+<tr><th>指摘（この状況で → こうなる）</th><th>直した内容</th></tr>
+<tr><td>番人のファイルがないブランチへ切り替えると、フックが終了コード 2 を返し、すべての操作・依頼・終了が塞がる。ファイルを戻す操作も塞がるので復旧できない</td><td>フックの命令を「ファイルがなければ何もせず通す」形にした</td></tr>
+<tr><td>禁則の対象の名前を、大文字小文字を変える・検索の型に入れる・ほかの道具（GitHub 照会、エージェントへの依頼）で渡すと素通りする</td><td>大文字小文字を区別しない。すべての道具の、すべての文字列の引数を見る。編集系の道具だけはパスだけを見る</td></tr>
+<tr><td>訂正の検知が「直っていない」「やり直し」「消すな」などを拾わず、「ミステリアスに」「違うデザイン案」「壊れにくい構成」に反応する</td><td>1 回目のあと言い回しを増やしたが、2 回目のレビューで不十分と判定（下）。言葉の一致で判定する方式をやめた</td></tr>
+<tr><td>別のフックが一度差し戻したあとは、回帰検査が落ちていても終了できてしまう</td><td>回帰検査は毎回必ず走らせる。差し戻しは同じ落ち方につき 3 回まで</td></tr>
+<tr><td>開始前からあった変更や他人の commit を「このセッションの変更」として監査させる。監査のあと同じ中身を commit すると、もう一度監査が出る</td><td>開始時点の状態を記録し、監査対象から外す。一覧に「開始前から変更あり」と印を付ける。指紋をファイルの中身から作るので、commit では変わらない</td></tr>
+<tr><td>開始の記録がないセッションでは、追跡済みファイルの編集が監査されない</td><td>記録がなければ、最初の終了時点の commit を基準として記録する（それより前の commit は対象外。6 章）</td></tr>
+<tr><td>UTF-8 でないバイトや日本語のファイル名で、監査が黙って抜ける／検査が異常終了する</td><td>差分の文字列を読まず、ファイルの中身を直接ハッシュする。ファイル名はそのままの形で受け取る。読み取りは壊れた文字を置き換えて続ける</td></tr>
+<tr><td>想定外の入力（JSON でない、型が違う、git がない）で異常終了する</td><td>入力の型を確かめる。想定外の例外は「止めない」終了にする</td></tr>
+<tr><td>失敗台帳の F-01・F-02 の原因が、記録にない推定なのに事実として書かれている</td><td>「記録なし」に直した</td></tr>
+</table></div>
+<p>2 回目の判定も NG。1 回目とは別のエージェントが、前の審査を知らない状態で審査した。指摘と直した内容:</p>
+<div class="tw"><table>
+<tr><th>指摘（この状況で → こうなる）</th><th>直した内容</th></tr>
+<tr><td>鍵山の普段の言い方で訂正を 38 例、普通の依頼を 36 例つくって試すと、訂正 32 例を見逃し、普通の依頼 21 例に誤反応した。仕様書の「見逃し・誤反応とも 0」は、試験の例がリポジトリになく、実測とも合わない</td><td>言葉の一致で判定する方式をやめた。依頼のたびに「訂正なら同じターンで失敗台帳に追記。訂正でなければ書かない」を添え、判断は読む側に任せる。「0」の記述は取り消した（実装者が自分で選んだ例での結果で、根拠にならなかった）</td></tr>
+<tr><td>仕様書が、レビューが終わる前に「この型を通した」と書き、9 章に書きかけの行が残っていた</td><td>判定をすべて書いた。書きかけの行をなくした</td></tr>
+<tr><td>出典の実験結果（約 3 分の 1 で余計な変更）は「所有の一文」を入れた条件のものなのに、範囲を限る文章一般の話として書いていた</td><td>条件を明記し、所有の一文がない条件では 1 割未満であることを足した（1・2・7 章）</td></tr>
+<tr><td>回帰検査が 3 回差し戻したあと、そのセッションでは検査も監査も働かなくなる</td><td>回数は落ち方ごとに数え、通れば数え直す。上限のあとも監査は働く（細かい振る舞いは 6 章）</td></tr>
+<tr><td>台帳の項目を消す、番人の中身を空にする、フックの命令を差し替える、フックを一括で切る、effort の設定を消す、といった変更をしても回帰検査が OK を出す</td><td>台帳は項目番号ごとに確かめる。フックは命令の文字列まで一致を確かめる。設定値を確かめる。番人を実際に動かして、止めるべき操作を止め、通すべき操作を通すことを確かめる</td></tr>
+<tr><td>レビューの OK と push が機械的につながっていない</td><td>関所を足したが、3 回目のレビューで欠陥が見つかり外した（下）</td></tr>
+<tr><td>git が使えない場所では、差し戻しの回数が数えられず毎回止まる</td><td>git が使えないときは、状態を一時フォルダに置いて回数を数える</td></tr>
+<tr><td>設定の「毎回たずねる」は、対話のない実行ではエラーで止まる点を書いていない</td><td>書き足した（6 章）</td></tr>
+<tr><td>利用者報告 #108601 の題名のモデルと、報告者の「終了時のフックでは止まらなかった」が抜けている</td><td>書き足した（7 章）</td></tr>
+</table></div>
+<p>3 回目の判定も NG（重い指摘 0、中くらい 2、文書の食い違い 4）。過去 2 回の指摘は、ほぼ直っていることが確かめられた。新しい指摘と直した内容:</p>
+<div class="tw"><table>
+<tr><th>指摘（この状況で → こうなる）</th><th>直した内容</th></tr>
+<tr><td>2 回目のあとに足した push の関所が、commit 文・ファイル名・ブランチ名に push という語があるだけで commit などを止める。案内は「レビュー済みと記録せよ」だが、未 commit では記録できず、進めなくなる</td><td rowspan="2">関所を外した。命令の文字列の一致で判定する方式は、訂正の検知と同じく当てにならなかった。限界として 6 章に書いた</td></tr>
+<tr><td>同じ関所が、別の書き方の push、ほかの道具（GitHub への書き込みなど）による push は通す。文書は「止める」と言い切っている</td></tr>
+<tr><td>9 章の 1 つ目の表が「git の外では状態ファイルを作らない」と書いているが、今のコードは一時フォルダに作る</td><td>記述を直した</td></tr>
+<tr><td>「上限のあとは監査に進み、報告に書かせる」は、次のターンで変更があるときにしか成り立たない</td><td>実際の振る舞いを 6 章に書いた</td></tr>
+<tr><td>「effort を戻すには設定を消す」とあるが、消すと回帰検査が落ちる</td><td>検査の行も消す必要があることを書いた</td></tr>
+<tr><td>利用者報告 #108601 の要約が元の文面と違う（フックは働いたが、同じ振る舞いが繰り返された）</td><td>書き直した</td></tr>
+<tr><td>回帰検査は、番人の終了前の処理を骨抜きにする変更や、台帳の本文の書き換えを検出できない</td><td>限界として 6 章に書いた</td></tr>
+</table></div>
+<p>4 回目の判定:</p>
+<p>4 回目の判定は <b>OK</b>。重い指摘も中くらいの指摘もなく、文書と今のコードの食い違いもなし。確かめられたこと: 関所の撤去に残りがないこと、過去 3 回の指摘が元に戻っていないこと、番人が想定外の入力でセッションを塞がないこと、回帰検査が設定・台帳・配線の改変 30 種あまりで落ちること、この文書の検索がスマホ幅と PC 幅で動くこと。</p>
+<p>軽い指摘は 6 件。文言の不正確 3 件（監査が次のターンに回る場合の説明、コード内の古い注釈、6 章の言い回し）は直し、検出できない改変の例を 6 章に足した。この直しは文言だけで、5 回目として別のエージェントが差分を確かめた。設計どおりとして残したのは、番人が内部エラーのとき止めずに通すこと、状態ファイルを掃除しないこと。</p>
+<p class="meta">レビューで確かめられていないこと: 実際の Claude Code の中での動き（台帳の取り込み、圧縮後の読み直し、effort と自動切替の設定が効くこと）は、公式ドキュメントの記述に基づく。フックの文面を受けたモデルが実際にどう動くかは、使いながら失敗台帳で確かめていく。</p>
+</section>
+
+<section>
+<h2>10. 今後</h2>
+<ul>
+<li>未確認の出典（System Card、arXiv 4 本）は、届く環境で開き直して 7 章を更新する。</li>
+<li>Fable 5.2 を対象にした第三者の研究は、公開直後でまだ少ない。出たら 7 章に足し、効く対策は台帳か検査に移す。</li>
+<li>失敗が起きるたびに、失敗台帳に 1 件、機械で守れるものは回帰検査に 1 行。</li>
+</ul>
+</section>
+
+</main>
+<script>
+(function(){
+  var q=document.getElementById('q'),n=document.getElementById('n'),secs=[].slice.call(document.querySelectorAll('main section'));
+  var orig=secs.map(function(s){return s.innerHTML;});
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  function mark(node,re){
+    if(node.nodeType===3){
+      var m=re.exec(node.data); re.lastIndex=0;
+      if(!m)return;
+      var rest=node.splitText(m.index); rest.data=rest.data.slice(m[0].length);
+      var k=document.createElement('mark'); k.textContent=m[0]; node.parentNode.insertBefore(k,rest); mark(rest,re);
+    }else if(node.nodeType===1&&node.tagName!=='MARK'){[].slice.call(node.childNodes).forEach(function(c){mark(c,re);});}
+  }
+  function run(){
+    var words=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),hit=0;
+    secs.forEach(function(s,i){
+      s.innerHTML=orig[i];
+      var t=s.textContent.toLowerCase(),ok=words.every(function(w){return t.indexOf(w)>=0;});
+      s.hidden=!ok; if(!ok)return; hit++;
+      words.forEach(function(w){mark(s,new RegExp(esc(w),'i'));});
+    });
+    n.textContent=words.length?hit+' / '+secs.length+' 章':'';
+  }
+  q.addEventListener('input',run);
+})();
+</script>
+</body>
+</html>
