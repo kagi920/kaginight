@@ -1,0 +1,10 @@
+421	N	other_platform	信長の野望 全国版	光栄		FC	P	P	E		title says ファミコン; armoured gauntlet with rope, then package shot of 信長の野望 全国版 and 三國志
+422	N	other_platform	ファミコンウォーズ	任天堂		FC	-	-	-		
+423	Y		ミッキーのマジカルアドベンチャー	カプコン	1992	SFC	E	A	A		title logo on dark ground; cel animation of Mickey; f3 CG stepped shape
+424	N	other_platform	信長の野望・戦国群雄伝	光栄	1990	FC	-	-	-		
+425	U	unclear	信長の野望・戦国群雄伝	光栄		unknown	L	L	E	publogo	platform not stated; same imagery as #424 (titled FC); armoured actor in water; KOEI logo card
+426	Y		餓狼伝説 宿命の闘い	タカラ	1992	SFC	E	L	E	sfclogo;publogo	f1 title logo with flames on dark ground; f2 dark close-up of man in cap; f3 SUPER FAMICOM wordmark + title + TAKARA
+427	Y		餓狼伝説 宿命の闘い	タカラ	1992	SFC	E	L	A?	sfclogo	dup_of:#426; pillarbox; f3 dark bluish figure, hard to read
+428	Y		餓狼伝説スペシャル	タカラ	1994	SFC	A	A	X		cel animation with caption 映画「餓狼伝説」より; f3 nearly black with thin arc; small windowed picture
+429	N	other_platform	餓狼伝説	SNK		NG	-	-	-		
+430	Y		餓狼伝説スペシャル	タカラ	1994	SFC	X	A	E	mega:32メガ;sfclogo;date:7月29日発売	dup_of:#428 likely (same anime frame); f1 white glitchy frame
