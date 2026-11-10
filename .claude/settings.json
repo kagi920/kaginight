@@ -1,0 +1,46 @@
+{
+  "effortLevel": "high",
+  "switchModelsOnFlag": false,
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/tools/claude_guard.py\"; [ -f \"$f\" ] || exit 0; python3 -B \"$f\" session-start"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/tools/claude_guard.py\"; [ -f \"$f\" ] || exit 0; python3 -B \"$f\" prompt"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/tools/claude_guard.py\"; [ -f \"$f\" ] || exit 0; python3 -B \"$f\" pre-tool"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "f=\"$CLAUDE_PROJECT_DIR/tools/claude_guard.py\"; [ -f \"$f\" ] || exit 0; python3 -B \"$f\" stop"
+          }
+        ]
+      }
+    ]
+  }
+}
