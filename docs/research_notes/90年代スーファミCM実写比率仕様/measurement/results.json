@@ -815,6 +815,1676 @@
    }
   }
  },
+ "by_publisher": {
+  "任天堂": {
+   "units": 26,
+   "uploads": 63,
+   "by_position": {
+    "f1": {
+     "L": 0.3013,
+     "P": 0.1859,
+     "G": 0.1346,
+     "A": 0.2276,
+     "E": 0.1506,
+     "X": 0.0,
+     "live_present": 0.6154,
+     "game_present": 0.1442,
+     "card_over_live": 0.0,
+     "super_present": 0.476
+    },
+    "f2": {
+     "L": 0.3173,
+     "P": 0.1571,
+     "G": 0.2596,
+     "A": 0.266,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.5096,
+     "game_present": 0.3397,
+     "card_over_live": 0.0,
+     "super_present": 0.2067
+    },
+    "f3": {
+     "L": 0.3494,
+     "P": 0.1955,
+     "G": 0.0192,
+     "A": 0.1474,
+     "E": 0.2885,
+     "X": 0.0,
+     "live_present": 0.6923,
+     "game_present": 0.0577,
+     "card_over_live": 0.0897,
+     "super_present": 0.5673
+    }
+   },
+   "live_share3": {
+    "mean": 0.5021,
+    "ci95": [
+     0.3686,
+     0.6314
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1378,
+    "ci95": [
+     0.0641,
+     0.2212
+    ]
+   },
+   "art_share3": {
+    "mean": 0.2137,
+    "ci95": [
+     0.1154,
+     0.3216
+    ]
+   },
+   "card_share3": {
+    "mean": 0.1464,
+    "ci95": [
+     0.0897,
+     0.2051
+    ]
+   },
+   "patterns": {
+    "live+game": 11,
+    "live_only": 12,
+    "art_only": 1,
+    "game(+art)": 2
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     4
+    ],
+    [
+     "P-P-P",
+     3
+    ],
+    [
+     "A-G-L",
+     2
+    ],
+    [
+     "L-L-E",
+     2
+    ],
+    [
+     "P-P-E",
+     1
+    ],
+    [
+     "P-A-L",
+     1
+    ],
+    [
+     "E-A-E",
+     1
+    ],
+    [
+     "A-A-L",
+     1
+    ],
+    [
+     "E-L-L",
+     1
+    ],
+    [
+     "A-L-L",
+     1
+    ],
+    [
+     "G-G-G",
+     1
+    ],
+    [
+     "E-G-P",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 5,
+    "0<v<=1/3": 6,
+    "1/3<v<=2/3": 8,
+    ">2/3": 7
+   },
+   "readable_text_units": {
+    "price": 4,
+    "date": 11,
+    "mega": 0,
+    "disclaimer": 0,
+    "sfclogo": 14,
+    "publogo": 11,
+    "status": 0,
+    "credit": 1,
+    "copy": 22
+   }
+  },
+  "バンダイ": {
+   "units": 25,
+   "uploads": 40,
+   "by_position": {
+    "f1": {
+     "L": 0.06,
+     "P": 0.1867,
+     "G": 0.0133,
+     "A": 0.7,
+     "E": 0.0,
+     "X": 0.04,
+     "live_present": 0.2467,
+     "game_present": 0.0133,
+     "card_over_live": 0.0,
+     "super_present": 0.4967
+    },
+    "f2": {
+     "L": 0.1,
+     "P": 0.1533,
+     "G": 0.2633,
+     "A": 0.4833,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.2533,
+     "game_present": 0.2833,
+     "card_over_live": 0.0,
+     "super_present": 0.25
+    },
+    "f3": {
+     "L": 0.03,
+     "P": 0.12,
+     "G": 0.12,
+     "A": 0.4133,
+     "E": 0.3167,
+     "X": 0.0,
+     "live_present": 0.2033,
+     "game_present": 0.14,
+     "card_over_live": 0.0533,
+     "super_present": 0.7267
+    }
+   },
+   "live_share3": {
+    "mean": 0.2167,
+    "ci95": [
+     0.0933,
+     0.35
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1322,
+    "ci95": [
+     0.0633,
+     0.2033
+    ]
+   },
+   "art_share3": {
+    "mean": 0.5322,
+    "ci95": [
+     0.3922,
+     0.6778
+    ]
+   },
+   "card_share3": {
+    "mean": 0.1056,
+    "ci95": [
+     0.0511,
+     0.1622
+    ]
+   },
+   "patterns": {
+    "live_only": 6,
+    "live+game": 4,
+    "art_only": 8,
+    "game(+art)": 7
+   },
+   "sequences_top": [
+    [
+     "A-A-A",
+     7
+    ],
+    [
+     "P-P-P",
+     3
+    ],
+    [
+     "P-P-E",
+     2
+    ],
+    [
+     "A-G-E",
+     2
+    ],
+    [
+     "A-G-G",
+     2
+    ],
+    [
+     "A-G-A",
+     2
+    ],
+    [
+     "A-A-L",
+     1
+    ],
+    [
+     "A-L-A",
+     1
+    ],
+    [
+     "P-A-E",
+     1
+    ],
+    [
+     "A-A-G",
+     1
+    ],
+    [
+     "L-L-E",
+     1
+    ],
+    [
+     "A-A-E",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 15,
+    "0<v<=1/3": 5,
+    "1/3<v<=2/3": 2,
+    ">2/3": 3
+   },
+   "readable_text_units": {
+    "price": 1,
+    "date": 10,
+    "mega": 0,
+    "disclaimer": 8,
+    "sfclogo": 14,
+    "publogo": 15,
+    "status": 2,
+    "credit": 2,
+    "copy": 11
+   }
+  },
+  "カプコン": {
+   "units": 21,
+   "uploads": 39,
+   "by_position": {
+    "f1": {
+     "L": 0.4286,
+     "P": 0.0,
+     "G": 0.0159,
+     "A": 0.4127,
+     "E": 0.1429,
+     "X": 0.0,
+     "live_present": 0.4286,
+     "game_present": 0.0635,
+     "card_over_live": 0.0,
+     "super_present": 0.6865
+    },
+    "f2": {
+     "L": 0.3016,
+     "P": 0.0159,
+     "G": 0.1905,
+     "A": 0.4921,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.3333,
+     "game_present": 0.2063,
+     "card_over_live": 0.0,
+     "super_present": 0.2341
+    },
+    "f3": {
+     "L": 0.1071,
+     "P": 0.0159,
+     "G": 0.0714,
+     "A": 0.2381,
+     "E": 0.5437,
+     "X": 0.0238,
+     "live_present": 0.1706,
+     "game_present": 0.1349,
+     "card_over_live": 0.0476,
+     "super_present": 0.631
+    }
+   },
+   "live_share3": {
+    "mean": 0.2897,
+    "ci95": [
+     0.1455,
+     0.4365
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0926,
+    "ci95": [
+     0.037,
+     0.1587
+    ]
+   },
+   "art_share3": {
+    "mean": 0.381,
+    "ci95": [
+     0.2407,
+     0.5238
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2288,
+    "ci95": [
+     0.1534,
+     0.3135
+    ]
+   },
+   "patterns": {
+    "live_only": 6,
+    "game(+art)": 4,
+    "art_only": 6,
+    "live+game": 5
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     3
+    ],
+    [
+     "A-A-E",
+     3
+    ],
+    [
+     "L-L-E",
+     2
+    ],
+    [
+     "A-A-A",
+     2
+    ],
+    [
+     "E-A-E",
+     2
+    ],
+    [
+     "A-G-G",
+     1
+    ],
+    [
+     "A-L-A",
+     1
+    ],
+    [
+     "A-G-A",
+     1
+    ],
+    [
+     "L-G-E",
+     1
+    ],
+    [
+     "L-P-E",
+     1
+    ],
+    [
+     "L-L-G",
+     1
+    ],
+    [
+     "L-G-G",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 10,
+    "0<v<=1/3": 4,
+    "1/3<v<=2/3": 4,
+    ">2/3": 3
+   },
+   "readable_text_units": {
+    "price": 4,
+    "date": 1,
+    "mega": 0,
+    "disclaimer": 1,
+    "sfclogo": 6,
+    "publogo": 14,
+    "status": 5,
+    "credit": 9,
+    "copy": 12
+   }
+  },
+  "ハドソン": {
+   "units": 19,
+   "uploads": 28,
+   "by_position": {
+    "f1": {
+     "L": 0.3421,
+     "P": 0.0,
+     "G": 0.0789,
+     "A": 0.5789,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.4211,
+     "game_present": 0.0789,
+     "card_over_live": 0.0,
+     "super_present": 0.7895
+    },
+    "f2": {
+     "L": 0.4737,
+     "P": 0.0175,
+     "G": 0.2632,
+     "A": 0.193,
+     "E": 0.0526,
+     "X": 0.0,
+     "live_present": 0.5439,
+     "game_present": 0.3333,
+     "card_over_live": 0.0,
+     "super_present": 0.6053
+    },
+    "f3": {
+     "L": 0.5526,
+     "P": 0.0702,
+     "G": 0.1316,
+     "A": 0.1228,
+     "E": 0.1228,
+     "X": 0.0,
+     "live_present": 0.6754,
+     "game_present": 0.1842,
+     "card_over_live": 0.0,
+     "super_present": 0.6842
+    }
+   },
+   "live_share3": {
+    "mean": 0.4854,
+    "ci95": [
+     0.3041,
+     0.6784
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1579,
+    "ci95": [
+     0.0526,
+     0.2807
+    ]
+   },
+   "art_share3": {
+    "mean": 0.2982,
+    "ci95": [
+     0.1754,
+     0.4211
+    ]
+   },
+   "card_share3": {
+    "mean": 0.0585,
+    "ci95": [
+     0.0058,
+     0.117
+    ]
+   },
+   "patterns": {
+    "live+game": 6,
+    "live_only": 9,
+    "game(+art)": 3,
+    "art_only": 1
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     6
+    ],
+    [
+     "A-L-L",
+     3
+    ],
+    [
+     "A-G-A",
+     2
+    ],
+    [
+     "A-A-P",
+     1
+    ],
+    [
+     "A-G-P",
+     1
+    ],
+    [
+     "A-A-L",
+     1
+    ],
+    [
+     "A-G-E",
+     1
+    ],
+    [
+     "G-G-G",
+     1
+    ],
+    [
+     "L-E-L",
+     1
+    ],
+    [
+     "A-A-G",
+     1
+    ],
+    [
+     "A-A-E",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 6,
+    "0<v<=1/3": 3,
+    "1/3<v<=2/3": 5,
+    ">2/3": 5
+   },
+   "readable_text_units": {
+    "price": 7,
+    "date": 6,
+    "mega": 0,
+    "disclaimer": 0,
+    "sfclogo": 0,
+    "publogo": 12,
+    "status": 0,
+    "credit": 3,
+    "copy": 13
+   }
+  },
+  "スクウェア": {
+   "units": 15,
+   "uploads": 34,
+   "by_position": {
+    "f1": {
+     "L": 0.6581,
+     "P": 0.1,
+     "G": 0.0333,
+     "A": 0.1333,
+     "E": 0.019,
+     "X": 0.0562,
+     "live_present": 0.7581,
+     "game_present": 0.0333,
+     "card_over_live": 0.0,
+     "super_present": 0.2824
+    },
+    "f2": {
+     "L": 0.7067,
+     "P": 0.0667,
+     "G": 0.06,
+     "A": 0.1333,
+     "E": 0.0333,
+     "X": 0.0,
+     "live_present": 0.8067,
+     "game_present": 0.1267,
+     "card_over_live": 0.0333,
+     "super_present": 0.48
+    },
+    "f3": {
+     "L": 0.3057,
+     "P": 0.0333,
+     "G": 0.0467,
+     "A": 0.0,
+     "E": 0.581,
+     "X": 0.0333,
+     "live_present": 0.5819,
+     "game_present": 0.0467,
+     "card_over_live": 0.2429,
+     "super_present": 0.8771
+    }
+   },
+   "live_share3": {
+    "mean": 0.6235,
+    "ci95": [
+     0.4667,
+     0.779
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0467,
+    "ci95": [
+     0.0,
+     0.1067
+    ]
+   },
+   "art_share3": {
+    "mean": 0.0889,
+    "ci95": [
+     0.0,
+     0.2222
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2111,
+    "ci95": [
+     0.1333,
+     0.2778
+    ]
+   },
+   "patterns": {
+    "live_only": 9,
+    "art_only": 2,
+    "live+game": 4
+   },
+   "sequences_top": [
+    [
+     "L-L-E",
+     6
+    ],
+    [
+     "L-L-L",
+     5
+    ],
+    [
+     "A-A-E",
+     2
+    ],
+    [
+     "P-P-P",
+     1
+    ],
+    [
+     "G-L-G",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 2,
+    "0<v<=1/3": 1,
+    "1/3<v<=2/3": 6,
+    ">2/3": 6
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 7,
+    "mega": 1,
+    "disclaimer": 4,
+    "sfclogo": 7,
+    "publogo": 5,
+    "status": 3,
+    "credit": 1,
+    "copy": 7
+   }
+  },
+  "エニックス": {
+   "units": 14,
+   "uploads": 25,
+   "by_position": {
+    "f1": {
+     "L": 0.5929,
+     "P": 0.0,
+     "G": 0.0857,
+     "A": 0.1429,
+     "E": 0.1429,
+     "X": 0.0357,
+     "live_present": 0.5929,
+     "game_present": 0.1571,
+     "card_over_live": 0.0,
+     "super_present": 0.45
+    },
+    "f2": {
+     "L": 0.2679,
+     "P": 0.0,
+     "G": 0.2321,
+     "A": 0.25,
+     "E": 0.25,
+     "X": 0.0,
+     "live_present": 0.2679,
+     "game_present": 0.3036,
+     "card_over_live": 0.0,
+     "super_present": 0.3929
+    },
+    "f3": {
+     "L": 0.2429,
+     "P": 0.0,
+     "G": 0.0714,
+     "A": 0.1429,
+     "E": 0.5429,
+     "X": 0.0,
+     "live_present": 0.3321,
+     "game_present": 0.1429,
+     "card_over_live": 0.0893,
+     "super_present": 0.5429
+    }
+   },
+   "live_share3": {
+    "mean": 0.3679,
+    "ci95": [
+     0.194,
+     0.5571
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1298,
+    "ci95": [
+     0.0405,
+     0.2369
+    ]
+   },
+   "art_share3": {
+    "mean": 0.1786,
+    "ci95": [
+     0.0595,
+     0.3333
+    ]
+   },
+   "card_share3": {
+    "mean": 0.3119,
+    "ci95": [
+     0.2024,
+     0.4286
+    ]
+   },
+   "patterns": {
+    "live_only": 5,
+    "live+game": 4,
+    "art_only": 1,
+    "game(+art)": 4
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     3
+    ],
+    [
+     "L-E-E",
+     2
+    ],
+    [
+     "L-G-L",
+     1
+    ],
+    [
+     "L-A-E",
+     1
+    ],
+    [
+     "L-L-E",
+     1
+    ],
+    [
+     "E-A-E",
+     1
+    ],
+    [
+     "A-G-E",
+     1
+    ],
+    [
+     "G-E-G",
+     1
+    ],
+    [
+     "L-G-E",
+     1
+    ],
+    [
+     "E-G-A",
+     1
+    ],
+    [
+     "A-A-A",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 5,
+    "0<v<=1/3": 4,
+    "1/3<v<=2/3": 2,
+    ">2/3": 3
+   },
+   "readable_text_units": {
+    "price": 6,
+    "date": 5,
+    "mega": 0,
+    "disclaimer": 0,
+    "sfclogo": 3,
+    "publogo": 7,
+    "status": 5,
+    "credit": 1,
+    "copy": 8
+   }
+  },
+  "ナムコ": {
+   "units": 13,
+   "uploads": 16,
+   "by_position": {
+    "f1": {
+     "L": 0.6154,
+     "P": 0.0769,
+     "G": 0.0769,
+     "A": 0.2308,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.6923,
+     "game_present": 0.0769,
+     "card_over_live": 0.0,
+     "super_present": 0.4615
+    },
+    "f2": {
+     "L": 0.6154,
+     "P": 0.0,
+     "G": 0.1538,
+     "A": 0.2308,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.6154,
+     "game_present": 0.2692,
+     "card_over_live": 0.0,
+     "super_present": 0.3846
+    },
+    "f3": {
+     "L": 0.3846,
+     "P": 0.0769,
+     "G": 0.1923,
+     "A": 0.0769,
+     "E": 0.2692,
+     "X": 0.0,
+     "live_present": 0.5385,
+     "game_present": 0.1923,
+     "card_over_live": 0.0769,
+     "super_present": 0.6923
+    }
+   },
+   "live_share3": {
+    "mean": 0.5897,
+    "ci95": [
+     0.359,
+     0.8205
+    ]
+   },
+   "game_share3": {
+    "mean": 0.141,
+    "ci95": [
+     0.0256,
+     0.2821
+    ]
+   },
+   "art_share3": {
+    "mean": 0.1795,
+    "ci95": [
+     0.0513,
+     0.3333
+    ]
+   },
+   "card_share3": {
+    "mean": 0.0897,
+    "ci95": [
+     0.0256,
+     0.1795
+    ]
+   },
+   "patterns": {
+    "live+game": 3,
+    "live_only": 7,
+    "art_only": 1,
+    "game(+art)": 2
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     4
+    ],
+    [
+     "L-A-G",
+     2
+    ],
+    [
+     "P-L-L",
+     1
+    ],
+    [
+     "L-L-E",
+     1
+    ],
+    [
+     "L-L-P",
+     1
+    ],
+    [
+     "A-L-E",
+     1
+    ],
+    [
+     "A-A-A",
+     1
+    ],
+    [
+     "A-G-G",
+     1
+    ],
+    [
+     "G-G-E",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 3,
+    "0<v<=1/3": 3,
+    "1/3<v<=2/3": 1,
+    ">2/3": 6
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 5,
+    "mega": 0,
+    "disclaimer": 0,
+    "sfclogo": 3,
+    "publogo": 6,
+    "status": 4,
+    "credit": 3,
+    "copy": 4
+   }
+  },
+  "コナミ": {
+   "units": 13,
+   "uploads": 20,
+   "by_position": {
+    "f1": {
+     "L": 0.2308,
+     "P": 0.1538,
+     "G": 0.2308,
+     "A": 0.3846,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.4231,
+     "game_present": 0.2308,
+     "card_over_live": 0.0,
+     "super_present": 0.8205
+    },
+    "f2": {
+     "L": 0.1795,
+     "P": 0.0769,
+     "G": 0.2692,
+     "A": 0.3974,
+     "E": 0.0769,
+     "X": 0.0,
+     "live_present": 0.3462,
+     "game_present": 0.2692,
+     "card_over_live": 0.0,
+     "super_present": 0.5769
+    },
+    "f3": {
+     "L": 0.1538,
+     "P": 0.1282,
+     "G": 0.0,
+     "A": 0.0769,
+     "E": 0.641,
+     "X": 0.0,
+     "live_present": 0.3077,
+     "game_present": 0.0,
+     "card_over_live": 0.0256,
+     "super_present": 0.8205
+    }
+   },
+   "live_share3": {
+    "mean": 0.3077,
+    "ci95": [
+     0.1453,
+     0.4872
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1667,
+    "ci95": [
+     0.0256,
+     0.3205
+    ]
+   },
+   "art_share3": {
+    "mean": 0.2863,
+    "ci95": [
+     0.1239,
+     0.4744
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2393,
+    "ci95": [
+     0.1624,
+     0.3077
+    ]
+   },
+   "patterns": {
+    "live_only": 7,
+    "live+game": 1,
+    "art_only": 2,
+    "game(+art)": 3
+   },
+   "sequences_top": [
+    [
+     "G-G-E",
+     3
+    ],
+    [
+     "L-A-E",
+     2
+    ],
+    [
+     "P-P-P",
+     1
+    ],
+    [
+     "P-E-P",
+     1
+    ],
+    [
+     "A-L-L",
+     1
+    ],
+    [
+     "A-G-E",
+     1
+    ],
+    [
+     "A-A-L",
+     1
+    ],
+    [
+     "A-A-E",
+     1
+    ],
+    [
+     "L-L-E",
+     1
+    ],
+    [
+     "A-A-A",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 6,
+    "0<v<=1/3": 2,
+    "1/3<v<=2/3": 4,
+    ">2/3": 1
+   },
+   "readable_text_units": {
+    "price": 4,
+    "date": 1,
+    "mega": 0,
+    "disclaimer": 1,
+    "sfclogo": 3,
+    "publogo": 12,
+    "status": 4,
+    "credit": 6,
+    "copy": 4
+   }
+  },
+  "バンプレスト": {
+   "units": 13,
+   "uploads": 19,
+   "by_position": {
+    "f1": {
+     "L": 0.1346,
+     "P": 0.1731,
+     "G": 0.0769,
+     "A": 0.6154,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.3077,
+     "game_present": 0.0769,
+     "card_over_live": 0.0,
+     "super_present": 0.5705
+    },
+    "f2": {
+     "L": 0.1154,
+     "P": 0.1538,
+     "G": 0.0,
+     "A": 0.7308,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.2885,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.1731
+    },
+    "f3": {
+     "L": 0.1154,
+     "P": 0.0769,
+     "G": 0.0,
+     "A": 0.4038,
+     "E": 0.4038,
+     "X": 0.0,
+     "live_present": 0.2115,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.8974
+    }
+   },
+   "live_share3": {
+    "mean": 0.2564,
+    "ci95": [
+     0.0513,
+     0.4872
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0256,
+    "ci95": [
+     0.0,
+     0.0769
+    ]
+   },
+   "art_share3": {
+    "mean": 0.5833,
+    "ci95": [
+     0.359,
+     0.7949
+    ]
+   },
+   "card_share3": {
+    "mean": 0.1346,
+    "ci95": [
+     0.0513,
+     0.2308
+    ]
+   },
+   "patterns": {
+    "art_only": 8,
+    "live_only": 4,
+    "game(+art)": 1
+   },
+   "sequences_top": [
+    [
+     "A-A-A",
+     5
+    ],
+    [
+     "A-A-E",
+     3
+    ],
+    [
+     "L-L-L",
+     2
+    ],
+    [
+     "P-P-E",
+     1
+    ],
+    [
+     "G-A-E",
+     1
+    ],
+    [
+     "P-P-P",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 9,
+    "0<v<=1/3": 0,
+    "1/3<v<=2/3": 2,
+    ">2/3": 2
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 4,
+    "mega": 0,
+    "disclaimer": 2,
+    "sfclogo": 9,
+    "publogo": 7,
+    "status": 0,
+    "credit": 3,
+    "copy": 8
+   }
+  },
+  "タカラ": {
+   "units": 7,
+   "uploads": 10,
+   "by_position": {
+    "f1": {
+     "L": 0.7143,
+     "P": 0.0,
+     "G": 0.0,
+     "A": 0.2143,
+     "E": 0.0,
+     "X": 0.0714,
+     "live_present": 0.7143,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.2857
+    },
+    "f2": {
+     "L": 0.5714,
+     "P": 0.0,
+     "G": 0.0,
+     "A": 0.2857,
+     "E": 0.1429,
+     "X": 0.0,
+     "live_present": 0.5714,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.4286
+    },
+    "f3": {
+     "L": 0.2857,
+     "P": 0.0,
+     "G": 0.0,
+     "A": 0.0714,
+     "E": 0.6429,
+     "X": 0.0,
+     "live_present": 0.2857,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.7857
+    }
+   },
+   "live_share3": {
+    "mean": 0.5238,
+    "ci95": [
+     0.2143,
+     0.7857
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "art_share3": {
+    "mean": 0.1905,
+    "ci95": [
+     0.0,
+     0.4762
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2619,
+    "ci95": [
+     0.1429,
+     0.4048
+    ]
+   },
+   "patterns": {
+    "live_only": 5,
+    "art_only": 2
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     3
+    ],
+    [
+     "A-A-A",
+     1
+    ],
+    [
+     "L-E-E",
+     1
+    ],
+    [
+     "A-A-E",
+     1
+    ],
+    [
+     "L-L-E",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 2,
+    "0<v<=1/3": 1,
+    "1/3<v<=2/3": 1,
+    ">2/3": 3
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 4,
+    "mega": 3,
+    "disclaimer": 2,
+    "sfclogo": 2,
+    "publogo": 3,
+    "status": 1,
+    "credit": 2,
+    "copy": 4
+   }
+  },
+  "タイトー": {
+   "units": 6,
+   "uploads": 10,
+   "by_position": {
+    "f1": {
+     "L": 0.1667,
+     "P": 0.1667,
+     "G": 0.0,
+     "A": 0.5,
+     "E": 0.1667,
+     "X": 0.0,
+     "live_present": 0.3333,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.1667
+    },
+    "f2": {
+     "L": 0.0833,
+     "P": 0.0833,
+     "G": 0.1667,
+     "A": 0.5,
+     "E": 0.1667,
+     "X": 0.0,
+     "live_present": 0.25,
+     "game_present": 0.1667,
+     "card_over_live": 0.0833,
+     "super_present": 0.3333
+    },
+    "f3": {
+     "L": 0.0,
+     "P": 0.0,
+     "G": 0.0,
+     "A": 0.875,
+     "E": 0.125,
+     "X": 0.0,
+     "live_present": 0.0,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.4583
+    }
+   },
+   "live_share3": {
+    "mean": 0.1667,
+    "ci95": [
+     0.0278,
+     0.3333
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0556,
+    "ci95": [
+     0.0,
+     0.1667
+    ]
+   },
+   "art_share3": {
+    "mean": 0.625,
+    "ci95": [
+     0.4444,
+     0.8056
+    ]
+   },
+   "card_share3": {
+    "mean": 0.1528,
+    "ci95": [
+     0.0417,
+     0.2778
+    ]
+   },
+   "patterns": {
+    "live_only": 3,
+    "art_only": 2,
+    "game(+art)": 1
+   },
+   "sequences_top": [
+    [
+     "P-L-E",
+     1
+    ],
+    [
+     "P-E-A",
+     1
+    ],
+    [
+     "A-A-A",
+     1
+    ],
+    [
+     "L-A-A",
+     1
+    ],
+    [
+     "E-A-A",
+     1
+    ],
+    [
+     "A-G-A",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 3,
+    "0<v<=1/3": 2,
+    "1/3<v<=2/3": 1,
+    ">2/3": 0
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 1,
+    "mega": 0,
+    "disclaimer": 1,
+    "sfclogo": 2,
+    "publogo": 2,
+    "status": 1,
+    "credit": 0,
+    "copy": 2
+   }
+  },
+  "アスキー": {
+   "units": 6,
+   "uploads": 9,
+   "by_position": {
+    "f1": {
+     "L": 0.1667,
+     "P": 0.0,
+     "G": 0.1667,
+     "A": 0.4167,
+     "E": 0.25,
+     "X": 0.0,
+     "live_present": 0.1667,
+     "game_present": 0.1667,
+     "card_over_live": 0.0,
+     "super_present": 0.6667
+    },
+    "f2": {
+     "L": 0.25,
+     "P": 0.0,
+     "G": 0.1667,
+     "A": 0.4167,
+     "E": 0.1667,
+     "X": 0.0,
+     "live_present": 0.25,
+     "game_present": 0.1667,
+     "card_over_live": 0.0,
+     "super_present": 0.6667
+    },
+    "f3": {
+     "L": 0.25,
+     "P": 0.0,
+     "G": 0.0833,
+     "A": 0.1667,
+     "E": 0.5,
+     "X": 0.0,
+     "live_present": 0.3333,
+     "game_present": 0.0833,
+     "card_over_live": 0.0833,
+     "super_present": 0.9167
+    }
+   },
+   "live_share3": {
+    "mean": 0.2222,
+    "ci95": [
+     0.0,
+     0.4444
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1389,
+    "ci95": [
+     0.0278,
+     0.2778
+    ]
+   },
+   "art_share3": {
+    "mean": 0.3333,
+    "ci95": [
+     0.0556,
+     0.6667
+    ]
+   },
+   "card_share3": {
+    "mean": 0.3056,
+    "ci95": [
+     0.0833,
+     0.6111
+    ]
+   },
+   "patterns": {
+    "live+game": 2,
+    "card_only": 1,
+    "art_only": 2,
+    "game(+art)": 1
+   },
+   "sequences_top": [
+    [
+     "L-L-L",
+     1
+    ],
+    [
+     "G-L-L",
+     1
+    ],
+    [
+     "E-E-E",
+     1
+    ],
+    [
+     "A-A-A",
+     1
+    ],
+    [
+     "A-G-G",
+     1
+    ],
+    [
+     "A-A-E",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 4,
+    "0<v<=1/3": 0,
+    "1/3<v<=2/3": 2,
+    ">2/3": 0
+   },
+   "readable_text_units": {
+    "price": 4,
+    "date": 5,
+    "mega": 0,
+    "disclaimer": 2,
+    "sfclogo": 4,
+    "publogo": 3,
+    "status": 0,
+    "credit": 1,
+    "copy": 4
+   }
+  },
+  "ヒューマン": {
+   "units": 6,
+   "uploads": 7,
+   "by_position": {
+    "f1": {
+     "L": 0.5,
+     "P": 0.1667,
+     "G": 0.0,
+     "A": 0.0,
+     "E": 0.3333,
+     "X": 0.0,
+     "live_present": 1.0,
+     "game_present": 0.0,
+     "card_over_live": 0.3333,
+     "super_present": 0.8333
+    },
+    "f2": {
+     "L": 0.8333,
+     "P": 0.0,
+     "G": 0.1667,
+     "A": 0.0,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.8333,
+     "game_present": 0.1667,
+     "card_over_live": 0.0,
+     "super_present": 0.6667
+    },
+    "f3": {
+     "L": 0.1667,
+     "P": 0.0,
+     "G": 0.0,
+     "A": 0.0,
+     "E": 0.6667,
+     "X": 0.1667,
+     "live_present": 0.1667,
+     "game_present": 0.0,
+     "card_over_live": 0.0,
+     "super_present": 0.6667
+    }
+   },
+   "live_share3": {
+    "mean": 0.5556,
+    "ci95": [
+     0.2778,
+     0.7778
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0556,
+    "ci95": [
+     0.0,
+     0.1667
+    ]
+   },
+   "art_share3": {
+    "mean": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "card_share3": {
+    "mean": 0.3333,
+    "ci95": [
+     0.1667,
+     0.5
+    ]
+   },
+   "patterns": {
+    "live+game": 1,
+    "live_only": 5
+   },
+   "sequences_top": [
+    [
+     "L-L-E",
+     2
+    ],
+    [
+     "E-G-X",
+     1
+    ],
+    [
+     "L-L-L",
+     1
+    ],
+    [
+     "P-L-E",
+     1
+    ],
+    [
+     "E-L-E",
+     1
+    ]
+   ],
+   "live_share3_distribution": {
+    "0": 1,
+    "0<v<=1/3": 1,
+    "1/3<v<=2/3": 3,
+    ">2/3": 1
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 1,
+    "mega": 0,
+    "disclaimer": 0,
+    "sfclogo": 1,
+    "publogo": 4,
+    "status": 0,
+    "credit": 1,
+    "copy": 1
+   }
+  }
+ },
  "by_year": {
   "1990": {
    "units": 4,

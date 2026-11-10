@@ -266,6 +266,9 @@ def main(mdir):
         "by_length": {lc: summarise([k for k in keys if k[1] == lc]) for lc in ("15s", "30s")},
         "by_stratum": {"generic": summarise([k for k in keys if profiles[k]["stratum_generic"]]),
                        "title_only": summarise([k for k in keys if not profiles[k]["stratum_generic"]])},
+        "by_publisher": {pb: summarise([k for k in keys if profiles[k]["publisher"] == pb])
+                         for pb, n in collections.Counter(p["publisher"] for p in profiles.values()).most_common()
+                         if pb and n >= 6},
         "by_year": {y: summarise([k for k in keys if profiles[k]["year"] == y])
                     for y in sorted({p["year"] for p in profiles.values() if p["year"]})},
         "units": [{k2_: v for k2_, v in p.items() if k2_ not in ("share", "flags")} |
@@ -315,6 +318,12 @@ def main(mdir):
         table(f"尺 {lc}", results["by_length"][lc])
     table("対照層（年・機種のみの検索で見つかった単位）", results["by_stratum"]["generic"])
     table("指名層のみ（タイトル指名検索でのみ見つかった単位）", results["by_stratum"]["title_only"])
+    L.extend(["## 発売元別（6単位以上。発売元名は1回目分類者が題名・画面・知識から記入したもので、空欄の単位は含まない）", "",
+              "| 発売元 | 単位数 | 実写系(L+P) | ゲーム画面 | アニメ・CG・絵 | カード |", "|---|---:|---:|---:|---:|---:|"])
+    for pb, sm in results["by_publisher"].items():
+        L.append(f"| {pb} | {sm['units']} | {pct(sm['live_share3']['mean'])} | {pct(sm['game_share3']['mean'])} | "
+                 f"{pct(sm['art_share3']['mean'])} | {pct(sm['card_share3']['mean'])} |")
+    L.append("")
     for y, s in results["by_year"].items():
         table(f"{y}年（題名に年がある単位のみ）", s)
     (m / "results.md").write_text("\n".join(L) + "\n", encoding="utf8")
