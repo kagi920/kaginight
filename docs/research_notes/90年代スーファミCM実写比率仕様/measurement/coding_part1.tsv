@@ -148,3 +148,33 @@
 148	N	later_rerelease	スターオーシャン1 First Departure			other	-	-	-		PSP remake
 149	N	other_platform	スターオーシャン ブルースフィア	エニックス		GB	-	-	-		GB
 150	N	other_platform	スターオーシャン セカンドストーリー			PS	-	-	-	date:7·30 ON SALE	PS
+151	N	later_rerelease	スターオーシャン1 First Departure			other	-	-	-		PSP remake
+152	N	other_platform	スターオーシャン5			other	-	-	-		PS4
+153	Y		スターオーシャン	エニックス		SFC	L?	A?	E	price:価格8,500円(税別);copy:SFC最後のオリジナルRPG;copy:好評発売中	windowboxed; f1 very dark shot of two figures with torch (same as #147 f1; appears live action); f2 ring-shaped galaxy/nebula image on pale starfield; f3 title logo card on starfield
+154	N	later_rerelease	スターオーシャン2 Second Evolution			other	-	-	-		PSP remake
+155	N	other_platform	スターオーシャン3 Till the End of Time		2003	other	-	-	-		PS2
+156	N	later_rerelease	スターオーシャン1 First Departure		2007	other	-	-	-	date:2007年12月27日(木)発売	PSP remake
+157	N	other_platform	スターオーシャン3 ディレクターズカット		2004	other	-	-	-	date:2004年1月22日(木)発売	PS2
+158	N	other_platform	真・女神転生V			other	-	-	-		Switch
+159	N	other_platform	デビルサマナー ソウルハッカーズ	アトラス		SS	-	-	-		Saturn
+160	Y		真・女神転生II	アトラス	1994	SFC	P?	P?	E	sfclogo;publogo	windowboxed, dark; f1 dim chamber with cylindrical tanks and flames in foreground (miniature set vs. rendered unclear), SFC logo top right; f2 beast figure standing on a magic-circle floor (model vs. rendered unclear); f3 ATLUS logo; no people
+161	N	other_platform	真・女神転生III NOCTURNE			other	-	-	-		PS2; CM compilation
+162	N	later_rerelease	真・女神転生III NOCTURNE HD REMASTER		2020	other	-	-	-		PS4/Switch
+163	N	other_platform	真・女神転生NINE	アトラス		other	-	-	-		Xbox
+164	N	other_platform	真・女神転生IV			other	-	-	-		3DS
+165	N	other_platform	真・女神転生IV FINAL			other	-	-	-		3DS
+166	N	other_platform	デジタル・デビル物語 女神転生	ナムコ		FC	-	-	-		FC; title names 島田紳助
+167	N	other_platform	デジタル・デビル物語 女神転生II	ナムコ		FC	-	-	-		FC
+168	N	later_rerelease	真・女神転生III NOCTURNE HD REMASTER		2020	other	-	-	-		PS4/Switch
+169	N	other_platform	真・女神転生IV FINAL			other	-	-	-		3DS
+170	N	other_platform	真・女神転生III NOCTURNE	アトラス		other	-	-	-		PS2
+171	Y		ストリートファイターII	カプコン		SFC	L	L	L	copy:song by/筋肉少女帯	title names 水野美紀; warm sepia tint; f1 robed figure walking in desert with song credit caption; f2 young woman in Chun-Li costume (hair buns) close-up; f3 man in red headwrap shouting, close-up
+172	Y		スーパーストリートファイターII	カプコン		SFC	A	L	E	copy:メガドライブ用ソフトも新発売！	SFC & MD joint CM per title; f1 cel anime close-up with caption crediting the theatrical anime「ストリートファイターII」; f2 live action: woman in Cammy-style costume kicking between men in dark suits on a street, song credit caption; f3 MEGA DRIVE logo card
+173	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	E	publogo;price:定価9,980円(税別);copy:好評発売中	title names 水野美紀 (春麗編); f1-f2 woman in Chun-Li costume close-up on blue background, CAPCOM logo super in f1; f3 title logo card on green
+174	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L		multi_spot (title: all 2 versions, 63s); letterboxed; f1 muscular man in fighting pose in a street scene with bicycles; f2-f3 woman in Chun-Li costume on blue background (as #173)
+175	N	not_game	ストリートファイターII MOVIE (劇場アニメ)	カプコン		other	-	-	-	copy:全国ロードショー	theatrical anime film ad
+176	Y		ストリートファイターII	カプコン		SFC	L	L	L		multi_spot (title: all 3 versions, 61s); letterboxed; woman in Chun-Li costume and man in red headwrap shouting, sepia tint (same imagery as #171)
+177	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	windowboxed, yellow tint; f1 woman in Chun-Li costume close-up; f2 same woman in motion with crowd/market behind; f3 same costume on blue background (as #173)
+178	N	other_platform	ストリートファイターII (GB)			GB	-	-	-		GB; title names 篠原涼子
+179	N	other_platform	スーパーストリートファイターIIX	カプコン		other	-	-	-		arcade
+180	Y		ストリートファイターII / ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	multi_spot (58s, SFII and SFII Turbo CMs joined per title); windowboxed; woman in Chun-Li costume in yellow-tinted and blue-background shots (same imagery as #171/#173/#177)

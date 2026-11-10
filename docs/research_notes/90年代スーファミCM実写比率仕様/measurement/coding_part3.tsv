@@ -188,3 +188,23 @@
 608	N	not_cm	スーパーマリオRPG			other	-	-	-		fan-made comparison video
 609	N	later_rerelease	スーパーマリオRPG	任天堂		other	-	-	-		Switch remake, Korean
 610	N	later_rerelease	スーパーマリオRPG	任天堂		other	-	-	-		Switch remake, Taiwan
+611	N	other_platform	マリオ&ルイージRPG2	任天堂	2005	other	-	-	-		DS
+612	N	other_platform	マリオ&ルイージRPG	任天堂		other	-	-	-		GBA
+613	N	other_platform	ペーパーマリオRPG	任天堂		other	-	-	-		GC
+614	N	other_platform	マリオストーリー	任天堂		N64	-	-	-		
+615	Y		パネルでポン	任天堂		SFC	C	C	L?		men in kimono (rakugo/go-style setting) composited with large game screen; f1 game board fills right half beside seated men; f2 man's face with game panels and cursor around him; f3 man with tangled string/noodle mass, panels only at frame edges
+616	N	other_platform	パネルでポンDS	任天堂		other	-	-	-		DS
+617	Y		パネルでポン	任天堂		SFC	C	G	C	sfclogo	platform from SFC logo overlaid in f1; rows of seated people in dark kimono facing a giant game screen on an outdoor stage with lanterns; f2 full-frame 2-player gameplay
+618	N	other_platform	ポケモンでパネポン	任天堂		GB	-	-	-		GBC
+619	N	other_platform	パネルでポンDS	任天堂		other	-	-	-		DS
+620	N	other_platform	ドクターマリオ&パネルでポン	任天堂		other	-	-	-		woman playing a handheld (GBA title)
+621	N	other_platform	ポケモンでパネポン	任天堂	2000	GB	-	-	-		GBC
+622	N	other_platform	ヨッシーのパネポン	任天堂		GB	-	-	-		
+623	N	other_platform	ヨッシーのパネポン	任天堂	1995	GB	-	-	-		
+624	N	other_platform	ポケモンでパネポン	任天堂		GB	-	-	-		GBC
+625	N	other_platform	ポケモンでパネポン	任天堂	2000	GB	-	-	-		GBC
+626	Y		スーパーゲームボーイ	任天堂	1994	SFC	A	A	C	publogo	61s (probably two versions); f1 rainbow of sparkles on black; f2 drawn Dr. Mario and Donkey Kong; f3 real SFC console with Super Game Boy cartridge in front of a TV showing a game screen, 'Super' script overlaid (product shot + game screen)
+627	Y		スーパーゲームボーイ	任天堂	1994	SFC	A?	P	P?	publogo	small windowed picture; f1 Game Boy unit with chrome-look Mario figure on its screen (appears rendered); f2 SFC console with Super Game Boy floating over aerial night cityscape; f3 same with animated characters on a rainbow rising from the console
+628	Y		スーパーゲームボーイ	任天堂		SFC	A?	A	P		small windowed picture; f1 drawn Mario and Donkey Kong flanking a real SFC console with Super Game Boy (animation + product); f2 drawn Donkey Kong holding fan of Game Boy cartridges; f3 console with Super Game Boy in front of TV
+629	Y		スーパーゲームボーイ	任天堂	1994	SFC	P	A?	E	date:6月14日発売予定;sfclogo	same campaign imagery as #627; f1 SFC console under rainbow over night cityscape; f2 animated Nintendo characters riding rainbow out of a Game Boy unit; f3 Super GAMEBOY logo card with product and スーパーゲームボーイ text
+630	N	other_platform	マリオのピクロス	任天堂		GB	-	-	-		ゲームボーイソフト visible

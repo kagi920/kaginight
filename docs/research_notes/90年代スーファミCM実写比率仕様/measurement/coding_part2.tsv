@@ -118,3 +118,33 @@
 328	N	out_of_period	スーパーボンバーマン5	ハドソン	1997	SFC	L?	L	L?	price:6980円(税別);date:2月28日;copy:ルーイが復活!	SFC software but 1997 release, outside 1990-1996 window (no brief code fits; used out_of_period); f1 Bomberman suit characters on village street with running people; f2 silhouette behind shoji; f3 suit characters at thatched house with price/date super
 329	Y		スーパーボンバーマン	ハドソン		SFC	E	A	E	publogo;sfclogo;date:4月28日 新発売;price:¥7,800(税別);copy:スーパーファミコン	f1 Bomberman art with HUDSON SOFT logo; f2 illustrated isometric city (as #325 f2); f3 character art title card with date and price
 330	Y		スーパーボンバーマン3	ハドソン		SFC	L	L	L	copy:連続テレビCM 石川ロケ決行!	period-drama style live action with costumed actors (same series as #327); small frame/pillarbox
+331	Y		スーパーボンバーマン4	ハドソン		SFC	L	L	L	copy:今度のボンバー 現在・過去・未来;copy:ロケ地 春日大社;copy:http://honey.hudson.co.jp/	period-costume actors (man and woman) on location, same drama-style series as #327/#330; pillarbox
+332	N	out_of_period	スーパーボンバーマン5	ハドソン	1997	SFC	L	L	L	publogo;copy:協力 佐渡汽船;copy:マルチタップで五人対戦!;copy:ロケ地 相川大工町	SFC software but 1997 release, outside 1990-1996 window (no brief code fits; used out_of_period); f1 ferry at pier with Bomberman suit characters and HUDSON logo; f2-f3 costumed actors on location
+333	N	other_platform	ボンバーマンII	ハドソン	1991	FC	-	-	-		end card reads ファミコン用ソフト
+334	U	unclear	スーパーボンバーマン ビーダマン (as uploaded)	ハドソン?	1996	unknown	A	L	P?	date:12月20日;price:¥5980	cannot tell from frames whether product is SFC software or the B-Daman toy; f1 star motion graphic; f2 three girls in maid-style costumes; f3 Bomberman B-Daman figures/toys with date and price super; decorative side borders
+335	Y		スーパーボンバーマン2	ハドソン	1994	SFC	C?	L	E	publogo;copy:ロケ地 羽田空港;copy:ハドソンCMキャンペーン 連続テレビCM;copy:ロケ地 ビッグアーチ	f1 Bomberman suit character shot on real location (airport) framed inside game-style HUD border; f2 location shot covered by large white lettering and campaign supers; f3 character art with HUDSON SOFT logo; 45s upload may contain more than one cut
+336	Y		スーパーボンバーマン2	ハドソン		SFC	E	G	C?	publogo;date:4月28日発売;price:¥8,500(税別)	f1 character art with HUDSON SOFT logo; f2 game screen with large title logo and date/price super; f3 three Bomberman suit characters on location framed inside game-style border
+337	N	out_of_period	スーパーボンバーマン5	ハドソン		SFC	L	P?	L	publogo;price:6980円(税別);copy:協力 佐渡汽船;copy:ロケ地;copy:全国どこでも売ってるよ! ルーイが復活!	same 1997 CM series as #332 (ferry frame identical); title has no year but game identified as SB5 (1997 per #332/#328 titles); f2 Bomberman suit characters at harbour
+338	N	other_platform	サターンボンバーマンファイト	ハドソン		SS	-	-	-		Saturn; 'Remake Version' fan edit with Videoleap watermark
+339	Y		スーパーボンバーマン2	ハドソン		SFC	E	E	L	publogo;copy:ロケ地 瀬戸大橋	f1-f2 character art with HUDSON SOFT logo (same card as #335 f3); f3 real location shot of bridge with location caption
+340	N	out_of_period	スーパーボンバーマン5	ハドソン		SFC	L	L?	L	publogo;price:6980円(税別);date:2月28日;copy:協力 佐渡汽船;copy:ルーイが復活!;copy:ロケ地 相川大工町	15s cut of #332/#337 (1997 release); f2 close-up of hand holding pistol-like prop on location
+341	N	other_platform	スーパー桃太郎電鉄	ハドソン	1989	PCE	-	-	-		
+342	U	unclear	桃太郎電鉄V	ハドソン		unknown	A	A	A		upload title says (SFC) but no platform mark, logo or date visible in frames, and 桃太郎電鉄V is not a title I can confirm as SFC from what is shown; all three frames same cel-animation scene of characters around a table
+343	Y		スーパー桃太郎電鉄II	ハドソン	1992	SFC	A	C	E	publogo;copy:桃太郎電鉄II	f1 character illustration with title logo; f2 live-action face in heavy makeup/wig (Bonbi-like character) superimposed on game map screen; f3 HUDSON SOFT logo card with 20th anniversary mark
+344	Y		スーパー桃太郎電鉄DX	ハドソン		SFC	E	L	L	publogo;date:12月8日 発売;price:9500円;copy:桃太郎電鉄DX	f1 character illustration with dice and HUDSON SOFT logo; f2 woman in Momotaro costume beside train; f3 costumed woman waving from yellow tram with title/date/price supers
+345	N	other_platform	スーパー桃太郎電鉄2	ハドソン	1994	GB	-	-	-		
+346	Y		桃太郎電鉄HAPPY	ハドソン	1996	SFC	E?	G	G	copy:桃太郎電鉄HAPPY;copy:めざせ!億万長者!;copy:年末 福くじキャンペーン! 1000万円!	platform not stated in title or visible in frames, inferred from game title; f1 title art/logo (may be in-game title screen); f2 game map; f3 game graphic with campaign supers; upload has blurred side borders
+347	N	other_platform	スーパー桃太郎電鉄II	ハドソン	1991	PCE	-	-	-		
+348	N	other_platform	スーパー桃太郎電鉄	ハドソン	1991	GB	-	-	-		
+349	N	other_platform	スーパー桃太郎電鉄	ハドソン	1989	PCE	-	-	-		
+350	N	other_platform	桃太郎電鉄X	ハドソン	2001	other	-	-	-		PS2
+351	N	other_platform	桃太郎電鉄11 ブラックボンビー出現!の巻	ハドソン		other	-	-	-		PS2/GC
+352	N	other_platform	スーパー桃太郎電鉄II	ハドソン	1991	PCE	-	-	-		title gives 1991 and title-art frame is identical to #347 (PCE) incl. small PC Engine mark; not the 1992 SFC version
+353	Y		スーパー桃太郎電鉄III	ハドソン	1994	SFC	L	L	L	copy:買って損ない桃太郎	platform not in this title, same CM as #354 which is labelled SFC; f1/f3 woman in Momotaro costume (peach headband) close-up at tram; f2 older man in tram with drawn Bonbi character overlaid; blurred side borders
+354	Y		スーパー桃太郎電鉄III	ハドソン		SFC	L	L	L	copy:買って損ない桃太郎	dup_of:#353; title names 荒井注 (the older man in f2 presumably); drawn character overlay in f2
+355	N	other_platform	スーパー桃太郎電鉄2	ハドソン		GB	-	-	-		
+356	Y		スーパー桃太郎電鉄II	ハドソン	1992	SFC	A	C	E	publogo;copy:桃太郎電鉄II	dup_of:#343
+357	N	other_platform	スーパー桃太郎電鉄II	ハドソン	1991	PCE	-	-	-		end card reads PC Engine用ソフト
+358	N	other_platform	弟切草 蘇生篇	チュンソフト		PS	-	-	-		
+359	N	other_platform	弟切草 蘇生篇	チュンソフト	1999	PS	-	-	-		
+360	N	other_platform	弟切草 蘇生篇	チュンソフト	1999	PS	-	-	-		
