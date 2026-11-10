@@ -198,3 +198,13 @@
 408	N	other_platform	ダービースタリオン99	アスキー		PS	-	-	-		
 409	N	other_platform	ダービースタリオンDS			other	-	-	-		DS
 410	N	other_platform	ダービー馬をつくろう! (CM集)	セガ		other	-	-	-		compilation 2000-2006, also not_cm
+411	N	other_platform	ダービースタリオン アドバンス	エンターブレイン		other	-	-	-		GBA
+412	N	other_platform	ダービースタリオン アドバンス	エンターブレイン	2002	other	-	-	-		GBA
+413	N	other_platform	ダービースタリオン (プレイステーション版)	アスキー	1997	PS	-	-	-		
+414	N	other_platform	ダービースタリオン64		2001	N64	-	-	-		
+415	N	other_platform	ダービースタリオンGOLD			other	-	-	-		3DS
+416	Y		信長の野望・覇王伝	光栄	1993	SFC	L	L	E	copy:信長の野望 覇王伝;copy:究極セレクション	f1 costumed actor (samurai) standing amid flames; f2 actor face close-up over sword with title logo super; f3 end card with title and several package shots (looks like multiple versions/products), no SFC logo legible
+417	Y		信長の野望・覇王伝	光栄	1993	SFC	L	L	E	copy:信長の野望 覇王伝;copy:究極セレクション	dup_of:#416; pillarbox
+418	Y		信長の野望・覇王伝	光栄		SFC	L	L	E	publogo;copy:信長の野望 覇王伝;copy:ENTERTAINMENT & EDUCATION KOEI	same footage as #416 (actor close-up with title super, actor in flames) but ends on KOEI logo card
+419	U	unclear	信長の野望 (which title unclear)	光栄		unknown	L	A?	E	publogo;copy:信長の野望;copy:ENTERTAINMENT & EDUCATION KOEI	neither title nor frames identify the specific game or platform; f1 costumed figure standing in ring of fire (staged, dark); f2 title lettering over fiery graphic with falling coin-like objects and seated figure; f3 KOEI logo card; pillarbox
+420	U	unclear	信長の野望 (title/platform not stated)	光栄	1994	unknown	L	G	E	publogo;copy:ENTERTAINMENT & EDUCATION KOEI	platform not stated or visible; f1 costumed actor amid flames (same footage as #416 f1, so possibly 覇王伝); f2 game screen with 織田信長 dialogue box; f3 KOEI logo on white
