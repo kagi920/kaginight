@@ -138,3 +138,33 @@
 768	Y		バトルサッカー2	バンプレスト	1994	SFC	A	A	E	sfclogo;date:11月25日発売予定	f1/f2 rendered 3D CG of SD Ultraman and Kamen Rider playing soccer in stadium; f3 title logo over CG stadium with SD figures and SFC logo
 769	Y		ファイナルファンタジーVI	スクウェア	1994	SFC	L	G	L	date:4・2 SAT;copy:FINAL FANTASY VI	dup_of:#756; pillarbox
 770	Y		極上パロディウス	コナミ	1994	SFC	X	G	E	publogo	crt_reshoot (camera re-shoot of YouTube playback; f1 mostly dark with player UI and a finger); f2 gameplay with dancer boss and KONAMI logo; f3 KONAMI logo on white
+771	Y		Jリーグスーパーサッカー	ハドソン	1994	SFC	A	C	L	publogo;copy:3つの視点が選べるマルチビュー採用！	f1 animated Bomberman with soccer ball and HUDSON SOFT logo; f2 two men seated beside a TV set showing the game screen (GOAL!), J.LEAGUE mark and feature super; f3 two men in soccer shirts holding ball/package on sky-blue backdrop; pillarbox
+772	Y		超原人	ハドソン	1994	SFC	A	G	A	publogo;date:7月22日;price:8,800円(税別);copy:頭つきひと筋;copy:大変身！;copy:スーパーファミコン版	f1 cartoon volcano with HUDSON SOFT logo; f2 gameplay with large copy super; f3 character illustration with date/price supers and Hudson logo
+773	Y		スーパーテトリス3	BPS	1994	SFC	L	L	L	sfclogo	f1 silhouetted cheering crowd with SFC logo; f2/f3 performer in ornate golden crown and costume holding fan / crystal ball; publisher not readable in frames; pillarbox
+774	N	other_platform	セガサターン本体	セガ	1994	SS	-	-	-		
+775	Y		MOTHER2 ギーグの逆襲	任天堂	1994	SFC	L	L	L	copy:大人も子供も、おねーさんも。	title names 糸井重里 and 木村拓哉; child in straw hat and young man at a cafe table with drinks; f3 vertical copy super; no game screen in sampled frames; pillarbox
+776	Y		超原人	ハドソン	1994	SFC	A	G	A	publogo;date:7月22日;price:8,800円(税別);copy:大変身！	dup_of:#772; pillarbox
+777	Y		高橋名人の大冒険島II	ハドソン	1994	SFC	A	G	A	publogo	f1 animated Bomberman-family characters with HUDSON SOFT logo; f2 platform gameplay; f3 key-art illustration on black with small copyright line and bee mark; pillarbox
+778	Y		スーパードンキーコング	任天堂	1994	SFC	X	L?	E	date:11月26日発売予定;copy:SUPER DONKEY KONG	crt_reshoot (camera re-shoot of YouTube playback; f1 is player UI over dark face); f2 dark extreme close-up of a face with small DK image visible above; f3 title logo on wooden barrel with date
+779	Y		極上パロディウス	コナミ	1994	SFC	G	G	E	publogo	dup_of:#770; f1 shooter gameplay on black with KONAMI logo; f2 dancer boss gameplay; f3 KONAMI logo; pillarbox
+780	Y		美女と野獣	ハドソン	1994	SFC	A	A	A?	publogo	dup_of:#762; pillarbox
+781	Y		ハロー!パックマン	ナムコ	1994	SFC	G	G	E	publogo;date:8月26日発売！	f1/f2 game footage of Pac-Man walking/skateboarding (enlarged), f1 with namco logo; f3 title logo with date and Pac family art on black
+782	Y		さめがめ	ハドソン	1995	SFC	L	L	L	copy:さめがめ お空からやってくるの;copy:福原愛	title names 福原愛; small girl in pink sweater outdoors near a stadium, karaoke-style lyric supers; f3 title super, name caption and bee mark; no game screen in sampled frames; pillarbox
+783	Y		スーパーマリオ ヨッシーアイランド	任天堂	1995	SFC	A?	G	A?		f1 crayon-style Yoshi drawing with a real hand/pen entering frame at bottom; f2 gameplay (boss on small planet); f3 line sketch of character being drawn with hand/pencil visible at edge; pillarbox
+784	Y		タクティクスオウガ	クエスト	1995	SFC	L?	L	E	sfclogo;publogo;copy:Tactics Ogre Let Us Cling Together	f1 castle in dusty sepia landscape (real location or miniature, unclear); f2 person in profile outdoors, warm grade; f3 title logo on white cloth/paper with スーパーファミコン wordmark and Quest logo
+785	U	unclear		任天堂	1995	unknown	A?	E?	A	copy:最新作 300問	title gives no game or platform; f1 dark stone-relief imagery; f2 large text over stone ruin; f3 drawn Wario and Mario holding hammer/chisel in front of block ruin - looks like a Picross title, platform not shown in frames
+786	Y		す〜ぱ〜ぷよぷよ		1995	SFC	L	L	A?	sfclogo	f1 two girls sitting outdoors at night pointing at starry sky, スーパーファミコン mark top-left; f2 close-up of the two girls; f3 night sky with constellation-style outlines of puyo characters above field with small figures; game title as given in upload title
+787	U	unclear	ぷよぷよ通	コンパイル	1995	unknown	X	L	L		crt_reshoot (camera re-shoot of YouTube playback; overlay title reads SS ぷよぷよ通 CM); upload title lists both スーパーファミコン and セガサターン, no platform mark in frames; f2/f3 close-ups of young women
+788	Y		ハーメルンのバイオリン弾き	エニックス	1995	SFC	E	G	A	publogo;copy:ENIX INFORMATION	f1 ENIX logo on black; f2 platform gameplay; f3 colour illustration of characters on white; pillarbox
+789	N	not_game	日曜一の市	ダイエー	1995	other	-	-	-		
+790	Y		パネルでポン	任天堂	1995	SFC	G	C	L		f1 enlarged game panels with cursor; f2 older man eating with game panel blocks overlaid at left of frame; f3 close-up of same man, small block graphic at corner; pillarbox
+791	Y		す〜ぱ〜なぞぷよ ルルーのルー	バンプレスト	1995	SFC	L	L	L	sfclogo	young woman in apron and headscarf in pink kitchen set with small toy-like TV; f2/f3 animated yellow Carbuncle character with basket of vegetables composited into the live scene; pillarbox
+792	Y		天外魔境ZERO	ハドソン	1995	SFC	A	L	L	publogo;copy:スーパーファミコン初！驚きのPLGシステム	f1 anime heroine on blue with HUDSON SOFT logo; f2/f3 actors in colourful kabuki-style costumes outdoors among rocks; pillarbox
+793	Y		す〜ぱ〜なぞぷよ ルルーのルー	バンプレスト	1995	SFC	L	L	L	publogo;copy:スーパーファミコン…1ケ	dup_of:#791 (same imagery, fuller frame); f1 woman holding SFC console with recipe-style ingredient list super (partly legible); f3 woman eating curry, BANPRESTO logo
+794	Y		ウィザードリィVI 禁断の魔筆	アスキー	1995	SFC	E	E	E	date:9月29日発売;price:標準小売価格12,800円(税別);publogo;copy:スーパーファミコン用ソフト;copy:BANE OF THE COSMIC FORGE	f1/f2 fiery BANE OF THE COSMIC FORGE logo zooming on black; f3 package shot with title, date and price
+795	Y		テイルズ オブ ファンタジア	ナムコ	1995	SFC	A	A	A?	copy:キャラクターデザイン 藤島康介;copy:アーチェ・クライン かないみか;copy:Linear Motion Battle リニアモーションバトル;disclaimer:©藤島康介/NAMCO LTD.	46s (long spot/promo); f1 character illustrations with designer credit; f2 character illustration with small game-screen inset and voice-cast super; f3 text graphic on black
+796	Y		す〜ぱ〜ぷよぷよ		1995	SFC	L	A?	L	sfclogo	dup_of:#786
+797	Y		パネルでポン	任天堂	1995	SFC	G	C	L		dup_of:#790; f2 man with plate of spaghetti and game panels overlaid at left; f3 close-up of man eating
+798	Y		スーパーフォーメーションサッカー'95 della セリエA	ヒューマン	1995	SFC	E	G	E	publogo;copy:SUPER FORMATION SOCCER 95 della セリエA	f1 title logo card; f2 soccer gameplay with PADOVA club emblem overlay; f3 HUMAN ENTERTAINMENT logo on black; tape noise; pillarbox
+799	Y		高橋名人の大冒険島II	ハドソン	1995	SFC	A	G	A	publogo	dup_of:#777
+800	Y		美少女戦士セーラームーンS くるっくりん	バンダイ	1995	SFC	A?	A?	E?	sfclogo;publogo;date:2.24発売	f1/f2 chibi Sailor Moon and Chibiusa with hearts and icons on pink gradient (animated art, possibly game-derived); f3 title logo with crowd of chibi characters, date and BANDAI logo

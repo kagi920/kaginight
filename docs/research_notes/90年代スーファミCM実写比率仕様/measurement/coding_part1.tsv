@@ -178,3 +178,33 @@
 178	N	other_platform	ストリートファイターII (GB)			GB	-	-	-		GB; title names 篠原涼子
 179	N	other_platform	スーパーストリートファイターIIX	カプコン		other	-	-	-		arcade
 180	Y		ストリートファイターII / ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	multi_spot (58s, SFII and SFII Turbo CMs joined per title); windowboxed; woman in Chun-Li costume in yellow-tinted and blue-background shots (same imagery as #171/#173/#177)
+181	Y		スーパーストリートファイターII	カプコン		SFC	L	A	E		upload title gives date 1999/06/25 (outside range; likely uploader error, so year left blank); f1 live action: woman in Cammy-style costume kicking between men in suits on street, song credit caption (as #172 f2); f2 cel anime muscular wrestler figure; f3 large STREET FIGHTER II logo filling frame
+182	Y		スーパーストリートファイターII	カプコン		SFC	A	L	E	copy:メガドライブ用ソフトも発売中！	same campaign as #172 (on-sale variant); f1 anime close-up with theatrical-anime credit caption; f2 live-action Cammy-costume kick scene on street; f3 MEGA DRIVE logo card
+183	Y		ストリートファイターII	カプコン		SFC	L	L	E	sfclogo;publogo;copy:感性開発企業	title: リュウver.; sepia tint; f1 bare foot/leg stepping on sand with SFC logo super; f2 man in headwrap shouting close-up (as #171 f3); f3 CAPCOM logo card
+184	Y		スーパーストリートファイターII	カプコン		SFC	A	G	A		SFC & MD per title; f1 anime close-up with theatrical-anime credit caption; f2 game fight screen (two fighters, health bars); f3 anime scene with lightning and dark caped figure; no live action in sampled frames
+185	Y		ストリートファイターIIターボ	カプコン	1993	SFC	L	L	E	publogo;price:定価9,980円(税別);copy:好評発売中	f1 small figure standing on rock before waterfall, CAPCOM logo super; f2 woman in Chun-Li costume on blue background, CAPCOM logo super; f3 title logo card on green
+186	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L		title names 軍司眞人; f1 real tabletop mountain with tall waterfall; f2 costumed arm with claw gauntlet (Balrog/Vega-style costume) raised; f3 man in red military-style cap and uniform close-up
+187	N	other_platform	ストリートファイターII ダッシュプラス	カプコン		MD	-	-	-	price:定価9,800円(税別);copy:メガドライブ専用ソフト 好評発売中	Mega Drive
+188	N	other_platform	ストリートファイターII ダッシュプラス			MD	-	-	-		Mega Drive
+189	N	other_platform	ストリートファイターII ダッシュプラス	カプコン		MD	-	-	-		Mega Drive
+190	Y		ストリートファイターIIターボ	カプコン		SFC	X	L	E	date:7月10日新発売;price:定価9,980円(税別)	f1 is uploader ident (Gaming Age logo on white), not part of CM; f2 woman in Chun-Li costume in yellow-tinted market/crowd scene; f3 title logo card on green
+191	Y		ストリートファイターIIターボ	カプコン	1993	SFC	L	L	L		multi_spot? (63s, likely several versions joined; cf. #174); windowboxed; f1 real tabletop mountain with waterfall (as #186 f1); f2-f3 woman in Chun-Li costume on blue background
+192	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	E	price:定価9,980円(税別);copy:好評発売中;copy:SONG BY/筋肉少女帯	f1 muscular man facing a caped figure before temple-like buildings (red tint); f2 dark close-up of clenched fist/arm; f3 title logo card
+193	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	dup_of:#177 (same three shots); windowboxed
+194	N	other_platform	ロックマンX4	カプコン		PS	-	-	-		PS/SS
+195	Y		ロックマンX	カプコン		SFC	A	A	A		windowboxed; cel anime of armoured hero charging arm cannon and night-city scene; f3 has small uploader/annotation text at bottom (not legible); 48s so may include extra material; no people
+196	Y		ロックマンX	カプコン		SFC	A	A	E	publogo;copy:感性開発企業	f1 drawn hero standing in mechanical chamber; f2 anime close-up of armoured hero charging; f3 CAPCOM logo card; no people
+197	Y		ロックマンX	カプコン		SFC	A	A	A	publogo;copy:A.D. 21XX年	f1 drawn hero in mechanical chamber with CAPCOM logo and caption; f2 anime close-up of armoured hero with song caption (♪アルフライラ); f3 anime night highway/city with explosions; no people
+198	Y		ロックマンX2	カプコン		SFC	A	A	A		f1 close-up of hero face (rendered/airbrushed look); f2 hero figure among floating mechanical cubes (CG look); f3 rendered wireframe-like polygon shape on dark background; no people
+199	N	other_platform	ロックマンX8	カプコン		other	-	-	-		PS2
+200	N	other_platform				other	-	-	-		PS2 multi-title ad
+201	Y		ロックマンX2	カプコン		SFC	E?	G	G	publogo;sfclogo;copy:オリジナルチップ「C×4」搭載;disclaimer:スーパーファミコン(rest illegible)	f1 large X2 logo over hero illustration with CAPCOM logo; f2-f3 game stage screens with caption and SFC logo strip; no people
+202	N	other_platform	ロックマン ゼロ 1〜4	カプコン		other	-	-	-		GBA; compilation
+203	N	other_platform	ロックマンX コマンドミッション	カプコン		other	-	-	-		PS2/GC
+204	Y		ロックマンX / ロックマンX2	カプコン		SFC	G	E?	G	publogo;sfclogo;copy:オリジナルチップ「C×4」搭載	multi_spot (title: X 1&2 CMs joined, 29s); letterboxed; f1 game stage screen inside blue electric-effect border with SFC logo strip; f2 X2 logo over hero illustration (as #201 f1); f3 game stage screen (as #201 f2); no people
+205	N	other_platform	ロックマンX コマンドミッション	カプコン	2004	other	-	-	-		PS2/GC
+206	N	other_platform	ロックマンX4	カプコン		PS	-	-	-		PS/SS
+207	N	other_platform	ロックマンX7		2003	other	-	-	-		PS2
+208	U	unclear	ロックマン			unknown	A	A	A?		no platform or title logo visible; windowboxed with uploader watermark; f1 orange silhouette figure in white glow; f2 cel anime of classic Rockman characters in icy landscape; f3 Rockman holding a ball in 3D-looking corridor (rendered or game footage, unclear); 38s
+209	N	other_platform	ロックマン8 メタルヒーローズ	カプコン	1997	PS	-	-	-	date:'97.1.17発売	PS/SS
+210	N	other_platform	ロックマンX6			PS	-	-	-		PS
