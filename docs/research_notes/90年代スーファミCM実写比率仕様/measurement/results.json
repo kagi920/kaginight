@@ -1,0 +1,6193 @@
+{
+ "inputs": {
+  "corpus": 834,
+  "pass1_rows": 834,
+  "pass2_rows": 68,
+  "override_rows": 0,
+  "malformed_lines_skipped": {
+   "pass1": 0,
+   "pass2": 12
+  }
+ },
+ "funnel": {
+  "coded": 834,
+  "excluded_length_not_15_or_30": 44,
+  "eligible": 369,
+  "excluded_later_rerelease": 38,
+  "excluded_unknown_platform": 17,
+  "excluded_other_platform": 293,
+  "excluded_not_cm": 27,
+  "excluded_not_game": 26,
+  "excluded_multispot_or_reshoot": 8,
+  "excluded_out_of_period": 4,
+  "excluded_not_japan": 5,
+  "excluded_unclear": 3
+ },
+ "duration_all_uploads": {
+  "other": 64,
+  "15s": 435,
+  "30s": 305,
+  "58-63s": 30
+ },
+ "duration_eligible": {
+  "15s": 227,
+  "30s": 142
+ },
+ "reliability": {
+  "frames_compared": 203,
+  "agreement": 0.8177,
+  "kappa_6class": 0.7502,
+  "agreement_LP_merged": 0.8374,
+  "kappa_LP_merged": 0.7515,
+  "top_disagreements": [
+   [
+    "P->A",
+    11
+   ],
+   [
+    "A->L",
+    6
+   ],
+   [
+    "E->A",
+    5
+   ],
+   [
+    "E->L",
+    4
+   ],
+   [
+    "X->A",
+    2
+   ],
+   [
+    "L->P",
+    2
+   ],
+   [
+    "P->L",
+    2
+   ],
+   [
+    "E->P",
+    2
+   ],
+   [
+    "E->G",
+    1
+   ],
+   [
+    "A->P",
+    1
+   ],
+   [
+    "A->G",
+    1
+   ]
+  ]
+ },
+ "final_code_source": {
+  "pass2": 68,
+  "pass1": 301
+ },
+ "all": {
+  "units": 221,
+  "uploads": 369,
+  "by_position": {
+   "f1": {
+    "L": 0.3539,
+    "P": 0.0612,
+    "G": 0.0526,
+    "A": 0.3956,
+    "E": 0.1216,
+    "X": 0.0151,
+    "live_present": 0.4186,
+    "game_present": 0.0639,
+    "super_present": 0.6174
+   },
+   "f2": {
+    "L": 0.3443,
+    "P": 0.0562,
+    "G": 0.1945,
+    "A": 0.3537,
+    "E": 0.0498,
+    "X": 0.0015,
+    "live_present": 0.4035,
+    "game_present": 0.2348,
+    "super_present": 0.3869
+   },
+   "f3": {
+    "L": 0.2306,
+    "P": 0.0434,
+    "G": 0.0597,
+    "A": 0.1406,
+    "E": 0.5144,
+    "X": 0.0113,
+    "live_present": 0.2766,
+    "game_present": 0.0714,
+    "super_present": 0.6867
+   }
+  },
+  "live_share3": {
+   "mean": 0.3632,
+   "ci95": [
+    0.3149,
+    0.4124
+   ]
+  },
+  "game_share3": {
+   "mean": 0.1023,
+   "ci95": [
+    0.08,
+    0.1265
+   ]
+  },
+  "art_share3": {
+   "mean": 0.2966,
+   "ci95": [
+    0.254,
+    0.3394
+   ]
+  },
+  "card_share3": {
+   "mean": 0.2286,
+   "ci95": [
+    0.2028,
+    0.2538
+   ]
+  },
+  "patterns": {
+   "live_only": 89,
+   "art_only": 55,
+   "live+game": 36,
+   "game(+art)": 40,
+   "card_only": 1
+  },
+  "live_share3_distribution": {
+   "0": 96,
+   "0<v<=1/3": 35,
+   "1/3<v<=2/3": 48,
+   ">2/3": 42
+  },
+  "readable_text_units": {
+   "price": 31,
+   "date": 74,
+   "mega": 4,
+   "disclaimer": 16,
+   "sfclogo": 89,
+   "publogo": 124,
+   "status": 3,
+   "credit": 7,
+   "copy": 139
+  }
+ },
+ "by_length": {
+  "15s": {
+   "units": 139,
+   "uploads": 227,
+   "by_position": {
+    "f1": {
+     "L": 0.3559,
+     "P": 0.0374,
+     "G": 0.0434,
+     "A": 0.4784,
+     "E": 0.0752,
+     "X": 0.0097,
+     "live_present": 0.3933,
+     "game_present": 0.0506,
+     "super_present": 0.6742
+    },
+    "f2": {
+     "L": 0.3203,
+     "P": 0.051,
+     "G": 0.1971,
+     "A": 0.4029,
+     "E": 0.0288,
+     "X": 0.0,
+     "live_present": 0.376,
+     "game_present": 0.2379,
+     "super_present": 0.3917
+    },
+    "f3": {
+     "L": 0.1868,
+     "P": 0.0264,
+     "G": 0.0698,
+     "A": 0.1469,
+     "E": 0.5666,
+     "X": 0.0036,
+     "live_present": 0.2156,
+     "game_present": 0.0866,
+     "super_present": 0.6733
+    }
+   },
+   "live_share3": {
+    "mean": 0.3259,
+    "ci95": [
+     0.2659,
+     0.3897
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1034,
+    "ci95": [
+     0.0757,
+     0.1332
+    ]
+   },
+   "art_share3": {
+    "mean": 0.3427,
+    "ci95": [
+     0.2878,
+     0.3985
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2235,
+    "ci95": [
+     0.1925,
+     0.2553
+    ]
+   },
+   "patterns": {
+    "live_only": 48,
+    "art_only": 40,
+    "live+game": 22,
+    "game(+art)": 28,
+    "card_only": 1
+   },
+   "live_share3_distribution": {
+    "0": 69,
+    "0<v<=1/3": 18,
+    "1/3<v<=2/3": 30,
+    ">2/3": 22
+   },
+   "readable_text_units": {
+    "price": 17,
+    "date": 46,
+    "mega": 3,
+    "disclaimer": 13,
+    "sfclogo": 58,
+    "publogo": 86,
+    "status": 2,
+    "credit": 4,
+    "copy": 81
+   }
+  },
+  "30s": {
+   "units": 82,
+   "uploads": 142,
+   "by_position": {
+    "f1": {
+     "L": 0.3506,
+     "P": 0.1016,
+     "G": 0.0681,
+     "A": 0.2551,
+     "E": 0.2002,
+     "X": 0.0244,
+     "live_present": 0.4614,
+     "game_present": 0.0864,
+     "super_present": 0.5607
+    },
+    "f2": {
+     "L": 0.3852,
+     "P": 0.065,
+     "G": 0.19,
+     "A": 0.2703,
+     "E": 0.0854,
+     "X": 0.0041,
+     "live_present": 0.4502,
+     "game_present": 0.2297,
+     "super_present": 0.3821
+    },
+    "f3": {
+     "L": 0.3049,
+     "P": 0.0722,
+     "G": 0.0427,
+     "A": 0.1301,
+     "E": 0.4258,
+     "X": 0.0244,
+     "live_present": 0.3801,
+     "game_present": 0.0457,
+     "super_present": 0.7
+    }
+   },
+   "live_share3": {
+    "mean": 0.4265,
+    "ci95": [
+     0.3442,
+     0.5041
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1003,
+    "ci95": [
+     0.0644,
+     0.1433
+    ]
+   },
+   "art_share3": {
+    "mean": 0.2185,
+    "ci95": [
+     0.1589,
+     0.2835
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2371,
+    "ci95": [
+     0.1951,
+     0.2842
+    ]
+   },
+   "patterns": {
+    "live_only": 41,
+    "live+game": 14,
+    "game(+art)": 12,
+    "art_only": 15
+   },
+   "live_share3_distribution": {
+    "0": 27,
+    "0<v<=1/3": 17,
+    "1/3<v<=2/3": 18,
+    ">2/3": 20
+   },
+   "readable_text_units": {
+    "price": 14,
+    "date": 28,
+    "mega": 1,
+    "disclaimer": 3,
+    "sfclogo": 31,
+    "publogo": 38,
+    "status": 1,
+    "credit": 3,
+    "copy": 58
+   }
+  }
+ },
+ "by_stratum": {
+  "generic": {
+   "units": 119,
+   "uploads": 193,
+   "by_position": {
+    "f1": {
+     "L": 0.2981,
+     "P": 0.0626,
+     "G": 0.0528,
+     "A": 0.4377,
+     "E": 0.1418,
+     "X": 0.0071,
+     "live_present": 0.367,
+     "game_present": 0.057,
+     "super_present": 0.6649
+    },
+    "f2": {
+     "L": 0.3188,
+     "P": 0.0595,
+     "G": 0.2036,
+     "A": 0.3929,
+     "E": 0.0252,
+     "X": 0.0,
+     "live_present": 0.3783,
+     "game_present": 0.2352,
+     "super_present": 0.3714
+    },
+    "f3": {
+     "L": 0.2259,
+     "P": 0.0511,
+     "G": 0.0563,
+     "A": 0.1975,
+     "E": 0.4608,
+     "X": 0.0084,
+     "live_present": 0.2791,
+     "game_present": 0.0668,
+     "super_present": 0.71
+    }
+   },
+   "live_share3": {
+    "mean": 0.3387,
+    "ci95": [
+     0.2668,
+     0.4096
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1042,
+    "ci95": [
+     0.0741,
+     0.1364
+    ]
+   },
+   "art_share3": {
+    "mean": 0.3427,
+    "ci95": [
+     0.2824,
+     0.4055
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2093,
+    "ci95": [
+     0.1717,
+     0.2464
+    ]
+   },
+   "patterns": {
+    "live_only": 43,
+    "live+game": 17,
+    "art_only": 35,
+    "game(+art)": 23,
+    "card_only": 1
+   },
+   "live_share3_distribution": {
+    "0": 59,
+    "0<v<=1/3": 15,
+    "1/3<v<=2/3": 21,
+    ">2/3": 24
+   },
+   "readable_text_units": {
+    "price": 14,
+    "date": 37,
+    "mega": 1,
+    "disclaimer": 13,
+    "sfclogo": 45,
+    "publogo": 70,
+    "status": 1,
+    "credit": 4,
+    "copy": 66
+   }
+  },
+  "title_only": {
+   "units": 102,
+   "uploads": 176,
+   "by_position": {
+    "f1": {
+     "L": 0.4191,
+     "P": 0.0596,
+     "G": 0.0523,
+     "A": 0.3464,
+     "E": 0.098,
+     "X": 0.0245,
+     "live_present": 0.4788,
+     "game_present": 0.0719,
+     "super_present": 0.475
+    },
+    "f2": {
+     "L": 0.3742,
+     "P": 0.0523,
+     "G": 0.1838,
+     "A": 0.308,
+     "E": 0.0784,
+     "X": 0.0033,
+     "live_present": 0.433,
+     "game_present": 0.2345,
+     "super_present": 0.4333
+    },
+    "f3": {
+     "L": 0.2361,
+     "P": 0.0343,
+     "G": 0.0637,
+     "A": 0.0743,
+     "E": 0.5768,
+     "X": 0.0147,
+     "live_present": 0.2737,
+     "game_present": 0.0768,
+     "super_present": 0.6167
+    }
+   },
+   "live_share3": {
+    "mean": 0.3919,
+    "ci95": [
+     0.3252,
+     0.4621
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0999,
+    "ci95": [
+     0.0659,
+     0.1375
+    ]
+   },
+   "art_share3": {
+    "mean": 0.2429,
+    "ci95": [
+     0.1885,
+     0.299
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2511,
+    "ci95": [
+     0.217,
+     0.2846
+    ]
+   },
+   "patterns": {
+    "art_only": 20,
+    "live+game": 19,
+    "live_only": 46,
+    "game(+art)": 17
+   },
+   "live_share3_distribution": {
+    "0": 37,
+    "0<v<=1/3": 20,
+    "1/3<v<=2/3": 27,
+    ">2/3": 18
+   },
+   "readable_text_units": {
+    "price": 17,
+    "date": 37,
+    "mega": 3,
+    "disclaimer": 3,
+    "sfclogo": 44,
+    "publogo": 54,
+    "status": 2,
+    "credit": 3,
+    "copy": 73
+   }
+  }
+ },
+ "by_year": {
+  "1990": {
+   "units": 4,
+   "uploads": 10,
+   "by_position": {
+    "f1": {
+     "L": 0.4,
+     "P": 0.55,
+     "G": 0.05,
+     "A": 0.0,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.95,
+     "game_present": 0.05,
+     "super_present": null
+    },
+    "f2": {
+     "L": 0.25,
+     "P": 0.25,
+     "G": 0.0,
+     "A": 0.0,
+     "E": 0.5,
+     "X": 0.0,
+     "live_present": 0.5,
+     "game_present": 0.0,
+     "super_present": null
+    },
+    "f3": {
+     "L": 0.1,
+     "P": 0.3333,
+     "G": 0.0,
+     "A": 0.0,
+     "E": 0.5667,
+     "X": 0.0,
+     "live_present": 0.4333,
+     "game_present": 0.0,
+     "super_present": null
+    }
+   },
+   "live_share3": {
+    "mean": 0.6278,
+    "ci95": [
+     0.4333,
+     0.7556
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0167,
+    "ci95": [
+     0.0,
+     0.05
+    ]
+   },
+   "art_share3": {
+    "mean": 0.0,
+    "ci95": [
+     0.0,
+     0.0
+    ]
+   },
+   "card_share3": {
+    "mean": 0.3556,
+    "ci95": [
+     0.2111,
+     0.5556
+    ]
+   },
+   "patterns": {
+    "live+game": 1,
+    "live_only": 3
+   },
+   "live_share3_distribution": {
+    "0": 0,
+    "0<v<=1/3": 1,
+    "1/3<v<=2/3": 1,
+    ">2/3": 2
+   },
+   "readable_text_units": {
+    "price": 0,
+    "date": 1,
+    "mega": 0,
+    "disclaimer": 0,
+    "sfclogo": 0,
+    "publogo": 4,
+    "status": 0,
+    "credit": 0,
+    "copy": 3
+   }
+  },
+  "1991": {
+   "units": 16,
+   "uploads": 32,
+   "by_position": {
+    "f1": {
+     "L": 0.4263,
+     "P": 0.125,
+     "G": 0.0,
+     "A": 0.25,
+     "E": 0.1897,
+     "X": 0.0089,
+     "live_present": 0.5513,
+     "game_present": 0.0,
+     "super_present": 0.725
+    },
+    "f2": {
+     "L": 0.5,
+     "P": 0.1562,
+     "G": 0.1875,
+     "A": 0.1562,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.6562,
+     "game_present": 0.25,
+     "super_present": 0.5
+    },
+    "f3": {
+     "L": 0.1518,
+     "P": 0.125,
+     "G": 0.0312,
+     "A": 0.0625,
+     "E": 0.567,
+     "X": 0.0625,
+     "live_present": 0.2768,
+     "game_present": 0.0312,
+     "super_present": 0.45
+    }
+   },
+   "live_share3": {
+    "mean": 0.4948,
+    "ci95": [
+     0.3229,
+     0.6719
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0729,
+    "ci95": [
+     0.0,
+     0.1562
+    ]
+   },
+   "art_share3": {
+    "mean": 0.1562,
+    "ci95": [
+     0.0312,
+     0.3229
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2522,
+    "ci95": [
+     0.1719,
+     0.3378
+    ]
+   },
+   "patterns": {
+    "live_only": 10,
+    "live+game": 2,
+    "art_only": 2,
+    "game(+art)": 2
+   },
+   "live_share3_distribution": {
+    "0": 4,
+    "0<v<=1/3": 3,
+    "1/3<v<=2/3": 5,
+    ">2/3": 4
+   },
+   "readable_text_units": {
+    "price": 3,
+    "date": 7,
+    "mega": 0,
+    "disclaimer": 3,
+    "sfclogo": 8,
+    "publogo": 9,
+    "status": 0,
+    "credit": 0,
+    "copy": 8
+   }
+  },
+  "1992": {
+   "units": 24,
+   "uploads": 35,
+   "by_position": {
+    "f1": {
+     "L": 0.1667,
+     "P": 0.0,
+     "G": 0.0417,
+     "A": 0.5972,
+     "E": 0.1944,
+     "X": 0.0,
+     "live_present": 0.1667,
+     "game_present": 0.0417,
+     "super_present": 0.5
+    },
+    "f2": {
+     "L": 0.1667,
+     "P": 0.0,
+     "G": 0.2292,
+     "A": 0.6042,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.1667,
+     "game_present": 0.2708,
+     "super_present": 0.0
+    },
+    "f3": {
+     "L": 0.0833,
+     "P": 0.0208,
+     "G": 0.0833,
+     "A": 0.2986,
+     "E": 0.5139,
+     "X": 0.0,
+     "live_present": 0.1042,
+     "game_present": 0.0833,
+     "super_present": 1.0
+    }
+   },
+   "live_share3": {
+    "mean": 0.1458,
+    "ci95": [
+     0.0556,
+     0.2569
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1181,
+    "ci95": [
+     0.0486,
+     0.2014
+    ]
+   },
+   "art_share3": {
+    "mean": 0.5,
+    "ci95": [
+     0.3958,
+     0.6042
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2361,
+    "ci95": [
+     0.1528,
+     0.3194
+    ]
+   },
+   "patterns": {
+    "live+game": 3,
+    "live_only": 5,
+    "art_only": 10,
+    "game(+art)": 6
+   },
+   "live_share3_distribution": {
+    "0": 16,
+    "0<v<=1/3": 6,
+    "1/3<v<=2/3": 1,
+    ">2/3": 1
+   },
+   "readable_text_units": {
+    "price": 1,
+    "date": 4,
+    "mega": 0,
+    "disclaimer": 2,
+    "sfclogo": 6,
+    "publogo": 15,
+    "status": 0,
+    "credit": 0,
+    "copy": 10
+   }
+  },
+  "1993": {
+   "units": 37,
+   "uploads": 71,
+   "by_position": {
+    "f1": {
+     "L": 0.4257,
+     "P": 0.1014,
+     "G": 0.045,
+     "A": 0.3694,
+     "E": 0.0586,
+     "X": 0.0,
+     "live_present": 0.527,
+     "game_present": 0.0721,
+     "super_present": 0.7381
+    },
+    "f2": {
+     "L": 0.3153,
+     "P": 0.1036,
+     "G": 0.2005,
+     "A": 0.3266,
+     "E": 0.0541,
+     "X": 0.0,
+     "live_present": 0.4369,
+     "game_present": 0.2275,
+     "super_present": 0.3968
+    },
+    "f3": {
+     "L": 0.3041,
+     "P": 0.0495,
+     "G": 0.0541,
+     "A": 0.1441,
+     "E": 0.4347,
+     "X": 0.0135,
+     "live_present": 0.3626,
+     "game_present": 0.0811,
+     "super_present": 0.7381
+    }
+   },
+   "live_share3": {
+    "mean": 0.4332,
+    "ci95": [
+     0.3078,
+     0.5556
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0998,
+    "ci95": [
+     0.0503,
+     0.1577
+    ]
+   },
+   "art_share3": {
+    "mean": 0.28,
+    "ci95": [
+     0.1839,
+     0.3814
+    ]
+   },
+   "card_share3": {
+    "mean": 0.1824,
+    "ci95": [
+     0.1284,
+     0.2372
+    ]
+   },
+   "patterns": {
+    "live_only": 17,
+    "live+game": 8,
+    "game(+art)": 5,
+    "art_only": 7
+   },
+   "live_share3_distribution": {
+    "0": 12,
+    "0<v<=1/3": 7,
+    "1/3<v<=2/3": 9,
+    ">2/3": 9
+   },
+   "readable_text_units": {
+    "price": 4,
+    "date": 12,
+    "mega": 0,
+    "disclaimer": 3,
+    "sfclogo": 16,
+    "publogo": 18,
+    "status": 1,
+    "credit": 4,
+    "copy": 23
+   }
+  },
+  "1994": {
+   "units": 41,
+   "uploads": 70,
+   "by_position": {
+    "f1": {
+     "L": 0.3854,
+     "P": 0.0325,
+     "G": 0.0854,
+     "A": 0.4187,
+     "E": 0.061,
+     "X": 0.0171,
+     "live_present": 0.4179,
+     "game_present": 0.0854,
+     "super_present": 0.2095
+    },
+    "f2": {
+     "L": 0.411,
+     "P": 0.0508,
+     "G": 0.1805,
+     "A": 0.3333,
+     "E": 0.0244,
+     "X": 0.0,
+     "live_present": 0.4618,
+     "game_present": 0.2537,
+     "super_present": 0.0286
+    },
+    "f3": {
+     "L": 0.2695,
+     "P": 0.0163,
+     "G": 0.0171,
+     "A": 0.1463,
+     "E": 0.5386,
+     "X": 0.0122,
+     "live_present": 0.2858,
+     "game_present": 0.0171,
+     "super_present": 0.7
+    }
+   },
+   "live_share3": {
+    "mean": 0.3885,
+    "ci95": [
+     0.2672,
+     0.511
+    ]
+   },
+   "game_share3": {
+    "mean": 0.0943,
+    "ci95": [
+     0.0341,
+     0.1626
+    ]
+   },
+   "art_share3": {
+    "mean": 0.2995,
+    "ci95": [
+     0.1951,
+     0.4146
+    ]
+   },
+   "card_share3": {
+    "mean": 0.208,
+    "ci95": [
+     0.1477,
+     0.2669
+    ]
+   },
+   "patterns": {
+    "live_only": 18,
+    "live+game": 4,
+    "game(+art)": 7,
+    "art_only": 12
+   },
+   "live_share3_distribution": {
+    "0": 19,
+    "0<v<=1/3": 3,
+    "1/3<v<=2/3": 8,
+    ">2/3": 11
+   },
+   "readable_text_units": {
+    "price": 3,
+    "date": 14,
+    "mega": 2,
+    "disclaimer": 2,
+    "sfclogo": 18,
+    "publogo": 23,
+    "status": 0,
+    "credit": 0,
+    "copy": 23
+   }
+  },
+  "1995": {
+   "units": 29,
+   "uploads": 50,
+   "by_position": {
+    "f1": {
+     "L": 0.2155,
+     "P": 0.0086,
+     "G": 0.1034,
+     "A": 0.4483,
+     "E": 0.1724,
+     "X": 0.0517,
+     "live_present": 0.2414,
+     "game_present": 0.1207,
+     "super_present": 0.0
+    },
+    "f2": {
+     "L": 0.2931,
+     "P": 0.0086,
+     "G": 0.2759,
+     "A": 0.3592,
+     "E": 0.0517,
+     "X": 0.0115,
+     "live_present": 0.3017,
+     "game_present": 0.3017,
+     "super_present": 0.0
+    },
+    "f3": {
+     "L": 0.2241,
+     "P": 0.0,
+     "G": 0.1034,
+     "A": 0.1638,
+     "E": 0.4914,
+     "X": 0.0172,
+     "live_present": 0.2241,
+     "game_present": 0.1121,
+     "super_present": 0.3333
+    }
+   },
+   "live_share3": {
+    "mean": 0.25,
+    "ci95": [
+     0.1149,
+     0.3908
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1609,
+    "ci95": [
+     0.0948,
+     0.2356
+    ]
+   },
+   "art_share3": {
+    "mean": 0.3238,
+    "ci95": [
+     0.2155,
+     0.4397
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2385,
+    "ci95": [
+     0.1523,
+     0.3276
+    ]
+   },
+   "patterns": {
+    "live_only": 7,
+    "game(+art)": 11,
+    "live+game": 4,
+    "art_only": 6,
+    "card_only": 1
+   },
+   "live_share3_distribution": {
+    "0": 18,
+    "0<v<=1/3": 2,
+    "1/3<v<=2/3": 5,
+    ">2/3": 4
+   },
+   "readable_text_units": {
+    "price": 3,
+    "date": 10,
+    "mega": 0,
+    "disclaimer": 1,
+    "sfclogo": 15,
+    "publogo": 14,
+    "status": 1,
+    "credit": 0,
+    "copy": 20
+   }
+  },
+  "1996": {
+   "units": 23,
+   "uploads": 36,
+   "by_position": {
+    "f1": {
+     "L": 0.3913,
+     "P": 0.0217,
+     "G": 0.0543,
+     "A": 0.3804,
+     "E": 0.1304,
+     "X": 0.0217,
+     "live_present": 0.4239,
+     "game_present": 0.0543,
+     "super_present": 1.0
+    },
+    "f2": {
+     "L": 0.3587,
+     "P": 0.0326,
+     "G": 0.1739,
+     "A": 0.4348,
+     "E": 0.0,
+     "X": 0.0,
+     "live_present": 0.3913,
+     "game_present": 0.1739,
+     "super_present": 1.0
+    },
+    "f3": {
+     "L": 0.2174,
+     "P": 0.0109,
+     "G": 0.087,
+     "A": 0.087,
+     "E": 0.5978,
+     "X": 0.0,
+     "live_present": 0.2391,
+     "game_present": 0.087,
+     "super_present": 1.0
+    }
+   },
+   "live_share3": {
+    "mean": 0.3442,
+    "ci95": [
+     0.192,
+     0.5
+    ]
+   },
+   "game_share3": {
+    "mean": 0.1051,
+    "ci95": [
+     0.0399,
+     0.1812
+    ]
+   },
+   "art_share3": {
+    "mean": 0.3007,
+    "ci95": [
+     0.1667,
+     0.442
+    ]
+   },
+   "card_share3": {
+    "mean": 0.2428,
+    "ci95": [
+     0.1812,
+     0.2971
+    ]
+   },
+   "patterns": {
+    "live_only": 6,
+    "live+game": 6,
+    "game(+art)": 3,
+    "art_only": 8
+   },
+   "live_share3_distribution": {
+    "0": 11,
+    "0<v<=1/3": 2,
+    "1/3<v<=2/3": 7,
+    ">2/3": 3
+   },
+   "readable_text_units": {
+    "price": 8,
+    "date": 11,
+    "mega": 0,
+    "disclaimer": 3,
+    "sfclogo": 9,
+    "publogo": 15,
+    "status": 0,
+    "credit": 0,
+    "copy": 20
+   }
+  }
+ },
+ "units": [
+  {
+   "title": "",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "714"
+   ],
+   "year": "",
+   "publisher": "",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "F-15スーパーストライクイーグル",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "729"
+   ],
+   "year": "1993",
+   "publisher": "アスミック",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:sfclogo;f1:disclaimer:スーパーファミコンは任天堂の商標です;f2:publogo:ASMIK;f3:publogo:ASMIK",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "Jリーグエキサイトステージ'96",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "810"
+   ],
+   "year": "1996",
+   "publisher": "エポック社",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:新発売!!;copy:EXCITE STAGE '96",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "Jリーグスーパーサッカー",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "771"
+   ],
+   "year": "1994",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "publogo;copy:3つの視点が選べるマルチビュー採用！",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "MOTHER2 ギーグの逆襲",
+   "length": "30s",
+   "uploads": 8,
+   "nos": [
+    "546",
+    "547",
+    "548",
+    "550",
+    "552",
+    "554",
+    "555",
+    "775"
+   ],
+   "year": "1994",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:sfclogo;f3:copy:スーパーファミコン;f3:copy:MOTHER2 マザー2;f3:date:8月27日発売予定。;illegible_small_text;f3:copy:MOTHER2;f1:sfclogo;f3:copy:大人も子供も、おねーさんも。;f3:copy:スーパーファミコン;f3:copy:MOTHER2 マザー2;f3:date:8月27日発売予定。;illegible_small_text;f1:sfclogo;f3:copy:スーパーファミコン;f3:copy:MOTHER2 マザー2;f3:date:8月27日発売予定。;illegible_small_text;f1:sfclogo;f2:copy:大人も子供も、おねーさんも。;f3:copy:スーパーファミコン;f3:copy:MOTHER2 マザー2;f3:date:8月27日発売予定。;f1:sfclogo;f3:publogo:Nintendo;copy:大人も子供も、おねーさんも。",
+   "live_share3": 0.75,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.25,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "SDウルトラバトル ウルトラマン伝説",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "814"
+   ],
+   "year": "1996",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:©円谷プロ;sfclogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "あしたのジョー",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "702"
+   ],
+   "year": "1992",
+   "publisher": "ケイ・アミューズメントリース",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "date:11月27日(金)発売;price:8,900円(税別);publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "かまいたちの夜",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "367",
+    "375"
+   ],
+   "year": "1994",
+   "publisher": "チュンソフト",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "date:11月25日発売;copy:スーパーファミコン用ソフト;copy:かまいたちの夜;publogo",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "がんばれゴエモン きらきら道中 僕がダンサーになった理由",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "263"
+   ],
+   "year": "",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "price:9,980円(税別);date:好評発売中;publogo;sfclogo;copy:スーパーファミコンソフト;copy:ゴエモン 新世紀へ;copy:NEXT KONAMI",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "がんばれゴエモン ゆき姫救出絵巻",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "259",
+    "270"
+   ],
+   "year": "1991",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "price:8800円(税込);date:好評発売中;copy:ゴエモン音頭 歌/三橋美智也;copy:キャンペーン実施中;publogo;copy:5th ANNIVERSARY;copy:が当る。ゴエモン5周年キャンペーン",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "がんばれゴエモン2 奇天烈将軍マッギネス",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "260",
+    "265"
+   ],
+   "year": "1994",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;date:好評発売中;copy:唄:水前寺清子;sfclogo;publogo;date:好評発売中;price:価格9,800(partly legible)",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "がんばれゴエモン2 奇天烈将軍マッギネス",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "258"
+   ],
+   "year": "",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;price:価格9,800円(partly legible);date:好評発売中",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "さめがめ",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "782"
+   ],
+   "year": "1995",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "copy:さめがめ お空からやってくるの;copy:福原愛",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "す〜ぱ〜なぞぷよ ルルーのルー",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "791",
+    "793"
+   ],
+   "year": "1995",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;copy:スーパーファミコン…1ケ",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "す〜ぱ〜ぷよぷよ",
+   "length": "15s",
+   "uploads": 4,
+   "nos": [
+    "724",
+    "726",
+    "786",
+    "796"
+   ],
+   "year": "1993",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:sfclogo:スーパーファミコン;f1:scene_text:ぷよ (hanging scroll);f2:disclaimer:スーパーファミコンは任天堂の商標です;f3:publogo:BANPRESTO;f3:copy:ぷよぷよ;sfclogo;sfclogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.25,
+   "card_share3": 0.08333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ときめきメモリアル 伝説の樹の下で",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "812"
+   ],
+   "year": "1996",
+   "publisher": "コナミ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;copy:恋愛シミュレーション;copy:これが、",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "らんま1/2 町内激闘篇",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "692",
+    "693"
+   ],
+   "year": "1992",
+   "publisher": "メサイヤ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;disclaimer:スーパーファミコンは任天堂の商標です。;publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ろくでなしBLUES 対決!東京四天王",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "760"
+   ],
+   "year": "1994",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "アクトレイザー",
+   "length": "15s",
+   "uploads": 5,
+   "nos": [
+    "138",
+    "139",
+    "140",
+    "142",
+    "651"
+   ],
+   "year": "1990",
+   "publisher": "エニックス",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "copy:ACTION;copy:CREATION;copy:ACTION;copy:CREATION;publogo;copy:ACTION;copy:CREATION;publogo;copy:CREATION;publogo;copy:ACTION;copy:CREATION",
+   "live_share3": 0.7333333333333334,
+   "game_share3": 0.06666666666666667,
+   "art_share3": 0.0,
+   "card_share3": 0.19999999999999998,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "アクトレイザー",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "141"
+   ],
+   "year": "1990",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;copy:ACTION",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "E",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "アラジン",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "723"
+   ],
+   "year": "1993",
+   "publisher": "カプコン",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "f1:title:Disney's Aladdin アラジン;f3:copy:スーパーファミコン用ソフト;f3:title:Disney's Aladdin アラジン;f3:status:好評発売中;f3:price:9,000円(税別);f3:publogo:CAPCOM",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ウィザードリィVI 禁断の魔筆",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "794"
+   ],
+   "year": "1995",
+   "publisher": "アスキー",
+   "stratum_generic": true,
+   "pattern": "card_only",
+   "text": "date:9月29日発売;price:標準小売価格12,800円(税別);publogo;copy:スーパーファミコン用ソフト;copy:BANE OF THE COSMIC FORGE",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 1.0,
+   "codes": {
+    "f1": "E",
+    "f2": "E",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ウイニングポスト",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "753"
+   ],
+   "year": "1994",
+   "publisher": "光栄",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:Winning Post;copy:ENTERTAINMENT & EDUCATION",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "E",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ウェディングピーチ",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "806"
+   ],
+   "year": "1995",
+   "publisher": "KSS",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "sfclogo;copy:祝",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "ウルトラセブン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "742"
+   ],
+   "year": "",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:sfclogo;f2:credit:©円谷プロ;f3:sfclogo:SUPER FAMICOM;f3:title:ウルトラセブン;f3:publogo:BANDAI",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "ウルトラマン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "667"
+   ],
+   "year": "1991",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;date:4月6日発売;disclaimer:スーパーファミコンは任天堂の商標です。",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "エストポリス伝記",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "60",
+    "61"
+   ],
+   "year": "1993",
+   "publisher": "タイトー",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "f2:title:Estpolis エストポリス伝記;f2:date:'93年6月登場;f2:sfclogo;f2:date:6月25日新発売;f2:title:Estpolis エストポリス伝記",
+   "live_share3": 0.16666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "P",
+    "f2": "E",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "エストポリス伝記II",
+   "length": "15s",
+   "uploads": 4,
+   "nos": [
+    "58",
+    "59",
+    "62",
+    "63"
+   ],
+   "year": "1995",
+   "publisher": "タイトー",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "f3:copy:キャッチ・ザ・ハート;f3:publogo:TAITO;f3:title:Estpolis II;f3:sfclogo;f3:disclaimer:スーパーファミコンは任天堂の商標です;f3:status:好評発売中;f3:illegible_small_text;;publogo;copy:キャッチ・ザ・ハート",
+   "live_share3": 0.5,
+   "game_share3": 0.0,
+   "art_share3": 0.25,
+   "card_share3": 0.25,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "エルファリア",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "746"
+   ],
+   "year": "1993",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "カービィボウル",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "527"
+   ],
+   "year": "1994",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "キン肉マン DIRTY CHALLENGER",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "695"
+   ],
+   "year": "1992",
+   "publisher": "ユタカ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "クレヨンしんちゃん 嵐を呼ぶ園児",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "720"
+   ],
+   "year": "1993",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "クレヨンしんちゃん2 大魔王の逆襲",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "752"
+   ],
+   "year": "1994",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "sfclogo;publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "クロノ・トリガー",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "89",
+    "93"
+   ],
+   "year": "",
+   "publisher": "",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo;date:3月11日(土)発売;copy:DREAM PROJECT PRESENTS;sfclogo;date:3月11日(土)発売",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "クロノ・トリガー",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "84",
+    "90"
+   ],
+   "year": "1995",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo;date:3月11日(土)発売;copy:DREAM PROJECT PRESENTS;copy:DREAM PROJECT PRESENTS",
+   "live_share3": 0.0,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.5,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "グラディウスIII",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "252",
+    "254",
+    "255"
+   ],
+   "year": "1990",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;publogo;copy:SUPER FAMICOM;copy:SUPER FAMICOM 第一弾",
+   "live_share3": 0.7777777777777778,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.2222222222222222,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "グラディウスIII",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "253"
+   ],
+   "year": "1990",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "date:90年12月21日発売;publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "P",
+    "f2": "E",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "ゲゲゲの鬼太郎 復活!天魔大王(復刻版)",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "811"
+   ],
+   "year": "1996",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "price:3,980円",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "サイバーナイト",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "712"
+   ],
+   "year": "1992",
+   "publisher": "トンキンハウス",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "サテラビュー",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "640"
+   ],
+   "year": "1995",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "X",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "サムライスピリッツ",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "749",
+    "764"
+   ],
+   "year": "1994",
+   "publisher": "タカラ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "sfclogo;copy:SAMURAI SPIRITS;disclaimer:©SNK 1993 ... ©TAKARA 1994;mega:32メガ;date:9月22日発売;sfclogo;disclaimer:スーパーファミコンは任天堂の商標です。",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "サムライスピリッツ",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "755"
+   ],
+   "year": "1994",
+   "publisher": "タカラ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "disclaimer:スーパーファミコンは任天堂の商標です。;copy:SAMURAI SPIRITS",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "サムライスピリッツ/餓狼伝説スペシャル",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "438"
+   ],
+   "year": "",
+   "publisher": "タカラ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "date:6月30日発売;publogo;mega:32メガ;sfclogo",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "E",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ザ・グレイトバトルII ラストファイターツイン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "697"
+   ],
+   "year": "1992",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ザ・グレイトバトルIII",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "738"
+   ],
+   "year": "1993",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "f1:sfclogo;f3:sfclogo:SUPER FAMICOM;f3:title:ザ・グレイトバトルIII (ornate lettering)",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "シムシティー",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "482",
+    "484"
+   ],
+   "year": "1991",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "f1:publogo:Nintendo;f2:copy:市長誕生;f3:copy:SUPER FAMICOM;f3:sfclogo;f2:copy:市長誕生;f3:copy:スーパーファミコン;f3:copy:SimCity シムシティー;f3:date:4月26日 発売予定",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ジャンボ尾崎のホールインワン",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "668",
+    "680"
+   ],
+   "year": "1991",
+   "publisher": "HAL研究所",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;date:2月23日から;copy:ホールインワンコンテスト開催中",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スターオーシャン",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "147",
+    "153"
+   ],
+   "year": "1996",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "publogo;price:価格8,500円(税別);copy:SFC最後のオリジナルRPG;copy:好評発売中",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.16666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スターオーシャン",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "146"
+   ],
+   "year": "",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "price:価格8,500円(税別);copy:SFC最後のオリジナルRPG;copy:好評発売中",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "E",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "スターフォックス",
+   "length": "30s",
+   "uploads": 4,
+   "nos": [
+    "508",
+    "509",
+    "706",
+    "747"
+   ],
+   "year": "1993",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "f1:publogo:Nintendo(on chip);f1:copy:1993.スーパーFXチップ現る。;f2:copy:SHIELD(in-game UI);f3:date:2月21日発売予定;f1:publogo:Nintendo(on chip);f1:copy:1993.スーパーFXチップ現る。;f2:copy:SHIELD(in-game UI);f3:date:2月21日発売予定;publogo;sfclogo;date:2月21日発売予定;publogo;sfclogo;date:2月21日発売予定",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.16666666666666666,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ストリートファイターII",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "183"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;copy:感性開発企業",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ストリートファイターII",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "171",
+    "690"
+   ],
+   "year": "1992",
+   "publisher": "カプコン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "copy:song by/筋肉少女帯;copy:song by 筋肉少女帯",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ストリートファイターIIターボ",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "173",
+    "192"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;price:定価9,980円(税別);copy:好評発売中;price:定価9,980円(税別);copy:好評発売中;copy:SONG BY/筋肉少女帯",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ストリートファイターIIターボ",
+   "length": "30s",
+   "uploads": 4,
+   "nos": [
+    "177",
+    "185",
+    "186",
+    "193"
+   ],
+   "year": "1993",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:SONG BY/筋肉少女帯;publogo;price:定価9,980円(税別);copy:好評発売中;;copy:SONG BY/筋肉少女帯",
+   "live_share3": 0.9166666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.08333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーE.D.F.",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "672"
+   ],
+   "year": "1991",
+   "publisher": "ジャレコ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:オリジナルグッズプレゼント実施中！;copy:詳しくは、雑誌広告・カタログで。",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーF1サーカス2",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "735"
+   ],
+   "year": "1993",
+   "publisher": "日本物産",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "f1:copy:Nichibutsuは199?年 FIA F1 世界 (cut off, last digit unclear);f2:disclaimer:Licensed by FOCA to Fuji Television;f2:game_text:01'12\"41 P03 L03 097;f3:copy:FIA公認 スーパーファミコン用ソフト;f3:title:Super F1 CIRCUS 2 スーパーF1サーカス2;f3:date:7月発売予定;f3:logo:FIA FORMULA 1 WORLD CHAMPIONSHIP;f3:logo:FOCA;f3:sfclogo",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーゲームボーイ",
+   "length": "30s",
+   "uploads": 3,
+   "nos": [
+    "627",
+    "628",
+    "629"
+   ],
+   "year": "1994",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;;date:6月14日発売予定;sfclogo",
+   "live_share3": 0.4444444444444444,
+   "game_share3": 0.0,
+   "art_share3": 0.4444444444444444,
+   "card_share3": 0.1111111111111111,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "スーパーストリートファイターII",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "172",
+    "182",
+    "184"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "copy:メガドライブ用ソフトも新発売！;copy:メガドライブ用ソフトも発売中！;",
+   "live_share3": 0.2222222222222222,
+   "game_share3": 0.1111111111111111,
+   "art_share3": 0.4444444444444444,
+   "card_share3": 0.2222222222222222,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーストリートファイターII",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "181"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーヅガン ハコテン城からの招待状",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "750"
+   ],
+   "year": "1994",
+   "publisher": "エレクトロニック・アーツ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;copy:大脳刺激型知的戦略遊戯 麻雀",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーテトリス3",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "773"
+   ],
+   "year": "1994",
+   "publisher": "BPS",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "sfclogo",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパードンキーコング",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "559",
+    "561"
+   ],
+   "year": "1994",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "copy:大革命!!;date:11月26日発売予定;sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "スーパードンキーコング2",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "560",
+    "575"
+   ],
+   "year": "",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "publogo;sfclogo;copy:新しいヒロイン、ディクシー登場;copy:店頭表示価格よりもスーパーファミコンが4,000円安くなるクーポン券つき;publogo;copy:多彩なステージ;copy:店頭表示価格よりもスーパーファミコンが4,000円安くなるクーポン券つき",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパードンキーコング2 ディクシー&ディディー",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "570"
+   ],
+   "year": "",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo;date:11月21日発売予定",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパードンキーコング3",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "567"
+   ],
+   "year": "",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "price:3,000円",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーファミコン本体",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "661"
+   ],
+   "year": "",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;sfclogo;copy:スーパーマリオブラザーズ",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "スーパーファミコン本体/スーパーマリオワールド",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "453",
+    "743"
+   ],
+   "year": "",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f2:copy:SUPER FAMICOM;illegible_small_text;copy:スーパーマリオブラザーズ",
+   "live_share3": 0.5,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "P",
+    "f2": "A",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーファミスタ2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "296"
+   ],
+   "year": "",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーファミスタ3",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "287"
+   ],
+   "year": "1994",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "sfclogo",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーファミスタ4",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "292",
+    "294",
+    "297"
+   ],
+   "year": "1995",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;date:3月3日発売;copy:スーパーファミスタ4;sfclogo;date:好評発売中;copy:スーパーファミスタ4;sfclogo;date:3月3日発売;copy:スーパーファミスタ4",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーファミスタ5",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "289"
+   ],
+   "year": "1996",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;date:2月29日発売;copy:スーパーファミスタ5",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーフォーメーションサッカー",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "669"
+   ],
+   "year": "1991",
+   "publisher": "ヒューマン",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "X"
+   }
+  },
+  {
+   "title": "スーパーフォーメーションサッカー'94",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "758"
+   ],
+   "year": "1994",
+   "publisher": "ヒューマン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーフォーメーションサッカー'94 ワールドカップエディション",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "748"
+   ],
+   "year": "1994",
+   "publisher": "ヒューマン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーフォーメーションサッカー'95 della セリエA",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "798"
+   ],
+   "year": "1995",
+   "publisher": "ヒューマン",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;copy:SUPER FORMATION SOCCER 95 della セリエA",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーフォーメーションサッカー94 ワールドカップファイナルデータ",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "759"
+   ],
+   "year": "1994",
+   "publisher": "ヒューマン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:おかげ様ブラザーズ",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーボンバーマン",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "326",
+    "329",
+    "730"
+   ],
+   "year": "1993",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;publogo;sfclogo;date:4月28日 新発売;price:¥7,800(税別);copy:スーパーファミコン;f1:publogo:HUDSON GROUP HUDSON SOFT;f3:title:SUPER BOMBERMAN スーパーボンバーマン",
+   "live_share3": 0.2222222222222222,
+   "game_share3": 0.0,
+   "art_share3": 0.4444444444444444,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "スーパーボンバーマン2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "336"
+   ],
+   "year": "",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "publogo;date:4月28日発売;price:¥8,500(税別)",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーボンバーマン2",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "339"
+   ],
+   "year": "",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;copy:ロケ地 瀬戸大橋",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "E",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーボンバーマン3 (upload title says スーパーボンバーマン)",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "327",
+    "330"
+   ],
+   "year": "",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:油断大敵・凶悪ハニー;copy:ルーイで遊べる;copy:ロケ地 安宅神社;copy:連続テレビCM 石川ロケ決行!",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーボンバーマン4",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "331"
+   ],
+   "year": "",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:今度のボンバー 現在・過去・未来;copy:ロケ地 春日大社;copy:http://honey.hudson.co.jp/",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーマリオ ヨッシーアイランド",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "465",
+    "783"
+   ],
+   "year": "1995",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": ";",
+   "live_share3": 0.16666666666666666,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーマリオRPG",
+   "length": "30s",
+   "uploads": 4,
+   "nos": [
+    "395",
+    "454",
+    "825",
+    "827"
+   ],
+   "year": "1996",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "copy:ロールプレイングゲーム;copy:まんぞくさせます;copy:スーパーファミコンが4,000円安くなるクーポン券つき;f1:copy:ロールプレイングゲーム;f2:copy:ロールプレイングゲーム;f3:copy:スーパーファミコンソフト;f3:copy:SUPER MARIO RPG スーパーマリオRPG;f3:date:3月9日発売予定;f3:price:7,500円;illegible_small_text;publogo;copy:マリオです;date:3月9日発売予定;price:希望小売価格7,500円;copy:スーパーファミコンソフト",
+   "live_share3": 0.5833333333333334,
+   "game_share3": 0.08333333333333333,
+   "art_share3": 0.08333333333333333,
+   "card_share3": 0.25,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーマリオカート",
+   "length": "30s",
+   "uploads": 3,
+   "nos": [
+    "455",
+    "660",
+    "710"
+   ],
+   "year": "1992",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "f1:publogo:Nintendo;f1:copy:オールスターキャスト;f1:sfclogo;f3:copy:ハチャメチャぶっ飛びレーサーたち;f3:date:8月27日発売予定;publogo;sfclogo;copy:オールスターキャスト;copy:ハチャメチャぶっ飛びレーサーたち;",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "スーパーマリオコレクション",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "457",
+    "739"
+   ],
+   "year": "1993",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:sfclogo;illegible_small_text;f1:logo:Nintendo;f1:title:SUPER MARIO (rest of arch lettering unclear);f1:sfclogo;f2:copy:...RIO BROS. 2 (neon sign, cut off);f3:credit:映画「スーパーマリオ 魔界帝国の女神」より",
+   "live_share3": 0.16666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.8333333333333334,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーマリオワールド",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "664"
+   ],
+   "year": "1991",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "スーパーマリオワールド / スーパーファミコン本体",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "396"
+   ],
+   "year": "",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:Famicom (partial neon lettering)",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "スーパーメトロイド",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "534",
+    "537"
+   ],
+   "year": "1994",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": ";f3:copy:スーパーファミコンソフト;f3:copy:SUPER METROID スーパーメトロイド;f3:price:希望小売価格(税別)9,800円",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーロボット大戦EX",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "445"
+   ],
+   "year": "1994",
+   "publisher": "バンプレスト",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパーワギャンランド (+ファミスタ'94)",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "288"
+   ],
+   "year": "",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパーワギャンランド2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "744"
+   ],
+   "year": "1993",
+   "publisher": "ナムコ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "copy:好評発売中;publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "スーパー三國志II",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "685"
+   ],
+   "year": "1991",
+   "publisher": "光栄",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "date:9月15日発売",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパー桃太郎電鉄DX",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "344"
+   ],
+   "year": "",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;date:12月8日 発売;price:9500円;copy:桃太郎電鉄DX",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパー桃太郎電鉄II",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "343",
+    "356"
+   ],
+   "year": "1992",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "publogo;copy:桃太郎電鉄II;publogo;copy:桃太郎電鉄II",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "スーパー桃太郎電鉄III",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "353",
+    "354"
+   ],
+   "year": "1994",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:買って損ない桃太郎;copy:買って損ない桃太郎",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "スーパー麻雀2 本格4人打ち",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "727"
+   ],
+   "year": "1993",
+   "publisher": "",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "f1:prop_text:START;f2:game_text:GREAT!! NICE!! YOU 1 2 3 おめでとうございます!;f3:title:SUPER 麻雀 スーパーまーじゃん2 本格4人打ち!",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "P",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ゼルダの伝説 神々のトライフォース",
+   "length": "30s",
+   "uploads": 4,
+   "nos": [
+    "488",
+    "494",
+    "679",
+    "683"
+   ],
+   "year": "1991",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:publogo:Nintendo;f1:copy:SUPER FAMICOM;f1:sfclogo;f1:copy:LEGEND OF ZELDA;sfclogo;publogo;sfclogo",
+   "live_share3": 0.75,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.25,
+   "codes": {
+    "f1": "E",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ソニックブラストマン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "694"
+   ],
+   "year": "1992",
+   "publisher": "タイトー",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:MAN",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ソード・ワールドSFC",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "734"
+   ],
+   "year": "1993",
+   "publisher": "T&Eソフト",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:credit:Song by WINK",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "タクティクスオウガ",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "784"
+   ],
+   "year": "1995",
+   "publisher": "クエスト",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;copy:Tactics Ogre Let Us Cling Together",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "タワードリーム",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "820",
+    "830"
+   ],
+   "year": "1996",
+   "publisher": "アスキー",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;sfclogo;date:10月25日発売;price:¥8,000(税別);copy:Tower Dream;disclaimer:スーパーファミコンは任天堂の商標です。;disclaimer:©1996 ASCII Corp.",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.16666666666666666,
+   "card_share3": 0.5,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "ダービースタリオン96",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "400",
+    "407"
+   ],
+   "year": "1996",
+   "publisher": "アスキー",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "date:3月15日発売!;publogo;copy:アスキー公認ブリーダーズカップ開催決定!;copy:競走馬シミュレーション;copy:ダービースタリオン96;",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ダービースタリオンIII",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "402",
+    "403"
+   ],
+   "year": "1995",
+   "publisher": "アスキー",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "sfclogo;date:1月20日 発売!;copy:ダビスタIII;copy:ご家庭で馬、育てませんか。;sfclogo;date:1月20日 発売!;copy:ダビスタIII;copy:ご家庭で馬、育てませんか。",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "G",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "テイルズ オブ ファンタジア",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "33"
+   ],
+   "year": "",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "f1:publogo:namco;f2:credit:キャラクターデザイン 藤島康介;f2:copyright:©藤島康介/NAMCO LTD.",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "テイルズ オブ ファンタジア",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "36",
+    "41"
+   ],
+   "year": "",
+   "publisher": "ナムコ",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "f1:publogo:namco;f2:copy:Linear Motion Battle;f2:copy:リニアモーションバトル;f3:title:TALES OF PHANTASIA;f3:date:12月15日発売;f1:publogo:namco;f2:credit:アーチェ・クライン かないみか;f3:sfclogo",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "トルネコの大冒険 不思議のダンジョン",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "378",
+    "728"
+   ],
+   "year": "1993",
+   "publisher": "チュンソフト",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "date:9月19日発売;price:9,600円(税別);copy:トルネコの大冒険 不思議のダンジョン;f3:publogo:CHUN SOFT",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラえもん2 のび太のトイズランド大冒険",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "731"
+   ],
+   "year": "1993",
+   "publisher": "エポック社",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "f1:publogo:エポック社;f2:copy:マスコット人形プレゼント;f2:copy:全国各店で、先着20名様;f2:copy:(期間 9/1〜12/16 くわしくは店頭で);f3:copy:マスコット人形プレゼント;f3:copy:全国各店で、先着20名様;f3:copy:(期間 9/1〜12/16 くわしくは店頭で)",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "G",
+    "f2": "P",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "ドラゴンクエストIII そして伝説へ…",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "130",
+    "136"
+   ],
+   "year": "1996",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": ";price:価格8,700円(税別);copy:好評発売中",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ドラゴンクエストIII そして伝説へ…",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "131",
+    "133"
+   ],
+   "year": "",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "date:12月6日(金)発売;price:価格8,700円(税別);price:価格8,700円(税別);copy:好評発売中",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ドラゴンクエストV 天空の花嫁",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "121"
+   ],
+   "year": "1992",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ドラゴンクエストV 天空の花嫁",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "118"
+   ],
+   "year": "",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:SCENARIO YUJI HORII;copy:MUSIC KOICHI SUGIYAMA",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ドラゴンクエストVI 幻の大地",
+   "length": "15s",
+   "uploads": 4,
+   "nos": [
+    "125",
+    "126",
+    "127",
+    "802"
+   ],
+   "year": "1995",
+   "publisher": "エニックス",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "price:価格11,400円(税別);copy:DQを超えるのは、DQだけ;copy:好評発売中;sfclogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ;sfclogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ;publogo;copy:たぶん それは まぼろしの大地と よばれる場所じゃ！",
+   "live_share3": 0.16666666666666666,
+   "game_share3": 0.08333333333333333,
+   "art_share3": 0.4166666666666667,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンクエストVI 幻の大地",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "129"
+   ],
+   "year": "",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "E",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ ハイパーディメンション",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "809",
+    "817"
+   ],
+   "year": "1996",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo;date:3月下旬発売;copy:DBZ;sfclogo;publogo;date:3月下旬発売;copy:DIMENSION",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超サイヤ伝説",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "310",
+    "704"
+   ],
+   "year": "1992",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;date:1992.1.25 ON SALE;date:1992.1.25 ON SALE;date:1月25日発売;sfclogo;publogo;disclaimer:スーパーファミコンは任天堂の商標です",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.5,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超悟空伝 突撃編",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "754"
+   ],
+   "year": "1994",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超武闘伝",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "307",
+    "309",
+    "313"
+   ],
+   "year": "1993",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "publogo;copy:DRAGON BALL Z 超武闘伝;sfclogo;sfclogo;publogo;copy:SUPER FAMICOM;copy:DRAGON BALL Z 超武闘伝",
+   "live_share3": 0.0,
+   "game_share3": 0.2222222222222222,
+   "art_share3": 0.5555555555555555,
+   "card_share3": 0.2222222222222222,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超武闘伝",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "302",
+    "314"
+   ],
+   "year": "",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo;date:5月28日再登場;copy:SUPER FAMICOM;sfclogo;publogo;date:3月20日発売;copy:SUPER FAMICOM",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超武闘伝2",
+   "length": "15s",
+   "uploads": 4,
+   "nos": [
+    "303",
+    "304",
+    "306",
+    "308"
+   ],
+   "year": "1993",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo;date:'93.12.17 ON SALE;copy:DRAGONBALL Z;sfclogo;date:NOW ON SALE;copy:DRAGONBALL Z;date:'93.12.17 ON SALE;sfclogo;publogo;copy:DRAGONBALL Z;copy:DRAGON BALL Z 超武闘伝2",
+   "live_share3": 0.0,
+   "game_share3": 0.08333333333333333,
+   "art_share3": 0.5833333333333334,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超武闘伝3",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "311",
+    "312"
+   ],
+   "year": "1994",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "copy:DRAGONBALL Z;copy:DRAGON BALL Z 超武闘伝;sfclogo;publogo;copy:SUPER FAMICOM;copy:DRAGON BALL Z 超武闘伝3",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ドラゴンボールZ 超武闘伝3",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "301"
+   ],
+   "year": "",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "copy:DRAGONBALL Z",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ハロー!パックマン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "781"
+   ],
+   "year": "1994",
+   "publisher": "ナムコ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;date:8月26日発売！",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ハーメルンのバイオリン弾き",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "788"
+   ],
+   "year": "1995",
+   "publisher": "エニックス",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;copy:ENIX INFORMATION",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "バトルサッカー フィールドの覇者",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "699"
+   ],
+   "year": "1992",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "バトルサッカー2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "768"
+   ],
+   "year": "1994",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;date:11月25日発売予定",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "バトルレーサーズ",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "801"
+   ],
+   "year": "1995",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "copy:バトルレーサーズ",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "バハムート ラグーン",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "111",
+    "112"
+   ],
+   "year": "1996",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "sfclogo;date:2月9日(金)発売;copy:シミュレーションRPG;sfclogo;date:2月9日(金)発売;copy:シミュレーションRPG",
+   "live_share3": 0.5,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "パックインタイム",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "751"
+   ],
+   "year": "1994",
+   "publisher": "ナムコ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "date:95年1月3日発売;copy:PAC-IN-TIME",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "パネルでポン",
+   "length": "30s",
+   "uploads": 4,
+   "nos": [
+    "615",
+    "617",
+    "790",
+    "797"
+   ],
+   "year": "1995",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": ";sfclogo;;",
+   "live_share3": 0.75,
+   "game_share3": 0.25,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "パロディウスだ! 神話からお笑いへ",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "700"
+   ],
+   "year": "1992",
+   "publisher": "コナミ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ヒューマンベースボール",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "732",
+    "736"
+   ],
+   "year": "1993",
+   "publisher": "ヒューマン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:title:Human BASE BALL (first word partly legible);f2:date:8月6日新発売;f1:title:Human BASE BALL;f2:date:8月6日新発売",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ヒーロー戦記 プロジェクト オリュンポス",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "709"
+   ],
+   "year": "1992",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;copy:ヒーロー戦記",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ビッグラン",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "665",
+    "681"
+   ],
+   "year": "1991",
+   "publisher": "ジャレコ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "date:3月20日発売;copy:ジャレコ・スーパーファミコン第1弾;copy:シミュレーションラリーゲーム;publogo;date:3月20日発売;price:定価8,700円(税別);copy:ジャレコ・スーパーファミコン第1弾;copy:シミュレーション・ラリーゲーム",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ビンビン!ビンゴ",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "718"
+   ],
+   "year": "1993",
+   "publisher": "KSS",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "sfclogo",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ファイアーエムブレム 紋章の謎",
+   "length": "30s",
+   "uploads": 4,
+   "nos": [
+    "398",
+    "578",
+    "580",
+    "583"
+   ],
+   "year": "1994",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;copy:FIREEMBLEM;sfclogo;sfclogo;sfclogo",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ファイアーエムブレム 聖戦の系譜",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "588",
+    "589"
+   ],
+   "year": "1996",
+   "publisher": "任天堂",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;sfclogo;copy:前作をはるかにしのぐ超大作;copy:ロールプレイングシミュレーションゲーム;publogo;sfclogo;copy:前作をはるかにしのぐ超大作;copy:愛と絆が武器になる。",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ファイナルファイト",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "225",
+    "235",
+    "238"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "publogo;publogo;copy:感性開発企業;",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.1111111111111111,
+   "art_share3": 0.0,
+   "card_share3": 0.2222222222222222,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ファイナルファイト2",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "230",
+    "236"
+   ],
+   "year": "1993",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": ";copy:Song by 中村あゆみ;copy:カルロス・宮本",
+   "live_share3": 0.5,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.16666666666666666,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "ファイナルファイト2",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "233",
+    "234"
+   ],
+   "year": "1993",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": ";copy:おまえ一人では、行かせない。;copy:Song by 中村あゆみ",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ファイナルファイト・ガイ",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "228",
+    "232"
+   ],
+   "year": "1992",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": ";publogo;copy:感性開発企業",
+   "live_share3": 0.16666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ファイナルファンタジーIV",
+   "length": "15s",
+   "uploads": 7,
+   "nos": [
+    "2",
+    "7",
+    "11",
+    "12",
+    "15",
+    "663",
+    "666"
+   ],
+   "year": "1991",
+   "publisher": "スクウェア",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:title:FINAL FANTASY IV;f1:sfclogo;f1:illegible_small_text;f3:publogo:SQUARE;;f3:title:FINAL FANTASY IV;f3:title:ファイナルファンタジーIV;f3:sfclogo;f3:illegible_small_text;f3:publogo:SQUARE;f1:title:FINAL FANTASY IV;f1:sfclogo;f1:disclaimer:スーパーファミコンは任天堂の商標です;f3:publogo:SQUARE;sfclogo;sfclogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.2857142857142857,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ファイナルファンタジーV",
+   "length": "15s",
+   "uploads": 4,
+   "nos": [
+    "17",
+    "19",
+    "21",
+    "22"
+   ],
+   "year": "",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "f1:sfclogo;f1:disclaimer:スーパーファミコンは任天堂の商標です;f3:title:FINAL FANTASY V;f3:title:ファイナルファンタジーV;f3:mega:大容量16メガ;f3:status:好評発売中;f3:title:FINAL FANTASY V;f3:title:ファイナルファンタジーV;f3:mega:大容量16メガ;f3:status:好評発売中;f3:publogo:SQUARESOFT;f3:title:FINAL FANTASY V;f3:title:ファイナルファンタジーV;f3:mega:大容量16メガ;f3:status:好評発売中",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ファイナルファンタジーVI",
+   "length": "15s",
+   "uploads": 5,
+   "nos": [
+    "25",
+    "29",
+    "30",
+    "756",
+    "769"
+   ],
+   "year": "1994",
+   "publisher": "スクウェア",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "f3:title:FINAL FANTASY VI;f3:title:FINAL FANTASY VI;f3:date:4・2 SAT;f1:sfclogo;f1:illegible_small_text;f3:title:FINAL FANTASY VI;f3:date:4・2 SAT;date:4・2 SAT;copy:FINAL FANTASY VI;date:4・2 SAT;copy:FINAL FANTASY VI",
+   "live_share3": 0.7333333333333334,
+   "game_share3": 0.20000000000000004,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ファイナルファンタジーVI",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "20",
+    "766"
+   ],
+   "year": "1994",
+   "publisher": "スクウェア",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f3:publogo:SQUARESOFT;date:4・2 SAT;sfclogo;copy:FINAL FANTASY VI",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "フロントミッション",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "100"
+   ],
+   "year": "",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "フロントミッション",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "102"
+   ],
+   "year": "1994",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:発売中",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "フロントミッションシリーズ ガンハザード",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "106"
+   ],
+   "year": "",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "date:2月23日発売",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "フロントミッションシリーズ ガンハザード",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "109",
+    "829"
+   ],
+   "year": "1996",
+   "publisher": "スクウェア",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": ";date:2月23日発売;copy:FRONT MISSION SERIES GUN HAZARD",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ブレス オブ ファイア 竜の戦士",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "214",
+    "221"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": ";date:4月3日発売;sfclogo;copy:Music by TOSHI with ナイトホークス",
+   "live_share3": 0.0,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ブレス オブ ファイア 竜の戦士",
+   "length": "30s",
+   "uploads": 3,
+   "nos": [
+    "212",
+    "219",
+    "740"
+   ],
+   "year": "1993",
+   "publisher": "カプコン",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "publogo;publogo;f1:publogo:CAPCOM;f3:publogo:...COM (large 3D letters, cut off)",
+   "live_share3": 0.1111111111111111,
+   "game_share3": 0.2222222222222222,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ブレス オブ ファイアII 使命の子",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "220"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "date:好評発売中;copy:ブレス オブ ファイアII",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "プロ麻雀 極",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "725"
+   ],
+   "year": "1993",
+   "publisher": "アテナ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "f1:credit:阪元 俊彦プロ;f2:credit:高橋 純子プロ;f3:credit:伊藤 優孝プロ",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "マリオとワリオ",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "461",
+    "717"
+   ],
+   "year": "1993",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "f2:copy:スーパーファミコンマウス;f2:copy:MARIOPAINT マリオペイント;date:8月27日発売予定;copy:スーパーファミコンマウス専用ソフト",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "マリオペイント",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "686",
+    "689"
+   ],
+   "year": "1992",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "date:7・14発売予定;copy:げいじゅつだ",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.5,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "ミッキーのマジカルアドベンチャー",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "423"
+   ],
+   "year": "1992",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ミニ四駆シャイニングスコーピオン レッツ&ゴー!!",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "822"
+   ],
+   "year": "1996",
+   "publisher": "アスキー",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;sfclogo;date:12月6日発売!!;price:予価¥9,500(税別);copy:ミニ四駆レースシミュレーションRPG;disclaimer:スーパーファミコンは任天堂の商標です。",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ヨッシーのクッキー",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "688",
+    "722"
+   ],
+   "year": "1992",
+   "publisher": "BPS",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;f2:text_in_art:OSHI'S (drum head);f3:publogo:BPS",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "リターン・オブ・双截龍",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "701"
+   ],
+   "year": "1992",
+   "publisher": "テクノスジャパン",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "copy:DOUBLE DRAGON",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ルインアーム",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "807"
+   ],
+   "year": "1995",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "ロックマン7 宿命の対決!",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "658"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ロックマンX",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "197"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "publogo;copy:A.D. 21XX年",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "ロックマンX",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "196"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "publogo;copy:感性開発企業",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ロックマンX2",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "198",
+    "201"
+   ],
+   "year": "",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": ";publogo;sfclogo;copy:オリジナルチップ「C×4」搭載;disclaimer:スーパーファミコン(rest illegible)",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.5,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "ロックンロールレーシング",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "733"
+   ],
+   "year": "1993",
+   "publisher": "ナムコ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ロマンシング サ・ガ2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "66"
+   ],
+   "year": "",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:おぬしの選択が、物語を創っていくのじゃ！",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "ロマンシング サ・ガ2",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "64"
+   ],
+   "year": "",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "publogo;copy:新フリーシナリオシステム完成;copy:おぬしの選択が、物語を創っていくのじゃ",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "ロマンシング サ・ガ3",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "69"
+   ],
+   "year": "1995",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "三国志II 覇王の大陸",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "703"
+   ],
+   "year": "1992",
+   "publisher": "ナムコ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:好評発売中",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "不思議のダンジョン2 風来のシレン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "389"
+   ],
+   "year": "1996",
+   "publisher": "チュンソフト",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "copy:ゲームをクリア;copy:すてきなプレゼントが当たりま;copy:ダンジョン快感キャンペーン;copy:NINTENDO64",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "不思議のダンジョン2 風来のシレン",
+   "length": "30s",
+   "uploads": 3,
+   "nos": [
+    "388",
+    "390",
+    "394"
+   ],
+   "year": "1995",
+   "publisher": "チュンソフト",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "publogo;publogo;sfclogo;publogo;copy:スーパーファミコン",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.5555555555555555,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "信長の野望・覇王伝",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "416",
+    "417",
+    "418"
+   ],
+   "year": "1993",
+   "publisher": "光栄",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:信長の野望 覇王伝;copy:究極セレクション;copy:信長の野望 覇王伝;copy:究極セレクション;publogo;copy:信長の野望 覇王伝;copy:ENTERTAINMENT & EDUCATION KOEI",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "剣勇伝説YAIBA",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "715"
+   ],
+   "year": "1993",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "date:12月発売予定;copy:剣勇伝説YAIBA",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "大爆笑!!人生劇場",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "687"
+   ],
+   "year": "1992",
+   "publisher": "タイトー",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "大爆笑!!人生劇場 ずっこけサラリーマン編",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "805"
+   ],
+   "year": "1995",
+   "publisher": "タイトー",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "大爆笑!!人生劇場 大江戸日記",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "765"
+   ],
+   "year": "1994",
+   "publisher": "タイトー",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "大航海時代II",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "757"
+   ],
+   "year": "1994",
+   "publisher": "光栄",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "copy:大航海時代II",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "大貝獣物語II",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "828"
+   ],
+   "year": "1996",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "date:8月2日;price:8200円",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "天地創造",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "144",
+    "145"
+   ],
+   "year": "1995",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo;date:'95年10月20日発売;price:価格11,800円(税別);copy:アクションRPG;sfclogo;date:'95年 秋発売;copy:アクションRPG",
+   "live_share3": 0.0,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "天地創造",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "143"
+   ],
+   "year": "1995",
+   "publisher": "エニックス",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "publogo;sfclogo;date:'95年 秋発売;copy:アクションRPG;copy:ENIX INFORMATION",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "天外魔境ZERO",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "792"
+   ],
+   "year": "1995",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo;copy:スーパーファミコン初！驚きのPLGシステム",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "実況パワフルプロ野球'94",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "271"
+   ],
+   "year": "1994",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "publogo;copy:ABCスポーツアナ 安部憲幸;copy:2ランホームラン",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "実況パワフルプロ野球2",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "272",
+    "278"
+   ],
+   "year": "1995",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "publogo;publogo;copy:ABCスポーツアナ 太田元治",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "幽☆遊☆白書",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "716"
+   ],
+   "year": "1993",
+   "publisher": "ナムコ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "copy:絶賛発売中",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "悪魔城ドラキュラ",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "674"
+   ],
+   "year": "1991",
+   "publisher": "コナミ",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "摩訶摩訶",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "644",
+    "713"
+   ],
+   "year": "1992",
+   "publisher": "シグマ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;copy:キャラクターデザイン 相原コージ;copy:好評発売中;publogo;sfclogo;copy:キャラクターデザイン 相原コージ",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "新桃太郎伝説",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "719"
+   ],
+   "year": "1993",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live_only",
+   "text": "publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "E",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "星のカービィ スーパーデラックス",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "399",
+    "808"
+   ],
+   "year": "1996",
+   "publisher": "任天堂",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "sfclogo;publogo;date:3月21日発売予定;price:希望小売価格7,500円;copy:スーパーファミコンソフト",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.16666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "桃太郎電鉄HAPPY",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "821",
+    "826"
+   ],
+   "year": "1996",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "live+game",
+   "text": "publogo;copy:年末 桃くじキャンペーン！;copy:総額なんと1000万円！;date:12月6日;copy:みんなでハッピー;copy:日本一;copy:桃太郎電鉄HAPPY",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "桃太郎電鉄HAPPY",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "346"
+   ],
+   "year": "1996",
+   "publisher": "ハドソン",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "copy:桃太郎電鉄HAPPY;copy:めざせ!億万長者!;copy:年末 福くじキャンペーン! 1000万円!",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "極上パロディウス",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "779"
+   ],
+   "year": "1994",
+   "publisher": "コナミ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.6666666666666666,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "機動戦士Zガンダム AWAY TO THE NEWTYPE",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "813"
+   ],
+   "year": "1996",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo;copy:ON SALE",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "機動戦士ガンダムF91 フォーミュラー戦記0122",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "486",
+    "684"
+   ],
+   "year": "1991",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "f1:sfclogo;f2:disclaimer:スーパーファミコンは任天堂の商標です(small, partly legible);sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "海のぬし釣り",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "818"
+   ],
+   "year": "1996",
+   "publisher": "パック・イン・ビデオ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo;disclaimer:スーパーファミコンは任天堂の商標です。;copy:\"海ぬし\"",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "甲竜伝説ヴィルガスト 消えた少女",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "705"
+   ],
+   "year": "1992",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "真・女神転生II",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "160"
+   ],
+   "year": "1994",
+   "publisher": "アトラス",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "P",
+    "f2": "P",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "第3次スーパーロボット大戦",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "442",
+    "444",
+    "451"
+   ],
+   "year": "1993",
+   "publisher": "バンプレスト",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "sfclogo;sfclogo;f1:sfclogo;f3:publogo:BANPRESTO;f3:copy:第3次スーパーロボット大戦;f3:sfclogo;illegible_small_text",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.8888888888888888,
+   "card_share3": 0.1111111111111111,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "第4次スーパーロボット大戦",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "448"
+   ],
+   "year": "",
+   "publisher": "バンプレスト",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "date:3月17日発売;publogo;sfclogo;copy:このほしの あしたのための スクランブルだ",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "美女と野獣",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "762",
+    "780"
+   ],
+   "year": "1994",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "publogo;publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "美少女戦士セーラームーン",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "315"
+   ],
+   "year": "1993",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "sfclogo;date:8月下旬発売;copy:スーパーファミコン",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "美少女戦士セーラームーン ANOTHER STORY",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "319",
+    "323"
+   ],
+   "year": "1995",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": ";publogo;date:9月発売予定;copy:美少女戦士セーラームーン ANOTHER STORY",
+   "live_share3": 0.0,
+   "game_share3": 0.5,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "美少女戦士セーラームーンR",
+   "length": "15s",
+   "uploads": 4,
+   "nos": [
+    "320",
+    "322",
+    "324",
+    "737"
+   ],
+   "year": "1993",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "sfclogo;publogo;date:12月29日発売;copy:SUPER FAMICOM;copy:お正月映画「セーラームーンR」より;;f1:copy:お正月映画「セーラームーンR」より (partly cut off at bottom edge, first characters uncertain);f3:title:美少女戦士セーラームーン (stylised logo, trailing letter unclear);f3:date:12月29日発売;f3:publogo:BANDAI;f3:sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.5,
+   "art_share3": 0.4166666666666667,
+   "card_share3": 0.08333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "美少女戦士セーラームーンR",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "317"
+   ],
+   "year": "",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo;copy:お正月映画「セーラームーンR」より",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "美少女戦士セーラームーンS くるっくりん",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "800"
+   ],
+   "year": "1995",
+   "publisher": "バンダイ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;publogo;date:2.24発売",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "美少女戦士セーラームーンS 場外乱闘!? 主役争奪戦",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "318",
+    "321"
+   ],
+   "year": "1994",
+   "publisher": "バンダイ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": "sfclogo;copy:セーラームーンS 場外乱闘!? 主役争奪戦;sfclogo;copy:セーラームーンS 場外乱闘!? 主役争奪戦",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "聖剣伝説2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "76"
+   ],
+   "year": "1993",
+   "publisher": "",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "copy:好評発売中",
+   "live_share3": 0.6666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "P",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "聖剣伝説2",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "73",
+    "75"
+   ],
+   "year": "",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "copy:好評発売中;",
+   "live_share3": 0.8333333333333334,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "P",
+    "f2": "L",
+    "f3": "P"
+   }
+  },
+  {
+   "title": "聖剣伝説3",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "81"
+   ],
+   "year": "1995",
+   "publisher": "",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.3333333333333333,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "聖剣伝説3",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "78",
+    "80"
+   ],
+   "year": "1995",
+   "publisher": "スクウェア",
+   "stratum_generic": false,
+   "pattern": "game(+art)",
+   "text": "sfclogo;date:9月発売予定;",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.16666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "G",
+    "f2": "A",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "装甲騎兵ボトムズ ザ・バトリングロード",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "721"
+   ],
+   "year": "1993",
+   "publisher": "タカラ",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "date:10月発売;publogo;sfclogo;copy:キャラクターデザイン 塩山紀生;copy:メカニックデザイン 大河原邦男",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "超人ウルトラベースボール",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "676"
+   ],
+   "year": "1991",
+   "publisher": "",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "copy:絶賛発売中;sfclogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.0,
+   "card_share3": 0.6666666666666666,
+   "codes": {
+    "f1": "E",
+    "f2": "G",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "超原人",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "772",
+    "776"
+   ],
+   "year": "1994",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;date:7月22日;price:8,800円(税別);copy:頭つきひと筋;copy:大変身！;copy:スーパーファミコン版;publogo;date:7月22日;price:8,800円(税別);copy:大変身！",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "超魔界村",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "239",
+    "244"
+   ],
+   "year": "1991",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live+game",
+   "text": "sfclogo;sfclogo",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.5,
+   "art_share3": 0.0,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "L",
+    "f2": "G",
+    "f3": "G"
+   }
+  },
+  {
+   "title": "超魔界村 (+ロックマン4)",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "242",
+    "250"
+   ],
+   "year": "1991",
+   "publisher": "カプコン",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "price:価格 8,500円(税別);date:好評発売中;sfclogo;copy:スーパーファミコン用ソフト;sfclogo",
+   "live_share3": 0.16666666666666666,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "A",
+    "f2": "L",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "鉄腕アトム",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "763"
+   ],
+   "year": "1994",
+   "publisher": "バンプレスト",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "sfclogo;date:2月18日発売;copy:©手塚プロダクション",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "音楽ツクール かなでーる",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "815"
+   ],
+   "year": "1996",
+   "publisher": "アスキー",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "餓狼伝説 宿命の闘い",
+   "length": "30s",
+   "uploads": 2,
+   "nos": [
+    "426",
+    "427"
+   ],
+   "year": "1992",
+   "publisher": "タカラ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "sfclogo;publogo;sfclogo",
+   "live_share3": 0.3333333333333333,
+   "game_share3": 0.0,
+   "art_share3": 0.16666666666666666,
+   "card_share3": 0.5,
+   "codes": {
+    "f1": "E",
+    "f2": "L",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "餓狼伝説2",
+   "length": "15s",
+   "uploads": 1,
+   "nos": [
+    "431"
+   ],
+   "year": "",
+   "publisher": "タカラ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "copy:発売中",
+   "live_share3": 1.0,
+   "game_share3": 0.0,
+   "art_share3": 0.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "L",
+    "f2": "L",
+    "f3": "L"
+   }
+  },
+  {
+   "title": "餓狼伝説スペシャル",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "428",
+    "430"
+   ],
+   "year": "1994",
+   "publisher": "タカラ",
+   "stratum_generic": false,
+   "pattern": "art_only",
+   "text": ";mega:32メガ;sfclogo;date:7月29日発売",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 0.5,
+   "card_share3": 0.16666666666666666,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "高橋名人の大冒険島II",
+   "length": "15s",
+   "uploads": 2,
+   "nos": [
+    "777",
+    "799"
+   ],
+   "year": "1994",
+   "publisher": "ハドソン",
+   "stratum_generic": true,
+   "pattern": "game(+art)",
+   "text": "publogo;publogo",
+   "live_share3": 0.0,
+   "game_share3": 0.3333333333333333,
+   "art_share3": 0.6666666666666666,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "G",
+    "f3": "A"
+   }
+  },
+  {
+   "title": "魍魎戦記MADARA2",
+   "length": "15s",
+   "uploads": 3,
+   "nos": [
+    "48",
+    "49",
+    "54"
+   ],
+   "year": "1993",
+   "publisher": "コナミ",
+   "stratum_generic": false,
+   "pattern": "live_only",
+   "text": "f1:publogo:KONAMI;f3:title:MADARA 2;f3:publogo:KONAMI;f3:sfclogo;f3:illegible_small_text;f1:credit:音楽：コナミ矩形波倶楽部;f3:publogo:KONAMI;f1:publogo:KONAMI;f2:credit:音楽：コナミ矩形波倶楽部;f3:publogo:KONAMI",
+   "live_share3": 0.4444444444444444,
+   "game_share3": 0.0,
+   "art_share3": 0.2222222222222222,
+   "card_share3": 0.3333333333333333,
+   "codes": {
+    "f1": "L",
+    "f2": "A",
+    "f3": "E"
+   }
+  },
+  {
+   "title": "魔法陣グルグル",
+   "length": "30s",
+   "uploads": 1,
+   "nos": [
+    "804"
+   ],
+   "year": "1995",
+   "publisher": "エニックス",
+   "stratum_generic": true,
+   "pattern": "art_only",
+   "text": "copy:ニケ;copy:ククリ",
+   "live_share3": 0.0,
+   "game_share3": 0.0,
+   "art_share3": 1.0,
+   "card_share3": 0.0,
+   "codes": {
+    "f1": "A",
+    "f2": "A",
+    "f3": "A"
+   }
+  }
+ ]
+}
