@@ -8,3 +8,103 @@
 218	N	other_platform	ブレス オブ ファイアIV	カプコン		PS	-	-	-		
 219	Y		ブレス オブ ファイア 竜の戦士	カプコン		SFC	G	G	E?	publogo	f1 overworld map with translucent character overlay; f2 battle screen; f3 3D CAPCOM logo; same CM family as #212
 220	Y		ブレス オブ ファイアII 使命の子	カプコン		SFC	L	G	E	date:好評発売中;copy:ブレス オブ ファイアII	f1 close-up of woman's face with small sprite overlaid; f2 battle screen; f3 title logo card, small text below illegible
+221	Y		ブレス オブ ファイア 竜の戦士	カプコン		SFC	A	G	E	date:4月3日発売;sfclogo;copy:Music by TOSHI with ナイトホークス	f1 monochrome line illustration of characters with music credit super; f2 battle screen; f3 title logo card with スーパーファミコンソフト text (price line illegible)
+222	N	other_platform	ファイアーエムブレム 封印の剣	任天堂		other	-	-	-		GBA
+223	Y		ブレス オブ ファイアII 使命の子	カプコン		SFC	L	L	E	publogo	actor in costume (blue wig, wings) on set; f3 3D CAPCOM logo; title says Remastered upload of original CM
+224	Y		ブレス オブ ファイアII 使命の子	カプコン		SFC	L	L	A	publogo	dup_of:#223 (same costume footage); f2 face close-up; f3 drawn bird carrying character over cloud sky
+225	Y		ファイナルファイト	カプコン		SFC	L	C?	E	publogo	f1 boy close-up in front of stylised night-city backdrop; f2 game screen shown as giant screen on building in miniature/CG city set; f3 CAPCOM logo on yellow-green background
+226	Y		ファイナルファイト2	カプコン		SFC	A?	L	L		f1 large numeral 2 on flame background (title-card-like graphic); f2-f3 woman face close-up in purple light
+227	Y		ファイナルファイト	カプコン		SFC	L	L	L		all three frames boy close-up in front of city backdrop; 46s upload, same footage as #225; possibly multiple CMs in one upload (cf. #229)
+228	Y		ファイナルファイト・ガイ	カプコン	1992	SFC	L?	A	E?		f1 dark backlit silhouette of person with blond hair; f2 character illustration of Guy; f3 3D CAPCOM logo close-up
+229	Y		ファイナルファイト / ファイナルファイト2	カプコン		SFC	L	L	E	publogo	compilation upload of two CMs (FF1 boy footage as #225, FF2 woman as #226); f3 CAPCOM logo on white with small line of text above (illegible); pillarbox
+230	Y		ファイナルファイト2	カプコン	1993	SFC	L	L	E?		dup_of:#226 imagery (woman in purple light, 15s cut); f1 has small 'Song by' super (name illegible); f3 3D CAPCOM logo; pillarbox
+231	Y		ファイナルファイト / ファイナルファイト2	カプコン		SFC	L	G	L	copy:おまえ一人では、行かせない。	compilation upload of FF1 and FF2 CMs; f1 boy flanked by two costumed muscular men; f2 gameplay; f3 face profile in purple light with vertical copy super; pillarbox
+232	Y		ファイナルファイト・ガイ	カプコン	1992	SFC	A	A	E	publogo;copy:感性開発企業	f1-f2 character illustrations (Cody, Guy); f3 CAPCOM logo on white
+233	Y		ファイナルファイト2	カプコン		SFC	L	L	X		actors in costume (bare-chested fighter, man in cap) in smoke/purple light; f3 blank white frame; title says SNES but imagery matches Japanese CM (#234)
+234	Y		ファイナルファイト2	カプコン	1993	SFC	L	L	L	copy:おまえ一人では、行かせない。;copy:Song by 中村あゆみ	taken from V-Jump premium VHS (side banners 超プレミアムビデオ visible), not an off-air recording; costumed actors in purple light
+235	Y		ファイナルファイト	カプコン		SFC	L	C?	E	publogo;copy:感性開発企業	dup_of:#225 (same boy / city-screen imagery; different end logo card: CAPCOM on white)
+236	Y		ファイナルファイト2	カプコン		SFC	L	A	G	copy:Song by 中村あゆみ;copy:カルロス・宮本	f1 costumed figure in purple smoke; f2 monochrome sketch of character with name caption; f3 gameplay
+237	N	other_platform	ファイナルファイトCD	セガ		MD	-	-	-		Mega-CD
+238	Y		ファイナルファイト	カプコン		SFC	L	G	C?		f1 costumed muscular man with arms crossed and boy; f2 gameplay; f3 game screen as giant screen on building in miniature/CG city (as #225 f2)
+239	Y		超魔界村	カプコン	1991	SFC	L	G	E?	sfclogo	f1 night graveyard-like location with burst/explosion effect, small SFC mark top-left; f2 gameplay; f3 3D CAPCOM logo close-up
+240	N	other_platform	魔界村	カプコン		FC	-	-	-		title is 魔界村 (not 超魔界村), no SFC indication; frames: title logo, demon face art, black; platform FC assumed from title only (could be arcade)
+241	N	other_platform	魔界村	カプコン		FC	-	-	-		package card shows ファミリーコンピュータ
+242	Y		超魔界村 (+ロックマン4)	カプコン	1991	SFC	A	A	E	price:価格 8,500円(税別);date:好評発売中;sfclogo;copy:スーパーファミコン用ソフト	mixed upload of two CMs: f1-f2 belong to ロックマン4 (FC) portion (cel animation, title logo), only f3 is the 超魔界村 SFC end card; uploader watermark; pillarbox
+243	Y		超魔界村	カプコン	1991	SFC	G	E?	E	publogo;copy:感性開発企業	f1 gameplay; f2 3D CAPCOM logo; f3 CAPCOM logo on white; 34s upload may contain more than one cut
+244	Y		超魔界村	カプコン		SFC	L	G	G	sfclogo	dup_of:#239 (same explosion location shot with SFC mark, same gameplay)
+245	N	other_platform	魔界村	カプコン		FC	-	-	-		
+246	N	other_platform	大魔界村	セガ		MD	-	-	-		
+247	N	other_platform	大魔界村	NECアベニュー	1990	PCE	-	-	-		
+248	N	other_platform	魔界村	カプコン		FC	-	-	-		package card shows ファミリーコンピュータ
+249	N	other_platform	魔界村	カプコン		FC	-	-	-		same upload family as #240; end card shows FC package
+250	Y		超魔界村 (+ロックマン4)	カプコン		SFC	A	L	E?	sfclogo	dup_of:#242 (same two-CM upload); f1 belongs to ロックマン4 (FC) portion (cel animation); f2 超魔界村 explosion location shot with SFC mark; f3 3D CAPCOM logo; pillarbox
+251	N	other_platform	魔界村	カプコン		FC	-	-	-		
+252	Y		グラディウスIII	コナミ	1990	SFC	P?	P?	E	publogo	f1 spacecraft with glowing thrusters (looks like model/SFX shot, could be CG) under GRADIUS logo and KONAMI mark; f2 spacecraft model in dark; f3 KONAMI logo on white; pillarbox
+253	Y		グラディウスIII	コナミ	1990	SFC	P?	E	P?	date:90年12月21日発売;publogo	f1 hangar scene with GRADIUS logo overlay; f2 GRADIUS III title logo card with date; f3 small spacecraft in starfield with on-screen clock 8:59 (model/SFX, could be CG)
+254	Y		グラディウスIII	コナミ		SFC	P?	P?	P?	publogo;copy:SUPER FAMICOM	same CM as #252; f2 spacecraft front view with SUPER FAMICOM text; f3 thruster flare filling frame
+255	Y		グラディウスIII	コナミ		SFC	P?	P?	E?	copy:SUPER FAMICOM 第一弾	f1 spacecraft in hangar (model/SFX look); f2 same with SUPER FAMICOM 第一弾 text; f3 text over pink flare; same CM family as #252
+256	N	other_platform	がんばれゴエモン!からくり道中	コナミ		FC	-	-	-		live-action CM with Goemon mask character; FC title
+257	N	other_platform	ファミコンミニ がんばれゴエモン!からくり道中	任天堂		other	-	-	-		GBA rerelease
+258	Y		がんばれゴエモン2 奇天烈将軍マッギネス	コナミ		SFC	A	L	L	sfclogo;publogo;price:価格9,800円(partly legible);date:好評発売中	f1 character illustration (Goemon, Ebisumaru); f2-f3 woman singer in kimono-style dress close-up with supers; celebrity (title of #260 names 水前寺清子)
+259	Y		がんばれゴエモン ゆき姫救出絵巻	コナミ	1991	SFC	A	A	E	price:8800円(税込);date:好評発売中;copy:ゴエモン音頭 歌/三橋美智也;copy:キャンペーン実施中	f1 Goemon face illustration close-up with small circular live-action inset of singer and song credit; f2 patterned illustration with characters, same inset; f3 title logo card ©KONAMI 1991
+260	Y		がんばれゴエモン2 奇天烈将軍マッギネス	コナミ	1994	SFC	A	A	L	sfclogo;publogo;date:好評発売中;copy:唄:水前寺清子	15s cut of #258; f1-f2 character illustrations; f3 woman singer (水前寺清子 per title) with SFC logo and price super (illegible); pillarbox
+261	N	other_platform	がんばれゴエモン!からくり道中	コナミ	1986	FC	-	-	-		
+262	N	other_platform	がんばれゴエモン ネオ桃山幕府のおどり	コナミ	1997	N64	-	-	-		
+263	Y		がんばれゴエモン きらきら道中 僕がダンサーになった理由	コナミ		SFC	A	A	E	price:9,980円(税別);date:好評発売中;publogo;sfclogo;copy:スーパーファミコンソフト;copy:ゴエモン 新世紀へ;copy:NEXT KONAMI	f1 CG render close-up with NEXT KONAMI text; f2 CG Goemon head with vertical copy; f3 package shot end card
+264	N	other_platform	がんばれゴエモン!からくり道中	コナミ	1986	FC	-	-	-		
+265	Y		がんばれゴエモン2 奇天烈将軍マッギネス	コナミ	1993	SFC	A	A	L	sfclogo;publogo;date:好評発売中;price:価格9,800(partly legible)	dup_of:#260 (same 15s CM); f1-f2 character animation on stage; f3 woman singer close-up with SFC logo
+266	N	other_platform	がんばれゴエモン外伝2 天下の財宝	コナミ	1992	FC	-	-	-		FC title; frames show 5th Anniversary ゴエモン音頭 campaign
+267	N	other_platform	がんばれゴエモン2	コナミ	1988	FC	-	-	-		
+268	N	other_platform	がんばれゴエモン2	コナミ	1989	FC	-	-	-		end card reads ファミコンカセット 5,500円
+269	N	other_platform	がんばれゴエモン (N64/GB/PS)	コナミ		N64	-	-	-		multi-platform later titles
+270	Y		がんばれゴエモン ゆき姫救出絵巻	コナミ	1991	SFC	A	A	E	publogo;copy:5th ANNIVERSARY;copy:が当る。ゴエモン5周年キャンペーン	f1 gold 3D '5th ANNIVERSARY' monument graphic with fireworks; f2 drawn characters on monument with campaign super; f3 KONAMI logo on white
+271	Y		実況パワフルプロ野球'94	コナミ	1994	SFC	G	G	E	publogo;copy:ABCスポーツアナ 安部憲幸;copy:2ランホームラン	f1 gameplay field view with KONAMI mark and commentator credit super; f2 gameplay with home-run text; f3 KONAMI logo on white
+272	Y		実況パワフルプロ野球2	コナミ	1995	SFC	G	G	E	publogo	f1 in-game home-run scene with batter character; f2 in-game アレンジモード menu with small super top-right (illegible); f3 KONAMI logo on white
+273	N	other_platform	実況パワフルプロ野球11	コナミ		other	-	-	-		PS2/GC era
+274	N	other_platform	実況パワフルプロ野球 Dreamcast Edition	コナミ	2000	other	-	-	-		DC
+275	N	other_platform	実況パワフルプロ野球4	コナミ		N64	-	-	-		
+276	N	other_platform	実況パワフルプロ野球8	コナミ		other	-	-	-		PS2
+277	N	other_platform	実況パワフルプロ野球ポータブル3	コナミ		other	-	-	-		PSP
+278	Y		実況パワフルプロ野球2	コナミ	1995	SFC	G	G	E	publogo;copy:ABCスポーツアナ 太田元治	dup_of:#272 (same menu frame and end logo); f1 gameplay field view with commentator credit super; pillarbox
+279	N	other_platform	実況パワフルプロ野球ポータブル4	コナミ		other	-	-	-		PSP
+280	N	other_platform	実況パワフルプロ野球5 / 6	コナミ		N64	-	-	-		
+281	N	other_platform	実況パワフルプロ野球6	コナミ	1999	N64	-	-	-		
+282	N	other_platform	実況パワフルプロ野球2010	コナミ		other	-	-	-		PS3
+283	Y		スーパーファミスタ	ナムコ	1992	SFC	L	X	X		f1 extreme close-up of shouting man with glasses and moustache; f2 is an uploader-inserted grey title card (昔のTVCM 21 namco スーパーファミスタ (1992年)), not CM content; f3 black; 53s upload so may hold more than one cut
+284	N	other_platform	ファミスタ'91	ナムコ		FC	-	-	-		FC title; live-action two men in namco uniform with game screen inset
+285	N	other_platform	ファミスタ'93	ナムコ		FC	-	-	-		FC title; live-action shrine scene
+286	N	other_platform	ファミスタ'90	ナムコ		FC	-	-	-		frame shows ファミリーコンピュータ用カセット text
+287	Y		スーパーファミスタ3	ナムコ	1994	SFC	L	C	L	sfclogo	baseball players in action over dust cloud against blue sky backdrop (looks like stylised/processed live action); f2 player plus inset game screen and SFC logo, small text under inset illegible; pillarbox
+288	Y		スーパーワギャンランド (+ファミスタ'94)	ナムコ		SFC	A?	L	L		mixed upload of two CMs: f1 golden mechanical fish on green background (CG or model, unclear which CM it belongs to); f2-f3 two people in baseball caps against rising-sun backdrop = ファミスタ'94 (FC) portion; no frame clearly shows SFC content; pillarbox
+289	Y		スーパーファミスタ5	ナムコ	1996	SFC	L	L	L	publogo;date:2月29日発売;copy:スーパーファミスタ5	stadium infield footage: f1 base and blurred ball with namco logo; f2 player diving; f3 dust cloud at base with large title/date super overlaid (end-card-like)
+290	N	other_platform	ファミスタ'91	ナムコ	1990	FC	-	-	-		FC title; same CM as #284 with uploader title card
+291	N	other_platform	プロ野球 ファミスタDS 2009	ナムコ		other	-	-	-		DS
+292	Y		スーパーファミスタ4	ナムコ	1995	SFC	L	L	E	sfclogo;date:3月3日発売;copy:スーパーファミスタ4	f1 baseball play at home plate (catcher jumping, umpire) on real ground; f2 fielder diving over dust cloud with SFC logo and small text (illegible); f3 title logo card on black
+293	N	other_platform	ファミスタ2	ナムコ		GB	-	-	-		GAME BOY logo visible
+294	Y		スーパーファミスタ4	ナムコ	1994	SFC	L	L	E	sfclogo;date:好評発売中;copy:スーパーファミスタ4	same footage as #292 with 好評発売中 end card (on-sale version); title says 1994年; pillarbox
+295	N	other_platform	プロ野球ファミリースタジアム'88	ナムコ		FC	-	-	-		
+296	Y		スーパーファミスタ2	ナムコ		SFC	L	L	E?	publogo	f1-f2 batter, catcher and umpire at real ground; f3 ornate gold CG namco logo on blue; platform from title only; pillarbox
+297	Y		スーパーファミスタ4	ナムコ	1995	SFC	L	L	E	sfclogo;date:3月3日発売;copy:スーパーファミスタ4	dup_of:#292
+298	N	other_platform	ファミスタ'91	ナムコ	1990	FC	-	-	-		
+299	Y		ドラゴンボールZ 超武闘伝	バンダイ		SFC	A	A	E	sfclogo;publogo;date:5月28日再登場;copy:SUPER FAMICOM	f1 rendered/illustrated Cell figure with green tint and SFC logo; f2 graphic of planet horizon with light beam; f3 title logo card (re-shipment version: 再登場); 46s upload may contain more than one cut
+300	Y		ドラゴンボールZ 超武闘伝2	バンダイ		SFC	A	A?	A?	sfclogo;copy:DRAGONBALL Z	f1 sepia dragon swirl graphic; f2-f3 DRAGONBALL Z lettering over drawn tournament-arena scene (could be in-game title/intro screen), SFC logo in f3; 46s upload may contain more than one cut
+301	Y		ドラゴンボールZ 超武闘伝3	バンダイ		SFC	A	A	A	copy:DRAGONBALL Z	dark teal rendered/graphic imagery of a looming figure with glowing eyes, red DRAGONBALL Z lettering in f1-f2; no gameplay or people visible in sampled frames
+302	Y		ドラゴンボールZ 超武闘伝	バンダイ		SFC	A	A	E	sfclogo;publogo;date:5月28日再登場;copy:SUPER FAMICOM	same imagery as #299 (Cell figure, planet/beam graphic, 再登場 end card)
+303	Y		ドラゴンボールZ 超武闘伝2	バンダイ	1993	SFC	A?	A	E	sfclogo;date:'93.12.17 ON SALE;copy:DRAGONBALL Z	f1 DRAGONBALL Z lettering over drawn arena scene with SFC logo (as #300); f2 cel animation of Super Saiyan character; f3 date text on flame background
+304	Y		ドラゴンボールZ 超武闘伝2	バンダイ		SFC	A?	A	E	sfclogo;date:NOW ON SALE;copy:DRAGONBALL Z	same CM as #303 in on-sale version (NOW ON SALE end card)
+305	N	other_platform	ドラゴンボールZ 超究極武闘伝	バンダイナムコ	2015	other	-	-	-		3DS
+306	Y		ドラゴンボールZ 超武闘伝2	バンダイ	1993	SFC	A	G	E	date:'93.12.17 ON SALE	f1 monochrome drawn character powering up; f2 in-game battle beam clash with life bars; f3 date text on flame background
+307	Y		ドラゴンボールZ 超武闘伝	バンダイ	1993	SFC	G	A	E	publogo;copy:DRAGON BALL Z 超武闘伝	f1 gameplay (天下一武道会 stage); f2 rendered/drawn Cell figure flying over blue-green background; f3 title logo on white (faded); pillarbox
+308	Y		ドラゴンボールZ 超武闘伝2	バンダイ		SFC	A	A	E	sfclogo;publogo;copy:DRAGONBALL Z;copy:DRAGON BALL Z 超武闘伝2	upscaled ('2K修復') upload of original CM; f1 lettering over drawn landscape with explosion dome; f2 monochrome drawn character (as #306 f1); f3 title logo card
+309	Y		ドラゴンボールZ 超武闘伝	バンダイ		SFC	A	A	A	sfclogo	f1 gold-tinted Super Saiyan figure graphic with faint lettering and SFC logo; f2 planet horizon with energy ball; f3 purple cloud/planet graphic
+310	Y		ドラゴンボールZ 超サイヤ伝説	バンダイ	1992	SFC	E	A?	A	sfclogo;date:1992.1.25 ON SALE	f1 date text and SFC logo over cloudy graphic background; f2 red cloud/smoke graphic, indistinct; f3 cel animation of Frieza and other characters; pillarbox
+311	Y		ドラゴンボールZ 超武闘伝3	バンダイ	1994	SFC	A	A	E	copy:DRAGONBALL Z;copy:DRAGON BALL Z 超武闘伝	f1 dark teal graphic with red lettering (as #301); f2 swirl graphic with seven dragon balls; f3 title logo card on blue-grey
+312	Y		ドラゴンボールZ 超武闘伝3	バンダイ		SFC	A	A	E	sfclogo;publogo;copy:SUPER FAMICOM;copy:DRAGON BALL Z 超武闘伝3	f1 drawn Super Saiyan character with fire; f2 dragon-ball swirl graphic (as #311 f2); f3 title logo card
+313	Y		ドラゴンボールZ 超武闘伝	バンダイ	1993	SFC	A	G	E	sfclogo;publogo;copy:SUPER FAMICOM;copy:DRAGON BALL Z 超武闘伝	f1 gold-tinted Super Saiyan figure graphic; f2 gameplay (split-screen battle with life bars); f3 title logo card flanked by rendered Cell figures
+314	Y		ドラゴンボールZ 超武闘伝	バンダイ		SFC	X	A	E	sfclogo;publogo;date:3月20日発売;copy:SUPER FAMICOM	f1 black; f2 rendered/illustrated Cell figure; f3 title logo card with launch date (pre-release version of #299/#302)
+315	Y		美少女戦士セーラームーン	バンダイ	1993	SFC	A	A	E	sfclogo;date:8月下旬発売;copy:スーパーファミコン	f1-f2 cel animation (SFC logo in f1, small super in f2 illegible); f3 key-art title card with logo, small text mentioning ゲームボーイ version (joint SFC/GB CM per title); pillarbox
+316	N	not_game	美少女戦士セーラームーンS ふりかけ	丸美屋	1994	other	-	-	-		food product
+317	Y		美少女戦士セーラームーンR	バンダイ		SFC	A	A	E	sfclogo;publogo;copy:お正月映画「セーラームーンR」より	f1 cel illustration of five characters with BANDAI and SFC logos; f2 anime film clip with super; f3 key-art title logo card
+318	Y		美少女戦士セーラームーンS 場外乱闘!? 主役争奪戦	バンダイ		SFC	A	A	E	sfclogo;copy:セーラームーンS 場外乱闘!? 主役争奪戦	f1-f2 cel animation; f3 key-art title logo card on white
+319	Y		美少女戦士セーラームーン ANOTHER STORY	バンダイ	1995	SFC	A	G	G?		f1 cel animation close-up; f2 gameplay (RPG town map); f3 dark frame with crystal scene in letterboxed window, probably in-game cutscene; pillarbox
+320	Y		美少女戦士セーラームーンR	バンダイ		SFC	A	G	E	sfclogo;publogo;date:12月29日発売;copy:SUPER FAMICOM	same CM family as #317; f2 gameplay (side-scrolling action, multiple characters); f3 key-art title logo card with date
