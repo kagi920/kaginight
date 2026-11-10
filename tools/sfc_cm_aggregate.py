@@ -134,8 +134,9 @@ def main(mdir):
             out = {"source": "override" if no in ov else "pass2"}
             for p in POS:
                 c, unsure = clean(src[p])
-                out[p] = {"code": c, "unsure": unsure, "live": src[p + "_live"].upper() == "Y",
-                          "game": src[p + "_game"].upper() == "Y", "super": src[p + "_super"].upper() == "Y"}
+                yes = lambda v: v.strip().upper().startswith("Y")  # 'Y?' は Y として数える
+                out[p] = {"code": c, "unsure": unsure, "live": yes(src[p + "_live"]),
+                          "game": yes(src[p + "_game"]), "super": yes(src[p + "_super"])}
             out["text"] = src["readable_text"]
             return out
         r = p1[no]
