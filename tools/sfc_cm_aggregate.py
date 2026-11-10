@@ -128,8 +128,10 @@ def main(mdir):
         eligible.append(no)
 
     # --- 採用コード（override > pass2 > pass1）と一致度 ------------------
+    mode = {"use_pass2": True}
+
     def final(no):
-        src = ov.get(no) or p2.get(no)
+        src = (ov.get(no) or p2.get(no)) if mode["use_pass2"] else None
         if src:
             out = {"source": "override" if no in ov else "pass2"}
             for p in POS:
@@ -178,6 +180,7 @@ def main(mdir):
             f = final(no)
             for p in POS:
                 prof[p][f[p]["code"]] += 1
+                flags[p]["card_live"] += f[p]["code"] == "E" and f[p]["live"]
                 flags[p]["live"] += f[p]["live"]
                 flags[p]["game"] += f[p]["game"]
                 if f[p]["super"] is not None:
@@ -185,12 +188,12 @@ def main(mdir):
                     flags[p]["super_n"] += 1
         n = len(nos)
         share = {p: {c: prof[p][c] / n for c in CODES} for p in POS}
-        fl = {p: {"live": flags[p]["live"] / n, "game": flags[p]["game"] / n,
+        fl = {p: {"live": flags[p]["live"] / n, "game": flags[p]["game"] / n, "card_live": flags[p]["card_live"] / n,
                   "super": (flags[p]["super"] / flags[p]["super_n"]) if flags[p]["super_n"] else None} for p in POS}
         return share, fl
 
     profiles = {}
-    for key, nos in units.items():
+    for key, nos in units.items():  # 採用コード（override > pass2 > pass1）での単位プロファイル
         share, fl = unit_profile(nos)
         r0 = p1[nos[0]]
         years = [p1[n]["year"] for n in nos if re.fullmatch(r"19\d\d", p1[n]["year"])]
@@ -222,12 +225,16 @@ def main(mdir):
             out["by_position"][p] = {c: round(mean([x["share"][p][c] for x in ps]), 4) for c in CODES}
             out["by_position"][p]["live_present"] = round(mean([x["flags"][p]["live"] for x in ps]), 4)
             out["by_position"][p]["game_present"] = round(mean([x["flags"][p]["game"] for x in ps]), 4)
+            out["by_position"][p]["card_over_live"] = round(mean([x["flags"][p]["card_live"] for x in ps]), 4)
             sup = [x["flags"][p]["super"] for x in ps if x["flags"][p]["super"] is not None]
             out["by_position"][p]["super_present"] = round(mean(sup), 4) if sup else None
         for name in ("live_share3", "game_share3", "art_share3", "card_share3"):
             vals = [x[name] for x in ps]
             out[name] = {"mean": round(mean(vals), 4), "ci95": boot_ci(vals)}
         out["patterns"] = dict(collections.Counter(x["pattern"] for x in ps))
+        # 3点の主分類の並び（各地点で最多のコード）。例: L-G-E = 実写→ゲーム画面→カード
+        out["sequences_top"] = collections.Counter(
+            "-".join(max(x["share"][p], key=x["share"][p].get) for p in POS) for x in ps).most_common(12)
         ls = sorted(x["live_share3"] for x in ps)
         out["live_share3_distribution"] = {
             "0": sum(v == 0 for v in ls), "0<v<=1/3": sum(0 < v <= 1 / 3 + 1e-9 for v in ls),
@@ -265,6 +272,17 @@ def main(mdir):
                   {"codes": {pos: max(p["share"][pos], key=p["share"][pos].get) for pos in POS}}
                   for p in sorted(profiles.values(), key=lambda p: (p["title"], p["length"]))],
     }
+    # 感度分析: 1回目分類だけで同じ集計をした場合
+    mode["use_pass2"] = False
+    sens = collections.defaultdict(list)
+    for nos in units.values():
+        share, _ = unit_profile(nos)
+        sens["live"].append(mean([share[p]["L"] + share[p]["P"] for p in POS]))
+        sens["game"].append(mean([share[p]["G"] for p in POS]))
+        sens["art"].append(mean([share[p]["A"] for p in POS]))
+        sens["card"].append(mean([share[p]["E"] for p in POS]))
+    mode["use_pass2"] = True
+    results["sensitivity_pass1_only_share3"] = {k_: round(mean(v), 4) for k_, v in sens.items()}
     (m / "results.json").write_text(json.dumps(results, ensure_ascii=False, indent=1), encoding="utf8")
 
     # --- 人が読む用の要約 ----------------------------------------------
@@ -279,17 +297,19 @@ def main(mdir):
         if not s:
             return
         L.extend([f"## {title}（{s['units']} 単位 / {s['uploads']} 投稿）", "",
-                  "| 地点 | 実写 L | 人形・模型 P | ゲーム画面 G | アニメ・CG・絵 A | カード E | 不明 X | 実写が画面内 | ゲーム画面が画面内 |",
-                  "|---|---:|---:|---:|---:|---:|---:|---:|---:|"])
+                  "| 地点 | 実写 L | 人形・模型 P | ゲーム画面 G | アニメ・CG・絵 A | カード E | 不明 X | 実写が画面内 | ゲーム画面が画面内 | テロップあり | うち実写背景のカード |",
+                  "|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|"])
         for p, lab in zip(POS, ("約25%", "約50%", "約75%")):
             b = s["by_position"][p]
-            L.append(f"| {lab} | " + " | ".join(pct(b[c]) for c in CODES) + f" | {pct(b['live_present'])} | {pct(b['game_present'])} |")
+            L.append(f"| {lab} | " + " | ".join(pct(b[c]) for c in CODES) + f" | {pct(b['live_present'])} | {pct(b['game_present'])} | {pct(b['super_present'])} | {pct(b['card_over_live'])} |")
         L.extend(["", f"- 3点平均: 実写系(L+P) {pct(s['live_share3']['mean'])}（95%CI {s['live_share3']['ci95']}）、"
                       f"ゲーム画面 {pct(s['game_share3']['mean'])}（{s['game_share3']['ci95']}）、"
                       f"アニメ・CG・絵 {pct(s['art_share3']['mean'])}、カード {pct(s['card_share3']['mean'])}",
-                  f"- 構成パターン: {s['patterns']}", f"- 実写系3点平均の分布: {s['live_share3_distribution']}",
+                  f"- 構成パターン: {s['patterns']}", f"- 3点の並び（上位）: {s['sequences_top']}", f"- 実写系3点平均の分布: {s['live_share3_distribution']}",
                   f"- 読み取れたテロップ（単位数、下限値）: {s['readable_text_units']}", ""])
 
+    L.extend([f"- 感度（1回目分類のみで集計した場合の3点平均）: {results['sensitivity_pass1_only_share3']}",
+              f"- 不一致の内訳（1回目→2回目、上位）: {results['reliability']['top_disagreements']}", ""])
     table("全体", results["all"])
     for lc in ("15s", "30s"):
         table(f"尺 {lc}", results["by_length"][lc])
