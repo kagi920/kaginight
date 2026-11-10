@@ -1,0 +1,210 @@
+1	Y		ファイナルファンタジーIV	スクウェア	1991	SFC	E?	E	L	sfclogo	f1 title logo over live beach/sea shot; f2 logo on plain blue; f3 two real ostriches
+2	Y		ファイナルファンタジーIV	スクウェア		SFC	E	L	E	sfclogo;publogo	f1 logo on blue; f2 real ostrich close-up; f3 SQUARE logo card
+3	N	later_rerelease	ファイナルファンタジーIV アドバンス			other	-	-	-		GBA Advance
+4	N	later_rerelease	ファイナルファンタジーIV アドバンス		2005	other	-	-	-	date:2005·12·15	GBA Advance
+5	N	later_rerelease	ファイナルファンタジーIV (DS)		2007	other	-	-	-	date:2007.12.20	DS
+6	N	later_rerelease	ファイナルファンタジーIV (DS)			other	-	-	-		DS
+7	Y		ファイナルファンタジーIV			SFC	L	L	L		empty beach/sea, small dark figure in distance in f2; same campaign as #1
+8	Y		ファイナルファンタジーIV		1991	SFC	L	L?	L	sfclogo	real ostriches; f2 title logo superimposed over ostriches on black; same campaign as #1 (different edit)
+9	N	later_rerelease	ファイナルファンタジーIV (DS)			other	-	-	-		DS
+10	N	later_rerelease	ファイナルファンタジーIV (DS)			other	-	-	-		DS
+11	Y		ファイナルファンタジーIV			SFC	L	L	E?	sfclogo	dup_of:#7 (same beach imagery, later sample points); f3 title logo over live beach shot
+12	Y		ファイナルファンタジーIV	スクウェア		SFC	L	L	E	publogo	real ostriches on black; f3 SQUARE logo card; same campaign as #1/#8
+13	N	later_rerelease	ファイナルファンタジーIV (DS)		2007	other	-	-	-		DS CM compilation
+14	N	later_rerelease	ファイナルファンタジーIV (DS)			other	-	-	-		DS
+15	Y		ファイナルファンタジーIV	スクウェア		SFC	E	L	E	sfclogo;publogo	dup_of:#2
+16	N	later_rerelease	ファイナルファンタジーIV (DS)		2007	other	-	-	-	date:2007.12.20	DS
+17	Y		ファイナルファンタジーV			SFC	P?	P?	E	sfclogo;mega:大容量16メガ;copy:好評発売中	chocobo and monsters as 3D figures on orange desert set, looks like clay/model animation (could be CG); no people
+18	Y		ファイナルファンタジーV	スクウェア	1993	SFC	E	P?	P?		taken from V-Jump promo VHS (side banners 超プレミアムビデオ); f1 is VHS title card「ファイナルファンタジーV (株)スクウェア」on blue; same chocobo/monster model imagery as #17; possibly not broadcast capture
+19	Y		ファイナルファンタジーV			SFC	P?	P?	E	mega:大容量16メガ;copy:好評発売中	dup_of:#17 (same imagery, windowboxed)
+20	Y		ファイナルファンタジーVI	スクウェア		SFC	L?	L	E	publogo	live-action city street with mech (魔導アーマー) prop/effects: f1 mech foot beside manhole with lightning, f2 mech with rider at city crossing with crowd; f3 SQUARESOFT logo card
+21	Y		ファイナルファンタジーV	スクウェア		SFC	P?	P?	E	publogo	pre-release version; chocobo and dark armoured monster figures on red desert set, looks like model/clay animation (could be CG); f3 SQUARESOFT logo card
+22	Y		ファイナルファンタジーV			SFC	P?	P?	E	mega:大容量16メガ;copy:好評発売中	dup_of:#17 (on-sale version)
+23	N	later_rerelease	ファイナルファンタジーV アドバンス		2006	other	-	-	-	date:2006·10·12	GBA Advance
+24	N	later_rerelease	ファイナルファンタジーV アドバンス		2006	other	-	-	-		GBA Advance
+25	Y		ファイナルファンタジーVI			SFC	L	G	L		f1 extreme close-up of an eye; f2 game screen (airship deck, party sprites); f3 woman in profile with curly hair, FINAL FANTASY VI text super over live action
+26	N	later_rerelease	ファイナルファンタジーVI アドバンス		2006	other	-	-	-	date:2006·11·30	GBA Advance
+27	N	later_rerelease	ファイナルファンタジーVI アドバンス		2006	other	-	-	-	date:2006·11·30	GBA Advance
+28	U	unclear	ファイナルファンタジーVI		1994	SFC	L	L	L		title says event promo (HARUMIドーム21 フェスタ94); all three frames show a smiling woman (live action), no game or logo visible; cannot confirm it is a software CM; windowboxed
+29	Y		ファイナルファンタジーVI			SFC	X	L	L	date:4·2 SAT	same campaign as #20 (shorter edit); f1 black; f2 mech at city crossing; f3 woman riding mech with FINAL FANTASY VI logo and date super over live action
+30	Y		ファイナルファンタジーVI			SFC	L	L	L	sfclogo;date:4·2 SAT	same campaign as #20/#29; f1 manhole and crosswalk on street; f2 mech at city crossing; f3 woman on mech with logo/date super
+31	Y		テイルズ オブ ファンタジア	ナムコ		SFC	E?	A	E	publogo;copy:好評発売中	f1 namco logo over dark water/horizon background image; f2 character illustration with caption「アーチェ・クライン かないみか」plus small game-screen inset (battle/menu); f3 title logo card; no people
+32	N	later_rerelease	テイルズ オブ ファンタジア フルボイスエディション			other	-	-	-		PSP
+33	Y		テイルズ オブ ファンタジア	ナムコ		SFC	E?	A	G?	publogo;copy:キャラクターデザイン 藤島康介	f1 namco logo over dark water/horizon background; f2 three-character illustration with credit text; f3 pixelated red sun over dark landscape, looks like in-game cutscene; no people
+34	N	other_platform	テイルズ オブ ファンタジア (PS)	ナムコ		PS	-	-	-		title names 宮崎あおい; live-action children in snow; same imagery as #40 (PS version 1998)
+35	N	other_platform	テイルズ オブ ファンタジア (PS/GBA)	ナムコ		PS	-	-	-		PS & GBA versions
+36	Y		テイルズ オブ ファンタジア	ナムコ		SFC	E?	A	E	publogo;date:12月15日発売;copy:Linear Motion Battle リニアモーションバトル	f1 namco logo over image of a large tree (photo-like or rendered, unclear); f2 text motion graphic; f3 title logo with release date; no people
+37	N	later_rerelease	テイルズ オブ ファンタジア (GBA)			other	-	-	-		GBA
+38	N	other_platform	テイルズ オブ ファンタジア なりきりダンジョンX			other	-	-	-		PSP
+39	N	not_cm	クロノ・トリガー			SFC	-	-	-		fan-made MAD (CM風MAD) per title
+40	N	other_platform	テイルズ オブ ファンタジア (PS)	ナムコ	1998	PS	-	-	-		PS version; crt_reshoot look
+41	Y		テイルズ オブ ファンタジア	ナムコ		SFC	E?	A	G	publogo;sfclogo	same campaign as #31/#36; f1 namco logo over large-tree image; f2 character illustration with caption「アーチェ・クライン かないみか」and small game inset; f3 game field screen with SFC logo strip; no people
+42	N	other_platform	テイルズ オブ エターニア		2001	PS	-	-	-		PS
+43	N	other_platform	テイルズ オブ デスティニー	ナムコ		PS	-	-	-		PS
+44	N	other_platform	テイルズ オブ デスティニー (PS2)			other	-	-	-		PS2
+45	N	other_platform	テイルズ オブ ファンタジア (PS)			PS	-	-	-		PS version
+46	Y		魍魎戦記MADARA2	コナミ		SFC	A	E	G	publogo;copy:MADARA IS BACK;disclaimer:スーパーファミコン(rest illegible)	f1 cel animation: silhouetted figure in burning field, small singer credit caption; f2 text card with KONAMI wordmark; f3 game overworld screen; no people
+47	N	other_platform	魍魎戦記MADARA			FC	-	-	-		FC version (same anime imagery as #50)
+48	Y		魍魎戦記MADARA2	コナミ	1993	SFC	A	A	E	publogo	windowboxed; f1 anime burning scene with KONAMI wordmark; f2 anime face with glowing eyes; f3 package shot MADARA2 on plain background
+49	Y		魍魎戦記MADARA2	コナミ	1993	SFC	A	A	E	publogo	broadcast clock 7:37 overlay; f1 anime silhouette in burning field (same as #46 f1); f2 anime face close-up; f3 KONAMI logo card
+50	N	other_platform	魍魎戦記MADARA		1990	FC	-	-	-		FC
+51	N	other_platform	魍魎戦記MADARA			FC	-	-	-	price:定価8,500円;copy:ファミコンカセット 好評発売中	FC
+52	Y		魍魎戦記MADARA2	コナミ		SFC	E	A	E	publogo;sfclogo;price:9,800円(税別);copy:MADARA IS BACK;copy:好評発売中	letterboxed; f1 text card with KONAMI wordmark; f2 anime burning scene with silhouette; f3 package shot over flames with スーパーファミコンソフト text; same CM as #46 (different sample points)
+53	N	other_platform	魍魎戦記MADARA	コナミ		FC	-	-	-		FC
+54	Y		魍魎戦記MADARA2	コナミ	1993	SFC	A	A	E	publogo	windowboxed; anime flames and silhouetted figure; f3 KONAMI logo card; same imagery as #49
+55	N	other_platform	魍魎戦記MADARA	コナミ	1990	FC	-	-	-		FC
+56	N	other_platform	魍魎戦記MADARA			FC	-	-	-	copy:ファミコンカセット	FC
+57	Y		魍魎戦記MADARA2	コナミ		SFC	A	A	E	publogo;sfclogo;price:9,800円(税別);copy:好評発売中	dup_of:#52 (same 27s CM); anime flames, silhouette; package shot end card
+58	Y		エストポリス伝記II	タイトー		SFC	X	L?	E	publogo;copy:キャッチ・ザ・ハート	f1 blurred abstract light streak; f2 man and woman embracing in front of large moon (appears live action, soft focus); f3 TAITO logo card
+59	Y		エストポリス伝記II		1995	SFC	L?	L?	E	sfclogo;copy:好評発売中	windowboxed; f1-f2 small silhouetted couple on a cliff against huge moon (live action vs. model/composite unclear); f3 title logo card
+60	Y		エストポリス伝記	タイトー	1993	SFC	P?	E	E?	sfclogo;date:'93年6月登場	f1 sword stuck in white rock, looks like physical model/miniature (could be rendered); f2 title logo card; f3 coloured shapes on white, appears to be animated publisher logo assembling; no people
+61	Y		エストポリス伝記	タイトー	1993	SFC	A	E	E?	date:6月25日新発売	windowboxed; f1 cel-animation chibi hero raising sword; f2 title logo card over cloudy background; f3 coloured shapes on white (animated publisher logo assembling, as #60); no people
+62	Y		エストポリス伝記II	タイトー	1995	SFC	X	L?	E?		f1 almost black with faint light line; f2 man and woman embracing against large moon (appears live action; same shot as #58 f2); f3 coloured shapes on white (animated publisher logo assembling)
+63	Y		エストポリス伝記II	タイトー	1995	SFC	L?	L?	E	publogo;copy:キャッチ・ザ・ハート	same CM as #58/#59; small silhouetted couple on cliff against huge moon (live vs. composite unclear); f3 TAITO logo card
+64	Y		ロマンシング サ・ガ2	スクウェア		SFC	A?	L	E	publogo;copy:新フリーシナリオシステム完成;copy:おぬしの選択が、物語を創っていくのじゃ	f1 caption text on blurred brown background; f2 live-action old woman in shawl seated on throne-like chair, with game-style dialogue window super; f3 SQUARESOFT logo card
+65	N	later_rerelease	ロマンシング サガ2 リベンジオブザセブン			other	-	-	-		modern remake
+66	Y		ロマンシング サ・ガ2	スクウェア		SFC	L	L	L	copy:おぬしの選択が、物語を創っていくのじゃ！	windowboxed; f1 man standing in old European-looking stone street; f2-f3 old woman in shawl on throne-like chair with game-style dialogue window super; same campaign as #64
+67	N	other_platform	ロマンシング サガ ミンストレルソング			other	-	-	-		PS2
+68	N	later_rerelease	ロマンシング サガ3 (リマスター)			other	-	-	-	copy:あの『ロマンシング サガ3』が24年の時を超え、再び登場	modern remaster CM
+69	Y		ロマンシング サ・ガ3	スクウェア	1995	SFC	L	L	L		windowboxed, dark; live-action woman with circlet and pale robe seated beside a fire; small copyright text at bottom not legible; title says two 15s versions
+70	N	other_platform	ロマンシング サガ リ・ユニバース		2020	other	-	-	-		mobile game
+71	N	other_platform	ロマンシング サガ リ・ユニバース			other	-	-	-		mobile game; news-site upload
+72	U	unclear	聖剣伝説2			SFC	G	P?	X	copy:モーションバトルがRPGを変える！	f1 game flight screen (overhead world map); f2 camera shot of a printed magazine-style advertisement page; f3 blank white; 61s length and print-ad shot suggest promo video or fan edit rather than a broadcast spot
+73	Y		聖剣伝説2	スクウェア		SFC	P	C	E	copy:好評発売中	f1 monster head (appears to be physical model/puppet) in blue smoke with light beams over miniature rocks; f2 several game screens floating in front of the monster set, caption「危機に直面している。」; f3 title card on blue; no people
+74	U	unclear	聖剣伝説2 (CD&BOOK)			SFC	P?	P	L		title says CD&BOOK version: f1 three product/package images floating over the monster set, caption「これらを見よ！」; f2 monster head model; f3 woman in yellow top on white background (may belong to a following, different commercial); unclear whether the advertised item is the SFC software
+75	Y		聖剣伝説2			SFC	P	C	P		same campaign as #73; f1 monster head model with light beams and caption; f2 game screens floating before monster set; f3 monster mouth close-up, caption「モーション・バトル！」; no people
+76	Y		聖剣伝説2		1993	SFC	C	P	E	copy:好評発売中	same campaign as #73 (15s); f1 game screens floating before monster set, caption「未知なる リング・コマンド、」; f2 monster head model close-up with caption; f3 title card on blue
+77	N	other_platform	聖剣伝説 LEGEND OF MANA	スクウェア		PS	-	-	-		PS
+78	Y		聖剣伝説3	スクウェア		SFC	G	E	E	sfclogo;date:9月発売予定	f1 game boss battle screen (large beast under moon, three party sprites); f2-f3 title logo over red cloud background with SFC logo strip; no people
+79	N	not_game	聖剣伝説 Legend of Mana -The Teardrop Crystal- (アニメ)		2022	other	-	-	-		anime TV series promo
+80	Y		聖剣伝説3		1995	SFC	X	A?	G		f1 black; f2 six character silhouettes against orange sunset (drawn vs. costumed live action not distinguishable); f3 game boss battle screen (same as #78 f1)
+81	Y		聖剣伝説3		1995	SFC	A?	G	E	sfclogo	f1 dark silhouetted rocky shapes against stormy purple/red sky (painted/rendered vs. miniature unclear); f2 game boss battle screen; f3 title logo over red clouds with SFC logo strip; no people
+82	N	later_rerelease	聖剣伝説3 TRIALS of MANA		2020	other	-	-	-	date:2020.4.24	Switch/PS4/PC remake
+83	Y		聖剣伝説3			SFC	A?	G	E	sfclogo;date:9月発売予定	windowboxed, soft VHS; f1 hazy grey rock/ruin landscape (painted vs. miniature unclear); f2 game boss battle screen; f3 title logo over red clouds; same CM as #78
+84	Y		クロノ・トリガー	スクウェア	1995	SFC	A	A	E	sfclogo;date:3月11日(土)発売;copy:DREAM PROJECT PRESENTS	f1 staff names in large kanji (坂口博信/鳥山明/堀井雄二) over ship artwork on textured background; f2 text over clock-gear graphic; f3 title logo card with date; no people
+85	N	other_platform	クロノ・トリガー (PS)			PS	-	-	-		PS version, anime cutscenes
+86	U	unclear	クロノ・トリガー	スクウェア	1995	SFC	X	G?	E	publogo	title says US commercial but f2 shows Japanese name super「坂口博信」(with small ファイナルファンタジー credit) over game castle graphic, same as #90 f2; f3 SQUARESOFT logo with small English tagline; windowboxed with uploader watermark; origin (JP vs US) cannot be settled from frames
+87	N	later_rerelease	クロノ・トリガー (DS)			other	-	-	-		DS
+88	N	later_rerelease	クロノ・トリガー (DS)			other	-	-	-		DS
+89	Y		クロノ・トリガー			SFC	A	G	E	sfclogo;date:3月11日(土)発売;copy:DREAM PROJECT PRESENTS	f1 text over dark clock-gear graphic; f2 game battle screen with command menu; f3 title logo card with date; same campaign as #84; no people
+90	Y		クロノ・トリガー	スクウェア	1994	SFC	A	G?	X	copy:DREAM PROJECT PRESENTS	pre-release reservation-campaign version per title; windowboxed and dark; f1 text over clock-gear graphic; f2 name super「坂口博信」over game castle graphic with moon; f3 nearly black; no people
+91	N	other_platform	クロノ・クロス	スクウェア		PS	-	-	-		PS
+92	Y		クロノ・トリガー	スクウェア	1995	SFC	A?	E	A	sfclogo;date:3月11日(土)発売	multi_spot? (46s, likely several versions joined); f1 swirling distorted world-map graphic (game-derived or drawn, unclear); f2 title logo card with date; f3 staff names in kanji over ship artwork; no people
+93	Y		クロノ・トリガー			SFC	A	G	E	sfclogo;date:3月11日(土)発売	f1 staff names (坂口博信/鳥山明/堀井雄二) over ship artwork; f2 game battle screen with menu; f3 title logo card; same campaign as #84; no people
+94	N	later_rerelease	クロノ・トリガー (DS)		2008	other	-	-	-		DS; uploader watermark
+95	Y		クロノ・トリガー			SFC	A	E	G	sfclogo;date:3月11日(土)発売;copy:DREAM PROJECT PRESENTS	multi_spot (title says CM 1, 2 & 3 joined in one 46s upload); f1 text over clock-gear graphic; f2 title logo card; f3 game field screen (prehistoric area); no people
+96	N	later_rerelease	ライブアライブ (Switch)		2022	other	-	-	-	date:2022.7.22(Fri)発売	Switch remake web CM
+97	Y		フロントミッション	スクウェア		SFC	L	L	E	copy:発売中	windowboxed; f1 actors as armed soldiers, high-contrast desaturated look; f2 close-up of male soldier with rifle; f3 FRONT MISSION title logo card
+98	N	other_platform	フロントミッション サード			PS	-	-	-	price:6,800円(税別);date:9.2 ON SALE	PS
+99	N	other_platform	フロントミッション5		2006	other	-	-	-		PS2
+100	Y		フロントミッション	スクウェア		SFC	L	L	E	publogo	same CM as #97; f1 actors as soldiers outdoors (desaturated); f2 male soldier close-up with rifle; f3 SQUARESOFT logo over orange explosion/cloud background
+101	N	other_platform	フロントミッション5			other	-	-	-		PS2 (same imagery as #99)
+102	Y		フロントミッション	スクウェア	1994	SFC	L	L	E	copy:発売中	dup_of:#97 (same imagery; uploader side-blur padding); actors as soldiers; f3 title logo over explosion cloud
+103	N	other_platform	フロントミッション セカンド			PS	-	-	-		PS
+104	N	other_platform	フロントミッション エボルヴ			other	-	-	-		PS3/360 era
+105	N	other_platform	フロントミッション セカンド	スクウェア	1997	PS	-	-	-		PS; f3 belongs to convenience-store (デジキューブ) tag
+106	Y		フロントミッションシリーズ ガンハザード	スクウェア		SFC	L	L	E	date:2月23日発売	letterboxed; f1-f2 desert location with burning object and black smoke, person in white clothes walking toward it; f3 GUN HAZARD title logo over flames with date
+107	Y		フロントミッション			SFC	X	L	L?		f1 is uploader ident (GAMEZ GEAR logo on white), not part of CM; f2 male soldier close-up with rifle (same as #97 f2); f3 aerial view of island with rising smoke plume (appears photographic)
+108	N	other_platform	フロントミッション セカンド		1997	PS	-	-	-	date:9.25 ON SALE	PS
+109	Y		フロントミッションシリーズ ガンハザード	スクウェア	1996	SFC	L	L	L		same campaign as #106 (30s); f1 large burning mech-like object in desert under blue sky; f2 woman's face close-up outdoors; f3 extreme close-up of eyes
+110	N	other_platform	フロントミッション エボルヴ			other	-	-	-		PS3/360 era
+111	Y		バハムート ラグーン	スクウェア	1996	SFC	L	G	E	sfclogo;date:2月9日(金)発売;copy:シミュレーションRPG	uploader has placed CM inside a decorative red/blue border (ignored); f1 lone tree on hill under cloudy sky with small caption (not fully legible); f2 game sprites (dragons/units) over cloud background with caption; f3 title logo card
+112	Y		バハムート ラグーン	スクウェア		SFC	L	L	E	sfclogo;date:2月9日(金)発売;copy:シミュレーションRPG	windowboxed; f1 lone tree landscape under cloudy sky (same as #111 f1); f2 extreme close-up of a blue eye with small caption; f3 title logo card; same CM as #111
+113	N	not_cm	バハムート ラグーン			SFC	-	-	-		piano cover video of CM music
+114	N	other_platform	神撃のバハムート			other	-	-	-		mobile game
+115	N	not_game				other	-	-	-		job-change service ad
+116	N	other_platform	イドラ			other	-	-	-		mobile game
+117	N	later_rerelease	ドラゴンクエストV (DS)			other	-	-	-		DS
+118	Y		ドラゴンクエストV 天空の花嫁	エニックス		SFC	L	L	L	copy:SCENARIO YUJI HORII;copy:MUSIC KOICHI SUGIYAMA	platform not shown in these frames; judged SFC because imagery matches #121 (titled Super Famicom 1992); live-action boy in turban in profile, figure silhouetted in bright doorway, girl in hood; staff credits superimposed
+119	N	other_platform	ドラゴンクエストV (PS2)			other	-	-	-		PlayStation 2 version
+120	N	other_platform	ドラゴンクエストV (PS2)			other	-	-	-	date:3月25日(木)発売	PlayStation 2 version
+121	Y		ドラゴンクエストV 天空の花嫁	エニックス	1992	SFC	L	G	L	publogo	windowboxed; f1 boy in turban in profile with faint ENIX text; f2 game screen with dialogue window「ビアンカ『あら？ あの明りは なにかしら？』」; f3 girl in hood (same shot as #118 f3); same campaign as #118 (15s)
+122	N	later_rerelease	ドラゴンクエストV (DS)			other	-	-	-		DS
+123	N	later_rerelease	ドラゴンクエストVII (3DS)			other	-	-	-		3DS
+124	N	later_rerelease	ドラゴンクエストVI (DS)			other	-	-	-		DS
+125	Y		ドラゴンクエストVI 幻の大地	エニックス		SFC	L	A?	E	price:価格11,400円(税別);copy:DQを超えるのは、DQだけ;copy:好評発売中	f1 costumed actors running through forest; f2 aerial view of floating/map-like landscape with tiny figures on foreground ledge (rendered or miniature composite, unclear); f3 title logo card over clouds
+126	Y		ドラゴンクエストVI 幻の大地			SFC	A?	A	E	sfclogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ	f1 dark speckled starfield with small SFC logo; f2 large rendered (CG-looking) blue slime on black; f3 title logo card; no people
+127	Y		ドラゴンクエストVI 幻の大地			SFC	A?	A	E	sfclogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ	dup_of:#126 (title calls it a one-day-only CM); starfield, rendered slime with open mouth, title card
+128	N	later_rerelease	ドラゴンクエストVI (DS)			other	-	-	-		DS
+129	Y		ドラゴンクエストVI 幻の大地	エニックス		SFC	L	E	E	publogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ	f1 three costumed actors looking upward (warm light); f2 ENIX logo on black; f3 title logo card over clouds; same campaign as #125
+130	Y		ドラゴンクエストIII そして伝説へ…			SFC	L	L	L		windowboxed, soft; costumed actors: f1 hero-like figure with headband and sword shot from below, f2 figure among torches/flames, f3 dark-haired person in profile
+131	Y		ドラゴンクエストIII そして伝説へ…	エニックス		SFC	L	L?	E	date:12月6日(金)発売;price:価格8,700円(税別)	windowboxed, broadcast clock overlay; f1 costumed young woman with claw weapon in green jungle; f2 small figure before large waterfall cliffs (live vs. composite unclear); f3 title logo card over clouds
+132	N	other_platform	ドラゴンクエストIII			FC	-	-	-		old-style DQIII sword logo and white-hat priest imagery identical to #135 (titled Famicom version); f1 heavy video noise
+133	Y		ドラゴンクエストIII そして伝説へ…	エニックス		SFC	L	E	L	price:価格8,700円(税別);copy:好評発売中	letterboxed, uploader text watermarks in corners; f1/f3 costumed young woman with claw weapon in jungle (same as #131 f1); f2 title logo card
+134	N	other_platform	ドラゴンクエストIII (GBC)	エニックス		GB	-	-	-		Game Boy Color version
+135	N	other_platform	ドラゴンクエストIII			FC	-	-	-		Famicom version per title
+136	Y		ドラゴンクエストIII そして伝説へ…	エニックス	1996	SFC	L	L	E	price:価格8,700円(税別);copy:好評発売中	soft VHS; f1 costumed hero with sword against clouds; f2 white-haired person with necklace on patterned (carpet-like) object against sky; f3 title logo card over clouds
+137	U	unclear	ドラゴンクエストIII	エニックス		unknown	L	L	E?	publogo;copy:そして伝説へ…	no platform in title or frames; white-hat priest actor is the same imagery as #132/#135 (Famicom version), so probably FC 1988, not SFC; f3 vertical copy and エニックス logo over dark footage
+138	Y		アクトレイザー			SFC	P?	L	L?	copy:ACTION;copy:CREATION	f1 monochrome shot of statues/temple figures (looks like models or stills) with ACTION text super; f2 real clouds/sky with CREATION text super; f3 full-frame fire/explosion; no people
+139	Y		アクトレイザー		1990	SFC	L	L	L?	copy:ACTION;copy:CREATION	f1 erupting lava/sparks at night with ACTION super; f2 real clouds/sky with CREATION super; f3 full-frame fire; same CM as #138 (different sample points); no people
+140	Y		アクトレイザー	エニックス		SFC	L	L	E	publogo;copy:ACTION;copy:CREATION	windowboxed; dup_of:#139; f1 lava eruption with ACTION super; f2 clouds with CREATION super; f3 ENIX logo on black
+141	Y		アクトレイザー	エニックス	1990	SFC	L	E	E	publogo;copy:ACTION	windowboxed; 33s, probably two spots joined (ENIX logo at both f2 and f3); f1 lava eruption with ACTION super; f2-f3 ENIX logo on black
+142	Y		アクトレイザー	エニックス		SFC	G	L	E?	publogo;copy:CREATION	windowboxed; f1 game action-stage screen with status bar; f2 real clouds with CREATION super; f3 very dark frame with faint ENIX logo (fading)
+143	Y		天地創造	エニックス	1995	SFC	E	A?	E	publogo;sfclogo;date:'95年 秋発売;copy:アクションRPG;copy:ENIX INFORMATION	f1 ENIX INFORMATION text card; f2 cracked pale egg/sphere on black (rendered-looking, could be physical object); f3 title logo over rendered landscape; no people
+144	Y		天地創造	エニックス	1995	SFC	A?	A	E	sfclogo;date:'95年10月20日発売;price:価格11,800円(税別);copy:アクションRPG	f1 pot/vessel-like object on orange ground (rendered-looking); f2 rendered barren mountain terrain; f3 title logo card over landscape; no people
+145	Y		天地創造	エニックス	1995	SFC	A?	G?	E	sfclogo;date:'95年 秋発売;copy:アクションRPG	f1 pale egg/sphere on black (as #143 f2); f2 pseudo-3D scrolling landscape with sky, looks like in-game world-map view; f3 title logo card; no people
+146	Y		スターオーシャン	エニックス		SFC	G	E	G?	price:価格8,500円(税別);copy:SFC最後のオリジナルRPG;copy:好評発売中	f1 game battle screen (large insect-like enemy, party sprites); f2 title logo card on starfield; f3 pixel-art scene of dome/planet over rocky terrain (in-game cutscene look); no people
+147	Y		スターオーシャン	エニックス	1996	SFC	L?	G	E	publogo	f1 dark shot of two figures with a torch/flame (appears live action, very dark); f2 game battle screen (same as #146 f1); f3 ENIX logo on black
+148	N	later_rerelease	スターオーシャン1 First Departure			other	-	-	-		PSP remake
+149	N	other_platform	スターオーシャン ブルースフィア	エニックス		GB	-	-	-		GB
+150	N	other_platform	スターオーシャン セカンドストーリー			PS	-	-	-	date:7·30 ON SALE	PS
+151	N	later_rerelease	スターオーシャン1 First Departure			other	-	-	-		PSP remake
+152	N	other_platform	スターオーシャン5			other	-	-	-		PS4
+153	Y		スターオーシャン	エニックス		SFC	L?	A?	E	price:価格8,500円(税別);copy:SFC最後のオリジナルRPG;copy:好評発売中	windowboxed; f1 very dark shot of two figures with torch (same as #147 f1; appears live action); f2 ring-shaped galaxy/nebula image on pale starfield; f3 title logo card on starfield
+154	N	later_rerelease	スターオーシャン2 Second Evolution			other	-	-	-		PSP remake
+155	N	other_platform	スターオーシャン3 Till the End of Time		2003	other	-	-	-		PS2
+156	N	later_rerelease	スターオーシャン1 First Departure		2007	other	-	-	-	date:2007年12月27日(木)発売	PSP remake
+157	N	other_platform	スターオーシャン3 ディレクターズカット		2004	other	-	-	-	date:2004年1月22日(木)発売	PS2
+158	N	other_platform	真・女神転生V			other	-	-	-		Switch
+159	N	other_platform	デビルサマナー ソウルハッカーズ	アトラス		SS	-	-	-		Saturn
+160	Y		真・女神転生II	アトラス	1994	SFC	P?	P?	E	sfclogo;publogo	windowboxed, dark; f1 dim chamber with cylindrical tanks and flames in foreground (miniature set vs. rendered unclear), SFC logo top right; f2 beast figure standing on a magic-circle floor (model vs. rendered unclear); f3 ATLUS logo; no people
+161	N	other_platform	真・女神転生III NOCTURNE			other	-	-	-		PS2; CM compilation
+162	N	later_rerelease	真・女神転生III NOCTURNE HD REMASTER		2020	other	-	-	-		PS4/Switch
+163	N	other_platform	真・女神転生NINE	アトラス		other	-	-	-		Xbox
+164	N	other_platform	真・女神転生IV			other	-	-	-		3DS
+165	N	other_platform	真・女神転生IV FINAL			other	-	-	-		3DS
+166	N	other_platform	デジタル・デビル物語 女神転生	ナムコ		FC	-	-	-		FC; title names 島田紳助
+167	N	other_platform	デジタル・デビル物語 女神転生II	ナムコ		FC	-	-	-		FC
+168	N	later_rerelease	真・女神転生III NOCTURNE HD REMASTER		2020	other	-	-	-		PS4/Switch
+169	N	other_platform	真・女神転生IV FINAL			other	-	-	-		3DS
+170	N	other_platform	真・女神転生III NOCTURNE	アトラス		other	-	-	-		PS2
+171	Y		ストリートファイターII	カプコン		SFC	L	L	L	copy:song by/筋肉少女帯	title names 水野美紀; warm sepia tint; f1 robed figure walking in desert with song credit caption; f2 young woman in Chun-Li costume (hair buns) close-up; f3 man in red headwrap shouting, close-up
+172	Y		スーパーストリートファイターII	カプコン		SFC	A	L	E	copy:メガドライブ用ソフトも新発売！	SFC & MD joint CM per title; f1 cel anime close-up with caption crediting the theatrical anime「ストリートファイターII」; f2 live action: woman in Cammy-style costume kicking between men in dark suits on a street, song credit caption; f3 MEGA DRIVE logo card
+173	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	E	publogo;price:定価9,980円(税別);copy:好評発売中	title names 水野美紀 (春麗編); f1-f2 woman in Chun-Li costume close-up on blue background, CAPCOM logo super in f1; f3 title logo card on green
+174	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L		multi_spot (title: all 2 versions, 63s); letterboxed; f1 muscular man in fighting pose in a street scene with bicycles; f2-f3 woman in Chun-Li costume on blue background (as #173)
+175	N	not_game	ストリートファイターII MOVIE (劇場アニメ)	カプコン		other	-	-	-	copy:全国ロードショー	theatrical anime film ad
+176	Y		ストリートファイターII	カプコン		SFC	L	L	L		multi_spot (title: all 3 versions, 61s); letterboxed; woman in Chun-Li costume and man in red headwrap shouting, sepia tint (same imagery as #171)
+177	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	windowboxed, yellow tint; f1 woman in Chun-Li costume close-up; f2 same woman in motion with crowd/market behind; f3 same costume on blue background (as #173)
+178	N	other_platform	ストリートファイターII (GB)			GB	-	-	-		GB; title names 篠原涼子
+179	N	other_platform	スーパーストリートファイターIIX	カプコン		other	-	-	-		arcade
+180	Y		ストリートファイターII / ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	multi_spot (58s, SFII and SFII Turbo CMs joined per title); windowboxed; woman in Chun-Li costume in yellow-tinted and blue-background shots (same imagery as #171/#173/#177)
+181	Y		スーパーストリートファイターII	カプコン		SFC	L	A	E		upload title gives date 1999/06/25 (outside range; likely uploader error, so year left blank); f1 live action: woman in Cammy-style costume kicking between men in suits on street, song credit caption (as #172 f2); f2 cel anime muscular wrestler figure; f3 large STREET FIGHTER II logo filling frame
+182	Y		スーパーストリートファイターII	カプコン		SFC	A	L	E	copy:メガドライブ用ソフトも発売中！	same campaign as #172 (on-sale variant); f1 anime close-up with theatrical-anime credit caption; f2 live-action Cammy-costume kick scene on street; f3 MEGA DRIVE logo card
+183	Y		ストリートファイターII	カプコン		SFC	L	L	E	sfclogo;publogo;copy:感性開発企業	title: リュウver.; sepia tint; f1 bare foot/leg stepping on sand with SFC logo super; f2 man in headwrap shouting close-up (as #171 f3); f3 CAPCOM logo card
+184	Y		スーパーストリートファイターII	カプコン		SFC	A	G	A		SFC & MD per title; f1 anime close-up with theatrical-anime credit caption; f2 game fight screen (two fighters, health bars); f3 anime scene with lightning and dark caped figure; no live action in sampled frames
+185	Y		ストリートファイターIIターボ	カプコン	1993	SFC	L	L	E	publogo;price:定価9,980円(税別);copy:好評発売中	f1 small figure standing on rock before waterfall, CAPCOM logo super; f2 woman in Chun-Li costume on blue background, CAPCOM logo super; f3 title logo card on green
+186	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L		title names 軍司眞人; f1 real tabletop mountain with tall waterfall; f2 costumed arm with claw gauntlet (Balrog/Vega-style costume) raised; f3 man in red military-style cap and uniform close-up
+187	N	other_platform	ストリートファイターII ダッシュプラス	カプコン		MD	-	-	-	price:定価9,800円(税別);copy:メガドライブ専用ソフト 好評発売中	Mega Drive
+188	N	other_platform	ストリートファイターII ダッシュプラス			MD	-	-	-		Mega Drive
+189	N	other_platform	ストリートファイターII ダッシュプラス	カプコン		MD	-	-	-		Mega Drive
+190	Y		ストリートファイターIIターボ	カプコン		SFC	X	L	E	date:7月10日新発売;price:定価9,980円(税別)	f1 is uploader ident (Gaming Age logo on white), not part of CM; f2 woman in Chun-Li costume in yellow-tinted market/crowd scene; f3 title logo card on green
+191	Y		ストリートファイターIIターボ	カプコン	1993	SFC	L	L	L		multi_spot? (63s, likely several versions joined; cf. #174); windowboxed; f1 real tabletop mountain with waterfall (as #186 f1); f2-f3 woman in Chun-Li costume on blue background
+192	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	E	price:定価9,980円(税別);copy:好評発売中;copy:SONG BY/筋肉少女帯	f1 muscular man facing a caped figure before temple-like buildings (red tint); f2 dark close-up of clenched fist/arm; f3 title logo card
+193	Y		ストリートファイターIIターボ	カプコン		SFC	L	L	L	copy:SONG BY/筋肉少女帯	dup_of:#177 (same three shots); windowboxed
+194	N	other_platform	ロックマンX4	カプコン		PS	-	-	-		PS/SS
+195	Y		ロックマンX	カプコン		SFC	A	A	A		windowboxed; cel anime of armoured hero charging arm cannon and night-city scene; f3 has small uploader/annotation text at bottom (not legible); 48s so may include extra material; no people
+196	Y		ロックマンX	カプコン		SFC	A	A	E	publogo;copy:感性開発企業	f1 drawn hero standing in mechanical chamber; f2 anime close-up of armoured hero charging; f3 CAPCOM logo card; no people
+197	Y		ロックマンX	カプコン		SFC	A	A	A	publogo;copy:A.D. 21XX年	f1 drawn hero in mechanical chamber with CAPCOM logo and caption; f2 anime close-up of armoured hero with song caption (♪アルフライラ); f3 anime night highway/city with explosions; no people
+198	Y		ロックマンX2	カプコン		SFC	A	A	A		f1 close-up of hero face (rendered/airbrushed look); f2 hero figure among floating mechanical cubes (CG look); f3 rendered wireframe-like polygon shape on dark background; no people
+199	N	other_platform	ロックマンX8	カプコン		other	-	-	-		PS2
+200	N	other_platform				other	-	-	-		PS2 multi-title ad
+201	Y		ロックマンX2	カプコン		SFC	E?	G	G	publogo;sfclogo;copy:オリジナルチップ「C×4」搭載;disclaimer:スーパーファミコン(rest illegible)	f1 large X2 logo over hero illustration with CAPCOM logo; f2-f3 game stage screens with caption and SFC logo strip; no people
+202	N	other_platform	ロックマン ゼロ 1〜4	カプコン		other	-	-	-		GBA; compilation
+203	N	other_platform	ロックマンX コマンドミッション	カプコン		other	-	-	-		PS2/GC
+204	Y		ロックマンX / ロックマンX2	カプコン		SFC	G	E?	G	publogo;sfclogo;copy:オリジナルチップ「C×4」搭載	multi_spot (title: X 1&2 CMs joined, 29s); letterboxed; f1 game stage screen inside blue electric-effect border with SFC logo strip; f2 X2 logo over hero illustration (as #201 f1); f3 game stage screen (as #201 f2); no people
+205	N	other_platform	ロックマンX コマンドミッション	カプコン	2004	other	-	-	-		PS2/GC
+206	N	other_platform	ロックマンX4	カプコン		PS	-	-	-		PS/SS
+207	N	other_platform	ロックマンX7		2003	other	-	-	-		PS2
+208	U	unclear	ロックマン			unknown	A	A	A?		no platform or title logo visible; windowboxed with uploader watermark; f1 orange silhouette figure in white glow; f2 cel anime of classic Rockman characters in icy landscape; f3 Rockman holding a ball in 3D-looking corridor (rendered or game footage, unclear); 38s
+209	N	other_platform	ロックマン8 メタルヒーローズ	カプコン	1997	PS	-	-	-	date:'97.1.17発売	PS/SS
+210	N	other_platform	ロックマンX6			PS	-	-	-		PS

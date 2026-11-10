@@ -1,0 +1,210 @@
+421	N	other_platform	信長の野望 全国版	光栄		FC	P	P	E		title says ファミコン; armoured gauntlet with rope, then package shot of 信長の野望 全国版 and 三國志
+422	N	other_platform	ファミコンウォーズ	任天堂		FC	-	-	-		
+423	Y		ミッキーのマジカルアドベンチャー	カプコン	1992	SFC	E	A	A		title logo on dark ground; cel animation of Mickey; f3 CG stepped shape
+424	N	other_platform	信長の野望・戦国群雄伝	光栄	1990	FC	-	-	-		
+425	U	unclear	信長の野望・戦国群雄伝	光栄		unknown	L	L	E	publogo	platform not stated; same imagery as #424 (titled FC); armoured actor in water; KOEI logo card
+426	Y		餓狼伝説 宿命の闘い	タカラ	1992	SFC	E	L	E	sfclogo;publogo	f1 title logo with flames on dark ground; f2 dark close-up of man in cap; f3 SUPER FAMICOM wordmark + title + TAKARA
+427	Y		餓狼伝説 宿命の闘い	タカラ	1992	SFC	E	L	A?	sfclogo	dup_of:#426; pillarbox; f3 dark bluish figure, hard to read
+428	Y		餓狼伝説スペシャル	タカラ	1994	SFC	A	A	X		cel animation with caption 映画「餓狼伝説」より; f3 nearly black with thin arc; small windowed picture
+429	N	other_platform	餓狼伝説	SNK		NG	-	-	-		
+430	Y		餓狼伝説スペシャル	タカラ	1994	SFC	X	A	E	mega:32メガ;sfclogo;date:7月29日発売	dup_of:#428 likely (same anime frame); f1 white glitchy frame
+431	Y		餓狼伝説2	タカラ		SFC	L	L	L	copy:発売中	live-action actors in character costume (capped fighter, woman with fan); title says 実写版; 発売中 super over live action in f3
+432	N	other_platform	餓狼伝説2			MD	-	-	-		same live-action imagery as #431 but titled メガドライブ版
+433	N	other_platform	餓狼伝説3	SNK	1995	NG	-	-	-		
+434	N	other_platform	餓狼伝説	セガ		MD	-	-	-		
+435	N	other_platform	餓狼伝説	SNK		NG	-	-	-		NEO-GEO SYSTEM visible
+436	N	other_platform	餓狼伝説2	SNK		NG	-	-	-		
+437	N	not_game	パチスロ餓狼伝説			other	-	-	-		pachislot, 2006
+438	Y		サムライスピリッツ/餓狼伝説スペシャル	タカラ		SFC	L	E	E	date:6月30日発売;publogo;mega:32メガ;sfclogo	upload contains two CMs; f1 men in kimono with shamisen; f2 end card shows GAME BOY logos with サムライスピリッツ logo and TAKARA; f3 餓狼伝説SPECIAL SFC end card (cf. #430)
+439	Y		第4次スーパーロボット大戦	バンプレスト		SFC	A	A	E		upload combines SFC and PS(第4次S) CMs; f1-f2 CG/illustrated SD robots; f3 PlayStation logo on black, belongs to PS part
+440	Y		第3次スーパーロボット大戦/スーパーロボット大戦EX	バンプレスト		SFC	E	E	E	publogo	multi-CM upload; all three frames are BANPRESTO logo cards with CG robot heads
+441	N	other_platform	新スーパーロボット大戦	バンプレスト		PS	-	-	-		
+442	Y		第3次スーパーロボット大戦	バンプレスト		SFC	A	A	A?	sfclogo	cel animation of super robots; f3 drawn cockpit view with robots on monitors (animation, not sprite gameplay)
+443	Y		スーパーロボット大戦EX	バンプレスト		SFC	X	A	X		60s upload padded with uploader's own inserts: f1 unrelated home-business ad slide, f3 uploader text card; only f2 is CM content (animated SD robot in framed window, cf. #445)
+444	Y		第3次スーパーロボット大戦	バンプレスト		SFC	A	A	E	sfclogo	dup_of:#442; f3 title logo over illustrated robot line-up
+445	Y		スーパーロボット大戦EX	バンプレスト	1994	SFC	A	A	E	publogo	animated SD robots in framed window on coloured ground; BANPRESTO logo card
+446	N	other_platform	スーパーロボット大戦ORIGINAL GENERATION2	バンプレスト	2005	other	-	-	-		GBA
+447	N	other_platform	スーパーロボット大戦コンプリートボックス	バンプレスト		PS	-	-	-		PlayStation logo and CD-ROM2枚組 on end card
+448	Y		第4次スーパーロボット大戦	バンプレスト		SFC	A	A	E	date:3月17日発売;publogo;sfclogo;copy:このほしの あしたのための スクランブルだ	cel animation of super robots with lyric-style subtitles; end card with title logo over robot art
+449	N	not_game	スーパーロボット大戦 熱血コレクション	バンプレスト		other	-	-	-		prize figures for amusement centres
+450	N	other_platform	スーパーロボット大戦IMPACT	バンプレスト		other	-	-	-		PS2
+451	Y		第3次スーパーロボット大戦	バンプレスト	1993	SFC	A	A	E	sfclogo;publogo	dup_of:#442
+452	N	other_platform	スーパーロボット大戦R	バンプレスト	2002	other	-	-	-		GBA
+453	Y		スーパーファミコン本体/スーパーマリオワールド	任天堂		SFC	A?	P	A?	sfclogo	f1 small Mario figure in spotlight with microphone on black (animated or model, unclear); f2 SFC console and two controllers on neon stage set with SUPER FAMICOM sign; f3 yellow fiery burst
+454	Y		スーパーマリオRPG	任天堂		SFC	P?	P?	E	date:3月9日発売予定;price:7,500円;copy:ロールプレイングゲーム	piranha-plant models/CG placed in a real city skyline (physical vs CG not certain); f3 title logo card over city with スーパーファミコンソフト text
+455	Y		スーパーマリオカート	任天堂		SFC	E	A	E	publogo;sfclogo;date:8月27日発売予定;copy:オールスターキャスト;copy:ハチャメチャぶっ飛びレーサーたち	f1 text card on black with Nintendo and SFC logos; f2 drawn Yoshi and Mario faces; f3 character icons and copy on rainbow ground
+456	N	not_game	くろがね学習机 スーパーマリオワールド		1990	other	-	-	-		desk commercial
+457	Y		スーパーマリオコレクション	任天堂		SFC	A?	A	P?	sfclogo	small windowed picture; f1 ornate gold frame holding package-like art with SFC logo; f2 monochrome Mario animation; f3 red theatre curtain on stage
+458	N	other_platform	スーパーマリオブラザーズ	任天堂		FC	-	-	-		
+459	N	other_platform	スーパーマリオブラザーズ2/ゼルダの伝説	任天堂	1986	FC	-	-	-		
+460	N	not_game	マリオの大迷路/マリオのUFOクレーン	エポック社		other	-	-	-		toy commercial
+461	Y		マリオとワリオ	任天堂		SFC	P	E	P	copy:スーパーファミコンマウス	f1 fairy character as 3D model/figure holding bucket against sky; f2 マリオペイント/スーパーファミコンマウス card with mouse photo and Mario & Yoshi art; f3 blue bird-like model figure against sky
+462	N	other_platform	スーパーマリオ 3Dワールド	任天堂		other	-	-	-		Wii U
+463	N	not_game	マリオワールドチョコ	ナガサキヤ	1991	other	-	-	-		confectionery
+464	N	not_game	ザ・スーパーマリオギャラクシー・ムービー	任天堂		other	-	-	-		film/anniversary ad, modern
+465	Y		スーパーマリオ ヨッシーアイランド	任天堂		SFC	A	A	L?		platform not stated in title or frames, inferred from game name only; crayon-style drawn animation with a real hand and pencil entering frame in f1; f3 real hand drawing Mario outline on white paper
+466	N	other_platform	スーパーマリオ 3Dワールド	任天堂		other	-	-	-		Wii U
+467	N	other_platform	F-ZERO X	任天堂		N64	-	-	-		
+468	N	other_platform	F-ZERO CLIMAX	任天堂		other	-	-	-		GBA
+469	N	other_platform	F-ZERO GX	任天堂		other	-	-	-		GameCube
+470	N	other_platform	F-ZERO GX	任天堂		other	-	-	-		GameCube
+471	N	other_platform	F-ZERO ファルコン伝説	任天堂		other	-	-	-		GBA
+472	N	other_platform	F-ZERO FOR GAMEBOY ADVANCE	任天堂		other	-	-	-		GBA
+473	N	other_platform	F-ZERO ファルコン伝説	任天堂		other	-	-	-		GBA
+474	N	other_platform	F-ZERO X	任天堂		N64	-	-	-		
+475	N	other_platform	F-ZERO ファルコン伝説	任天堂		other	-	-	-		GBA / TV anime tie-in
+476	N	other_platform	F-ZERO X	任天堂		N64	-	-	-		NINTENDO64 logo visible
+477	N	other_platform	F-ZERO FOR GAMEBOY ADVANCE	任天堂	2001	other	-	-	-		GBA; frames show unrelated broadcast material with clock
+478	N	other_platform	F-ZERO GX	任天堂	2003	other	-	-	-		GameCube
+479	N	other_platform	F-ZERO FOR GAMEBOY ADVANCE	任天堂		other	-	-	-		GBA
+480	N	not_cm	パイロットになろう!			other	-	-	-		CM compilation 1998-2001, outside period
+481	N	not_game	ピルクル エイジングライフ	日清ヨーク		other	-	-	-		beverage
+482	Y		シムシティー	任天堂		SFC	L	L	E	publogo;sfclogo;copy:市長誕生	child standing in plain studio; boy in suit with large 市長誕生 super; SFC logo card
+483	N	other_platform	シムシティ2000	セガ	1995	SS	-	-	-		
+484	Y		シムシティー	任天堂	1991	SFC	L	L	E	sfclogo;date:4月26日発売予定;copy:市長誕生	dup_of:#482 (same boy/市長誕生 frame); f1 man in bowler hat close-up; end card スーパーファミコン SimCity シムシティー
+485	N	other_platform	シムシティ2000	セガ		SS	-	-	-		
+486	Y		機動戦士ガンダムF91 フォーミュラー戦記0122	バンダイ		SFC	A	A	A	sfclogo	cel animation of Gundam; SFC logo overlaid in f1; small caption in f2 beginning スーパーファミコン (rest illegible); publisher not readable
+487	N	other_platform	シムシティ2000	セガ		SS	-	-	-		
+488	Y		ゼルダの伝説 神々のトライフォース	任天堂		SFC	E	L	L	publogo;sfclogo	actors in fantasy costume (princess with tiara, hero in green) on cave-like set
+489	N	other_platform	シムシティDS2			other	-	-	-		DS
+490	U	unclear	シムシティ2000			unknown	G	L	G		platform not stated; same chimpanzee and セガールのまち game screens as #483/#487 (SS), so probably the Saturn ad
+491	N	other_platform	シムシティ	エレクトロニック・アーツ	2013	other	-	-	-		Windows, 2013
+492	N	other_platform	ゼルダの伝説 神々のトライフォース2	任天堂		other	-	-	-		3DS
+493	N	other_platform	ゼルダの伝説 神々のトライフォース&4つの剣	任天堂		other	-	-	-		GBA remake
+494	Y		ゼルダの伝説 神々のトライフォース	任天堂	1991	SFC	L	L	L		dup_of:#488; small windowed picture; f1 dark dungeon set with group of costumed performers and LEGEND OF ZELDA logo super; f2-f3 costumed actors
+495	N	not_japan	ゼルダの伝説 神々のトライフォース2	任天堂		other	-	-	-		US 3DS ad
+496	N	other_platform	ゼルダの伝説 神々のトライフォース2	任天堂		other	-	-	-		3DS
+497	N	other_platform	ゼルダの伝説 時のオカリナ	任天堂		N64	-	-	-		
+498	Y		ゼルダの伝説 神々のトライフォース	任天堂		SFC	L	P?	L		platform not in title; identified by same princess close-up as #488/#494; 61s so likely two versions back to back; f2 blue pig-like monster with trident (suit/creature costume)
+499	N	other_platform	ゼルダの伝説 トライフォース3銃士	任天堂		other	-	-	-		3DS
+500	N	other_platform	ゼルダの伝説 夢をみる島	任天堂	1993	GB	-	-	-		
+501	N	other_platform	マリオカート64	任天堂		N64	-	-	-		
+502	N	not_game	日本道路公団 夜間通行止め告知			other	-	-	-		road closure notice using Mario Kart characters
+503	N	other_platform	マリオカートDS	任天堂		other	-	-	-		DS
+504	N	other_platform	マリオカートアドバンス	任天堂		other	-	-	-		GBA
+505	N	other_platform	マリオカート8	任天堂		other	-	-	-		Wii U
+506	N	not_cm	マリオカート8 デラックス			other	-	-	-		fan edit, Switch
+507	N	other_platform	マリオカートWii	任天堂		other	-	-	-		Wii
+508	Y		スターフォックス	任天堂	1993	SFC	A	G	L	date:2月21日発売予定;copy:1993.スーパーFXチップ現る。	small windowed picture; f1 rendered chip marked Nintendo with polygon shapes; f2 polygon Arwing gameplay with SHIELD gauge; f3 group of young people in a shopping street holding packages, date super over live action
+509	Y		スターフォックス	任天堂	1993	SFC	A	G	L	date:2月21日発売予定;copy:1993.スーパーFXチップ現る。	dup_of:#508; uploader's decorative border around picture
+510	N	other_platform	スターフォックス64	任天堂	1997	N64	-	-	-		
+511	N	other_platform	スターフォース	ハドソン	1985	FC	-	-	-		
+512	N	other_platform	スーパーマリオブラザーズ/スパルタンX	任天堂	1985	FC	-	-	-		
+513	N	not_japan	スターフォックス	任天堂		SFC	-	-	-		US ad, SUPER NINTENDO wordmark, uploader SNES-pad border
+514	N	later_rerelease	スーパーマリオ25周年キャンペーン	任天堂		other	-	-	-		2010 anniversary campaign
+515	N	other_platform	スーパーマリオブラザーズ3	任天堂		FC	-	-	-		
+516	N	other_platform	スーパーマリオUSA	任天堂		FC	-	-	-		
+517	N	later_rerelease	スーパーマリオコレクション スペシャルパック	任天堂	2010	other	-	-	-		Wii
+518	N	other_platform	星のカービィ ウルトラスーパーデラックス	任天堂	2008	other	-	-	-		DS
+519	N	other_platform	星のカービィ ウルトラスーパーデラックス	任天堂		other	-	-	-		DS
+520	N	other_platform	星のカービィ ウルトラスーパーデラックス	任天堂		other	-	-	-		DS
+521	N	other_platform	星のカービィ ウルトラスーパーデラックス	任天堂		other	-	-	-		DS
+522	U	unclear	星のカービィ	任天堂		unknown	L	L?	A	publogo	platform not stated or visible; boy in green outfit against white wall, drawn Kirby animated beside him in f2 (live action + animation, no game screen); f3 animated Kirby on starry sky
+523	N	other_platform	星のカービィ ウルトラスーパーデラックス	任天堂	2008	other	-	-	-		DS
+524	N	other_platform	星のカービィ 夢の泉デラックス	任天堂		other	-	-	-		GBA; f1-f2 are unrelated ads in the recording
+525	N	other_platform	星のカービィ 夢の泉の物語	任天堂		FC	-	-	-		
+526	N	not_game	丸美屋 星のカービィシリーズ	丸美屋		other	-	-	-		food
+527	Y		カービィボウル	任天堂	1994	SFC	A	C	L		small windowed picture; f1 rendered angry Kirby ball on checkered floor; f2 dim room with person seated at a TV showing the game screen (game on TV in live scene); f3 elderly bearded man in period costume with small Kirby graphic in corner
+528	N	other_platform	カービィのピンボール	任天堂		GB	-	-	-		
+529	N	other_platform	星のカービィ64	任天堂		N64	-	-	-		
+530	N	other_platform	コロコロカービィ	任天堂		GB	-	-	-		GBC
+531	N	not_cm	カービィボウル			other	-	-	-		VTuber stream announcement parody
+532	N	other_platform	カービィのブロックボール	任天堂		GB	-	-	-		
+533	N	other_platform	星のカービィ 鏡の大迷宮	任天堂		other	-	-	-		GBA
+534	Y		スーパーメトロイド	任天堂		SFC	L	L	P?		sci-fi set: older man in white coat with younger person, woman with headset in profile; f3 armoured suit figure standing in smoke/backlight (suit or model)
+535	Y		スーパーメトロイド	任天堂	1994	SFC	L	L	E	copy:スーパーファミコンソフト	64s 'extended cut' (may be several versions joined); same white-coat actors as #534; title logo card on black
+536	N	other_platform	メトロイド	任天堂		FC	-	-	-		Disk System
+537	Y		スーパーメトロイド	任天堂	1994	SFC	L	P?	E	price:9,800;copy:スーパーファミコンソフト	dup_of:#534; small windowed picture; f2 close-up of armoured helmet/suit (physical or rendered, unclear)
+538	N	other_platform	メトロイドプライム ハンターズ	任天堂		other	-	-	-		DS
+539	Y		スーパーメトロイド	任天堂		SFC	X	L	G		dup_of:#534 (same headset woman frame); f1 is uploader's own intro card (classic-zone.de collage), not CM content; f3 side-view gameplay
+540	Y		スーパーボンバーマン3/スーパーメトロイド	ハドソン/任天堂	1995	SFC	L	L	E	price:9,800円;copy:スーパーファミコンソフト;copy:連続テレビCM 和歌山ロケ決行!	two CMs in one upload; f1 Bomberman 3 CM: man and woman in kimono outdoors with location supers; f2-f3 Super Metroid CM (dup of #534/#537)
+541	N	other_platform	メトロイド ゼロミッション	任天堂		other	-	-	-		GBA
+542	N	other_platform	メトロイド ゼロミッション	任天堂		other	-	-	-		GBA
+543	N	other_platform	メトロイドII	任天堂		GB	-	-	-		
+544	N	other_platform	メトロイド アザーエム	任天堂		other	-	-	-		Wii
+545	Y		MOTHER2 ギーグの逆襲	任天堂		SFC	L	E	E	sfclogo;date:8月27日発売予定。	60s (probably two versions joined); f1 child in yellow school hat and young man at cafe table; f2-f3 red title card with スーパーファミコン wordmark
+546	Y		MOTHER2 ギーグの逆襲	任天堂	1994	SFC	L	L	E	sfclogo;date:8月27日発売予定。	dup_of:#545; small windowed picture; cafe scene, child and young man; title names 木村拓哉 and 糸井重里; SFC logo overlaid in f1
+547	Y		MOTHER2 ギーグの逆襲	任天堂		SFC	L	L	E		same cafe scene as #545 (titled その3, may be a different edit); f3 red card with small MOTHER logo forming
+548	Y		MOTHER2 ギーグの逆襲	任天堂		SFC	L	L	L	sfclogo;copy:大人も子供も、おねーさんも。	same cafe scene as #545; title names 木村拓哉; vertical copy super over live action in f3 (partly legible)
+549	N	other_platform	MOTHER1+2	任天堂		other	-	-	-		GBA
+550	Y		MOTHER2 ギーグの逆襲	任天堂	1994	SFC	L	L	E	sfclogo;date:8月27日発売予定。	dup_of:#545; small windowed picture
+551	N	other_platform	MOTHER	任天堂		FC	-	-	-		
+552	Y		MOTHER2 ギーグの逆襲	任天堂		SFC	L	L	E	sfclogo;date:8月27日発売予定。	dup_of:#545; small windowed picture; title names 木村拓哉
+553	N	not_cm	MOTHER2			other	-	-	-		2019 fan paper-craft remake with Switch logo
+554	Y		MOTHER2 ギーグの逆襲	任天堂		SFC	L	L	E	sfclogo;date:8月27日発売予定。;copy:大人も子供も、おねーさんも。	dup_of:#545; soft/low-resolution copy; SFC logo overlaid in f1, vertical copy super in f2
+555	Y		MOTHER2 ギーグの逆襲	任天堂		SFC	L	L	E	sfclogo;publogo	same cafe scene as #545 (titled その1); f3 Nintendo logo card on blue
+556	N	not_cm	MOTHER2			other	-	-	-		2019 fan paper-craft remake
+557	N	not_cm	MOTHER2			other	-	-	-		2019 fan paper-craft remake
+558	N	not_cm	MOTHER2			other	-	-	-		BGM video with channel-promo text overlays
+559	Y		スーパードンキーコング	任天堂	1994	SFC	E	G	E	copy:大革命!!;date:11月26日発売予定	f1 white copy text on black; f2 dark mine-cart stage gameplay; f3 title logo on wooden barrel
+560	Y		スーパードンキーコング2	任天堂		SFC	E	G	E?	publogo;sfclogo;copy:新しいヒロイン、ディクシー登場;copy:店頭表示価格よりもスーパーファミコンが4,000円安くなるクーポン券つき	platform from SFC logo card in f1; f2 honeycomb stage gameplay with caption super; f3 coupon text card with SFC console resting on a furry ape hand
+561	Y		スーパードンキーコング	任天堂		SFC	G	G	G	sfclogo	three gameplay frames (jungle, factory, vine stage); SFC logo overlaid top-left in f1
+562	N	other_platform	スーパードンキーコング	任天堂		other	-	-	-		GBA
+563	N	other_platform	スーパードンキーコングGB	任天堂		GB	-	-	-		
+564	N	other_platform	スーパードンキーコング	任天堂	2003	other	-	-	-		GBA
+565	Y		スーパードンキーコング2	任天堂		SFC	E	A	G	publogo;sfclogo	60s (probably two versions); f2 pre-rendered CG of crocodile characters around a barrel bearing SUPER DONKEY KONG logo; f3 ship-deck gameplay
+566	N	other_platform	スーパードンキーコング3	任天堂		other	-	-	-		GBA
+567	Y		スーパードンキーコング3	任天堂		SFC	C	G	E	price:3,000円	small windowed picture; f1 person seen from behind looking at a large framed game screen (live figure + game screen); f2 gameplay; f3 end card is for DONKEY KONG LAND with Game Boy unit and package, so the spot includes a GB tie-in
+568	Y		スーパードンキーコング3 謎のクレミス島	任天堂		SFC	L	L	E	sfclogo;price:6,800円	small soft picture; f1 two women looking up, f2 crowd with child in foreground looking up (Western-looking cast); f3 title logo card
+569	N	other_platform	ドンキーコンガ/スーパードンキーコング	任天堂		other	-	-	-		GC and GBA
+570	Y		スーパードンキーコング2 ディクシー&ディディー	任天堂		SFC	A?	G	E	sfclogo;date:11月21日発売予定	f1 large rendered numeral 2 on grey ground; f2 ship rigging gameplay; f3 title logo card with スーパーファミコン wordmark
+571	N	other_platform	ドンキーコング64	任天堂	1999	N64	-	-	-		
+572	N	other_platform	ドンキーコングGB	任天堂	2000	GB	-	-	-		GBC
+573	N	not_game	マリオのアドベンチャーアイランド ほか	エポック社	1997	other	-	-	-		toys
+574	N	other_platform	ドンキーコンガ2	任天堂		other	-	-	-		GC
+575	Y		スーパードンキーコング2	任天堂		SFC	E	G?	E?	publogo;copy:多彩なステージ;copy:店頭表示価格よりもスーパーファミコンが4,000円安くなるクーポン券つき	dup_of:#560 (same coupon card); small blurry windowed picture; f2 washed-out stage footage with caption
+576	N	not_game	スーパードンキーコングシェーキ	ロッテリア	1995	other	-	-	-		fast food
+577	N	other_platform	ファイアーエムブレム 暗黒竜と光の剣	任天堂		FC	-	-	-		
+578	Y		ファイアーエムブレム 紋章の謎	任天堂		SFC	L	L	L	sfclogo	young woman (title names 裕木奈江) in white studio with FIRE EMBLEM book prop and gold character figurines; SFC logo overlaid in f1
+579	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+580	Y		ファイアーエムブレム 紋章の謎	任天堂	1994	SFC	L	L	L	sfclogo	dup_of:#578; small windowed picture; title names 裕木奈江
+581	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+582	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+583	Y		ファイアーエムブレム 紋章の謎	任天堂		SFC	L	P	L	sfclogo	dup_of:#578; f2 close-up of gold dragon relief on book prop
+584	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+585	N	other_platform	ファイアーエムブレム 烈火の剣	任天堂		other	-	-	-		GBA
+586	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+587	N	other_platform	ファイアーエムブレム 暗黒竜と光の剣	任天堂		FC	-	-	-		
+588	Y		ファイアーエムブレム 聖戦の系譜	任天堂		SFC	E?	L	L?	publogo;sfclogo;copy:前作をはるかにしのぐ超大作;copy:ロールプレイングシミュレーションゲーム	f1 copy text with Nintendo and SFC logos over dark red silhouette of mounted figure; f2 Western-looking actors in armour (knight and woman); f3 dark caped silhouette under pink lightning with caption super
+589	Y		ファイアーエムブレム 聖戦の系譜	任天堂	1996	SFC	E?	L	L	publogo;sfclogo;copy:前作をはるかにしのぐ超大作;copy:愛と絆が武器になる。	dup_of:#588 (f1-f2 same); f3 clasped hands with vertical copy super (partly legible)
+590	N	other_platform	ファイアーエムブレム 蒼炎の軌跡	任天堂		other	-	-	-		GC
+591	N	other_platform	ファイアーエムブレム 万紫千紅	任天堂		other	-	-	-		modern title, official channel
+592	N	not_cm	ヨッシー New アイランド	任天堂	2014	other	-	-	-		karaoke edit, 3DS
+593	N	other_platform	ヨッシー New アイランド	任天堂		other	-	-	-		3DS
+594	N	other_platform	ヨッシーのたまご	任天堂		FC	-	-	-		ファミコンソフト visible
+595	N	other_platform	ヨッシーアイランドDS	任天堂		other	-	-	-		DS
+596	N	other_platform	ヨッシー New アイランド	任天堂		other	-	-	-		3DS
+597	N	other_platform	ヨッシーストーリー	任天堂		N64	-	-	-		
+598	N	not_japan	スーパーマリオ ヨッシーアイランド	任天堂		SFC	-	-	-		North American commercial
+599	N	other_platform	ヨッシーアイランドDS	任天堂		other	-	-	-		DS
+600	N	not_japan	ヨッシー New アイランド	任天堂		other	-	-	-		US 3DS ad
+601	N	not_japan	ヨッシー New アイランド	任天堂		other	-	-	-		UK 3DS ad
+602	N	other_platform	ヨッシーの万有引力	任天堂		other	-	-	-		GBA
+603	N	other_platform	ヨッシーアイランドDS	任天堂	2007	other	-	-	-		DS
+604	N	other_platform	ヨッシーアイランドDS	任天堂		other	-	-	-		DS
+605	U	unclear	ヨッシーのクッキー	任天堂		unknown	A	A	P	publogo	platform not stated or visible; cel animation of Mario characters; f3 plate of real cookies with spoon
+606	N	later_rerelease	スーパーマリオRPG	任天堂	2023	other	-	-	-		Switch remake
+607	N	not_cm	スーパーマリオRPG			other	-	-	-		fan recreation in another game
+608	N	not_cm	スーパーマリオRPG			other	-	-	-		fan-made comparison video
+609	N	later_rerelease	スーパーマリオRPG	任天堂		other	-	-	-		Switch remake, Korean
+610	N	later_rerelease	スーパーマリオRPG	任天堂		other	-	-	-		Switch remake, Taiwan
+611	N	other_platform	マリオ&ルイージRPG2	任天堂	2005	other	-	-	-		DS
+612	N	other_platform	マリオ&ルイージRPG	任天堂		other	-	-	-		GBA
+613	N	other_platform	ペーパーマリオRPG	任天堂		other	-	-	-		GC
+614	N	other_platform	マリオストーリー	任天堂		N64	-	-	-		
+615	Y		パネルでポン	任天堂		SFC	C	C	L?		men in kimono (rakugo/go-style setting) composited with large game screen; f1 game board fills right half beside seated men; f2 man's face with game panels and cursor around him; f3 man with tangled string/noodle mass, panels only at frame edges
+616	N	other_platform	パネルでポンDS	任天堂		other	-	-	-		DS
+617	Y		パネルでポン	任天堂		SFC	C	G	C	sfclogo	platform from SFC logo overlaid in f1; rows of seated people in dark kimono facing a giant game screen on an outdoor stage with lanterns; f2 full-frame 2-player gameplay
+618	N	other_platform	ポケモンでパネポン	任天堂		GB	-	-	-		GBC
+619	N	other_platform	パネルでポンDS	任天堂		other	-	-	-		DS
+620	N	other_platform	ドクターマリオ&パネルでポン	任天堂		other	-	-	-		woman playing a handheld (GBA title)
+621	N	other_platform	ポケモンでパネポン	任天堂	2000	GB	-	-	-		GBC
+622	N	other_platform	ヨッシーのパネポン	任天堂		GB	-	-	-		
+623	N	other_platform	ヨッシーのパネポン	任天堂	1995	GB	-	-	-		
+624	N	other_platform	ポケモンでパネポン	任天堂		GB	-	-	-		GBC
+625	N	other_platform	ポケモンでパネポン	任天堂	2000	GB	-	-	-		GBC
+626	Y		スーパーゲームボーイ	任天堂	1994	SFC	A	A	C	publogo	61s (probably two versions); f1 rainbow of sparkles on black; f2 drawn Dr. Mario and Donkey Kong; f3 real SFC console with Super Game Boy cartridge in front of a TV showing a game screen, 'Super' script overlaid (product shot + game screen)
+627	Y		スーパーゲームボーイ	任天堂	1994	SFC	A?	P	P?	publogo	small windowed picture; f1 Game Boy unit with chrome-look Mario figure on its screen (appears rendered); f2 SFC console with Super Game Boy floating over aerial night cityscape; f3 same with animated characters on a rainbow rising from the console
+628	Y		スーパーゲームボーイ	任天堂		SFC	A?	A	P		small windowed picture; f1 drawn Mario and Donkey Kong flanking a real SFC console with Super Game Boy (animation + product); f2 drawn Donkey Kong holding fan of Game Boy cartridges; f3 console with Super Game Boy in front of TV
+629	Y		スーパーゲームボーイ	任天堂	1994	SFC	P	A?	E	date:6月14日発売予定;sfclogo	same campaign imagery as #627; f1 SFC console under rainbow over night cityscape; f2 animated Nintendo characters riding rainbow out of a Game Boy unit; f3 Super GAMEBOY logo card with product and スーパーゲームボーイ text
+630	N	other_platform	マリオのピクロス	任天堂		GB	-	-	-		ゲームボーイソフト visible
