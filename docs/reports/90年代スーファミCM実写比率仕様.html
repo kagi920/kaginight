@@ -1,0 +1,2738 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>実測が示すスーファミCMの平均形と再現仕様</title>
+<style>
+:root{--bg:#fbfaf7;--fg:#1c1b19;--muted:#6b6862;--line:#dcd8cf;--accent:#8a5a00;--mark:#ffe08a;--card:#fff;--code:#f1eee7}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14151a;--fg:#e6e3dc;--muted:#9a968d;--line:#33343c;--accent:#e2b866;--mark:#6b5200;--card:#1b1c22;--code:#22232a}}
+:root[data-theme="dark"]{--bg:#14151a;--fg:#e6e3dc;--muted:#9a968d;--line:#33343c;--accent:#e2b866;--mark:#6b5200;--card:#1b1c22;--code:#22232a}
+*{box-sizing:border-box}
+html{scroll-padding-top:5rem}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.85 "Hiragino Sans","Noto Sans JP","Yu Gothic",Meiryo,sans-serif}
+header.bar{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line);padding:.6rem 16px}
+header.bar .in{max-width:1080px;margin:0 auto;display:flex;gap:.75rem;align-items:center;flex-wrap:wrap}
+#q{flex:1 1 16rem;min-width:0;font:inherit;padding:.45rem .7rem;border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--fg)}
+#q:focus{outline:2px solid var(--accent);outline-offset:1px}
+#count{color:var(--muted);font-size:.85rem;white-space:nowrap}
+main{max-width:1080px;margin:0 auto;padding:1.5rem 16px 6rem}
+h1{font-size:1.6rem;line-height:1.4;margin:.5rem 0 1rem}
+h2{font-size:1.3rem;margin:2.6rem 0 .8rem;padding-top:.8rem;border-top:2px solid var(--line)}
+h3{font-size:1.1rem;margin:1.8rem 0 .5rem}
+h4{font-size:1rem;margin:1.3rem 0 .4rem}
+a{color:var(--accent);overflow-wrap:anywhere}
+p,li{overflow-wrap:anywhere}
+nav.toc{border:1px solid var(--line);border-radius:8px;background:var(--card);padding:.6rem 1rem;margin:1rem 0 1.5rem}
+nav.toc summary{cursor:pointer;font-weight:600}
+nav.toc ul{margin:.4rem 0;padding-left:1.2rem}
+nav.toc li{margin:.15rem 0}
+.tw{overflow-x:auto;margin:1rem 0;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+table{border-collapse:collapse;width:100%;font-size:.9rem;line-height:1.6}
+th,td{padding:.45rem .65rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:var(--code);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+code{background:var(--code);padding:.1em .35em;border-radius:4px;font-size:.9em}
+pre{background:var(--code);padding:.9rem;border-radius:8px;overflow-x:auto;line-height:1.5}
+pre code{background:none;padding:0}
+blockquote{margin:1rem 0;padding:.2rem 1rem;border-left:4px solid var(--accent);background:var(--card)}
+mark{background:var(--mark);color:inherit;padding:0 .1em;border-radius:2px}
+section.hide{display:none}
+#none{display:none;color:var(--muted);padding:2rem 0}
+</style>
+</head>
+<body>
+<header class="bar"><div class="in">
+<input id="q" type="search" placeholder="検索（入力するたびに絞り込み。空白区切りで AND。/ でここへ移動）" aria-label="文書内検索" autocomplete="off">
+<span id="count" aria-live="polite"></span>
+</div></header>
+<main>
+<nav class="toc"><details><summary>目次</summary><div class="toc">
+<ul>
+<li><a href="#0-bluf">0. 結論（BLUF）</a></li>
+<li><a href="#1">1. 証拠の区分と読み方</a><ul>
+<li><a href="#11">1.1 ラベルの定義</a></li>
+<li><a href="#12">1.2 【実測】の作り方と読むときの注意</a></li>
+</ul>
+</li>
+<li><a href="#2">2. マクロ解析</a><ul>
+<li><a href="#21">2.1 全体の構成と、地点ごとの変化</a></li>
+<li><a href="#22-cm">2.2 ゲーム画面がどの地点にも映らないCMの割合</a></li>
+<li><a href="#23-3">2.3 3地点の並び</a></li>
+<li><a href="#24-1530">2.4 15秒と30秒</a></li>
+<li><a href="#25">2.5 年別</a></li>
+<li><a href="#26">2.6 発売元別</a></li>
+<li><a href="#27">2.7 対照層と指名層（有名作への偏りの点検）</a></li>
+<li><a href="#28">2.8 テロップとエンドカード（下限値）</a></li>
+<li><a href="#29">2.9 投稿の尺の分布</a></li>
+<li><a href="#210-cm">2.10 「ゲーム画面を使ったCMが多かった」という反対証言との照合</a></li>
+<li><a href="#211">2.11 市場の文脈</a></li>
+</ul>
+</li>
+<li><a href="#3">3. なぜ実写だったのか</a><ul>
+<li><a href="#31">3.1 一次証言（倉恒良彰）</a></li>
+<li><a href="#32">3.2 視聴者・実務家による説明（証拠の格の順）</a></li>
+<li><a href="#33">3.3 分かっていないこと</a></li>
+</ul>
+</li>
+<li><a href="#4">4. ミクロ解析：重点作品</a><ul>
+<li><a href="#41-vi199442">4.1 ファイナルファンタジーVI（スクウェア、1994年4月2日発売）</a></li>
+<li><a href="#42-19951215sfc">4.2 テイルズ オブ ファンタジア（ナムコ、1995年12月15日発売、SFC版）</a></li>
+<li><a href="#43-madara21993716">4.3 魍魎戦記MADARA2（コナミ、1993年7月16日発売）</a></li>
+<li><a href="#44-1993625">4.4 エストポリス伝記（タイトー、1993年6月25日発売）</a></li>
+<li><a href="#45-ii1995224">4.5 エストポリス伝記II（タイトー、1995年2月24日発売）</a></li>
+<li><a href="#46-5">4.6 重点5作品の比較</a></li>
+</ul>
+</li>
+<li><a href="#5">5. ミクロ解析：周辺の代表作</a></li>
+<li><a href="#6-2">6. 先行仕様書2本の検証結果</a><ul>
+<li><a href="#61">6.1 主張ごとの判定</a></li>
+<li><a href="#62">6.2 二つの先行仕様書が互いに食い違う箇所</a></li>
+<li><a href="#63-gpt">6.3 GPT版の方法のうち、採用したものと採用できなかったもの</a></li>
+</ul>
+</li>
+<li><a href="#7">7. 再現仕様書</a><ul>
+<li><a href="#71">7.1 型の目録</a></li>
+<li><a href="#72">7.2 時間構造</a></li>
+<li><a href="#73">7.3 画の仕様</a></li>
+<li><a href="#74">7.4 テロップと文字の仕様</a></li>
+<li><a href="#75">7.5 音の仕様</a></li>
+<li><a href="#76">7.6 権利と倫理</a></li>
+<li><a href="#77">7.7 受け入れ検査表</a></li>
+</ul>
+</li>
+<li><a href="#8">8. 検証手順（再測定の方法）</a><ul>
+<li><a href="#81">8.1 同じ測定をやり直す</a></li>
+<li><a href="#82">8.2 フレーム精度の測定への引き上げ</a></li>
+</ul>
+</li>
+<li><a href="#9">9. 未確定事項と次の一手</a></li>
+<li><a href="#10">10. 追補の受け皿</a></li>
+<li><a href="#11_1">11. 出典一覧</a><ul>
+<li><a href="#_1">【実測】【直接観察】（本プロジェクトの資料。リポジトリ内の相対パス）</a></li>
+<li><a href="#_2">【一次】（本文を開いて確認）</a></li>
+<li><a href="#_3">【二次】（本文を開いて確認）</a></li>
+<li><a href="#_4">【抜粋】（検索結果の抜粋のみ。本文は開いていない）</a></li>
+<li><a href="#_5">入力資料（ユーザー提供。未検証の主張として扱った）</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</details></nav>
+<section>
+<h1 id="cm">実測が示すスーファミCMの平均形と再現仕様</h1>
+<p>版：v1.0（2026-11-10）　対象：1990〜1996年に日本で放送されたスーパーファミコン（以下SFC）用ソフト・本体のテレビCM</p>
+<hr />
+
+</section>
+<section>
+<h2 id="0-bluf">0. 結論（BLUF）</h2>
+<p>【実測】個別投稿されたSFCのCM 369投稿（221単位＝タイトル×尺、192タイトル）を、各動画のおよそ25%・50%・75%の3地点で分類した結果、画面の主成分は3点平均で<strong>実写系（実写＋人形・模型）40%、アニメ・CG・絵29%、カード（タイトル・ロゴ・パッケージ）19%、ゲーム画面11%</strong>であった。【実測】3地点のどこにもゲーム画面が映っていない単位は221中138（62%）で、ゲーム画面が映る場合も中盤（約50%地点で画面内にある割合25%）の1地点に集中し、約75%地点ではカードが44%、何らかのテロップがある割合が72%に達する。【実測】つまり「平均的な形式」は一つの型ではなく、<strong>全編実写型（85単位）、実写＋ゲーム画面型（42）、アニメ・絵主体型（41）、絵→ゲーム画面型（24）、人形・模型型（17）、ゲーム画面主体型（11）</strong>の混合であり、共通するのは「中盤にゲーム画面を置くなら1か所、終盤4分の1までにタイトルと発売告知を出す」という時間構造である。【実測】尺による差は実写系で15秒36%・30秒46%、発売元による差はさらに大きい（スクウェア62%、任天堂50%、バンダイ22%）。【直接観察】重点5作品のうち4作品は3地点に実写を含み（『ファイナルファンタジーVI』＝渋谷の交差点への造形物の合成、『魍魎戦記MADARA2』＝炎と人物のシルエット、『エストポリス伝記II』＝月を背にした衣装の男女、『テイルズ オブ ファンタジア』＝海と大樹の風景のみ）、初代『エストポリス伝記』だけは剣の画とセルアニメで人物の実写が無く、ゲーム画面はどの作品でも1投稿あたり0〜1地点にしか現れない。【一次】実写を選んだ理由について、任天堂のCMを手がけた倉恒良彰は、2Dゲームではプレイヤーが想像で補っていた世界を広告が実写で代行した、と述べている（<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">ほぼ日 nin25_3</a>）。ただし、この実測は3点標本であって秒数の実測ではなく、冒頭と末尾の各およそ8分の1と音声は観測していない。本書7章の再現仕様は、この実測から導ける制約と、本書が加えた設計値（【設計】）とを分けて示す。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="1">1. 証拠の区分と読み方</h2>
+<h3 id="11">1.1 ラベルの定義</h3>
+<p>本書の事実の記述には、次のいずれかのラベルを付ける。表や段落の冒頭にラベルがある場合は、その表・段落全体に適用する。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>ラベル</th>
+<th>意味</th>
+<th>根拠の所在</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>【実測】</td>
+<td>本プロジェクトのフレーム分類の集計値</td>
+<td><code>docs/research_notes/90年代スーファミCM実写比率仕様/measurement/results.md</code>、同 <code>results.json</code>。「再集計」と書いたものは <code>results.json</code> の単位データを本書で数え直した値</td>
+</tr>
+<tr>
+<td>【直接観察】</td>
+<td>主担当の解析者が原寸（480×360）のサムネイルを目視した記録</td>
+<td>同フォルダ <code>focus_direct_observation.md</code></td>
+</tr>
+<tr>
+<td>【一次】</td>
+<td>当事者本人の発言または公式文書で、ページ本文を実際に開いて確認したもの</td>
+<td>同 <code>verification_of_muse_spec.md</code>（ほぼ日の倉恒良彰インタビュー、任天堂IR資料、民放連の文書など）</td>
+</tr>
+<tr>
+<td>【二次】</td>
+<td>Wikipedia・回顧記事・個人の文章で、ページ本文を開いて確認したもの</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>【抜粋】</td>
+<td>検索結果の抜粋でしか見ていないもの。本文は開いていない</td>
+<td>同フォルダの各ノート</td>
+</tr>
+<tr>
+<td>【設計】</td>
+<td>本書による設計上の推奨。<strong>史実ではない</strong></td>
+<td>本書7章</td>
+</tr>
+</tbody>
+</table></div>
+<p>食い違いがある場合は、開いたページと直接観察を、抜粋より優先した。</p>
+<h3 id="12">1.2 【実測】の作り方と読むときの注意</h3>
+<p>【実測】標本は、YouTubeの検索結果から題名にCMを含む10〜65秒の個別投稿を集めたもので、検索語は99件（タイトルを指名した「指名」71件、年と機種だけの「対照」28件）である。絞り込みは次のとおりである。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>段階</th>
+<th style="text-align: right;">件数</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>収集した投稿</td>
+<td style="text-align: right;">834</td>
+<td>全件を1回目分類にかけた</td>
+</tr>
+<tr>
+<td>SFCの日本向けCMと判定</td>
+<td style="text-align: right;">421</td>
+<td>除外413の内訳：他機種293、後年の再発売38、機種不明17、CMでない27、ゲームでない26、国外5、期間外4、不明3（再集計）</td>
+</tr>
+<tr>
+<td>集計対象の投稿</td>
+<td style="text-align: right;">369</td>
+<td>421から、尺が15秒級（13〜17秒）・30秒級（28〜33秒）でない44と、複数CMの連結・画面再撮8を除外。15秒級227、30秒級142</td>
+</tr>
+<tr>
+<td>集計単位</td>
+<td style="text-align: right;">221</td>
+<td>「正規化したタイトル×尺区分」。同じ単位の複数投稿は束ね、単位の重みを1とした。15秒139、30秒82</td>
+</tr>
+<tr>
+<td>タイトル数</td>
+<td style="text-align: right;">192</td>
+<td>15秒・30秒の両方がある題名は29（再集計）</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】分類は、機械（AI）による目視分類を、条件を変えて独立に2回実施した（1回目：縮小画像・題名あり／2回目：原寸・題名なし）。人間の第二分類者は使っていない。採用値は369投稿すべて2回目の分類である。分類符号は、L＝実写（人物・実景・実物）、P＝人形・模型・着ぐるみ・クレイなど実物の造形物、G＝ゲーム画面、A＝アニメ・CG・イラスト・文字だけの動画、E＝カード（タイトル、社名ロゴ、パッケージが主役の画）、X＝判定不能、の6種で、これに「実写が画面内にあるか」「ゲーム画面が画面内にあるか」「テロップがあるか」の有無フラグと、読み取れた文字を加えた。</p>
+<p>【実測】1回目と2回目の一致は、1,087フレームで<strong>一致率87%、κ=0.83</strong>（集計出力は0.8347。κは偶然の一致を差し引いた一致度）である。実写と人形・模型を束ねても一致率88%、κ=0.8371でほとんど変わらない。不一致の上位は「カード→絵」32、「絵→人形・模型」19、「絵→実写」18、「人形・模型→絵」14、「カード→実写」13で、ゲーム画面がからむ不一致は少ない。</p>
+<p>【実測】感度（1回目の分類だけで同じ集計をした場合）は、実写系36%（0.3582）、ゲーム画面10%（0.1）、絵29%（0.2932）、カード24%（0.2385）で、採用値（40%・11%・29%・19%）と大きくは動かない。動くのは実写系とカードの境目である。</p>
+<p>限界は次の6点である。</p>
+<ol>
+<li>【実測】<strong>3点標本である。</strong> 各動画の約25%・50%・75%地点の3フレームだけを見た。この位置はYouTubeの自動サムネイル（hq1/hq2/hq3）について一般に言われている挙動であり、公式に文書化されたものではない。したがって冒頭と末尾の各およそ8分の1は観測しておらず、エンドカードとテロップの数は下限値である。割合は「標本点に占める割合」であって秒数の割合ではない。短いゲーム画面のカットは取りこぼす。</li>
+<li>【実測】<strong>音声は一度も観測していない。</strong> 動画は再生していない。</li>
+<li>【実測】<strong>母集団は「現在投稿されているCM」である。</strong> 録画され、切り出され、投稿されたものに限られる。放送回数の重みは付いていない。</li>
+<li>【実測】発売元名は1回目の分類時に題名・画面・知識から記入したもので、年は題名に年がある単位（221中174）だけに付いている。年別・発売元別は単位数が小さく、信頼区間が広い。</li>
+<li>【実測】投稿の質にばらつきがある。黒枠付き、色かぶり、放送時刻の表示、投稿者の透かしが入ったものを含む。</li>
+<li>【直接観察】1回目の縮小画像での分類は、『魍魎戦記MADARA2』の炎の実写を「アニメ」と誤っていた。2回目と直接観察で実写と確定した。小さな画像では実写と絵の取り違えが起こる。</li>
+</ol>
+<p>【抜粋】なお、ゲームのテレビCMについて実写とゲーム画面の比を数えた先行研究は、日本語・英語とも見つかっていない。最も近いのはゲームのトレーラー51本を作品単位で二分した研究で、テレビCMでも1990年代でも日本でもない（<a href="https://www.kinephanos.ca/2017/quality-of-video-game-trailers/">Kinephanos 2017</a>）。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="2">2. マクロ解析</h2>
+<h3 id="21">2.1 全体の構成と、地点ごとの変化</h3>
+<p>【実測】全体（221単位／369投稿）。出典は <code>measurement/results.md</code>「全体」。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>地点</th>
+<th style="text-align: right;">実写 L</th>
+<th style="text-align: right;">人形・模型 P</th>
+<th style="text-align: right;">ゲーム画面 G</th>
+<th style="text-align: right;">アニメ・CG・絵 A</th>
+<th style="text-align: right;">カード E</th>
+<th style="text-align: right;">不明 X</th>
+<th style="text-align: right;">実写が画面内</th>
+<th style="text-align: right;">ゲーム画面が画面内</th>
+<th style="text-align: right;">テロップあり</th>
+<th style="text-align: right;">うち実写背景のカード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>約25%</td>
+<td style="text-align: right;">37%</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">6%</td>
+<td style="text-align: right;">38%</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">1%</td>
+<td style="text-align: right;">51%</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">55%</td>
+<td style="text-align: right;">1%</td>
+</tr>
+<tr>
+<td>約50%</td>
+<td style="text-align: right;">35%</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">33%</td>
+<td style="text-align: right;">4%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">45%</td>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">38%</td>
+<td style="text-align: right;">0%</td>
+</tr>
+<tr>
+<td>約75%</td>
+<td style="text-align: right;">24%</td>
+<td style="text-align: right;">7%</td>
+<td style="text-align: right;">7%</td>
+<td style="text-align: right;">17%</td>
+<td style="text-align: right;">44%</td>
+<td style="text-align: right;">1%</td>
+<td style="text-align: right;">41%</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">72%</td>
+<td style="text-align: right;">9%</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】3点平均は、実写系（L+P）40%（95%CI [0.3493, 0.4505]）、ゲーム画面11%（[0.0872, 0.1369]）、アニメ・CG・絵29%、カード19%である。</p>
+<p>この表から読める構造は三つある。第一に、ゲーム画面は中盤に集まる。主成分としては約50%地点で20%、前後では6〜7%である。第二に、カードは終盤に集まる。約75%地点で44%、約25%地点では8%である。第三に、テロップは中盤でいったん減る（55%→38%→72%）。冒頭側は社名ロゴ・SFCのロゴ・クレジット、終盤側はタイトル・発売日・価格で、中盤は画を見せる時間になっている。</p>
+<h3 id="22-cm">2.2 ゲーム画面がどの地点にも映らないCMの割合</h3>
+<p>【実測】構成パターン（<code>results.md</code>）は、実写のみ（live_only）96、実写＋ゲーム画面（live+game）48、絵のみ（art_only）41、ゲーム画面（＋絵）（game(+art)）35、カードのみ1である。判定は主成分ではなく有無フラグによるので、隅に小さく映る場合も「あり」に数えている。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>指標（再集計）</th>
+<th style="text-align: right;">単位数</th>
+<th style="text-align: right;">割合</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3地点のどこにもゲーム画面が無い（96+41+1）</td>
+<td style="text-align: right;">138 / 221</td>
+<td style="text-align: right;">62%</td>
+</tr>
+<tr>
+<td>同、15秒（53+30+1）</td>
+<td style="text-align: right;">84 / 139</td>
+<td style="text-align: right;">60%</td>
+</tr>
+<tr>
+<td>同、30秒（43+11）</td>
+<td style="text-align: right;">54 / 82</td>
+<td style="text-align: right;">66%</td>
+</tr>
+<tr>
+<td>いずれかの地点にゲーム画面がある（48+35）</td>
+<td style="text-align: right;">83 / 221</td>
+<td style="text-align: right;">38%</td>
+</tr>
+<tr>
+<td>いずれかの地点に実写がある（96+48）</td>
+<td style="text-align: right;">144 / 221</td>
+<td style="text-align: right;">65%</td>
+</tr>
+<tr>
+<td>主成分が実写系である地点が一つも無い（実写系3点平均が0）</td>
+<td style="text-align: right;">86 / 221</td>
+<td style="text-align: right;">39%</td>
+</tr>
+<tr>
+<td>実写系が3点平均で3分の2を超える</td>
+<td style="text-align: right;">48 / 221</td>
+<td style="text-align: right;">22%</td>
+</tr>
+</tbody>
+</table></div>
+<p>「映らない62%」は上限寄りの値である。観測していない冒頭・末尾や、3地点の間に短いゲーム画面のカットが入っていれば、この数は下がる。</p>
+<h3 id="23-3">2.3 3地点の並び</h3>
+<p>【実測】各地点で最多の符号を並べたもの（<code>results.md</code>、上位12）。L-L-L 40、L-L-E 22、A-A-A 20、A-A-E 18、P-P-P 9、A-G-E 9、A-G-A 7、P-P-E 6、E-A-E 6、A-G-G 6、A-L-L 6、G-G-E 5。並びは全部で54種ある（再集計）。</p>
+<p>【実測】上位4種（L-L-L、L-L-E、A-A-A、A-A-E）で100単位（45%）を占める（再集計）。すなわち、最も多い作りは「実写で通す」か「絵で通す」で、そのうち約75%地点でカードに替わっているものは、実写で通す62単位のうち22（35%）、絵で通す38単位のうち18（47%）である。ゲーム画面が入る並びで最多のA-G-E（絵→ゲーム画面→カード）は9単位にとどまる。「実写→ゲーム画面→カード」（L-G-E）は4単位である（再集計）。</p>
+<h3 id="24-1530">2.4 15秒と30秒</h3>
+<p>【実測】出典は <code>results.md</code>「尺 15s」「尺 30s」。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>尺</th>
+<th>単位／投稿</th>
+<th style="text-align: right;">実写系(L+P)</th>
+<th style="text-align: right;">ゲーム画面</th>
+<th style="text-align: right;">アニメ・CG・絵</th>
+<th style="text-align: right;">カード</th>
+<th>並びの上位</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>15秒</td>
+<td>139／227</td>
+<td style="text-align: right;">36%（[0.3023, 0.4249]）</td>
+<td style="text-align: right;">11%（[0.0835, 0.1428]）</td>
+<td style="text-align: right;">35%</td>
+<td style="text-align: right;">18%</td>
+<td>L-L-L 22、A-A-A 18、L-L-E 16、A-A-E 13、A-G-E 8</td>
+</tr>
+<tr>
+<td>30秒</td>
+<td>82／142</td>
+<td style="text-align: right;">46%（[0.378, 0.5437]）</td>
+<td style="text-align: right;">11%（[0.0678, 0.1579]）</td>
+<td style="text-align: right;">21%</td>
+<td style="text-align: right;">21%</td>
+<td>L-L-L 18、L-L-E 6、P-P-P 5、A-A-E 5、E-A-E 5</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】ゲーム画面の割合は尺によらず11%で同じである。違うのは実写系と絵の配分で、30秒は実写系が10ポイント多く、絵が14ポイント少ない。約25%地点で実写が画面内にある割合も15秒47%、30秒58%と開く。15秒の信頼区間と30秒の信頼区間は重なっているので、差は「傾向」として読むのが妥当である。</p>
+<h3 id="25">2.5 年別</h3>
+<p>【実測】題名に年がある単位のみ（<code>results.md</code>）。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>年</th>
+<th>単位／投稿</th>
+<th style="text-align: right;">実写系(L+P)</th>
+<th>95%CI</th>
+<th style="text-align: right;">ゲーム画面</th>
+<th style="text-align: right;">アニメ・CG・絵</th>
+<th style="text-align: right;">カード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1990</td>
+<td>4／10</td>
+<td style="text-align: right;">66%</td>
+<td>[0.4333, 0.8333]</td>
+<td style="text-align: right;">2%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">33%</td>
+</tr>
+<tr>
+<td>1991</td>
+<td>16／32</td>
+<td style="text-align: right;">49%</td>
+<td>[0.3229, 0.6689]</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">26%</td>
+</tr>
+<tr>
+<td>1992</td>
+<td>24／35</td>
+<td style="text-align: right;">22%</td>
+<td>[0.0972, 0.3611]</td>
+<td style="text-align: right;">14%</td>
+<td style="text-align: right;">45%</td>
+<td style="text-align: right;">19%</td>
+</tr>
+<tr>
+<td>1993</td>
+<td>37／71</td>
+<td style="text-align: right;">45%</td>
+<td>[0.3288, 0.5668]</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">30%</td>
+<td style="text-align: right;">14%</td>
+</tr>
+<tr>
+<td>1994</td>
+<td>41／70</td>
+<td style="text-align: right;">42%</td>
+<td>[0.2947, 0.5432]</td>
+<td style="text-align: right;">11%</td>
+<td style="text-align: right;">29%</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td>1995</td>
+<td>29／50</td>
+<td style="text-align: right;">29%</td>
+<td>[0.1609, 0.4253]</td>
+<td style="text-align: right;">15%</td>
+<td style="text-align: right;">33%</td>
+<td style="text-align: right;">22%</td>
+</tr>
+<tr>
+<td>1996</td>
+<td>23／36</td>
+<td style="text-align: right;">41%</td>
+<td>[0.25, 0.5616]</td>
+<td style="text-align: right;">13%</td>
+<td style="text-align: right;">27%</td>
+<td style="text-align: right;">18%</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】一方向の推移は読み取れない。実写系は1992年（22%）と1995年（29%）で低く、その前後で高い。ゲーム画面は全期間で2〜15%の範囲にあり、どの年でも主役ではない。1990年は4単位しかなく参考値である。Muse版が書いた「1990〜91年の主流はゲーム画面中心」は、この標本では支持されない（1990年2%、1991年8%）。</p>
+<h3 id="26">2.6 発売元別</h3>
+<p>【実測】6単位以上（<code>results.md</code>）。発売元名の付け方は1.2の限界4を参照。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>発売元</th>
+<th style="text-align: right;">単位数</th>
+<th style="text-align: right;">実写系(L+P)</th>
+<th style="text-align: right;">ゲーム画面</th>
+<th style="text-align: right;">アニメ・CG・絵</th>
+<th style="text-align: right;">カード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>任天堂</td>
+<td style="text-align: right;">26</td>
+<td style="text-align: right;">50%</td>
+<td style="text-align: right;">14%</td>
+<td style="text-align: right;">21%</td>
+<td style="text-align: right;">15%</td>
+</tr>
+<tr>
+<td>バンダイ</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">22%</td>
+<td style="text-align: right;">13%</td>
+<td style="text-align: right;">53%</td>
+<td style="text-align: right;">11%</td>
+</tr>
+<tr>
+<td>カプコン</td>
+<td style="text-align: right;">21</td>
+<td style="text-align: right;">29%</td>
+<td style="text-align: right;">9%</td>
+<td style="text-align: right;">38%</td>
+<td style="text-align: right;">23%</td>
+</tr>
+<tr>
+<td>ハドソン</td>
+<td style="text-align: right;">19</td>
+<td style="text-align: right;">49%</td>
+<td style="text-align: right;">16%</td>
+<td style="text-align: right;">30%</td>
+<td style="text-align: right;">6%</td>
+</tr>
+<tr>
+<td>スクウェア</td>
+<td style="text-align: right;">15</td>
+<td style="text-align: right;">62%</td>
+<td style="text-align: right;">5%</td>
+<td style="text-align: right;">9%</td>
+<td style="text-align: right;">21%</td>
+</tr>
+<tr>
+<td>エニックス</td>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">37%</td>
+<td style="text-align: right;">13%</td>
+<td style="text-align: right;">18%</td>
+<td style="text-align: right;">31%</td>
+</tr>
+<tr>
+<td>ナムコ</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">59%</td>
+<td style="text-align: right;">14%</td>
+<td style="text-align: right;">18%</td>
+<td style="text-align: right;">9%</td>
+</tr>
+<tr>
+<td>コナミ</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">31%</td>
+<td style="text-align: right;">17%</td>
+<td style="text-align: right;">29%</td>
+<td style="text-align: right;">24%</td>
+</tr>
+<tr>
+<td>バンプレスト</td>
+<td style="text-align: right;">13</td>
+<td style="text-align: right;">26%</td>
+<td style="text-align: right;">3%</td>
+<td style="text-align: right;">58%</td>
+<td style="text-align: right;">13%</td>
+</tr>
+<tr>
+<td>タカラ</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">52%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">19%</td>
+<td style="text-align: right;">26%</td>
+</tr>
+<tr>
+<td>タイトー</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">17%</td>
+<td style="text-align: right;">6%</td>
+<td style="text-align: right;">62%</td>
+<td style="text-align: right;">15%</td>
+</tr>
+<tr>
+<td>アスキー</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">22%</td>
+<td style="text-align: right;">14%</td>
+<td style="text-align: right;">33%</td>
+<td style="text-align: right;">31%</td>
+</tr>
+<tr>
+<td>ヒューマン</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">56%</td>
+<td style="text-align: right;">6%</td>
+<td style="text-align: right;">0%</td>
+<td style="text-align: right;">33%</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】発売元の差は年や尺の差より大きい。アニメ・漫画の版権作品が多いバンダイ、バンプレストは絵が5割を超え、スクウェア、ナムコ、ヒューマン、タカラ、任天堂は実写系が5割以上である。スクウェアは15単位のうち実写のみが9、実写＋ゲーム画面が4、絵のみが2で、ゲーム画面主体は無い（再集計）。任天堂は26単位のうち実写＋ゲーム画面が11と多く、人形・模型（P）の割合も各地点で16〜20%と全体の倍である（再集計）。</p>
+<h3 id="27">2.7 対照層と指名層（有名作への偏りの点検）</h3>
+<p>【実測】年と機種だけの検索で見つかった単位（対照層）と、タイトル指名検索でしか見つからなかった単位（指名層）を分けた（<code>results.md</code>）。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>層</th>
+<th>単位／投稿</th>
+<th style="text-align: right;">実写系(L+P)</th>
+<th style="text-align: right;">ゲーム画面</th>
+<th style="text-align: right;">アニメ・CG・絵</th>
+<th style="text-align: right;">カード</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>対照層</td>
+<td>119／193</td>
+<td style="text-align: right;">38%（[0.3093, 0.4526]）</td>
+<td style="text-align: right;">11%（[0.0786, 0.1421]）</td>
+<td style="text-align: right;">33%</td>
+<td style="text-align: right;">17%</td>
+</tr>
+<tr>
+<td>指名層のみ</td>
+<td>102／176</td>
+<td style="text-align: right;">42%（[0.3519, 0.4951]）</td>
+<td style="text-align: right;">11%（[0.0757, 0.1547]）</td>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">20%</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】指名層の実写系は4ポイント高いが信頼区間はほぼ重なり、ゲーム画面は両層とも11%である。有名作を指名して集めたことによる偏りは、実写系をやや押し上げる程度で、結論を変えない。ただし、これは「検索語の偏り」を点検したものであって、「そもそも投稿されやすいCMに偏る」という偏りは点検できていない。</p>
+<h3 id="28">2.8 テロップとエンドカード（下限値）</h3>
+<p>【実測】文字を読み取れた単位数（221単位中。小さな文字は読めないことが多く、観測は3地点だけなので、すべて下限値）。位置別の内訳は再集計で、同じ単位が複数の地点に数えられることがある。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>種類</th>
+<th style="text-align: right;">単位数</th>
+<th style="text-align: right;">約25%</th>
+<th style="text-align: right;">約50%</th>
+<th style="text-align: right;">約75%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>社名ロゴ</td>
+<td style="text-align: right;">118</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">77</td>
+</tr>
+<tr>
+<td>キャッチコピーなどの文言</td>
+<td style="text-align: right;">122</td>
+<td style="text-align: right;">50</td>
+<td style="text-align: right;">56</td>
+<td style="text-align: right;">76</td>
+</tr>
+<tr>
+<td>SFCのロゴ</td>
+<td style="text-align: right;">80</td>
+<td style="text-align: right;">49</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">36</td>
+</tr>
+<tr>
+<td>発売日</td>
+<td style="text-align: right;">69</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">62</td>
+</tr>
+<tr>
+<td>クレジット（歌、原作、デザイナー、©など）</td>
+<td style="text-align: right;">38</td>
+<td style="text-align: right;">22</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">8</td>
+</tr>
+<tr>
+<td>価格</td>
+<td style="text-align: right;">33</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">31</td>
+</tr>
+<tr>
+<td>発売状況（「好評発売中」など）</td>
+<td style="text-align: right;">28</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">26</td>
+</tr>
+<tr>
+<td>商標注記</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">14</td>
+</tr>
+<tr>
+<td>容量（メガ）</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】発売日・価格・発売状況は約75%地点に、クレジットは約25〜50%地点に寄る。社名ロゴとSFCのロゴは冒頭側と終盤側の二山である。容量表示が読めたのは4単位だけで（「32メガ」「大容量16メガ」）、容量訴求が画面の文字として一般的だったとは言えない。</p>
+<h3 id="29">2.9 投稿の尺の分布</h3>
+<p>【実測】収集した834投稿（他機種を含む）の尺は、15秒級435（52%）、30秒級305（37%）、58〜63秒30（4%）、その他64（8%）である（<code>results.json</code> の <code>duration_all_uploads</code>。割合は再集計）。SFCのCMと判定した421投稿では、15秒級229（54%）、30秒級148（35%）、58〜63秒12（3%）、その他32（8%）である（再集計）。その他には45〜46秒の投稿が14本あり、15秒版と30秒版の連結とみられるが、推定である。</p>
+<p>【実測】この分布は、収集条件（10〜65秒の投稿だけ）に依存し、放送での出稿比率ではない。それでも、60秒の投稿が3〜4%しか無いことは、再現の基本単位を15秒と30秒に置く根拠になる。【抜粋】日本のCMの販売単位が30秒基本から15秒に短縮されたのは1961年秋で、以後15秒が標準になったとされる（<a href="https://www.weblio.jp/content/%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%95%E3%82%A3%E3%83%AB%E3%83%A0">Weblio「コマーシャルフィルム」</a>）。1990年代の15秒・30秒の出稿比率の統計は見つかっていない。</p>
+<h3 id="210-cm">2.10 「ゲーム画面を使ったCMが多かった」という反対証言との照合</h3>
+<p>【二次】当時の視聴者の回想に、反対向きの証言がある。「このＣＭは１９９２年のもので、スーパーファミコン自体まだ発売して一年半ほどの時期です。割とハードの性能を見せるようにゲーム画面をふんだんに使ったＣＭが多かった中、ただキャラに扮した人間のみのＣＭは斬新でしたね。」（<a href="https://note.com/dahlia_mars/n/neb6a8765446a">note 諸星だりあ</a>）。【抜粋】逆に「ゲーム映像を流さないのが意外と多かった」（<a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12176157082">Yahoo!知恵袋</a>）、「スーパーファミコン辺りから画面を出さないCMが増えた」（<a href="https://gamenavis.com/collect44294.html">まとめスレ</a>）という観察もあり、視聴者の印象は割れている。</p>
+<p>実測と突き合わせると、両方の印象は次の形で両立する。</p>
+<ol>
+<li>【実測】ゲーム画面が「どこかに映る」CMは少なくない。3地点のいずれかに映る単位は38%（83/221）で、3点標本であることを考えるとこれは下限である。「ゲーム画面を使ったCMが多かった」という印象は、有無の水準では実測と矛盾しない。</li>
+<li>【実測】しかし、時間の主役ではない。主成分としてのゲーム画面は3点平均11%で、ゲーム画面が2地点以上を占める単位は11（5%）しかない（再集計）。「ふんだんに」という量の印象は、この標本では支持されない。</li>
+<li>【実測】回想が指す1992年は、実写系が全期間で最も低い年である（22%、[0.0972, 0.3611]）。この年は絵45%、ゲーム画面14%で、「人間だけのCMが珍しく見えた」という感覚と整合する。ただし1992年に多かったのはゲーム画面よりアニメ・CG・絵である。</li>
+<li>【実測】実写でもゲーム画面でもない第三の成分（アニメ・CG・絵29%、人形・模型7〜10%）が大きい。「実写かゲーム画面か」の二分法で記憶をたどると、この部分がどちらかに寄せて語られやすい。</li>
+</ol>
+<p>なお、文章で語り継がれてきたCMは実写の話題作に偏る。【抜粋】検索抜粋だけから作った任天堂作品8本の推定実写比率は平均61.9%、サードパーティ17本は平均53.8%で（<code>dataset_nintendo_first_party.md</code>、<code>dataset_third_party.md</code>）、実測の40%より高い。記述に残るCMが実写側に偏っていたことの傍証である。</p>
+<h3 id="211">2.11 市場の文脈</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>事項</th>
+<th>値</th>
+<th>ラベルと出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SFC本体の出荷</td>
+<td>国内1,717万台、米大陸2,335万台、その他858万台、計4,910万台</td>
+<td>【一次】<a href="https://www.nintendo.co.jp/ir/library/historical_data/pdf/consolidated_sales1612.pdf">任天堂IR「連結販売実績数量の推移」</a></td>
+</tr>
+<tr>
+<td>SFCソフトの出荷</td>
+<td>国内1億9,485万本、米大陸1億3,500万本、その他4,922万本、計3億7,906万本</td>
+<td>【一次】同上</td>
+</tr>
+<tr>
+<td>国内の発売タイトル数</td>
+<td>1990年9、1991年47、1992年176、1993年269、1994年370、1995年360、1996年152。1990〜2000年の計1,447</td>
+<td>【抜粋】<a href="https://kopenguin.com/post-10411/">kopenguin.com</a>。1995年を358、合計を1,436とする資料もある</td>
+</tr>
+<tr>
+<td>代表作の国内出荷</td>
+<td>スーパーマリオカート382万、ドラゴンクエストVI 320万、スーパードンキーコング300万、ストリートファイターII 290万、ドラゴンクエストV 280万、ファイナルファンタジーVI 255万、クロノ・トリガー200万</td>
+<td>【二次】<a href="https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%AA%E3%82%AA%E3%83%B3%E3%82%BB%E3%83%A9%E3%83%BC%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%BD%E3%83%95%E3%83%88%E4%B8%80%E8%A6%A7">Wikipedia「ミリオンセラーのゲームソフト一覧」</a></td>
+</tr>
+<tr>
+<td>総広告費</td>
+<td>1991年に約5.7兆円。2000年は6兆1,102億円で「史上最高」、うちテレビ2兆793億円</td>
+<td>【抜粋】<a href="https://strainer.jp/notes/897">Strainer</a>、<a href="https://internet.watch.impress.co.jp/www/article/2001/0216/dentsu.htm">INTERNET Watch 2001-02-16</a></td>
+</tr>
+<tr>
+<td>マスコミ四媒体広告費</td>
+<td>1990年35,714億円、1991年36,510億円、1992年34,740億円、1993年32,508億円</td>
+<td>【抜粋】<a href="https://the-shashi.com/market/advertising/mass-media-ads/">the-shashi.com</a>。テレビ単独ではない</td>
+</tr>
+<tr>
+<td>任天堂の一社提供番組</td>
+<td>『スーパーマリオクラブ』（テレビ東京系、1990年10月開始）</td>
+<td>【抜粋】<a href="https://www.tv-tokyo.co.jp/marioclub/">テレビ東京</a></td>
+</tr>
+<tr>
+<td>サテラビューのテレビCM</td>
+<td>「他のゲームソフトと同様に1か月程度しか放送されず」</td>
+<td>【二次】<a href="https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%86%E3%83%A9%E3%83%93%E3%83%A5%E3%83%BC">Wikipedia「サテラビュー」</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>照合で見つかった訂正は三つある。第一に、Muse版の「スーパードンキーコング298万本、ストII 288万本、クロノ・トリガー203万本」は、開けた【二次】の一覧では300万・290万・200万である。Muse版が出典とする『CESAゲーム白書2000』の現物は確認していないので、どちらが正しいかは決められない。第二に、Muse版の「総広告費は1991年が頂点」は、2000年に史上最高という【抜粋】があるため、「1990年代前半の中での頂点」と限定しなければ不正確になる。第三に、1990〜96年の発売タイトルは合計1,383本（上表の【抜粋】値の和）だが、本実測の192タイトルはその約14%にあたる。テレビCMが作られたタイトルの総数を示す資料は無く、192が「CMのあるタイトル」の何割かは分からない。</p>
+<p>任天堂および各社の1990〜96年度の広告宣伝費、CM1本の制作費、出演料は、確認できる資料が無かった。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="3">3. なぜ実写だったのか</h2>
+<h3 id="31">3.1 一次証言（倉恒良彰）</h3>
+<p>【一次】倉恒良彰は、ほぼ日刊イトイ新聞と任天堂の連載で「米国海兵隊の演習風景をパロディにした「ファミコンウォーズ」のＣＭから、スチャダラパーを起用した「ゼルダの伝説 神々のトライフォース」など印象に残る任天堂の多くの広告を制作してきたクリエイティブ・ディレクター」と紹介されている（<a href="https://www.1101.com/nintendo/nin25/nin25_1.htm">nin25_1</a>）。1990年のファミコン版『ファイアーエムブレム』CMのスタッフ表では所属は第一企画株式会社である（同）。以下は本人の発言で、すべて開いたページの文言である。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>論点</th>
+<th>発言</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ゲーム画面の無いCMの始まり（ファミコンウォーズ、1988）</td>
+<td>「“あのＣＭは異端だ”なんて言われたんですよ。ゲームのＣＭとしては、たしかに例がないものでしたから。ゲーム画面のないCMの第一号じゃなかったかな。」</td>
+<td><a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a></td>
+</tr>
+<tr>
+<td>実写にした理由</td>
+<td>「あの頃のゲームは２Ｄで、平面的なキャラがマップ上を動きます。…そんな２Dゲームならではのプレイヤーの豊かなイメジネーションをゲーム世界の実写化を行うことにより、ゲームと世界観の一体化を図ることでゲームに期待感が湧き、プレイにも熱が入る。」</td>
+<td>同</td>
+</tr>
+<tr>
+<td>実写にするだけでは足りない</td>
+<td>「もちろん、ただ実写化するだけではなく広告には当然その面白さを伝えようとする企画が必要で」</td>
+<td>同</td>
+</tr>
+<tr>
+<td>時代認識</td>
+<td>「当時のゲームは２Ｄで、ユーザーが想像力をたくましくして世界観を自分たちでつくりあげていく、という時代でした。いまはゲームの中にムービー（動画）がふんだんに入って世界観を伝えやすくなっているけれど、その役割を広告が代わりにしなければいけなかった時代です。」</td>
+<td><a href="https://www.1101.com/nintendo/nin25/nin25_1.htm">nin25_1</a></td>
+</tr>
+<tr>
+<td>ゼルダのCM（1991）</td>
+<td>「ダンスとラップでゲームのＣＭをつくることは表現の手法なのですが、基本的には前段でお話した制作のコンセプトを踏襲しています。「ゼルダの伝説」を実写化することも当時は型破りだったと思います。」</td>
+<td><a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a></td>
+</tr>
+<tr>
+<td>企画の手順</td>
+<td>「ゲームのＣＭをつくるときにはまずＲＯＭ（製品になる前の最終段階のもの）をプレイしてその世界をつかんだうえで、企画をするんです。」</td>
+<td><a href="https://www.1101.com/nintendo/nin25/nin25_1.htm">nin25_1</a></td>
+</tr>
+<tr>
+<td>費用（世界をそのまま映像にする場合）</td>
+<td>「正攻法で行けばその世界を端的に表すような映像を撮る、というような話になるんですけれど、それにはあまりにも労力と予算がかかってしまう。」</td>
+<td>同</td>
+</tr>
+<tr>
+<td>1990年のファイアーエムブレムCM</td>
+<td>「最初のファイアーエムブレムの広告では広告にゲーム画面はでていませんでした。しかし、今回は積極的に、出来るだけ多く出したいと考えていました。」（今回＝2002年のゲームボーイアドバンス版）</td>
+<td><a href="https://www.1101.com/nintendo/nin25/nin25_5.htm">nin25_5</a></td>
+</tr>
+<tr>
+<td>スーパーメトロイドのCM（1994）</td>
+<td>「当時としてはかなりの労力がかかっていますね。手法も様々で特撮、CG、人形アニメ、セルアニメ、多重合成等」</td>
+<td><a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>【一次】倉恒が挙げる理由は、画面の解像度の不足でも費用の安さでもなく、<strong>想像の代行</strong>である。2Dの画面は記号であり、プレイヤーが頭の中で補っていた世界を、広告が実写で先に見せる。費用については逆向きの発言をしており、世界をそのまま映像にするのは「労力と予算がかかってしまう」ので、オペラという形式を選んだと述べている。</p>
+<p>この証言の適用範囲は限られる。倉恒が語るのは自分が担当した任天堂の作品（ファミコンウォーズ、ファイアーエムブレム、ゼルダ、スーパーメトロイド）だけで、スクウェア、コナミ、タイトー、ナムコ、カプコンの意図は語っていない。</p>
+<h3 id="32">3.2 視聴者・実務家による説明（証拠の格の順）</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>格</th>
+<th>説明</th>
+<th>中身</th>
+<th>出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>【二次】</td>
+<td>手間と味気なさ</td>
+<td>「思えばＳＮＫも、ＣＭはほとんど実写版でした。ゲーム画面だけだと味気ない、アニメを作るのは手間がかかる、ゆえに実写になっていたのかな、と今なら推察できますね。」。原文ではSNKのCMについての推察である</td>
+<td><a href="https://note.com/dahlia_mars/n/neb6a8765446a">note 諸星だりあ</a></td>
+</tr>
+<tr>
+<td>【二次】</td>
+<td>予算の空気</td>
+<td>「まだまだテレビの世界は湯水の様にお金が使えていたんではないかと思います。」。出演者の回想ではなく、筆者の推測である</td>
+<td>同</td>
+</tr>
+<tr>
+<td>【抜粋】</td>
+<td>制作日程</td>
+<td>「ゲーム完成前から撮影に入らないとゲーム発売日に間に合わないため、ゲーム画面を映せなかったのです。」。同じ回答は「グラフィックが稚拙だから」という説明を否定している</td>
+<td><a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12176157082">Yahoo!知恵袋</a></td>
+</tr>
+<tr>
+<td>【抜粋】</td>
+<td>印象優先</td>
+<td>「印象に残す事が重要やからな」。詳しい内容は雑誌で調べる流れがあった、という趣旨の書き込みもある</td>
+<td><a href="https://gamenavis.com/collect44294.html">まとめスレ</a></td>
+</tr>
+<tr>
+<td>【抜粋】</td>
+<td>画質</td>
+<td>テレビCMに耐える画質で録画できる会社が少なかった、テレビに映すと見劣りした、という趣旨の書き込み</td>
+<td>同</td>
+</tr>
+<tr>
+<td>【抜粋】</td>
+<td>疑似体験（実務家の一般論）</td>
+<td>ゲームのテレビCMは「疑似体験」させるもの、という2015年の連載。SFC期に限った議論ではない</td>
+<td><a href="https://www.gamebusiness.jp/article/2015/03/30/10742.html">GameBusiness.jp</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>制作日程説は、倉恒の「ＲＯＭ（製品になる前の最終段階のもの）をプレイして…企画をする」という手順と、少なくとも任天堂の担当作については合わない。ゲーム画面を出せなかったのではなく、出さない企画を選んだ、というのが【一次】の示す線である。</p>
+<h3 id="33">3.3 分かっていないこと</h3>
+<p>実写とゲーム画面の秒数の配分を誰が決めたか（広告主の宣伝部か、広告会社か、演出家か）、任天堂が他社のCMにロゴや商標注記の規則を課していたか、各社がなぜ実写を選んだか、CMの制作費、ゲーム画面をどう収録したか（映像出力の直接収録か、ブラウン管の再撮か）は、【一次】【二次】とも資料が無い。重点5作品の制作者の発言も見つかっていない。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="4">4. ミクロ解析：重点作品</h2>
+<p>以下の「#」は <code>measurement/corpus.tsv</code> の行番号である。【直接観察】は原寸サムネイル3点の目視で、動画は再生していない。したがってカット割り・秒数・音声の記録ではない。</p>
+<h3 id="41-vi199442">4.1 ファイナルファンタジーVI（スクウェア、1994年4月2日発売）</h3>
+<p>【直接観察】3地点の画。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>投稿</th>
+<th>約25%</th>
+<th>約50%</th>
+<th>約75%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#30（15秒「CM 1」）</td>
+<td>実写：横断歩道の白線とマンホールの接写。右下にSFCのロゴと小さな白文字</td>
+<td>実写合成：渋谷の交差点、群衆が遠巻きにする中央に、女性を乗せた黒い二足歩行の機械。背景に「109」の看板</td>
+<td>女性の中景に白文字の重ね「FINAL FANTASY VI」「4・2 SAT」</td>
+</tr>
+<tr>
+<td>#756（16秒）</td>
+<td>渋谷の引き</td>
+<td>女性の中景＋「FINAL FANTASY VI／4・2 SAT」</td>
+<td>ゲーム画面（夜空と城、上下左右に黒枠）</td>
+</tr>
+<tr>
+<td>#29（17秒）</td>
+<td>黒</td>
+<td>渋谷の引き</td>
+<td>女性の中景＋タイトルと日付</td>
+</tr>
+<tr>
+<td>#25（16秒「CM 2」）</td>
+<td>実写：片目の極端な接写</td>
+<td>ゲーム画面（飛空艇の甲板に複数のキャラクター）</td>
+<td>実写：女性の横顔のアップ＋「FINAL FANTASY VI」の重ね</td>
+</tr>
+<tr>
+<td>#20（30秒）</td>
+<td>マンホールの接写に機械の脚と稲妻状の光</td>
+<td>渋谷の引き</td>
+<td>灰白地に「SQUARESOFT」ロゴ</td>
+</tr>
+<tr>
+<td>#766（31秒）</td>
+<td>マンホールの接写（ロゴと白文字あり）</td>
+<td>女性の中景＋タイトルと「4・2 SAT」</td>
+<td>女性の顔のアップ＋「FINAL FANTASY VI」、右下にSFCのロゴ</td>
+</tr>
+</tbody>
+</table></div>
+<p>【直接観察】15秒版は少なくとも2種ある。「CM 1」系はマンホール接写→渋谷の引き→タイトルと発売日、「CM 2」系は目の接写→ゲーム画面→横顔とタイトルである。どちらも実写が主体で、ゲーム画面は1地点に現れるか現れないかである。発売日は「4・2 SAT」という大きな白文字の重ねで示される。</p>
+<p>【実測】15秒の単位は5投稿で、構成パターンは実写＋ゲーム画面、3点平均は実写系73%、ゲーム画面20%、カード0%である。30秒の単位は2投稿で、実写のみ、実写系83%、カード17%である（<code>results.json</code>）。</p>
+<p>文字資料で確認できること。【二次】「渋谷のスクランブル交差点に突如現れる、魔導アーマーとティナ。恐れおののく群衆。現実とファンタジーが入り混じる内容となっています。」（<a href="https://note.com/invinciblehound/n/n4901f0877426">note シンさん</a>）。【二次】CMでは「FINAL FANTASY」（メインテーマ）がオペラ風にアレンジされ、葛生千夏のボーカルで歌われた（<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BCVI">Wikipedia「ファイナルファンタジーVI」</a>、<a href="https://ja.wikipedia.org/wiki/%E8%91%9B%E7%94%9F%E5%8D%83%E5%A4%8F">同「葛生千夏」</a>）。【抜粋】コピー「夢じゃない」、30秒版と15秒版の存在、発売後にゲーム画面とともに「Roaming Sheep」が流れる別版、ティナ役の出演者名は、抜粋でしか確認できていない（<a href="https://www.ff-soundstation.com/ff6_cm/">FF Sound Station</a>、<a href="https://dic.pixiv.net/a/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC6">ピクシブ百科事典</a>、<a href="https://hann3.hatenadiary.jp/entry/ff6cm">honn blog</a>）。</p>
+<p>不明な点。【直接観察】コピー「夢じゃない」は3地点の画面に映っていない。ゲーム画面中心の別版は、観察した投稿の中に無い。30秒前後の2投稿（#20は約75%地点で社名ロゴのカード、#766は約50%地点でタイトルと日付）は、単独の30秒CMではなく15秒版2本の連結である可能性があり、30秒版の構成は未確定である。音楽と声、正確なカットの秒数は未観測である。</p>
+<h3 id="42-19951215sfc">4.2 テイルズ オブ ファンタジア（ナムコ、1995年12月15日発売、SFC版）</h3>
+<p>【直接観察】3地点の画。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>投稿</th>
+<th>約25%</th>
+<th>約50%</th>
+<th>約75%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#33（16秒）</td>
+<td>実写：傾いた水平線の海と空の空撮に白い「namco」ロゴ</td>
+<td>イラスト：3人のキャラクター。白文字「キャラクターデザイン 藤島康介」、下に「©藤島康介／NAMCO LTD.」</td>
+<td>ゲーム画面（赤い夕日と草原、黒枠付き）</td>
+</tr>
+<tr>
+<td>#36（31秒）</td>
+<td>実写：大樹に白い「namco」ロゴ</td>
+<td>暗緑の地に白文字「Linear Motion Battle／リニア モーション バトル」</td>
+<td>暗い地にタイトルロゴ「TALES OF PHANTASIA」と「12月15日発売」</td>
+</tr>
+<tr>
+<td>#41（32秒）</td>
+<td>大樹＋「namco」ロゴ</td>
+<td>キャラクターのイラストと白文字「アーチェ・クライン／かない みか」、下部に小さなゲーム画面のウィンドウ</td>
+<td>ゲーム画面（フィールド、下にSFCのロゴ帯）</td>
+</tr>
+</tbody>
+</table></div>
+<p>【直接観察】人物の実写は3地点のいずれにも無い。実写は自然の風景（海・大樹）で、社名ロゴの背景として使われている。中盤はキャラクターのイラストとクレジット文字（キャラクターデザイナー名、声優名）、機能名の文字カード、ゲーム画面で、終盤はタイトルロゴと発売日である。</p>
+<p>【実測】15秒の単位（1投稿）は実写系33%・絵33%・ゲーム画面33%、30秒の単位（2投稿）は実写系33%・絵33%・ゲーム画面17%・カード17%で、どちらも実写＋ゲーム画面のパターンである（<code>results.json</code>）。</p>
+<p>文字資料。【二次】発売日は1995年12月15日、オープニングテーマ「夢は終わらない 〜こぼれ落ちる時の雫〜」の歌はSFC版が吉田由香里である（<a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%A4%E3%83%AB%E3%82%BA_%E3%82%AA%E3%83%96_%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%82%A2">Wikipedia「テイルズ オブ ファンタジア」</a>）。【二次】宮﨑あおいが出演したナムコのCMは1998年のもので（<a href="https://ja.wikipedia.org/wiki/%E5%AE%AE%EF%A8%91%E3%81%82%E3%81%8A%E3%81%84">Wikipedia「宮﨑あおい」</a>）、PlayStation版（1998年12月23日発売）のCMである。【直接観察】本標本でもPlayStation版の投稿（#34、#45）は少女の実写で、SFC版とは別物である。【抜粋】SFC版CMが「48メガ」を推しているという視聴者の感想がある（<a href="http://k4gameswork.tokyo/super-famicom/tales-of-phantasia-sfc/">k4gameswork</a>）。</p>
+<p>不明な点。主題歌がCMで流れるかは未観測である。「48メガ」の表示は3地点の画面には映っていない。</p>
+<h3 id="43-madara21993716">4.3 魍魎戦記MADARA2（コナミ、1993年7月16日発売）</h3>
+<p>【直接観察】3地点の画。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>投稿</th>
+<th>約25%</th>
+<th>約50%</th>
+<th>約75%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#46（27秒）</td>
+<td>実写：燃える木組みの中に、剣状の物を持つ人物の逆光シルエット。右下に白文字テロップ</td>
+<td>黒地に金色のセリフ体「MADARA IS BACK」。左上に「KONAMI」</td>
+<td>ゲーム画面（フィールドマップ）。右下に小さな白文字</td>
+</tr>
+<tr>
+<td>#48（16秒）</td>
+<td>実写：夜、燃える建物の前に立つ人物。左上に「KONAMI」</td>
+<td>炎を背にした顔のアップ。両目が白く発光（実写の顔に光学処理か、描画かは判別不能）</td>
+<td>パッケージのカード（炎の明るい背景にパッケージ、下に白文字）</td>
+</tr>
+<tr>
+<td>#49（16秒）</td>
+<td>#46の約25%と同じ実写シルエット。右下に白文字テロップ</td>
+<td>炎の実写に、漫画調の顔のイラストが半透明で重なる</td>
+<td>白地にコナミのロゴ</td>
+</tr>
+<tr>
+<td>#54（15秒）</td>
+<td>実写：炎。左上に「KONAMI」</td>
+<td>実写：炎の中のシルエット。右下に白文字テロップ</td>
+<td>灰色地にコナミのロゴ</td>
+</tr>
+</tbody>
+</table></div>
+<p>【直接観察】読み取れた文字は、「歌：國府田マリ子」（#46 約25%）、「音楽：コナミ矩形波倶楽部」（#49 約25%、#54 約50%）、「MADARA IS BACK」、「スーパーファミコンは任天堂の商標です。」（#46 約75%、ゲーム画面の右下）、パッケージカードの「好評発売中」「9,800円（税別）」「スーパーファミコンソフト」（#52・#57、27秒）である。</p>
+<p>【直接観察】このCMは実写を主体とする。炎と人物のシルエットは写真的な質感を持つ実写であり、セルアニメではない。イラストは実写の炎に重ねる形で使われている。ゲーム画面は少なくとも27秒版の約75%地点に全画面で現れる。</p>
+<p>【実測】15秒の単位は3投稿（#48、#49、#54）で、実写のみのパターン、3点平均は実写系44%、絵22%、カード33%、ゲーム画面0%である。27秒の投稿（#46、#52、#57）は30秒級の範囲（28〜33秒）に入らないため、集計からは除外されている（<code>results.json</code>）。</p>
+<p>文字資料。【二次】発売日とコナミ発売は確認できる（<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%95%E3%82%A1%E3%83%9F%E3%82%B3%E3%83%B3%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E4%B8%80%E8%A6%A7">Wikipedia「スーパーファミコンのゲームタイトル一覧」</a>）。【二次】曲名の表記は「Lights 〜遥かなる旅立ち〜」で、歌は國府田マリ子である（<a href="https://ja.wikipedia.org/wiki/%E5%9C%8B%E5%BA%9C%E7%94%B0%E3%83%9E%E3%83%AA%E5%AD%90">Wikipedia「國府田マリ子」</a>）。この記事自体は「CMソング」とは書いていないが、CMの画面に「歌：國府田マリ子」のクレジットがあることは【直接観察】で確認した。【抜粋】「TVCMはタイで木造の家を燃やして撮影したというエピソードがある」（<a href="https://w.atwiki.jp/gcmatome/pages/1282.html">ゲームカタログ@Wiki</a>）は本文を開けておらず、一次の出典も示されていない。</p>
+<p>不明な点。15秒版にゲーム画面があるか（3地点には無い）。発光する目のカットの技法。歌と声。出演者。</p>
+<h3 id="44-1993625">4.4 エストポリス伝記（タイトー、1993年6月25日発売）</h3>
+<p>【直接観察】3地点の画。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>投稿</th>
+<th>約25%</th>
+<th>約50%</th>
+<th>約75%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#60（16秒）</td>
+<td>夜、白い岩に突き立った光る剣（模型か描画かは判別不能）</td>
+<td>青地にタイトルロゴ「Estpolis エストポリス伝記」と「'93年6月登場」。左上にSFCのロゴ</td>
+<td>白地に立体的な色図形（TAITOロゴのアニメーション途中と推定）</td>
+</tr>
+<tr>
+<td>#61（15秒）</td>
+<td>セルアニメ：剣を掲げる頭身の低い主人公の後ろ姿</td>
+<td>曇天の背景にタイトルロゴと「6月25日新発売」</td>
+<td>#60と同じ色図形</td>
+</tr>
+</tbody>
+</table></div>
+<p>【直接観察】剣の画とセルアニメ、タイトルカードで構成され、3地点にゲーム画面も人物の実写も映っていない。告知文は「'93年6月登場」（発売前）と「6月25日新発売」の2種がある。</p>
+<p>【実測】15秒の単位は2投稿で、3点平均は実写系17%（#60の剣を人形・模型と分類した分）、絵50%、カード33%、ゲーム画面0%である（<code>results.json</code>）。タイトルカードが約50%地点に来ており、全体の傾向（カードは約75%地点）より早い。</p>
+<p>文字資料。【二次】発売日は確認できる（<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%9D%E3%83%AA%E3%82%B9%E4%BC%9D%E8%A8%98">Wikipedia「エストポリス伝記」</a>）。同記事にCMやキャッチコピーの記述は無い。Muse版が挙げるコピー「これは単なるファンタジーRPGではない」は、開けたページにも3地点の画面にも無い。</p>
+<p>不明な点。剣の画の技法、音声、ナレーション。</p>
+<h3 id="45-ii1995224">4.5 エストポリス伝記II（タイトー、1995年2月24日発売）</h3>
+<p>【直接観察】3地点の画。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>投稿</th>
+<th>約25%</th>
+<th>約50%</th>
+<th>約75%</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>#58（16秒）</td>
+<td>黒地に横方向の白い光の筋（トランジションまたは光学効果）</td>
+<td>実写：巨大な月を背に、衣装を着た男女が向き合い手を取る中景（ソフトフォーカス）</td>
+<td>灰白地に「キャッチ・ザ・ハート ——」とTAITOロゴ</td>
+</tr>
+<tr>
+<td>#59（15秒）</td>
+<td>巨大な月と崖の上に小さな男女のシルエット（引き）</td>
+<td>同じ構図、男女が抱き合う</td>
+<td>濃紺地にタイトルロゴ「Estpolis II」、下に白文字「好評発売中」。左上にSFCのロゴと小さな白文字</td>
+</tr>
+</tbody>
+</table></div>
+<p>【直接観察】衣装を着た実在の男女（実写）を、月と崖（合成またはマット画）の前に置いた画を中心とする。3地点のいずれにもゲーム画面は映っていない。「好評発売中」と入った版（#59）がある。</p>
+<p>【実測】15秒の単位は4投稿（#58、#59、#62、#63）で、実写のみのパターン、3点平均は実写系50%、絵25%、カード25%、ゲーム画面0%である（<code>results.json</code>）。#59には「スーパーファミコンは任天堂の商標です」も読み取られている。</p>
+<p>文字資料。【二次】ヒロインの名はセレナである（<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%9D%E3%83%AA%E3%82%B9%E4%BC%9D%E8%A8%98II">Wikipedia「エストポリス伝記II」</a>）。【二次】「続編のⅡもスーパーファミコンでリリースされ、当時、TVでCMがよく流れていました。「『セレナー！』『マキシムー！』」ってやつですね。」「前述のCMがちょっとうざいくらいに毎日流れていました。」（<a href="https://note.com/gayagayagayama/n/n26b97e1f8a01">note Enjoy!上越!</a>）。【抜粋】2人が名前を呼び合いながら引き裂かれる内容で、1994年12月発売を告知した版と1995年2月版の2種があったとする記述がある（<a href="https://w.atwiki.jp/gcmatome/pages/3593.html">ゲームカタログ@Wiki</a>）。</p>
+<p>不明な点。名前を呼び合う音声（未観測）。1994年12月告知版（3地点に日付の入った版は見当たらない）。出演者。</p>
+<h3 id="46-5">4.6 重点5作品の比較</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>FFVI</th>
+<th>テイルズ（SFC）</th>
+<th>MADARA2</th>
+<th>エストポリス</th>
+<th>エストポリスII</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>【実測】15秒単位の3点平均（実写系／ゲーム／絵／カード）</td>
+<td>73／20／0／0%（5投稿）</td>
+<td>33／33／33／0%（1投稿）</td>
+<td>44／0／22／33%（3投稿）</td>
+<td>17／0／50／33%（2投稿）</td>
+<td>50／0／25／25%（4投稿）</td>
+</tr>
+<tr>
+<td>【直接観察】実写の中身</td>
+<td>都市のロケと造形物の合成、衣装の女性</td>
+<td>自然の風景のみ（人物なし）</td>
+<td>炎のロケと人物のシルエット</td>
+<td>人物の実写なし</td>
+<td>衣装の男女と合成背景</td>
+</tr>
+<tr>
+<td>【直接観察】ゲーム画面（3点×観察投稿）</td>
+<td>2点</td>
+<td>3点</td>
+<td>1点（27秒版）</td>
+<td>0点</td>
+<td>0点</td>
+</tr>
+<tr>
+<td>【直接観察】社名ロゴの位置</td>
+<td>末尾のカード（SQUARESOFT）</td>
+<td>冒頭の実写に重ねる（namco）</td>
+<td>左上に常時（KONAMI）＋末尾のカード</td>
+<td>末尾（TAITOのロゴアニメーションと推定）</td>
+<td>末尾のカード（TAITO）</td>
+</tr>
+<tr>
+<td>【直接観察】発売告知</td>
+<td>「4・2 SAT」（実写への重ね）</td>
+<td>「12月15日発売」（タイトルカード）</td>
+<td>「好評発売中」「9,800円（税別）」（パッケージカード）</td>
+<td>「'93年6月登場」「6月25日新発売」</td>
+<td>「好評発売中」</td>
+</tr>
+<tr>
+<td>【直接観察】クレジット文字</td>
+<td>なし</td>
+<td>キャラクターデザイナー名、声優名、©</td>
+<td>歌手名、音楽</td>
+<td>なし</td>
+<td>なし</td>
+</tr>
+<tr>
+<td>音（文字資料）</td>
+<td>【二次】葛生千夏のボーカル版メインテーマ</td>
+<td>【抜粋】主題歌と結び付けた記述</td>
+<td>【直接観察】画面に「歌：國府田マリ子」</td>
+<td>資料なし</td>
+<td>【二次】名前の呼び声</td>
+</tr>
+<tr>
+<td>版の数</td>
+<td>【直接観察】15秒2種以上</td>
+<td>【直接観察】16秒と31〜32秒</td>
+<td>【直接観察】15〜16秒と27秒</td>
+<td>【直接観察】告知文2種</td>
+<td>【直接観察】「好評発売中」版あり</td>
+</tr>
+</tbody>
+</table></div>
+<p>【直接観察】共通するのは四点である。実写は初代エストポリスを除く4作品に含まれ（ただし性質は作品ごとに違う）、ゲーム画面は少ない。文字の役割が大きい（社名ロゴ、クレジット、発売告知、商標注記）。約75%地点はタイトルロゴ、パッケージ、社名ロゴのいずれかのカードが多い。SFCのロゴは冒頭の画の隅かタイトルカードの左上に小さく入る。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="5">5. ミクロ解析：周辺の代表作</h2>
+<p>【実測】の欄は <code>results.json</code> の単位データ（3地点の並び、3点平均、読み取れた文字、分類時の備考）による。並びは各地点で最多の符号である。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>作品（尺、投稿数）</th>
+<th>【実測】並びと内容</th>
+<th>【実測】読み取れた文字</th>
+<th>文字資料</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ゼルダの伝説 神々のトライフォース（30秒、4）</td>
+<td>E-L-L。約25%はSFCロゴのカード、以後は牢の格子をつかむ冠の女性、緑の衣装の人物と白い衣装の姫が手を取る洞窟のセット。ゲーム画面は3地点に無い</td>
+<td>「Nintendo」「SUPER FAMICOM」</td>
+<td>【一次】リンク役は「オーディションで探した高校生の女の子」、音楽はスチャダラパー（<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a>）。【二次】『ゲームボーイズ』の替え歌（<a href="https://www.famitsu.com/article/202411/24610">ファミ通</a>）</td>
+</tr>
+<tr>
+<td>MOTHER2 ギーグの逆襲（30秒、8）</td>
+<td>L-L-E。喫茶店で黄色い帽子の子どもと白い上着の若い男性。約75%は赤地のタイトルロゴ。ゲーム画面は3地点に無い</td>
+<td>「8月27日発売予定。」「大人も子供も、おねーさんも。」（縦書きの重ね）「スーパーファミコン」</td>
+<td>【二次】「ゲームの中身には全く触れずに木村と幼稚園児による喫茶店内でのやりとりを見せる内容」（<a href="https://ja.wikipedia.org/wiki/MOTHER2_%E3%82%AE%E3%83%BC%E3%82%B0%E3%81%AE%E9%80%86%E8%A5%B2">Wikipedia</a>）。【一次】糸井重里「『MOTHER2』のコマーシャルは木村くんにお願いしたんだもんね。」（<a href="https://www.1101.com/kimuratakuya/2019-09-07.html">ほぼ日</a>）</td>
+</tr>
+<tr>
+<td>ストリートファイターII（30秒、2／15秒、1）</td>
+<td>L-L-L／L-L-E。砂漠を歩く白い外套の人物、髪を二つにまとめた女性のアップ、叫ぶ男性のアップ。強い黄橙の色かぶり。15秒は末尾がCAPCOMロゴのカード</td>
+<td>「song by 筋肉少女帯」「感性開発企業」「CAPCOM」</td>
+<td>【二次】1992年6月1日放送開始、俳優による実写、リュウ役RYO、春麗役水野美紀、コピー「俺より強いヤツに会いに行く。」（<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%82%BF%E3%83%BCII">Wikipedia</a>）。ロケ地はデスバレーとダウンタウン（<a href="https://ja.wikipedia.org/wiki/%E6%B0%B4%E9%87%8E%E7%BE%8E%E7%B4%80">同「水野美紀」</a>）</td>
+</tr>
+<tr>
+<td>ストリートファイターII ターボ（30秒、4／15秒、2）</td>
+<td>L-L-L／L-L-E。衣装の女性のアップと格闘の動き、滝と崖の実景、赤い軍服の人物。15秒の1投稿にタイ風の寺院に見える建物</td>
+<td>「SONG BY／筋肉少女帯」「好評発売中」「定価9,980円(税別)」</td>
+<td>【二次】水野美紀はターボのCMにも出演（<a href="https://www.famitsu.com/news/202003/01193533.html">ファミ通</a>）。ロケ地を書いた開けたページは無い</td>
+</tr>
+<tr>
+<td>ファイナルファンタジーIV（15秒、7）</td>
+<td>L-L-E。実物のダチョウ（浜辺、青や黒の背景）。末尾はタイトルロゴかSQUAREのロゴ</td>
+<td>「FINAL FANTASY IV」「スーパーファミコンは任天堂の商標です」</td>
+<td>【二次】「笑い声とチョコボのテーマをバックにダチョウが海岸を走り抜ける」（<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BCIV">Wikipedia</a>）</td>
+</tr>
+<tr>
+<td>ファイナルファンタジーV（15秒、4）</td>
+<td>A-A-E。事前に描画されたCG（黄色い鳥、砂漠の穴から出る怪物）。実写もゲーム画面も3地点に無い</td>
+<td>「大容量16メガ」「好評発売中」「SQUARESOFT」</td>
+<td>【二次】スクウェアがCGの映像を制作（<a href="https://www.gamesradar.com/the-evolution-of-japanese-game-commercials/2">GamesRadar</a>）</td>
+</tr>
+<tr>
+<td>ドラゴンクエストV（30秒、1／15秒、1）</td>
+<td>L-L-L／L-G-L。青い照明の、頭に布を巻いた人物とベールの女性。15秒は約50%にせりふ窓のあるゲーム画面</td>
+<td>「SCENARIO YUJI HORII」「MUSIC KOICHI SUGIYAMA」</td>
+<td>【抜粋】物語の一場面を実写ドラマ化、SFC版5から外国人俳優（<a href="https://wikiwiki.jp/dqdic3rd/%E3%80%90%E3%83%86%E3%83%AC%E3%83%93CM%E3%80%91">ドラクエ大辞典</a>）</td>
+</tr>
+<tr>
+<td>ドラゴンクエストVI（15秒、4／30秒、1）</td>
+<td>L-A-E／L-E-E。森を走る衣装の人々、青いスライムのCG、灰色地のタイトルカード。1投稿にせりふ窓のあるゲーム画面</td>
+<td>「DQを超えるのは、DQだけ」「12月9日(土)発売」「価格11,400円(税別)」「好評発売中」「ENIX」</td>
+<td>【抜粋】同上</td>
+</tr>
+<tr>
+<td>ドラゴンクエストIII（15秒、2／30秒、2）</td>
+<td>L-L-L。剣を持つ青い服と赤いマントの若い男性、鉤爪の武器を持つ女性など衣装の人物</td>
+<td>「12月6日(金)発売」「価格8,700円(税別)」「好評発売中」</td>
+<td>【抜粋】実写の勇者・武闘家・盗賊・魔法使い（同上）</td>
+</tr>
+<tr>
+<td>スーパーメトロイド（30秒、2）</td>
+<td>L-L-L。白衣の年配の男性、ヘッドセットの女性の横顔、煙の中の装甲の人物（スーツか模型）。ゲーム画面は3地点に無い</td>
+<td>「希望小売価格(税別)9,800円」「スーパーファミコンソフト」</td>
+<td>【一次】「特撮、CG、人形アニメ、セルアニメ、多重合成等」（<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a>）</td>
+</tr>
+<tr>
+<td>スーパーマリオワールド／SFC本体（30秒、3単位計4投稿）</td>
+<td>P-P-P、P-A-L。スポットライトの中でマイクを持つ配管工の立体物（実物の人形・クレイに見える。CGの可能性も残る）、本体とコントローラーとネオン看板のセット</td>
+<td>「SUPER FAMICOM」「スーパーマリオブラザーズ」（看板）</td>
+<td>【抜粋】クレイアニメのマリオが替え歌を歌う（<a href="https://w.atwiki.jp/aniwotawiki/pages/12510.html">アニヲタWiki</a>）</td>
+</tr>
+<tr>
+<td>スーパーマリオカート（30秒、3）</td>
+<td>E-A-E。手描きのキャラクターの顔、8人の顔を並べた画。実写もゲーム画面も3地点に無い</td>
+<td>「オールスターキャスト」「ハチャメチャぶっ飛びレーサーたち」「8月27日発売予定」</td>
+<td>【抜粋】アニメーションでゲーム中の映像は使われなかった（<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%82%AA%E3%82%AB%E3%83%BC%E3%83%88">Wikipedia</a>）</td>
+</tr>
+<tr>
+<td>スターフォックス（30秒、4）</td>
+<td>A-G-L。チップとポリゴンの図形→ゲーム画面→商店街でパッケージを掲げる若者たち</td>
+<td>「1993.スーパーFXチップ現る。」「2月21日発売予定」</td>
+<td>【抜粋】同じ文言の記録（<a href="https://w.atwiki.jp/aniwotawiki/pages/12422.html">アニヲタWiki</a>）</td>
+</tr>
+<tr>
+<td>スーパードンキーコング（30秒、2）</td>
+<td>G-G-G。3地点ともゲーム画面の投稿が1本、文字カード→ゲーム画面→樽のタイトルカードが1本。実写は3地点に無い</td>
+<td>「大革命!!」「11月26日発売予定」</td>
+<td>【二次】開けた<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%89%E3%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%B3%E3%82%B0">Wikipediaの記事</a>にCMの記述は見当たらない。別のノートの【抜粋】には、3DCGが「CMでも大々的に宣伝された」とあり、食い違う。開いたページを優先する</td>
+</tr>
+<tr>
+<td>スーパーマリオRPG（30秒、4）</td>
+<td>P-P-E。実景の街並みの前に3体の食虫植物の造形物（人形に見える。CGの可能性も残る）</td>
+<td>「ロールプレイングゲーム」「3月9日発売予定」「希望小売価格7,500円」「スーパーファミコンが4,000円安くなるクーポン券つき」</td>
+<td>【抜粋】3匹が現実世界で歌い踊る、締めにクーポン告知（<a href="https://magmix.jp/post/89287">マグミクス</a>）</td>
+</tr>
+<tr>
+<td>ファイアーエムブレム 紋章の謎（30秒、4）</td>
+<td>L-L-L。白いスタジオで大きな本を持つ若い女性、金色の人形が周りに合成される</td>
+<td>「FIREEMBLEM」（本の小道具）</td>
+<td>【抜粋】裕木奈江、本の挿絵からキャラクターが飛び出す合成（<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%83%BC%E3%82%A8%E3%83%A0%E3%83%96%E3%83%AC%E3%83%A0_%E7%B4%8B%E7%AB%A0%E3%81%AE%E8%AC%8E">Wikipedia</a>）</td>
+</tr>
+<tr>
+<td>クロノ・トリガー（30秒、2／15秒、2）</td>
+<td>A-A-E／A-G-E。時計の機構、縦書きの人名と飛行機械の画。15秒は約50%に戦闘のゲーム画面</td>
+<td>「DREAM PROJECT PRESENTS」「坂口博信」「鳥山明」「堀井雄二」「3月11日(土)発売」</td>
+<td>【抜粋】SFC版のCMは時計が題材（<a href="https://dengekionline.com/elem/000/000/120/120973/">電撃オンライン</a>）</td>
+</tr>
+<tr>
+<td>聖剣伝説2（30秒、2／15秒、1）</td>
+<td>P-P-P／P-P-E。青い照明の怪物の造形物と、傾けた小窓のゲーム画面（2〜4枚）</td>
+<td>「同志諸君に 告ぐ！」「モーション・バトル！」「好評発売中」</td>
+<td>資料なし</td>
+</tr>
+<tr>
+<td>ロマンシング サ・ガ2（30秒、1／15秒、1）</td>
+<td>L-L-E／L-L-L。石造りの街の衣装の人物、ゲームのせりふ窓の形をしたテロップ</td>
+<td>「おぬしの選択が、物語を創っていくのじゃ！」「新フリーシナリオシステム完成」</td>
+<td>資料なし</td>
+</tr>
+<tr>
+<td>パネルでポン（30秒、4）</td>
+<td>G-L-L。和装の男性たちと、舞台の大画面や画面全体に重ねたパズルのゲーム画面</td>
+<td>ゲーム内の表示</td>
+<td>【抜粋】能楽師が鼓を打つ（<a href="https://www.kasarosi.work/entry/2023/05/14/160726">カサロシのログ</a>）</td>
+</tr>
+</tbody>
+</table></div>
+<p>この表から分かることは三つある。第一に、看板作品でも作りは一様でない。同じ任天堂でも、ゼルダとMOTHER2は実写で通し、マリオカートは絵で通し、ドンキーコングはゲーム画面で通している。第二に、【実測】は文字資料の記述とおおむね合う（ゼルダ、MOTHER2、ストII、マリオカートは3地点にゲーム画面が無く、ドンキーコングは実写が無い）。3地点に無いことは「全編に無い」ことの証明ではないが、文字資料と独立に同じ向きを示している。第三に、ゲーム画面の見せ方は全画面だけではない。小窓の並置（聖剣伝説2）、舞台上の大画面と重ね合わせ（パネルでポン）、せりふ窓の形のテロップ（ロマンシング サ・ガ2）がある。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="6-2">6. 先行仕様書2本の検証結果</h2>
+<p>Muse版＝<code>input_muse_spec_user_provided.md</code>、GPT版＝<code>input_gpt_spec_user_provided.md</code>。判定の語は、確認＝開いたページ・実測・直接観察が同じ内容を示す／一部確認＝一部だけ合う、または文言・数字がずれる／不一致＝違う内容を示す／未確認＝根拠が見つからない、である。Muse版は貼り付け時に6.1の途中から先（約3,900字）が欠落しており、その部分は検証していない。</p>
+<h3 id="61">6.1 主張ごとの判定</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>主張</th>
+<th>出どころ</th>
+<th>判定</th>
+<th>実際に支持されること</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CMの秒数配分を実測した資料は存在しない</td>
+<td>Muse版・GPT版</td>
+<td>確認</td>
+<td>【抜粋】先行研究は見つからない。本プロジェクトの3点標本が最初の計数である</td>
+</tr>
+<tr>
+<td>実写は看板タイトルで主役だった</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【実測】実写系は3点平均40%で最大の成分だが、過半ではない。ゼルダ、MOTHER2、ストIIは3地点とも実写系</td>
+</tr>
+<tr>
+<td>1990〜91年の主流はゲーム画面中心</td>
+<td>Muse版</td>
+<td>不一致</td>
+<td>【実測】ゲーム画面は1990年2%、1991年8%。1990年は4単位で参考値</td>
+</tr>
+<tr>
+<td>なぜ実写か、制作側の一次証言は確認できなかった</td>
+<td>Muse版</td>
+<td>不一致</td>
+<td>【一次】倉恒良彰の発言がある（3.1）</td>
+</tr>
+<tr>
+<td>ゼルダ：リンク役は16歳の女子高校生、プロデューサー倉恒良彰、監督・金巻康朗、ガノンの人形3体、30秒と60秒の両説</td>
+<td>Muse版</td>
+<td>一部確認／不一致</td>
+<td>【一次】「高校生の女の子」、最終選考に長瀬智也、までは確認。肩書は「クリエイティブ・ディレクター」。「16歳」「3体」「60秒」は根拠なし。金巻康朗は1990年のファイアーエムブレムCMの「演出」として載るだけ。【実測】30秒級の投稿が4本ある</td>
+</tr>
+<tr>
+<td>ゼルダ：ゲーム画面は一切なし</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【実測】4投稿の3地点に無い。【抜粋】「一切出さず」とする記事がある</td>
+</tr>
+<tr>
+<td>ストII：全編実写、配役、コピー、筋肉少女帯</td>
+<td>Muse版</td>
+<td>確認</td>
+<td>【二次】Wikipedia。【実測】3地点とも実写、「song by 筋肉少女帯」の文字</td>
+</tr>
+<tr>
+<td>ストIIターボ：ロケはタイ・バンコク、ガイル役ジェフ・ライベングッド</td>
+<td>Muse版</td>
+<td>未確認</td>
+<td>【実測】1投稿にタイ風の寺院に見える建物が映るが、ロケ地の証拠にはならない。出演者名の出典は無い</td>
+</tr>
+<tr>
+<td>「湯水の様に」は出演者の回想を紹介する記事内の回顧</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【二次】出演者の発言ではなく、noteの筆者の推測</td>
+</tr>
+<tr>
+<td>MOTHER2：30秒スポット3タイプ、コピーは糸井重里の作</td>
+<td>Muse版</td>
+<td>未確認</td>
+<td>【実測】30秒級の投稿が8本あり、約75%地点が発売予定日のカード、Nintendoロゴ、コピーの重ねに分かれるが、タイプの数は決められない。コピーの作者を書いたページは無い</td>
+</tr>
+<tr>
+<td>FFVI：渋谷109の見える交差点に実写のティナと魔導アーマー</td>
+<td>Muse版・GPT版</td>
+<td>確認</td>
+<td>【直接観察】「109」の看板を確認。【二次】note</td>
+</tr>
+<tr>
+<td>FFVI：後半は本編のイベントシーンを紹介</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【直接観察】15秒版ではゲーム画面は1地点に現れる程度。後半全体がゲーム画面という構成は支持されない</td>
+</tr>
+<tr>
+<td>FFVI：実写合成版とゲーム画面中心版の2系統、後者の曲は「ROAMING SHEEP」、前者は15秒と30秒</td>
+<td>GPT版</td>
+<td>未確認</td>
+<td>【抜粋】のみ。【直接観察】ゲーム画面中心の版は観察した投稿に無い。15秒は2種以上あり、30秒前後の投稿は連結の可能性があって未確定</td>
+</tr>
+<tr>
+<td>FFVI北米版：モグのパペット</td>
+<td>Muse版</td>
+<td>未確認</td>
+<td>範囲外。開けたページに記述なし</td>
+</tr>
+<tr>
+<td>餓狼伝説スペシャルを「実写と画面の交互融合」の代表に置く</td>
+<td>Muse版</td>
+<td>不一致</td>
+<td>【二次】NEOGEOと業務用のタイトルで、SFCのCMではない。CMの細部（3編、60秒、香港風）も根拠なし。【実測】SFC版（タカラ、15秒、2投稿）はA-A-Aで絵のみ</td>
+</tr>
+<tr>
+<td>テイルズ：実写の要素は確認できない（声・歌だけの型）</td>
+<td>Muse版</td>
+<td>不一致</td>
+<td>【直接観察】海と大樹の実写がある。人物の実写は無い</td>
+</tr>
+<tr>
+<td>テイルズ：SFC版とPlayStation版（1998）を混同しない</td>
+<td>GPT版</td>
+<td>確認</td>
+<td>【二次】宮﨑あおいの出演は1998年。【直接観察】標本のPlayStation版投稿は少女の実写で別物</td>
+</tr>
+<tr>
+<td>テイルズ：主題歌で引っ張るCM</td>
+<td>Muse版・GPT版</td>
+<td>未確認</td>
+<td>音は未観測。【直接観察】画面はイラスト、クレジット、機能名、ゲーム画面</td>
+</tr>
+<tr>
+<td>エストポリスII：ヒロインは「セラン」</td>
+<td>Muse版</td>
+<td>不一致</td>
+<td>【二次】セレナ。GPT版の表記が正しい</td>
+</tr>
+<tr>
+<td>エストポリスII：声の演出だけで構成、実写は確認できない、15秒</td>
+<td>Muse版</td>
+<td>不一致／一部確認</td>
+<td>【直接観察】衣装の男女の実写がある。【実測】15秒級の投稿が4本ある</td>
+</tr>
+<tr>
+<td>エストポリスII：実写ドラマ型に関連</td>
+<td>GPT版</td>
+<td>一部確認</td>
+<td>【直接観察】実写の男女という点で整合。ドラマの筋は3地点からは分からない</td>
+</tr>
+<tr>
+<td>エストポリスII：1994年12月告知版と1995年2月版</td>
+<td>GPT版</td>
+<td>未確認</td>
+<td>【抜粋】のみ。【直接観察】日付入りの版は見当たらない</td>
+</tr>
+<tr>
+<td>エストポリス初代のコピー「これは単なるファンタジーRPGではない」</td>
+<td>Muse版</td>
+<td>未確認</td>
+<td>開けたページにも画面にも無い</td>
+</tr>
+<tr>
+<td>MADARA2：映像が実写かどうか出典に明記なし</td>
+<td>Muse版</td>
+<td>不一致（解消）</td>
+<td>【直接観察】実写と確定</td>
+</tr>
+<tr>
+<td>MADARA2：紙媒体・イラスト移植型の参照元</td>
+<td>GPT版</td>
+<td>不一致</td>
+<td>【直接観察】実写が主体で、イラストは炎の実写に重ねて使われる</td>
+</tr>
+<tr>
+<td>MADARA2の曲名</td>
+<td>Muse版「Lights〜遥かなる旅立ち〜」／GPT版「ライツ～遥かな旅立ち」</td>
+<td>Muse版が確認</td>
+<td>【二次】Wikipedia「國府田マリ子」</td>
+</tr>
+<tr>
+<td>スーパードンキーコング：CGが売り、実写なし</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【実測】2投稿の3地点に実写なし。訴求文言の引用は根拠なし。画面の文字は「大革命!!」</td>
+</tr>
+<tr>
+<td>スーパーメトロイド：実写俳優と人形アニメの合成</td>
+<td>Muse版</td>
+<td>確認</td>
+<td>【一次】倉恒の発言。技法はMuse版より多い</td>
+</tr>
+<tr>
+<td>マリオワールド：三波春夫の替え歌、粘土細工、30秒</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【実測】30秒級で、人形・クレイに見える立体物がマイクを持つ。替え歌は【抜粋】のみ</td>
+</tr>
+<tr>
+<td>ドラゴンクエストV「スタッフロール＆実写」</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【実測】30秒の1投稿で、実写の衣装の人物に「SCENARIO YUJI HORII」「MUSIC KOICHI SUGIYAMA」の文字</td>
+</tr>
+<tr>
+<td>SFC出荷：日本1,717万台、世界4,910万台、ソフト3億7,906万本</td>
+<td>Muse版</td>
+<td>確認</td>
+<td>【一次】任天堂IR</td>
+</tr>
+<tr>
+<td>スーパードンキーコング298万、ストII 288万、クロノ・トリガー203万</td>
+<td>Muse版</td>
+<td>不一致（二次との差）</td>
+<td>【二次】300万、290万、200万</td>
+</tr>
+<tr>
+<td>総広告費は1991年が頂点</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【抜粋】2000年が史上最高。「1990年代前半で」と限定が必要</td>
+</tr>
+<tr>
+<td>せがた三四郎は全19本</td>
+<td>Muse版</td>
+<td>一部確認</td>
+<td>【二次】一覧は20項目（19と20は同じ作品の仮題版と本題版）</td>
+</tr>
+<tr>
+<td>発売日5件（FFVI、テイルズ、MADARA2、エストポリス2作）</td>
+<td>GPT版</td>
+<td>確認</td>
+<td>【二次】Wikipedia</td>
+</tr>
+<tr>
+<td>立命館大学のCMデータベースは探索先だが所蔵を示すものではない</td>
+<td>GPT版</td>
+<td>確認</td>
+<td>【抜粋】一般公開ではなく、審査を経て研究者に公開</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="62">6.2 二つの先行仕様書が互いに食い違う箇所</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>論点</th>
+<th>Muse版</th>
+<th>GPT版</th>
+<th>結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>エストポリスIIのヒロイン名</td>
+<td>セラン</td>
+<td>セレナ</td>
+<td>【二次】セレナ</td>
+</tr>
+<tr>
+<td>エストポリスIIのCMの型</td>
+<td>声・歌だけ、実写なし</td>
+<td>実写ドラマ型に関連</td>
+<td>【直接観察】実写の男女。GPT版寄り</td>
+</tr>
+<tr>
+<td>MADARA2の曲名</td>
+<td>Lights〜遥かなる旅立ち〜</td>
+<td>ライツ～遥かな旅立ち</td>
+<td>【二次】Muse版の表記</td>
+</tr>
+<tr>
+<td>MADARA2のCMの型</td>
+<td>未確定</td>
+<td>紙媒体・イラスト移植型</td>
+<td>【直接観察】実写主体。どちらとも違う</td>
+</tr>
+<tr>
+<td>テイルズのCMの型</td>
+<td>歌＋アニメ／ゲーム画面、実写なし</td>
+<td>SFC版は未確認、PlayStation版と混同しない</td>
+<td>【直接観察】風景の実写＋イラスト＋ゲーム画面。GPT版の慎重な書き方が合う</td>
+</tr>
+<tr>
+<td>FFVIのCMの本数</td>
+<td>1本として記述</td>
+<td>2系統</td>
+<td>【直接観察】15秒が2種以上。ゲーム画面中心の版は未確認</td>
+</tr>
+<tr>
+<td>型の数</td>
+<td>7型（格闘・任天堂作品を含む）</td>
+<td>6類型（RPG5作から）</td>
+<td>どちらも独自の分類。本書7.1は実測から6型＋1</td>
+</tr>
+<tr>
+<td>制作側の一次証言</td>
+<td>確認できなかった</td>
+<td>言及なし</td>
+<td>【一次】存在する</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="63-gpt">6.3 GPT版の方法のうち、採用したものと採用できなかったもの</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>GPT版の方法</th>
+<th>本プロジェクトでの扱い</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>二層の記録（主成分1つ＋同時に存在する要素のタグ）</td>
+<td><strong>採用。</strong> 主成分6符号と、実写・ゲーム画面・テロップの有無フラグを分けて記録した。「主成分の割合」と「画面内にある割合」を別の列にしてある</td>
+</tr>
+<tr>
+<td>主成分の区分 L／G／I／T／X</td>
+<td><strong>修正して採用。</strong> GPT版はミニチュアを実写に含めるが、本プロジェクトは人形・模型（P）を分けた。任天堂作品で比重が大きいためである</td>
+</tr>
+<tr>
+<td>独立した2回の分類と一致率・κ</td>
+<td><strong>採用。</strong> ただし人間ではなく機械（AI）による2回で、条件を変えた</td>
+</tr>
+<tr>
+<td>15秒版と30秒版を別の標本として扱う</td>
+<td><strong>採用。</strong> 単位を「タイトル×尺」とした</td>
+</tr>
+<tr>
+<td>事実と設計推奨を分けて書く</td>
+<td><strong>採用。</strong> 【設計】ラベル</td>
+</tr>
+<tr>
+<td>フレーム精度の秒数（R_L、P_L、R_overlap）</td>
+<td><strong>不採用（できなかった）。</strong> 動画ファイルを取得していない。3点標本で代用した</td>
+</tr>
+<tr>
+<td>画面内の面積比（A_G、A_L）</td>
+<td><strong>不採用（できなかった）。</strong> 同上</td>
+</tr>
+<tr>
+<td>カット密度、ショット長の中央値、主題歌持続率</td>
+<td><strong>不採用（できなかった）。</strong> カット境界と音声を観測していない</td>
+</tr>
+<tr>
+<td>5章の比率モデル（FFVI風35/30/20/15など）</td>
+<td><strong>不採用。</strong> GPT版自身が設計値と明記している。本書は実測から設計値を引き直した</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+
+</section>
+<section>
+<h2 id="7">7. 再現仕様書</h2>
+<p>この章の数値は、【実測】から引いたもの（どの表かを示す）か、【設計】（本書の設計上の選択）のいずれかである。【設計】は史実ではない。</p>
+<h3 id="71">7.1 型の目録</h3>
+<p>【実測】221単位を、<code>results.json</code> の構成パターンと3地点の並びから次の規則で分けた（再集計）。①3地点のうち2地点以上が人形・模型（P）なら「人形・模型型」。②それ以外は構成パターンに従う。③ゲーム画面（＋絵）のパターンは、ゲーム画面（G）が2地点以上なら「ゲーム画面主体型」、1地点以下なら「絵→ゲーム画面型」。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>型</th>
+<th style="text-align: right;">単位数</th>
+<th style="text-align: right;">割合</th>
+<th>15秒／30秒</th>
+<th>多い並び</th>
+<th>代表作（<code>results.json</code>）</th>
+<th>一行の作り方（【設計】）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1 全編実写型</td>
+<td style="text-align: right;">85</td>
+<td style="text-align: right;">38%</td>
+<td>48／37</td>
+<td>L-L-L 35、L-L-E 19</td>
+<td>MOTHER2（30秒）、FFIV（15秒）、ストII、ストIIターボ、ゼルダ（30秒）、紋章の謎（30秒）、スーパーメトロイド（30秒）、ドラゴンクエストIII、エストポリスII（15秒）、MADARA2（15秒）</td>
+<td>衣装の人物か、ゲームと関係の薄い実景・人物で通し、最後の4分の1でタイトルと発売告知を出す。ゲーム画面は使わない</td>
+</tr>
+<tr>
+<td>2 実写＋ゲーム画面型</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">19%</td>
+<td>26／16</td>
+<td>L-L-L 5、L-G-E 4、L-L-E 3</td>
+<td>FFVI（15秒）、アクトレイザー（15秒）、スターフォックス（30秒）、パネルでポン（30秒）、ドラゴンクエストVI（15秒）、テイルズ（15秒・30秒）、聖剣伝説3</td>
+<td>実写を主にして、中盤の1か所にゲーム画面を入れる（全画面に黒枠、または小窓、または実写への重ね）</td>
+</tr>
+<tr>
+<td>3 アニメ・絵主体型</td>
+<td style="text-align: right;">41</td>
+<td style="text-align: right;">19%</td>
+<td>30／11</td>
+<td>A-A-A 19、A-A-E 15、E-A-E 5</td>
+<td>FFV（15秒）、スーパーマリオカート（30秒）、風来のシレン（30秒）、第3次スーパーロボット大戦（15秒）、クロノ・トリガー（30秒）、ロックマンX</td>
+<td>セルアニメかCGか文字の動画で通し、約半数は最後をカードで締める。実写もゲーム画面も使わない</td>
+</tr>
+<tr>
+<td>4 絵→ゲーム画面型</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">11%</td>
+<td>19／5</td>
+<td>A-G-E 7、A-G-A 7、A-A-G 3</td>
+<td>クロノ・トリガー（15秒）、天地創造（15秒）、らんま1/2 町内激闘篇（15秒）、スーパーストリートファイターII（15秒）、高橋名人の大冒険島II（15秒）</td>
+<td>絵で始め、中盤の1か所にゲーム画面、最後はカードか絵に戻る。15秒に多い</td>
+</tr>
+<tr>
+<td>5 人形・模型型</td>
+<td style="text-align: right;">17</td>
+<td style="text-align: right;">8%</td>
+<td>8／9</td>
+<td>P-P-P 9、P-P-E 6</td>
+<td>スーパーマリオRPG（30秒）、グラディウスIII、スーパーマリオワールド（30秒）、トルネコの大冒険（30秒）、聖剣伝説2、ドラゴンボールZ 超武闘伝</td>
+<td>キャラクターや機体を実物の造形物で作り、実景かセットで撮る。30秒の比率が高い</td>
+</tr>
+<tr>
+<td>6 ゲーム画面主体型</td>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;">5%</td>
+<td>7／4</td>
+<td>A-G-G 5、G-G-E 4</td>
+<td>スーパードンキーコング（30秒）、実況パワフルプロ野球2（30秒）、ロックマンX2（15秒）、美少女戦士セーラームーンR（15秒）、極上パロディウス（15秒）</td>
+<td>ゲーム画面を2か所以上で見せ、最後にカード。画面そのものが売りの作品向け</td>
+</tr>
+<tr>
+<td>（7 カードのみ）</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0.5%</td>
+<td>1／0</td>
+<td>E-E-E</td>
+<td>ウィザードリィVI（15秒）</td>
+<td>例外。型としては扱わない</td>
+</tr>
+</tbody>
+</table></div>
+<p>【実測】型1と型2で127単位（57%）、実写系を含まない型3・型4・型6で76単位（34%）である（再集計）。「平均的な1本」を作るなら型1か型2、数字の上の平均（実写系40%・絵29%・カード19%・ゲーム画面11%）を1本に収めるなら型2に絵のパートを足した形になる。</p>
+<h3 id="72">7.2 時間構造</h3>
+<h4 id="721">7.2.1 実測から言える制約</h4>
+<p>【実測】各地点で主成分がどれである割合か（<code>results.md</code>「尺 15s」「尺 30s」）。秒は尺に地点の割合を掛けた位置で、フレームは29.97フレーム毎秒を公称30として数えた値である。</p>
+<p>15秒（公称450フレーム、139単位）</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区間</th>
+<th>位置</th>
+<th style="text-align: right;">実写 L</th>
+<th style="text-align: right;">人形・模型 P</th>
+<th style="text-align: right;">ゲーム画面 G</th>
+<th style="text-align: right;">アニメ・CG・絵 A</th>
+<th style="text-align: right;">カード E</th>
+<th style="text-align: right;">実写が画面内</th>
+<th style="text-align: right;">ゲーム画面が画面内</th>
+<th style="text-align: right;">テロップあり</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冒頭 0〜約1.9秒</td>
+<td>未観測</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>約25%地点</td>
+<td>3.75秒（112フレーム付近）</td>
+<td style="text-align: right;">37%</td>
+<td style="text-align: right;">7%</td>
+<td style="text-align: right;">4%</td>
+<td style="text-align: right;">46%</td>
+<td style="text-align: right;">5%</td>
+<td style="text-align: right;">47%</td>
+<td style="text-align: right;">6%</td>
+<td style="text-align: right;">56%</td>
+</tr>
+<tr>
+<td>約50%地点</td>
+<td>7.5秒（225フレーム付近）</td>
+<td style="text-align: right;">34%</td>
+<td style="text-align: right;">6%</td>
+<td style="text-align: right;">21%</td>
+<td style="text-align: right;">37%</td>
+<td style="text-align: right;">2%</td>
+<td style="text-align: right;">42%</td>
+<td style="text-align: right;">25%</td>
+<td style="text-align: right;">38%</td>
+</tr>
+<tr>
+<td>約75%地点</td>
+<td>11.25秒（337フレーム付近）</td>
+<td style="text-align: right;">20%</td>
+<td style="text-align: right;">5%</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">21%</td>
+<td style="text-align: right;">46%</td>
+<td style="text-align: right;">33%</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">77%</td>
+</tr>
+<tr>
+<td>末尾 約13.1〜15秒</td>
+<td>未観測</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<p>30秒（公称900フレーム、82単位）</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区間</th>
+<th>位置</th>
+<th style="text-align: right;">実写 L</th>
+<th style="text-align: right;">人形・模型 P</th>
+<th style="text-align: right;">ゲーム画面 G</th>
+<th style="text-align: right;">アニメ・CG・絵 A</th>
+<th style="text-align: right;">カード E</th>
+<th style="text-align: right;">実写が画面内</th>
+<th style="text-align: right;">ゲーム画面が画面内</th>
+<th style="text-align: right;">テロップあり</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>冒頭 0〜約3.8秒</td>
+<td>未観測</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+<tr>
+<td>約25%地点</td>
+<td>7.5秒（225フレーム付近）</td>
+<td style="text-align: right;">37%</td>
+<td style="text-align: right;">14%</td>
+<td style="text-align: right;">10%</td>
+<td style="text-align: right;">24%</td>
+<td style="text-align: right;">13%</td>
+<td style="text-align: right;">58%</td>
+<td style="text-align: right;">12%</td>
+<td style="text-align: right;">54%</td>
+</tr>
+<tr>
+<td>約50%地点</td>
+<td>15秒（450フレーム付近）</td>
+<td style="text-align: right;">38%</td>
+<td style="text-align: right;">9%</td>
+<td style="text-align: right;">18%</td>
+<td style="text-align: right;">27%</td>
+<td style="text-align: right;">7%</td>
+<td style="text-align: right;">49%</td>
+<td style="text-align: right;">24%</td>
+<td style="text-align: right;">39%</td>
+</tr>
+<tr>
+<td>約75%地点</td>
+<td>22.5秒（675フレーム付近）</td>
+<td style="text-align: right;">32%</td>
+<td style="text-align: right;">9%</td>
+<td style="text-align: right;">4%</td>
+<td style="text-align: right;">12%</td>
+<td style="text-align: right;">41%</td>
+<td style="text-align: right;">53%</td>
+<td style="text-align: right;">8%</td>
+<td style="text-align: right;">65%</td>
+</tr>
+<tr>
+<td>末尾 約26.3〜30秒</td>
+<td>未観測</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+<td style="text-align: right;">—</td>
+</tr>
+</tbody>
+</table></div>
+<p>ここから導ける制約は次の四つである。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>番号</th>
+<th>制約</th>
+<th>根拠（【実測】）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>M1</td>
+<td>ゲーム画面を使うなら中盤の1か所。3地点のうち約50%地点だけに当たる程度の長さにする。使わなくてもよい</td>
+<td>ゲーム画面が画面内にある割合は約50%地点で25%（15秒）・24%（30秒）、前後は6〜12%。どの地点にも無い単位が62%</td>
+</tr>
+<tr>
+<td>M2</td>
+<td>約75%地点までに、タイトルか発売告知のカード、または画への文字の重ねを出す</td>
+<td>約75%地点でカードが46%（15秒）・41%（30秒）、テロップありが77%・65%</td>
+</tr>
+<tr>
+<td>M3</td>
+<td>約50%地点は文字を減らし、画を見せる</td>
+<td>テロップありが約50%地点で38〜39%に下がる</td>
+</tr>
+<tr>
+<td>M4</td>
+<td>3点平均の配分は、15秒で実写系36%・絵35%・カード18%・ゲーム画面11%、30秒で実写系46%・絵21%・カード21%・ゲーム画面11%。カードは下限</td>
+<td><code>results.md</code> の3点平均。末尾は未観測</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="722-30">7.2.2 【設計】平均的な30秒</h4>
+<p>以下は本書の設計である。配分はM4の30秒の値に合わせ、区間の順序はM1〜M3を満たすように本書が選んだ。実在する特定のCMの復元ではない。1本のCMが実写・絵・ゲーム画面・カードをすべて含む形は、数字の平均を1本に収めるための設計上の妥協であり、実測で最も多い並びは「実写で通す」（L-L-L、L-L-E）であることに注意する。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区間</th>
+<th>秒</th>
+<th>フレーム</th>
+<th>画</th>
+<th>音（【設計】。音は未実測）</th>
+<th>テロップ</th>
+<th>由来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 実写の導入</td>
+<td>0.0〜8.0</td>
+<td>0〜240</td>
+<td>場所と人物を見せる実写。引きから寄りへ</td>
+<td>頭0.5秒は無音。その後、歌または音楽を開始</td>
+<td>画の隅にSFCのロゴ（小）と商標注記（小）。社名ロゴを重ねてもよい</td>
+<td>約25%地点（7.5秒）が実写＝M4。ロゴの位置は7.4</td>
+</tr>
+<tr>
+<td>S2 絵・合成</td>
+<td>8.0〜14.0</td>
+<td>240〜420</td>
+<td>キャラクターの絵、CG、または実写に造形物・絵を合成した画</td>
+<td>歌・音楽を継続</td>
+<td>クレジット（歌、デザイナーなど）を小さく</td>
+<td>絵20%＝M4。クレジットは約25〜50%地点に多い（2.8）</td>
+</tr>
+<tr>
+<td>S3 ゲーム画面</td>
+<td>14.0〜17.5</td>
+<td>420〜525</td>
+<td>ゲーム画面を全画面で。四辺に黒枠を残す。2〜3場面</td>
+<td>歌・音楽を継続。ゲームの効果音を重ねるかは任意</td>
+<td>なし</td>
+<td>約50%地点（15秒）がゲーム画面＝M1。11.7%</td>
+</tr>
+<tr>
+<td>S4 実写の山場</td>
+<td>17.5〜23.5</td>
+<td>525〜705</td>
+<td>人物のアップまたは最も強い画。21.0秒（630フレーム）からタイトルと発売日を白文字で重ねる</td>
+<td>歌の山場、または人物の声</td>
+<td>タイトル、発売日（大きな白文字）</td>
+<td>約75%地点（22.5秒）にテロップ＝M2</td>
+</tr>
+<tr>
+<td>S5 カード</td>
+<td>23.5〜30.0</td>
+<td>705〜900</td>
+<td>タイトルロゴと発売日・価格のカード→社名ロゴのカード</td>
+<td>音楽の終止。尻0.5秒は無音</td>
+<td>タイトル、発売日、価格、SFCのロゴ、商標注記、社名ロゴ</td>
+<td>カード21.7%＝M4（下限）</td>
+</tr>
+</tbody>
+</table></div>
+<p>配分は、実写系14.0秒（46.7%）、絵6.0秒（20.0%）、ゲーム画面3.5秒（11.7%）、カード6.5秒（21.7%）である。3地点で見ると実写→ゲーム画面→実写（文字の重ねあり）になる。</p>
+<h4 id="723-15">7.2.3 【設計】平均的な15秒</h4>
+<p>配分はM4の15秒の値に合わせた。同じく設計上の妥協である。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区間</th>
+<th>秒</th>
+<th>フレーム</th>
+<th>画</th>
+<th>音（【設計】）</th>
+<th>テロップ</th>
+<th>由来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>S1 実写の導入</td>
+<td>0.0〜5.5</td>
+<td>0〜165</td>
+<td>一つの強い実写の画。接写から引きへ、または引きから寄りへ</td>
+<td>頭0.5秒は無音。歌または音楽を開始</td>
+<td>SFCのロゴ（小）、商標注記（小）、社名ロゴ</td>
+<td>約25%地点（3.75秒）が実写。36.7%</td>
+</tr>
+<tr>
+<td>S2 絵</td>
+<td>5.5〜6.73</td>
+<td>165〜202</td>
+<td>キャラクターの絵またはCG</td>
+<td>継続</td>
+<td>クレジット（小）</td>
+<td>絵の一部</td>
+</tr>
+<tr>
+<td>S3 ゲーム画面</td>
+<td>6.73〜8.5</td>
+<td>202〜255</td>
+<td>ゲーム画面を全画面で、黒枠付き。1〜2場面</td>
+<td>継続</td>
+<td>なし</td>
+<td>約50%地点（7.5秒）がゲーム画面＝M1。11.8%</td>
+</tr>
+<tr>
+<td>S4 絵＋タイトル</td>
+<td>8.5〜12.27</td>
+<td>255〜368</td>
+<td>絵またはCG。10.5秒（315フレーム）からタイトルと発売日を重ねる</td>
+<td>歌の山場</td>
+<td>タイトル、発売日</td>
+<td>約75%地点（11.25秒）にテロップ＝M2。絵は合計33.3%</td>
+</tr>
+<tr>
+<td>S5 カード</td>
+<td>12.27〜15.0</td>
+<td>368〜450</td>
+<td>タイトル・価格のカード→社名ロゴ</td>
+<td>終止。尻0.5秒は無音</td>
+<td>タイトル、発売状況または発売日、価格、社名ロゴ</td>
+<td>18.2%＝M4（下限）</td>
+</tr>
+</tbody>
+</table></div>
+<h4 id="724-ffvimadara2iirpg15">7.2.4 【設計】『FFVI』『MADARA2』『エストポリスII』型のRPGの15秒</h4>
+<p>この型は4章の【直接観察】に寄せた設計である。3作品の共通点（実写が主体、ゲーム画面は0〜1地点、文字の役割が大きい、末尾は社名ロゴのカード）を制約とし、秒数は本書が決めた。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>区間</th>
+<th>秒</th>
+<th>フレーム</th>
+<th>画</th>
+<th>音（【設計】）</th>
+<th>テロップ</th>
+<th>由来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>C1 接写または炎</td>
+<td>0.0〜4.0</td>
+<td>0〜120</td>
+<td>何が起きているか分からない実写の接写（路面、炎、目）。3.0秒から異物の一部を入れる</td>
+<td>頭0.5秒は無音。環境音、続いて歌の出だし</td>
+<td>右下にSFCのロゴ（小）と商標注記（小）。または左上に社名ロゴを常時</td>
+<td>【直接観察】FFVI #30の約25%（マンホール接写、右下にロゴ）、MADARA2 #54の約25%（炎、左上にKONAMI）</td>
+</tr>
+<tr>
+<td>C2 引きの合成</td>
+<td>4.0〜8.5</td>
+<td>120〜255</td>
+<td>現実の場所に、衣装の人物と造形物・絵を合成した引きの画。群衆や風景との対比を見せる</td>
+<td>歌を前面に。ナレーションは入れない設計</td>
+<td>クレジット「歌：」「音楽：」を右下に小さく</td>
+<td>【直接観察】FFVI #30の約50%（渋谷の引き）、MADARA2 #49の約50%（炎にイラスト）、エストポリスII #58の約50%（月を背にした男女）。クレジットはMADARA2</td>
+</tr>
+<tr>
+<td>C3 ゲーム画面（省略可）</td>
+<td>8.5〜10.0</td>
+<td>255〜300</td>
+<td>ゲーム画面を全画面で、四辺に黒枠。1場面</td>
+<td>歌を継続</td>
+<td>なし、または右下に商標注記</td>
+<td>【直接観察】FFVI #756の約75%、MADARA2 #46の約75%。省略した場合はC2を延ばす（エストポリスIIは3地点にゲーム画面なし）</td>
+</tr>
+<tr>
+<td>C4 人物＋タイトル</td>
+<td>10.0〜12.5</td>
+<td>300〜375</td>
+<td>衣装の人物の中景またはアップ。タイトルと発売日を大きな白文字で重ねる</td>
+<td>歌の山場、または人物の声（名前を呼ぶなど）</td>
+<td>タイトル（欧文）、発売日（「月・日 曜日」の形）</td>
+<td>【直接観察】FFVI #30の約75%（「FINAL FANTASY VI」「4・2 SAT」）。声は【二次】エストポリスIIの呼び声</td>
+</tr>
+<tr>
+<td>C5 社名ロゴ</td>
+<td>12.5〜15.0</td>
+<td>375〜450</td>
+<td>白または灰色の地に社名ロゴ。短い標語を添えてもよい</td>
+<td>終止。尻0.5秒は無音</td>
+<td>社名ロゴ</td>
+<td>【直接観察】SQUARESOFT、KONAMI、TAITO（「キャッチ・ザ・ハート」）のカード</td>
+</tr>
+</tbody>
+</table></div>
+<p>配分は、実写系11.0秒（73%）、ゲーム画面1.5秒（10%）、カード2.5秒（17%）である。【実測】『FFVI』15秒の単位の3点平均（実写系73%、ゲーム画面20%、5投稿）と同じ水準の実写比率になる。発売後の版を作る場合は、C4の日付を「好評発売中」に替え、C5の前にパッケージと価格のカードを入れる（【直接観察】MADARA2 #48・#52・#57、エストポリスII #59）。</p>
+<h3 id="73">7.3 画の仕様</h3>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>項目</th>
+<th>仕様</th>
+<th>ラベルと根拠</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>画面の縦横比</td>
+<td>4:3</td>
+<td>【設計】当時のテレビ放送の一般的な技術参照として採用。本プロジェクトで規格文書は開いていない。【実測】標本の投稿には黒枠付き（上下左右、上下、左右）のものが多く、投稿ファイルの外形を原版の構図と同一視しない</td>
+</tr>
+<tr>
+<td>フレームレート</td>
+<td>日本のアナログ放送（NTSC-J）の59.94フィールド毎秒・29.97フレーム毎秒（インターレース）を参照値とする。15秒は公称450フレーム、30秒は公称900フレーム</td>
+<td>【設計】一般的な技術参照。規格文書での裏取りは未了</td>
+</tr>
+<tr>
+<td>作業用の画素数</td>
+<td>1440×1080（4:3）などで作り、最後に必要なら走査線・にじみを加える</td>
+<td>【設計】GPT版の提案を採用</td>
+</tr>
+<tr>
+<td>SFCの映像出力</td>
+<td>通常256×224、パレット32,768色、1フレーム262本、約60.098ヘルツ。放送規格（59.94ヘルツ、525本インターレース）とは一致しない</td>
+<td>【抜粋】<a href="https://chromagi.com/nintendo/sfc-snes/shvc-001?lang=en">chromagi</a>、<a href="https://fabiensanglard.net/snes_video">Fabien Sanglard</a>、<a href="https://tasvideos.org/Forum/Topics/20395">TASVideos</a>。当時のCMでゲーム画面をどう収録したかの資料は無い</td>
+</tr>
+<tr>
+<td>ゲーム画面の枠取り</td>
+<td>全画面に置き、四辺に黒い枠を残す</td>
+<td>【直接観察】FFVI #756の約75%「上下左右に黒枠」、テイルズ #33の約75%「黒枠付き」</td>
+</tr>
+<tr>
+<td>ゲーム画面の他の置き方</td>
+<td>①イラストの下に小さな窓（テイルズ #41）。②傾けた小窓を2〜4枚、造形物のセットに並べる（聖剣伝説2）。③舞台上の大画面、または実写の人物の上に拡大して重ねる（パネルでポン）。④セットの中のテレビに映す（カービィボウル）</td>
+<td>①は【直接観察】、②〜④は【実測】（分類時の備考）</td>
+</tr>
+<tr>
+<td>ゲーム画面の作り</td>
+<td>256×224の画素格子を保ったまま4:3に引き伸ばし、実写側のぼかしをかけない</td>
+<td>【設計】</td>
+</tr>
+<tr>
+<td>合成の手法（観察された4種）</td>
+<td>①実写の炎にイラストを半透明で重ねる（MADARA2 #49）。②衣装の俳優を、月と崖のマット画または合成背景の前に置く（エストポリスII #58・#59）。③実景の交差点に、人物を乗せた造形物を合成する（FFVI #30）。④実写の風景に社名ロゴやタイトルロゴを重ねる（テイルズ #33・#36、FFIV #11）</td>
+<td>【直接観察】①〜③とテイルズ。FFIVは【実測】の備考</td>
+</tr>
+<tr>
+<td>実写の質感</td>
+<td>色を一方向に強く寄せる（黄橙、青、緑、赤）処理が複数の作品で見られる</td>
+<td>【実測】分類時の備考（ストII「強い黄橙の色かぶり」、ドラゴンクエストV「青い照明」、FFIV「緑がかった浜辺」）。投稿の劣化と区別できない場合がある</td>
+</tr>
+<tr>
+<td>撮影媒体</td>
+<td>35ミリフィルムで撮影しテレシネする手法が当時のCMの主流だったとされる。24コマ素材に2-3プルダウンをかけるかは任意</td>
+<td>【抜粋】<a href="https://www.filmsterms.com/terminology-index/telecine">映像制作用語辞典</a>。SFCのCMについての資料は無い。プルダウンの適用は【設計】</td>
+</tr>
+<tr>
+<td>文字の安全域</td>
+<td>画面の内側80%に文字、90%に主要な動き</td>
+<td>【設計】。【抜粋】<a href="https://community.adobe.com/t5/premiere-pro/safe-title-and-action-areas-screwy-set-up/m-p/4540348">Adobe Community</a> の一般的な説明による。日本の規格文書は未確認</td>
+</tr>
+<tr>
+<td>点滅</td>
+<td>今日公開するなら、1秒に3回を超える点滅を避ける</td>
+<td>【設計】。【抜粋】NHKと民放連のガイドラインは1998年4月8日作成で、1990〜96年のCMには適用されていなかった（<a href="https://www.saiki.tv/basis/pdf/gideline.pdf">本文PDF</a>）</td>
+</tr>
+</tbody>
+</table></div>
+<h3 id="74">7.4 テロップと文字の仕様</h3>
+<p>画面で実際に読めた形に限る。件数は221単位中の下限値である（2.8）。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>要素</th>
+<th>実際に読めた形</th>
+<th>置き場所</th>
+<th>件数（【実測】）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>発売日（発売前）</td>
+<td>「4・2 SAT」「12月15日発売」「3月11日(土)発売」「8月27日発売予定。」「'93年6月登場」「9月発売予定」「'95年 秋発売」「1992.1.25 ON SALE」</td>
+<td>約75%地点が62単位。タイトルカード上、または実写への大きな重ね</td>
+<td>69</td>
+</tr>
+<tr>
+<td>発売日（発売時）</td>
+<td>「6月25日新発売」「8月6日新発売」</td>
+<td>同上</td>
+<td>上に含む</td>
+</tr>
+<tr>
+<td>発売状況（発売後）</td>
+<td>「好評発売中」（25）、「発売中」「絶賛発売中」「NOW ON SALE」</td>
+<td>約75%地点が26単位。タイトルの下</td>
+<td>28</td>
+</tr>
+<tr>
+<td>価格</td>
+<td>「9,800円（税別）」「定価9,980円(税別)」「価格11,400円(税別)」「希望小売価格(税別)9,800円」「標準小売価格12,800円(税別)」「¥8,000[税別]」</td>
+<td>約75%地点が31単位。タイトルカードの下部</td>
+<td>33</td>
+</tr>
+<tr>
+<td>商標注記</td>
+<td>「スーパーファミコンは任天堂の商標です。」</td>
+<td>画面の下端か右下に小さく。約25%地点8、約50%地点7、約75%地点14</td>
+<td>27</td>
+</tr>
+<tr>
+<td>SFCのロゴ</td>
+<td>4色のマークと「SUPER FAMICOM」</td>
+<td>冒頭側の画の隅（左上または右下）が49単位、終盤のタイトルカードが36単位。任天堂作品では黒地の単独カードもある</td>
+<td>80</td>
+</tr>
+<tr>
+<td>社名ロゴ</td>
+<td>「KONAMI」「BANDAI」「HUDSON SOFT」「Nintendo」「CAPCOM」「ENIX」「namco」「SQUARESOFT」「TAITO」</td>
+<td>終盤のカードが77単位、冒頭側が50単位。3通りある：左上に常時（KONAMI）、冒頭の実写に重ねる（namco）、末尾に白・灰色地の単独カード（SQUARESOFT、TAITO、KONAMI）</td>
+<td>118</td>
+</tr>
+<tr>
+<td>クレジット</td>
+<td>「歌：國府田マリ子」「音楽：コナミ矩形波倶楽部」「SONG BY／筋肉少女帯」「キャラクターデザイン 藤島康介」「アーチェ・クライン／かない みか」「SCENARIO YUJI HORII」「©藤島康介／NAMCO LTD.」</td>
+<td>約25%地点22、約50%地点16、約75%地点8。画の右下か下端に小さな白文字</td>
+<td>38</td>
+</tr>
+<tr>
+<td>コピー・文言</td>
+<td>「大人も子供も、おねーさんも。」（縦書き）「DQを超えるのは、DQだけ」「MADARA IS BACK」「大革命!!」「1993.スーパーFXチップ現る。」「キャッチ・ザ・ハート」「Linear Motion Battle／リニア モーション バトル」</td>
+<td>全地点。中盤は機能名や一言、終盤はタイトルと並ぶ</td>
+<td>122</td>
+</tr>
+<tr>
+<td>容量</td>
+<td>「大容量16メガ」「32メガ」</td>
+<td>終盤のカード</td>
+<td>4</td>
+</tr>
+<tr>
+<td>特典の告知</td>
+<td>「スーパーファミコンが4,000円安くなるクーポン券つき」</td>
+<td>終盤（1996年前後の任天堂作品）</td>
+<td>【実測】スーパーマリオRPG、スーパードンキーコング2</td>
+</tr>
+</tbody>
+</table></div>
+<p>【設計】再現時の規則は次のとおりである。発売前の版は「月・日＋曜日」または「○月○日発売」、発売後の版は同じ画のまま「好評発売中」と価格に差し替える。【一次】発売前後で文言だけを替える運用は、ファミコンウォーズの「出るぞ／出たぞ」について倉恒が述べている（<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a>）。【直接観察】エストポリス初代の「'93年6月登場」と「6月25日新発売」、エストポリスIIの「好評発売中」版も同じ運用である。書体は実測していない。【抜粋】写研のナール（1972）、ゴナU（1975）が広告で広く使われた時代ではあるが、テレビCMのテロップでの使用率は不明である（<a href="https://news.mynavi.jp/article/font-history-30/">マイナビニュース</a>）。白の太い角ゴシック体を基本にし、タイトルロゴは作品ごとに作るのが【設計】上の無難な選択である。</p>
+<h3 id="75">7.5 音の仕様</h3>
+<p><strong>音声は実測していない。</strong> 以下は文字資料が支持する範囲だけである。音量、曲の長さ、ナレーションの有無と声質、効果音、社名を読み上げる音（サウンドロゴ）は、どの作品についても未確認である。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>手法</th>
+<th>例</th>
+<th>ラベルと出典</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>既存曲の替え歌</td>
+<td>ゼルダ（1991）：スチャダラパー『ゲームボーイズ』の替え歌。歌詞「出る出る ゼルダの伝説／出る出る出る出るついに出る…」</td>
+<td>【一次】歌詞の書き起こしと「音楽はスチャダラパーに頼みました。」（<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a>）。【二次】替え歌であること（<a href="https://www.famitsu.com/article/202411/24610">ファミ通</a>）</td>
+</tr>
+<tr>
+<td>タイアップ曲</td>
+<td>ストII（1992）：筋肉少女帯「バトル野郎〜100万人の兄貴〜」</td>
+<td>【二次】<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%88%E3%83%AB%E9%87%8E%E9%83%8E%E3%80%9C100%E4%B8%87%E4%BA%BA%E3%81%AE%E5%85%84%E8%B2%B4%E3%80%9C">Wikipedia</a>。【実測】画面に「SONG BY／筋肉少女帯」</td>
+</tr>
+<tr>
+<td>テーマ曲のボーカル版</td>
+<td>FFVI（1994）：「FINAL FANTASY」をオペラ風に編曲、葛生千夏の歌</td>
+<td>【二次】<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BCVI">Wikipedia</a></td>
+</tr>
+<tr>
+<td>イメージソング</td>
+<td>MADARA2（1993）：國府田マリ子の歌</td>
+<td>【直接観察】画面に「歌：國府田マリ子」「音楽：コナミ矩形波倶楽部」。CMで流れた曲名は【抜粋】</td>
+</tr>
+<tr>
+<td>題名の合唱</td>
+<td>MOTHER2（1994）：周囲の客が「マザ～ツ～」と合唱</td>
+<td>【二次】<a href="https://www.famitsu.com/article/202508/50561">ファミ通</a>。【一次】糸井重里「マーザーツーー♪」（<a href="https://www.1101.com/kimuratakuya/2019-09-07.html">ほぼ日</a>）</td>
+</tr>
+<tr>
+<td>名前の呼び声</td>
+<td>エストポリスII（1995）：「『セレナー！』『マキシムー！』」</td>
+<td>【二次】<a href="https://note.com/gayagayagayama/n/n26b97e1f8a01">note</a></td>
+</tr>
+<tr>
+<td>実演の歌</td>
+<td>ファイアーエムブレム（1990、ファミコン。範囲の直前）：二期会の歌手による実演。「口パクはやめて、実際の歌手を使いたい。」</td>
+<td>【一次】<a href="https://www.1101.com/nintendo/nin25/nin25_1.htm">nin25_1</a></td>
+</tr>
+<tr>
+<td>ナレーション</td>
+<td>ドラゴンクエストは人物が喋らずナレーションのみ（SFC版6まで）。スーパーマリオカートは広川太一郎</td>
+<td>【抜粋】<a href="https://wikiwiki.jp/dqdic3rd/%E3%80%90%E3%83%86%E3%83%AC%E3%83%93CM%E3%80%91">ドラクエ大辞典</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%82%AA%E3%82%AB%E3%83%BC%E3%83%88">Wikipedia</a></td>
+</tr>
+</tbody>
+</table></div>
+<p>【一次】倉恒は、ファミコンウォーズ、ファイアーエムブレム、ゼルダを「“歌もの三部作”」と呼んでいる（<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">nin25_3</a>）。【設計】これらを踏まえ、再現では「一つの強い画に、口ずさめる一つの音（歌、題名の連呼、呼び声のいずれか）」を柱にし、音の柱を画より先に決めることを勧める。これは文字資料に残る作品に共通する特徴からの設計であり、標本全体で音を数えた結果ではない。</p>
+<p>頭と尻の無音。【一次】民放連と日本広告業協会の『テレビCM素材搬入基準【2023年2月改訂版】』は「ＣＭ内容の開始点より最小限0.5秒間、終了点前の最小限0.5秒間を無音声としてください。」と定める（<a href="https://www.j-ba.or.jp/stance/files/c17dda62354e6a408505bf52da78144453705957.pdf">JBA PDF</a>）。民放連の技術文書も同じ規定に言及している（<a href="https://www.j-ba.or.jp/stance/files/8e35d79311b656d052fde17b0af636c7759f7ff8.pdf">JBA PDF</a>）。<strong>確認できたのは2023年版の文言だけで、1990年代の日付を持つ文言は見つかっていない。</strong> 【設計】再現では頭0.5秒・尻0.5秒（公称各15フレーム）を無音とし、15秒の音は最大14.0秒、30秒は最大29.0秒とする。これは現行基準に合わせる設計であって、当時の規定の復元ではない。</p>
+<h3 id="76">7.6 権利と倫理</h3>
+<p>【設計】再現は新規の制作物として行う。キャラクター、タイトルロゴ、楽曲、歌詞、せりふは独自のものを作る。実在のゲームの画面、タイトルロゴ、社名ロゴ、SFCのロゴと「スーパーファミコンは任天堂の商標です。」の文言、当時の出演者の肖像、当時のCM映像は、権利者の許諾なしに使わない。商標注記と機種ロゴの位置は、架空の機種名・架空の社名で同じ位置に同じ大きさの文字を置くことで再現する。実在の場所で撮影する場合は、通行人の肖像と看板の映り込みに配慮する。既存曲の替え歌は、原曲の権利処理が必要である。当時の放送物であるかのように見せて公開しない。</p>
+<h3 id="77">7.7 受け入れ検査表</h3>
+<p>再現した1本について、次を検査する。各項目は測って合否を決められる形にしてある。数値の由来は括弧内に示す。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>番号</th>
+<th>検査項目</th>
+<th>合格の条件</th>
+<th>由来</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>尺</td>
+<td>15.00秒（公称450フレーム）または30.00秒（公称900フレーム）。前後に余りのフレームが無い</td>
+<td>【実測】2.9／【設計】</td>
+</tr>
+<tr>
+<td>2</td>
+<td>縦横比</td>
+<td>4:3。上下・左右の黒帯を後付けしていない</td>
+<td>【設計】7.3</td>
+</tr>
+<tr>
+<td>3</td>
+<td>無音</td>
+<td>冒頭0.5秒と末尾0.5秒に音が無い</td>
+<td>【一次】現行基準／【設計】</td>
+</tr>
+<tr>
+<td>4</td>
+<td>3地点の符号</td>
+<td>25%・50%・75%の位置のフレームを1.2の6符号で分類し、設計した並び（7.2.2ならL・G・L、7.2.3ならL・G・A、7.2.4ならL・L・L）と一致する</td>
+<td>【設計】。分類法は【実測】と同じ</td>
+</tr>
+<tr>
+<td>5</td>
+<td>ゲーム画面の量</td>
+<td>ゲーム画面が主成分である時間が、尺の15%以下（7.2.2〜7.2.4の場合）。型6を選んだ場合はこの項目を外し、2地点以上がゲーム画面であることを確認する</td>
+<td>【実測】3点平均11%、M1／【設計】上限値</td>
+</tr>
+<tr>
+<td>6</td>
+<td>ゲーム画面の位置</td>
+<td>ゲーム画面の区間が50%地点を含み、25%地点と75%地点を含まない（型2・型4の場合）</td>
+<td>【実測】M1</td>
+</tr>
+<tr>
+<td>7</td>
+<td>ゲーム画面の枠</td>
+<td>全画面のゲーム画面に四辺の黒枠がある。または7.3の他の置き方のいずれかに当たる</td>
+<td>【直接観察】</td>
+</tr>
+<tr>
+<td>8</td>
+<td>終盤の告知</td>
+<td>75%地点のフレームに、タイトルか発売日・発売状況の文字がある</td>
+<td>【実測】M2</td>
+</tr>
+<tr>
+<td>9</td>
+<td>中盤の文字</td>
+<td>50%地点のフレームの文字が、クレジットか一言のコピーにとどまる（発売日・価格を出していない）</td>
+<td>【実測】M3、2.8</td>
+</tr>
+<tr>
+<td>10</td>
+<td>末尾のカード</td>
+<td>最後の区間が、タイトル・発売告知・社名ロゴのいずれかを主役とするカードで、尺の15%以上ある</td>
+<td>【実測】カード18〜21%（下限）／【設計】</td>
+</tr>
+<tr>
+<td>11</td>
+<td>発売告知の形</td>
+<td>7.4の表にある形のいずれかを使っている。発売前版と発売後版で画を替えず、文字だけを替えられる</td>
+<td>【実測】【直接観察】【一次】</td>
+</tr>
+<tr>
+<td>12</td>
+<td>機種ロゴと注記</td>
+<td>架空の機種ロゴが、冒頭の画の隅かタイトルカードにある。商標注記に当たる小さな一行が下端か右下にある</td>
+<td>【実測】80単位、27単位</td>
+</tr>
+<tr>
+<td>13</td>
+<td>社名ロゴ</td>
+<td>7.4の3通り（左上に常時、冒頭の実写に重ねる、末尾の単独カード）のいずれかで出ている</td>
+<td>【直接観察】</td>
+</tr>
+<tr>
+<td>14</td>
+<td>実写系の量</td>
+<td>実写系が主成分である時間が、15秒で30〜45%、30秒で35〜55%（7.2.2・7.2.3の平均形の場合）。7.2.4の型では60%以上</td>
+<td>【実測】95%CI（15秒 [0.3023, 0.4249]、30秒 [0.378, 0.5437]）を丸めた【設計】幅</td>
+</tr>
+<tr>
+<td>15</td>
+<td>音の柱</td>
+<td>歌、題名の連呼、呼び声のいずれか一つが、S1〜S4を通して途切れずに続く</td>
+<td>【設計】7.5</td>
+</tr>
+<tr>
+<td>16</td>
+<td>点滅</td>
+<td>1秒に3回を超える点滅が無い</td>
+<td>【設計】7.3</td>
+</tr>
+<tr>
+<td>17</td>
+<td>権利</td>
+<td>実在のゲーム画面、ロゴ、楽曲、出演者の肖像を使っていない。使う場合は許諾の記録がある</td>
+<td>【設計】7.6</td>
+</tr>
+<tr>
+<td>18</td>
+<td>記録</td>
+<td>区間ごとの開始・終了フレーム、主成分の符号、テロップの原稿を一覧にして保存している</td>
+<td>【設計】8章の再測定に対応</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+
+</section>
+<section>
+<h2 id="8">8. 検証手順（再測定の方法）</h2>
+<h3 id="81">8.1 同じ測定をやり直す</h3>
+<p>【実測】道具は2本で、どちらもリポジトリの <code>tools/</code> にある。</p>
+<ol>
+<li><strong>標本の採取</strong> <code>python3 tools/sfc_cm_sampler.py QUERIES.tsv OUTDIR</code>。<code>QUERIES.tsv</code> は「層（title または generic）＜タブ＞検索語」を1行1件で書く。YouTubeの検索結果から題名にCM・コマーシャルを含む10〜65秒の投稿を集め、各動画の自動サムネイル3枚（hq1・hq2・hq3）を取得し、10本ずつの一覧画像（コンタクトシート）と <code>corpus.tsv</code>（no、id、dur_s、stratum、query、channel、title）を出力する。動画は取得も再生もしない。使った検索語は <code>measurement/queries.tsv</code>（99件）にある。検索結果は日によって変わるので、同じ834本は再現されない。固定したい場合は <code>measurement/corpus.tsv</code> の動画IDを使う。</li>
+<li><strong>1回目の分類</strong> 縮小した一覧画像と題名を見て、1行12列で記録する（no、include、reason、game_title、publisher、year、platform、f1、f2、f3、endcard_info、notes）。include はY（SFCの日本向けCM）、N（除外。理由を reason に）、U（機種不明）。f1〜f3は約25%・50%・75%地点の符号。出力は <code>coding_part*.tsv</code>。</li>
+<li><strong>2回目の分類</strong> 対象の投稿だけ、原寸のサムネイルを題名を見ずに分類し、1行15列で記録する（no、各地点の符号と、実写・ゲーム画面・テロップの有無の3フラグ、readable_text、notes）。readable_text は「地点:種類:文字」の形（例 <code>f3:date:12月15日発売</code>）で、種類は price、date、mega、disclaimer、sfclogo、publogo、status、credit、copy、title など。出力は <code>pass2_part*.tsv</code>。原寸で人が読んで確定した行があれば、同じ15列で <code>overrides.tsv</code> に置くと2回目を上書きする。</li>
+<li><strong>集計</strong> <code>python3 tools/sfc_cm_aggregate.py MEASUREMENT_DIR</code>。尺を13〜17秒（15秒級）と28〜33秒（30秒級）に分け、複数CMの連結と画面再撮を除き、題名を正規化して「タイトル×尺」の単位に束ねる。単位の重みは1。信頼区間は単位を再抽出する方法（2,000回、乱数の種は固定）による。<code>results.json</code> と <code>results.md</code> を出力する。</li>
+</ol>
+<p>符号の定義は1.2のとおりである。境界の判断は次の3点に注意する。タイトルロゴが主役で実写が背景だけの画はカード（E）とし、実写ありのフラグを立てる。実物の造形物か描画か迷う画には「?」を付ける（集計では「?」を外した符号を使う）。1回目だけにある「C（実写とゲーム画面の合成）」は実写（L）として扱い、フラグで補う。</p>
+<h3 id="82">8.2 フレーム精度の測定への引き上げ</h3>
+<p>動画ファイルを権利上許される方法で入手できた場合は、3点標本を次の測定に置き換える。定義はGPT版4章のものを使う。</p>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>段階</th>
+<th>作業</th>
+<th>得られる指標</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>投稿ごとに、録画元・尺・画素数・フレームレートを記録する。CM集は1本ずつの開始・終了を切り出す</td>
+<td>尺の実測。15秒版と30秒版、連結の判定（4.1の未確定事項が解ける）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>カットの境界を記録する。自動検出は候補にとどめ、フラッシュやワイプは目で直す</td>
+<td>カット数、ショット長の中央値、カット密度 D_cuts =（カット数−1）÷尺</td>
+</tr>
+<tr>
+<td>3</td>
+<td>ショットごとに主成分（本書の6符号）と、実写・ゲーム画面・絵・テロップの有無を付ける</td>
+<td><strong>主成分の時間比 R_L、R_G、R_A、R_E</strong>（合計1）。<strong>実写が画面内にある時間比 P_L</strong>、同 P_G。<strong>同時に映る時間比 R_overlap</strong>（実写とゲーム画面が同じフレームにある時間÷尺）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>1秒に4フレーム以上を取り出し、ゲーム画面の領域を矩形で囲む</td>
+<td>ゲーム画面の面積占有率 A_G(t) とその時間平均。黒枠の幅</td>
+</tr>
+<tr>
+<td>5</td>
+<td>音を記録する。歌・ナレーション・効果音・無音の開始と終了</td>
+<td>主題歌持続率 R_song、頭と尻の無音の長さ、ナレーションの有無（7.5の空白が埋まる）</td>
+</tr>
+<tr>
+<td>6</td>
+<td>2人が独立に付け、不一致を見直す。少なくとも一部は人間が行う</td>
+<td>一致率とκ。本書の機械分類の点検</td>
+</tr>
+</tbody>
+</table></div>
+<p>R_L と R_G は足して1以下になるが、P_L と P_G は同時に映るフレームがあるので足して1を超えうる。両者を同じ表に混ぜない。3点標本の「主成分の割合」は R に、「画面内にある割合」は P に対応する。</p>
+<p>【抜粋】比較のための外部の目安は米国のものしかない。1991年のCMの平均ショット長は2秒未満、30秒CMで2.3秒という報告がある（<a href="https://www.tandfonline.com/doi/abs/10.1080/00218499.1993.12466882">MacLachlan &amp; Logan 1993</a>、二次引用 <a href="http://www.visual-memory.co.uk/daniel/Documents/short/toyads-jobem.html">visual-memory.co.uk</a>）。日本の1990年代のCMのショット長の統計は見つかっていない。</p>
+<hr />
+
+</section>
+<section>
+<h2 id="9">9. 未確定事項と次の一手</h2>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>未確定の事項</th>
+<th>現在の状態</th>
+<th>閉じる方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>実写・ゲーム画面の秒数の比</td>
+<td>3点標本の割合のみ</td>
+<td>8.2の段階1〜3</td>
+</tr>
+<tr>
+<td>冒頭と末尾の各8分の1</td>
+<td>未観測。エンドカードとテロップは下限</td>
+<td>動画の最初と最後のフレームを取得して同じ符号で分類</td>
+</tr>
+<tr>
+<td>音声のすべて（歌、ナレーション、効果音、サウンドロゴ、無音の長さ）</td>
+<td>未観測</td>
+<td>8.2の段階5。人が視聴して記録</td>
+</tr>
+<tr>
+<td>3点の位置が本当に25%・50%・75%か</td>
+<td>通説。公式の文書なし</td>
+<td>動画ファイルと照合</td>
+</tr>
+<tr>
+<td>FFVIの30秒版の構成</td>
+<td>15秒2本の連結の可能性。未確定</td>
+<td>#20と#766を再生してカット境界を記録</td>
+</tr>
+<tr>
+<td>FFVIのゲーム画面中心の版、コピー「夢じゃない」、ティナ役の名前</td>
+<td>抜粋のみ</td>
+<td>FF Sound Station、honn blog、FF用語辞典の本文を人が開く。該当の投稿を探す</td>
+</tr>
+<tr>
+<td>エストポリスIIの1994年12月告知版と呼び声</td>
+<td>抜粋と回想のみ</td>
+<td>ゲームカタログ@Wikiの本文。動画の視聴</td>
+</tr>
+<tr>
+<td>MADARA2のタイ撮影の逸話、発光する目の技法、15秒版のゲーム画面</td>
+<td>抜粋のみ／判別不能／3地点に無し</td>
+<td>当時の雑誌記事。動画の視聴</td>
+</tr>
+<tr>
+<td>テイルズSFC版の主題歌の使用、「48メガ」の表示</td>
+<td>未観測</td>
+<td>動画の視聴</td>
+</tr>
+<tr>
+<td>エストポリス初代のコピー、剣の画の技法</td>
+<td>根拠なし／判別不能</td>
+<td>動画の視聴、当時の雑誌広告</td>
+</tr>
+<tr>
+<td>重点5作品と各社の制作者の意図</td>
+<td>一次証言なし（倉恒は任天堂の担当作のみ）</td>
+<td>『コマーシャル・フォト』『ブレーン』『CM NOW』『ACC CM年鑑』1990〜96年分（紙）</td>
+</tr>
+<tr>
+<td>民放連の無音規定の1990年代の文言</td>
+<td>2023年版のみ確認</td>
+<td>民放連への照会、当時の搬入基準の現物</td>
+</tr>
+<tr>
+<td>NTSC-Jの数値、安全域、SFCの映像出力の裏取り</td>
+<td>一般的な技術参照と抜粋</td>
+<td>ARIB・ITU-Rの文書、技術記事の本文</td>
+</tr>
+<tr>
+<td>ゲーム画面の収録方法（直接収録か再撮か）</td>
+<td>資料なし</td>
+<td>制作会社・ポストプロダクションの当事者への聞き取り</td>
+</tr>
+<tr>
+<td>各社の広告宣伝費、CMの制作費、15秒と30秒の出稿比率</td>
+<td>資料なし</td>
+<td>日経広告研究所『有力企業の広告宣伝費』、有価証券報告書（紙）、ビデオリサーチの統計</td>
+</tr>
+<tr>
+<td>代表作の国内出荷本数の差（300万と298万など）</td>
+<td>二次同士の不一致</td>
+<td>『CESAゲーム白書』の現物</td>
+</tr>
+<tr>
+<td>投稿されやすいCMへの偏り</td>
+<td>点検できていない</td>
+<td>年別のCM集（長尺の投稿）を1本ずつ切り出して同じ分類にかけ、個別投稿の結果と比べる</td>
+</tr>
+<tr>
+<td>機械分類の妥当性</td>
+<td>2回の機械分類の一致のみ</td>
+<td>無作為に抜いた50〜100投稿を人が分類して比べる</td>
+</tr>
+<tr>
+<td>Muse版の欠落部分（6.1の途中以降、約3,900字）</td>
+<td>未入手のため未検証</td>
+<td>全文を受け取り、6章の表に追補</td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+
+</section>
+<section>
+<h2 id="10">10. 追補の受け皿</h2>
+<p>ユーザーから追加の資料（「追記のGPT」など）が届いた場合は、本書を書き換えずに追補として加える。</p>
+<ul>
+<li><strong>置き場所</strong> 届いた原文は、手を加えずに <code>docs/research_notes/90年代スーファミCM実写比率仕様/input_*_addendum_*.md</code>（例 <code>input_gpt_spec_addendum_01.md</code>）として保存し、冒頭に「入力資料であり未検証」と記す。</li>
+<li><strong>検証の方法</strong> 追補の主張を一件ずつ、6章と同じ4つの判定語（確認・一部確認・不一致・未確認）で照合する。照合先は、開けるページ（【一次】【二次】）、<code>measurement/results.json</code>（【実測】）、<code>focus_direct_observation.md</code>（【直接観察】）の順とし、結果は <code>verification_of_muse_spec.md</code> と同じ形式の照合台帳に追記する。設計値は【設計】として扱い、史実の表には入れない。</li>
+<li><strong>本書への反映</strong> 判定が「確認」または「不一致」になった項目だけを、6章の表への行の追加と、該当する節への追補段落として反映する。7章の数値を変える場合は、どの【実測】の表に基づくかを明記し、変更履歴に残す。</li>
+</ul>
+<div class="tw"><table>
+<thead>
+<tr>
+<th>版</th>
+<th>日付</th>
+<th>変更の内容</th>
+<th>根拠にした資料</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v1.0</td>
+<td>2026-11-10</td>
+<td>初版。3点標本の実測（221単位）、重点5作品の直接観察、先行仕様書2本の検証、再現仕様</td>
+<td>研究ノート一式、<code>measurement/results.md</code>、<code>measurement/results.json</code></td>
+</tr>
+</tbody>
+</table></div>
+<hr />
+
+</section>
+<section>
+<h2 id="11_1">11. 出典一覧</h2>
+<h3 id="_1">【実測】【直接観察】（本プロジェクトの資料。リポジトリ内の相対パス）</h3>
+<ul>
+<li><code>docs/research_notes/90年代スーファミCM実写比率仕様/measurement/results.md</code>、<code>results.json</code>（集計結果）</li>
+<li>同 <code>measurement/corpus.tsv</code>（834投稿の一覧）、<code>queries.tsv</code>（検索語）、<code>coding_part1〜4.tsv</code>（1回目の分類）、<code>pass2_part1〜4.tsv</code>（2回目の分類）</li>
+<li>同 <code>focus_direct_observation.md</code>（重点作品の原寸サムネイルの直接観察）</li>
+<li>同 <code>verification_of_muse_spec.md</code>（先行仕様書の照合台帳）</li>
+<li><code>tools/sfc_cm_sampler.py</code>、<code>tools/sfc_cm_aggregate.py</code></li>
+</ul>
+<h3 id="_2">【一次】（本文を開いて確認）</h3>
+<ul>
+<li>ほぼ日刊イトイ新聞×任天堂「樹の上の秘密基地」倉恒良彰インタビュー：<a href="https://www.1101.com/nintendo/nin25/nin25_1.htm">第1回</a>、<a href="https://www.1101.com/nintendo/nin25/nin25_3.htm">第3回</a>、<a href="https://www.1101.com/nintendo/nin25/nin25_5.htm">第5回</a></li>
+<li>ほぼ日刊イトイ新聞 木村拓哉×糸井重里：<a href="https://www.1101.com/kimuratakuya/2019-09-07.html">2019-09-07</a></li>
+<li>任天堂IR資料「連結販売実績数量の推移」：<a href="https://www.nintendo.co.jp/ir/library/historical_data/pdf/consolidated_sales1612.pdf">PDF</a></li>
+<li>日本民間放送連盟・日本広告業協会『テレビCM素材搬入基準【2023年2月改訂版】』：<a href="https://www.j-ba.or.jp/stance/files/c17dda62354e6a408505bf52da78144453705957.pdf">PDF</a></li>
+<li>民放連技術規準T032 運用ガイドライン（2020.6.1版）：<a href="https://www.j-ba.or.jp/stance/files/8e35d79311b656d052fde17b0af636c7759f7ff8.pdf">PDF</a></li>
+</ul>
+<h3 id="_3">【二次】（本文を開いて確認）</h3>
+<ul>
+<li>Wikipedia日本語版：<a href="https://ja.wikipedia.org/wiki/%E3%82%BC%E3%83%AB%E3%83%80%E3%81%AE%E4%BC%9D%E8%AA%AC_%E7%A5%9E%E3%80%85%E3%81%AE%E3%83%88%E3%83%A9%E3%82%A4%E3%83%95%E3%82%A9%E3%83%BC%E3%82%B9">ゼルダの伝説 神々のトライフォース</a>、<a href="https://ja.wikipedia.org/wiki/MOTHER2_%E3%82%AE%E3%83%BC%E3%82%B0%E3%81%AE%E9%80%86%E8%A5%B2">MOTHER2</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%88%E3%83%AA%E3%83%BC%E3%83%88%E3%83%95%E3%82%A1%E3%82%A4%E3%82%BF%E3%83%BCII">ストリートファイターII</a>、<a href="https://ja.wikipedia.org/wiki/%E6%B0%B4%E9%87%8E%E7%BE%8E%E7%B4%80">水野美紀</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%90%E3%83%88%E3%83%AB%E9%87%8E%E9%83%8E%E3%80%9C100%E4%B8%87%E4%BA%BA%E3%81%AE%E5%85%84%E8%B2%B4%E3%80%9C">バトル野郎〜100万人の兄貴〜</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BCVI">ファイナルファンタジーVI</a>、<a href="https://ja.wikipedia.org/wiki/%E8%91%9B%E7%94%9F%E5%8D%83%E5%A4%8F">葛生千夏</a>、<a href="https://ja.wikipedia.org/wiki/%E3%81%8A%E3%81%8A%E3%81%9F%E3%81%8B%E9%9D%99%E6%B5%81">おおたか静流</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BCIV">ファイナルファンタジーIV</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%86%E3%82%A4%E3%83%AB%E3%82%BA_%E3%82%AA%E3%83%96_%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%82%A2">テイルズ オブ ファンタジア</a>、<a href="https://ja.wikipedia.org/wiki/%E5%AE%AE%EF%A8%91%E3%81%82%E3%81%8A%E3%81%84">宮﨑あおい</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%9D%E3%83%AA%E3%82%B9%E4%BC%9D%E8%A8%98">エストポリス伝記</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%A8%E3%82%B9%E3%83%88%E3%83%9D%E3%83%AA%E3%82%B9%E4%BC%9D%E8%A8%98II">エストポリス伝記II</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%95%E3%82%A1%E3%83%9F%E3%82%B3%E3%83%B3%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%BF%E3%82%A4%E3%83%88%E3%83%AB%E4%B8%80%E8%A6%A7">スーパーファミコンのゲームタイトル一覧</a>、<a href="https://ja.wikipedia.org/wiki/%E5%9C%8B%E5%BA%9C%E7%94%B0%E3%83%9E%E3%83%AA%E5%AD%90">國府田マリ子</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%86%E3%83%A9%E3%83%93%E3%83%A5%E3%83%BC">サテラビュー</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%AA%E3%82%AA%E3%83%B3%E3%82%BB%E3%83%A9%E3%83%BC%E3%81%AE%E3%82%B2%E3%83%BC%E3%83%A0%E3%82%BD%E3%83%95%E3%83%88%E4%B8%80%E8%A6%A7">ミリオンセラーのゲームソフト一覧</a>、<a href="https://ja.wikipedia.org/wiki/%E9%A4%93%E7%8B%BC%E4%BC%9D%E8%AA%AC%E3%82%B9%E3%83%9A%E3%82%B7%E3%83%A3%E3%83%AB">餓狼伝説スペシャル</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%89%E3%83%B3%E3%82%AD%E3%83%BC%E3%82%B3%E3%83%B3%E3%82%B0">スーパードンキーコング</a>、<a href="https://ja.wikipedia.org/wiki/%E3%81%9B%E3%81%8C%E3%81%9F%E4%B8%89%E5%9B%9B%E9%83%8E">せがた三四郎</a></li>
+<li>ファミ通：<a href="https://www.famitsu.com/article/202411/24610">ゼルダ 2024-11</a>、<a href="https://www.famitsu.com/article/202508/50561">MOTHER2 2025-08</a>、<a href="https://www.famitsu.com/news/202206/10264190.html">ストII 2022-06-10</a>、<a href="https://www.famitsu.com/news/202003/01193533.html">ストIIターボ 2020-03-01</a></li>
+<li>note：<a href="https://note.com/dahlia_mars/n/neb6a8765446a">諸星だりあ「３０年前のゲームＣＭに思いを馳せる、というお話」</a>、<a href="https://note.com/invinciblehound/n/n4901f0877426">シンさん「ファイナルファンタジーⅥのテレビCMが懐かしい」</a>、<a href="https://note.com/gayagayagayama/n/n26b97e1f8a01">Enjoy!上越!「エストポリス伝記の思い出」</a></li>
+<li>GamesRadar「The evolution of Japanese game commercials」：<a href="https://www.gamesradar.com/the-evolution-of-japanese-game-commercials/2">2ページ目</a></li>
+</ul>
+<h3 id="_4">【抜粋】（検索結果の抜粋のみ。本文は開いていない）</h3>
+<ul>
+<li>作品別：<a href="https://www.ff-soundstation.com/ff6_cm/">FF Sound Station</a>、<a href="https://hann3.hatenadiary.jp/entry/ff6cm">honn blog</a>、<a href="https://dic.pixiv.net/a/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%8A%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF%E3%82%B8%E3%83%BC6">ピクシブ百科事典「ファイナルファンタジー6」</a>、<a href="https://w.atwiki.jp/gcmatome/pages/1282.html">ゲームカタログ@Wiki MADARA2</a>、<a href="https://w.atwiki.jp/gcmatome/pages/3593.html">同 エストポリス伝記II</a>、<a href="http://k4gameswork.tokyo/super-famicom/tales-of-phantasia-sfc/">k4gameswork テイルズ</a>、<a href="https://wikiwiki.jp/dqdic3rd/%E3%80%90%E3%83%86%E3%83%AC%E3%83%93CM%E3%80%91">ドラクエ大辞典【テレビCM】</a>、<a href="https://w.atwiki.jp/aniwotawiki/pages/12510.html">アニヲタWiki スーパーマリオワールド</a>、<a href="https://w.atwiki.jp/aniwotawiki/pages/12422.html">同 スターフォックス</a>、<a href="https://ja.wikipedia.org/wiki/%E3%82%B9%E3%83%BC%E3%83%91%E3%83%BC%E3%83%9E%E3%83%AA%E3%82%AA%E3%82%AB%E3%83%BC%E3%83%88">Wikipedia スーパーマリオカート</a>、<a href="https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%82%A2%E3%83%BC%E3%82%A8%E3%83%A0%E3%83%96%E3%83%AC%E3%83%A0_%E7%B4%8B%E7%AB%A0%E3%81%AE%E8%AC%8E">同 紋章の謎</a>、<a href="https://magmix.jp/post/89287">マグミクス</a>、<a href="https://dengekionline.com/elem/000/000/120/120973/">電撃オンライン クロノ・トリガー</a>、<a href="https://www.kasarosi.work/entry/2023/05/14/160726">カサロシのログ</a></li>
+<li>視聴者・実務家の説明：<a href="https://detail.chiebukuro.yahoo.co.jp/qa/question_detail/q12176157082">Yahoo!知恵袋 q12176157082</a>、<a href="https://gamenavis.com/collect44294.html">まとめスレ（gamenavis）</a>、<a href="https://www.gamebusiness.jp/article/2015/03/30/10742.html">GameBusiness.jp 小霜和也</a></li>
+<li>市場・放送・技術：<a href="https://kopenguin.com/post-10411/">kopenguin.com 発売年別一覧</a>、<a href="https://strainer.jp/notes/897">Strainer</a>、<a href="https://internet.watch.impress.co.jp/www/article/2001/0216/dentsu.htm">INTERNET Watch 2001-02-16</a>、<a href="https://the-shashi.com/market/advertising/mass-media-ads/">the-shashi.com</a>、<a href="https://www.tv-tokyo.co.jp/marioclub/">テレビ東京 スーパーマリオクラブ</a>、<a href="https://www.weblio.jp/content/%E3%82%B3%E3%83%9E%E3%83%BC%E3%82%B7%E3%83%A3%E3%83%AB%E3%83%95%E3%82%A3%E3%83%AB%E3%83%A0">Weblio コマーシャルフィルム</a>、<a href="https://chromagi.com/nintendo/sfc-snes/shvc-001?lang=en">chromagi SHVC-001</a>、<a href="https://fabiensanglard.net/snes_video">Fabien Sanglard: SNES video</a>、<a href="https://tasvideos.org/Forum/Topics/20395">TASVideos</a>、<a href="https://www.filmsterms.com/terminology-index/telecine">映像制作用語辞典 テレシネ</a>、<a href="https://news.mynavi.jp/article/font-history-30/">マイナビニュース 写研書体</a>、<a href="https://community.adobe.com/t5/premiere-pro/safe-title-and-action-areas-screwy-set-up/m-p/4540348">Adobe Community 安全域</a>、<a href="https://www.saiki.tv/basis/pdf/gideline.pdf">アニメーション等の映像手法ガイドライン</a></li>
+<li>研究：<a href="https://www.kinephanos.ca/2017/quality-of-video-game-trailers/">Kinephanos 2017</a>、<a href="https://www.tandfonline.com/doi/abs/10.1080/00218499.1993.12466882">MacLachlan &amp; Logan 1993</a>、<a href="http://www.visual-memory.co.uk/daniel/Documents/short/toyads-jobem.html">visual-memory.co.uk（二次引用）</a></li>
+</ul>
+<h3 id="_5">入力資料（ユーザー提供。未検証の主張として扱った）</h3>
+<ul>
+<li><code>docs/research_notes/90年代スーファミCM実写比率仕様/input_muse_spec_user_provided.md</code>（Muse版。末尾約3,900字が欠落）</li>
+<li>同 <code>input_gpt_spec_user_provided.md</code>（GPT版 Version 1.0）</li>
+</ul>
+</section>
+<p id="none">該当する節がない。</p>
+</main>
+<script>
+(function(){
+  var q=document.getElementById('q'),count=document.getElementById('count'),none=document.getElementById('none');
+  var secs=[].slice.call(document.querySelectorAll('main section'));
+  var texts=secs.map(function(s){return s.textContent.toLowerCase();});
+  function clear(){
+    [].slice.call(document.querySelectorAll('main mark')).forEach(function(m){
+      var p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize();
+    });
+  }
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  function mark(root,re){
+    var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),nodes=[],n;
+    while((n=w.nextNode())){if(n.nodeValue.trim()&&!/^(SCRIPT|STYLE)$/.test(n.parentNode.nodeName))nodes.push(n);}
+    var hits=0;
+    nodes.forEach(function(t){
+      var s=t.nodeValue,last=0,m,frag=null;re.lastIndex=0;
+      while((m=re.exec(s))){
+        if(m[0]===''){re.lastIndex++;continue;}
+        frag=frag||document.createDocumentFragment();
+        frag.appendChild(document.createTextNode(s.slice(last,m.index)));
+        var k=document.createElement('mark');k.textContent=m[0];frag.appendChild(k);
+        last=m.index+m[0].length;hits++;
+      }
+      if(frag){frag.appendChild(document.createTextNode(s.slice(last)));t.parentNode.replaceChild(frag,t);}
+    });
+    return hits;
+  }
+  function run(){
+    clear();
+    var terms=q.value.toLowerCase().split(/[\s　]+/).filter(Boolean);
+    if(!terms.length){secs.forEach(function(s){s.classList.remove('hide');});count.textContent='';none.style.display='none';return;}
+    var shown=0,hits=0,re=new RegExp(terms.map(esc).join('|'),'gi');
+    secs.forEach(function(s,i){
+      var ok=terms.every(function(t){return texts[i].indexOf(t)>=0;});
+      s.classList.toggle('hide',!ok);
+      if(ok){shown++;hits+=mark(s,re);}
+    });
+    count.textContent=shown+' 節 / '+hits+' 件';
+    none.style.display=shown?'none':'block';
+  }
+  var timer;
+  q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,80);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='/'&&document.activeElement!==q){e.preventDefault();q.focus();}
+    if(e.key==='Escape'&&document.activeElement===q){q.value='';run();}
+  });
+})();
+</script>
+</body>
+</html>
