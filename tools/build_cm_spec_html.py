@@ -71,11 +71,13 @@ JS = r"""
     var hits=0;
     nodes.forEach(function(t){
       var s=t.nodeValue,last=0,m,frag=null;re.lastIndex=0;
-      while((m=re.exec(s))){
+      // 全角英数や全角括弧も強調できるよう、1文字ずつ正規化した文字列で探す（長さが変わる文字がある時は元の文字列で探す）
+      var cs=Array.from(s),ns=cs.map(nk),hay=(cs.length===s.length&&ns.every(function(c){return c.length===1;}))?ns.join(''):s;
+      while((m=re.exec(hay))){
         if(m[0]===''){re.lastIndex++;continue;}
         frag=frag||document.createDocumentFragment();
         frag.appendChild(document.createTextNode(s.slice(last,m.index)));
-        var k=document.createElement('mark');k.textContent=m[0];frag.appendChild(k);
+        var k=document.createElement('mark');k.textContent=s.slice(m.index,m.index+m[0].length);frag.appendChild(k);
         last=m.index+m[0].length;hits++;
       }
       if(frag){frag.appendChild(document.createTextNode(s.slice(last)));t.parentNode.replaceChild(frag,t);}
