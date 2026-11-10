@@ -5,7 +5,9 @@
 依存: pip install markdown
 
 検索欄に文字を入れるたびに、該当しない節（h2 単位）を隠し、該当箇所を強調する。
-空白で区切ると AND 検索。外部ファイルや外部通信は使わない。
+空白で区切ると AND 検索。全角・半角と大文字・小文字は区別しない。
+節の該当判定は節全体の文字で行い、強調は語が装飾の境目をまたがない箇所にだけ付く。
+絞り込み中に目次の項目を押すと、絞り込みを解除してその節へ移動する。外部ファイルや外部通信は使わない。
 """
 import html
 import re
@@ -55,7 +57,8 @@ JS = r"""
 (function(){
   var q=document.getElementById('q'),count=document.getElementById('count'),none=document.getElementById('none');
   var secs=[].slice.call(document.querySelectorAll('main section'));
-  var texts=secs.map(function(s){return s.textContent.toLowerCase();});
+  function nk(s){return s.normalize('NFKC').toLowerCase();}
+  var texts=secs.map(function(s){return nk(s.textContent);});
   function clear(){
     [].slice.call(document.querySelectorAll('main mark')).forEach(function(m){
       var p=m.parentNode;p.replaceChild(document.createTextNode(m.textContent),m);p.normalize();
@@ -81,7 +84,7 @@ JS = r"""
   }
   function run(){
     clear();
-    var terms=q.value.toLowerCase().split(/[\s　]+/).filter(Boolean);
+    var terms=nk(q.value).split(/\s+/).filter(Boolean);
     if(!terms.length){secs.forEach(function(s){s.classList.remove('hide');});count.textContent='';none.style.display='none';return;}
     var shown=0,hits=0,re=new RegExp(terms.map(esc).join('|'),'gi');
     secs.forEach(function(s,i){
@@ -89,9 +92,12 @@ JS = r"""
       s.classList.toggle('hide',!ok);
       if(ok){shown++;hits+=mark(s,re);}
     });
-    count.textContent=shown+' 節 / '+hits+' 件';
+    count.textContent=shown+' 節が該当'+(hits?'（強調 '+hits+' か所）':'');
     none.style.display=shown?'none':'block';
   }
+  document.querySelector('nav.toc').addEventListener('click',function(e){
+    if(e.target.closest('a')&&q.value){q.value='';run();}
+  });
   var timer;
   q.addEventListener('input',function(){clearTimeout(timer);timer=setTimeout(run,80);});
   document.addEventListener('keydown',function(e){
