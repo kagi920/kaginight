@@ -138,3 +138,53 @@
 558	N	not_cm	MOTHER2			other	-	-	-		BGM video with channel-promo text overlays
 559	Y		スーパードンキーコング	任天堂	1994	SFC	E	G	E	copy:大革命!!;date:11月26日発売予定	f1 white copy text on black; f2 dark mine-cart stage gameplay; f3 title logo on wooden barrel
 560	Y		スーパードンキーコング2	任天堂		SFC	E	G	E?	publogo;sfclogo;copy:新しいヒロイン、ディクシー登場;copy:店頭表示価格よりもスーパーファミコンが4,000円安くなるクーポン券つき	platform from SFC logo card in f1; f2 honeycomb stage gameplay with caption super; f3 coupon text card with SFC console resting on a furry ape hand
+561	Y		スーパードンキーコング	任天堂		SFC	G	G	G	sfclogo	three gameplay frames (jungle, factory, vine stage); SFC logo overlaid top-left in f1
+562	N	other_platform	スーパードンキーコング	任天堂		other	-	-	-		GBA
+563	N	other_platform	スーパードンキーコングGB	任天堂		GB	-	-	-		
+564	N	other_platform	スーパードンキーコング	任天堂	2003	other	-	-	-		GBA
+565	Y		スーパードンキーコング2	任天堂		SFC	E	A	G	publogo;sfclogo	60s (probably two versions); f2 pre-rendered CG of crocodile characters around a barrel bearing SUPER DONKEY KONG logo; f3 ship-deck gameplay
+566	N	other_platform	スーパードンキーコング3	任天堂		other	-	-	-		GBA
+567	Y		スーパードンキーコング3	任天堂		SFC	C	G	E	price:3,000円	small windowed picture; f1 person seen from behind looking at a large framed game screen (live figure + game screen); f2 gameplay; f3 end card is for DONKEY KONG LAND with Game Boy unit and package, so the spot includes a GB tie-in
+568	Y		スーパードンキーコング3 謎のクレミス島	任天堂		SFC	L	L	E	sfclogo;price:6,800円	small soft picture; f1 two women looking up, f2 crowd with child in foreground looking up (Western-looking cast); f3 title logo card
+569	N	other_platform	ドンキーコンガ/スーパードンキーコング	任天堂		other	-	-	-		GC and GBA
+570	Y		スーパードンキーコング2 ディクシー&ディディー	任天堂		SFC	A?	G	E	sfclogo;date:11月21日発売予定	f1 large rendered numeral 2 on grey ground; f2 ship rigging gameplay; f3 title logo card with スーパーファミコン wordmark
+571	N	other_platform	ドンキーコング64	任天堂	1999	N64	-	-	-		
+572	N	other_platform	ドンキーコングGB	任天堂	2000	GB	-	-	-		GBC
+573	N	not_game	マリオのアドベンチャーアイランド ほか	エポック社	1997	other	-	-	-		toys
+574	N	other_platform	ドンキーコンガ2	任天堂		other	-	-	-		GC
+575	Y		スーパードンキーコング2	任天堂		SFC	E	G?	E?	publogo;copy:多彩なステージ;copy:店頭表示価格よりもスーパーファミコンが4,000円安くなるクーポン券つき	dup_of:#560 (same coupon card); small blurry windowed picture; f2 washed-out stage footage with caption
+576	N	not_game	スーパードンキーコングシェーキ	ロッテリア	1995	other	-	-	-		fast food
+577	N	other_platform	ファイアーエムブレム 暗黒竜と光の剣	任天堂		FC	-	-	-		
+578	Y		ファイアーエムブレム 紋章の謎	任天堂		SFC	L	L	L	sfclogo	young woman (title names 裕木奈江) in white studio with FIRE EMBLEM book prop and gold character figurines; SFC logo overlaid in f1
+579	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+580	Y		ファイアーエムブレム 紋章の謎	任天堂	1994	SFC	L	L	L	sfclogo	dup_of:#578; small windowed picture; title names 裕木奈江
+581	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+582	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+583	Y		ファイアーエムブレム 紋章の謎	任天堂		SFC	L	P	L	sfclogo	dup_of:#578; f2 close-up of gold dragon relief on book prop
+584	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+585	N	other_platform	ファイアーエムブレム 烈火の剣	任天堂		other	-	-	-		GBA
+586	N	other_platform	ファイアーエムブレム 新・紋章の謎	任天堂		other	-	-	-		DS
+587	N	other_platform	ファイアーエムブレム 暗黒竜と光の剣	任天堂		FC	-	-	-		
+588	Y		ファイアーエムブレム 聖戦の系譜	任天堂		SFC	E?	L	L?	publogo;sfclogo;copy:前作をはるかにしのぐ超大作;copy:ロールプレイングシミュレーションゲーム	f1 copy text with Nintendo and SFC logos over dark red silhouette of mounted figure; f2 Western-looking actors in armour (knight and woman); f3 dark caped silhouette under pink lightning with caption super
+589	Y		ファイアーエムブレム 聖戦の系譜	任天堂	1996	SFC	E?	L	L	publogo;sfclogo;copy:前作をはるかにしのぐ超大作;copy:愛と絆が武器になる。	dup_of:#588 (f1-f2 same); f3 clasped hands with vertical copy super (partly legible)
+590	N	other_platform	ファイアーエムブレム 蒼炎の軌跡	任天堂		other	-	-	-		GC
+591	N	other_platform	ファイアーエムブレム 万紫千紅	任天堂		other	-	-	-		modern title, official channel
+592	N	not_cm	ヨッシー New アイランド	任天堂	2014	other	-	-	-		karaoke edit, 3DS
+593	N	other_platform	ヨッシー New アイランド	任天堂		other	-	-	-		3DS
+594	N	other_platform	ヨッシーのたまご	任天堂		FC	-	-	-		ファミコンソフト visible
+595	N	other_platform	ヨッシーアイランドDS	任天堂		other	-	-	-		DS
+596	N	other_platform	ヨッシー New アイランド	任天堂		other	-	-	-		3DS
+597	N	other_platform	ヨッシーストーリー	任天堂		N64	-	-	-		
+598	N	not_japan	スーパーマリオ ヨッシーアイランド	任天堂		SFC	-	-	-		North American commercial
+599	N	other_platform	ヨッシーアイランドDS	任天堂		other	-	-	-		DS
+600	N	not_japan	ヨッシー New アイランド	任天堂		other	-	-	-		US 3DS ad
+601	N	not_japan	ヨッシー New アイランド	任天堂		other	-	-	-		UK 3DS ad
+602	N	other_platform	ヨッシーの万有引力	任天堂		other	-	-	-		GBA
+603	N	other_platform	ヨッシーアイランドDS	任天堂	2007	other	-	-	-		DS
+604	N	other_platform	ヨッシーアイランドDS	任天堂		other	-	-	-		DS
+605	U	unclear	ヨッシーのクッキー	任天堂		unknown	A	A	P	publogo	platform not stated or visible; cel animation of Mario characters; f3 plate of real cookies with spoon
+606	N	later_rerelease	スーパーマリオRPG	任天堂	2023	other	-	-	-		Switch remake
+607	N	not_cm	スーパーマリオRPG			other	-	-	-		fan recreation in another game
+608	N	not_cm	スーパーマリオRPG			other	-	-	-		fan-made comparison video
+609	N	later_rerelease	スーパーマリオRPG	任天堂		other	-	-	-		Switch remake, Korean
+610	N	later_rerelease	スーパーマリオRPG	任天堂		other	-	-	-		Switch remake, Taiwan

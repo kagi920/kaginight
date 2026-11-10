@@ -108,3 +108,13 @@
 318	Y		美少女戦士セーラームーンS 場外乱闘!? 主役争奪戦	バンダイ		SFC	A	A	E	sfclogo;copy:セーラームーンS 場外乱闘!? 主役争奪戦	f1-f2 cel animation; f3 key-art title logo card on white
 319	Y		美少女戦士セーラームーン ANOTHER STORY	バンダイ	1995	SFC	A	G	G?		f1 cel animation close-up; f2 gameplay (RPG town map); f3 dark frame with crystal scene in letterboxed window, probably in-game cutscene; pillarbox
 320	Y		美少女戦士セーラームーンR	バンダイ		SFC	A	G	E	sfclogo;publogo;date:12月29日発売;copy:SUPER FAMICOM	same CM family as #317; f2 gameplay (side-scrolling action, multiple characters); f3 key-art title logo card with date
+321	Y		美少女戦士セーラームーンS 場外乱闘!? 主役争奪戦	バンダイ	1994	SFC	A	A	E	sfclogo;copy:セーラームーンS 場外乱闘!? 主役争奪戦	dup_of:#318 (same burst frame and end card)
+322	Y		美少女戦士セーラームーンR	バンダイ	1993	SFC	A	G	G	copy:お正月映画「セーラームーンR」より	f1 cel animation with film tie-in super; f2-f3 gameplay (side-scrolling action); pillarbox
+323	Y		美少女戦士セーラームーン ANOTHER STORY	バンダイ	1995	SFC	A	G	E	publogo;date:9月発売予定;copy:美少女戦士セーラームーン ANOTHER STORY	same CM as #319 (same f1/f2); f3 title logo card with small rights text and Angel logo
+324	Y		美少女戦士セーラームーンR	バンダイ		SFC	A	G	G		f1 cel animation (Chibiusa); f2-f3 gameplay; same CM family as #322; pillarbox
+325	Y		スーパーボンバーマン	ハドソン	1993	SFC	A	A	E	publogo	f1 large green katakana lettering with character shadows (motion graphic); f2 illustrated isometric city; f3 Bomberman art with HUDSON SOFT logo on blue; 46s upload may contain more than one cut
+326	Y		スーパーボンバーマン	ハドソン	1993	SFC	E	P?	P?	publogo	f1 Bomberman art with HUDSON SOFT logo; f2 three-dimensional Bomberman figures (clay/model look, could be CG) in room; f3 clay-look globe on starry background with small super (illegible); pillarbox
+327	Y		スーパーボンバーマン3 (upload title says スーパーボンバーマン)	ハドソン		SFC	L	L	L	copy:油断大敵・凶悪ハニー;copy:ルーイで遊べる;copy:ロケ地 安宅神社	period-drama style location shoot with costumed actors, location captions (ロケ地 ...); imagery and ルーイ copy match #330 (スーパーボンバーマン3), so title in upload is likely imprecise; small frame
+328	N	out_of_period	スーパーボンバーマン5	ハドソン	1997	SFC	L?	L	L?	price:6980円(税別);date:2月28日;copy:ルーイが復活!	SFC software but 1997 release, outside 1990-1996 window (no brief code fits; used out_of_period); f1 Bomberman suit characters on village street with running people; f2 silhouette behind shoji; f3 suit characters at thatched house with price/date super
+329	Y		スーパーボンバーマン	ハドソン		SFC	E	A	E	publogo;sfclogo;date:4月28日 新発売;price:¥7,800(税別);copy:スーパーファミコン	f1 Bomberman art with HUDSON SOFT logo; f2 illustrated isometric city (as #325 f2); f3 character art title card with date and price
+330	Y		スーパーボンバーマン3	ハドソン		SFC	L	L	L	copy:連続テレビCM 石川ロケ決行!	period-drama style live action with costumed actors (same series as #327); small frame/pillarbox

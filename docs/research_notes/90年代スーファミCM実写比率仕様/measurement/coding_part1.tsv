@@ -108,3 +108,43 @@
 108	N	other_platform	フロントミッション セカンド		1997	PS	-	-	-	date:9.25 ON SALE	PS
 109	Y		フロントミッションシリーズ ガンハザード	スクウェア	1996	SFC	L	L	L		same campaign as #106 (30s); f1 large burning mech-like object in desert under blue sky; f2 woman's face close-up outdoors; f3 extreme close-up of eyes
 110	N	other_platform	フロントミッション エボルヴ			other	-	-	-		PS3/360 era
+111	Y		バハムート ラグーン	スクウェア	1996	SFC	L	G	E	sfclogo;date:2月9日(金)発売;copy:シミュレーションRPG	uploader has placed CM inside a decorative red/blue border (ignored); f1 lone tree on hill under cloudy sky with small caption (not fully legible); f2 game sprites (dragons/units) over cloud background with caption; f3 title logo card
+112	Y		バハムート ラグーン	スクウェア		SFC	L	L	E	sfclogo;date:2月9日(金)発売;copy:シミュレーションRPG	windowboxed; f1 lone tree landscape under cloudy sky (same as #111 f1); f2 extreme close-up of a blue eye with small caption; f3 title logo card; same CM as #111
+113	N	not_cm	バハムート ラグーン			SFC	-	-	-		piano cover video of CM music
+114	N	other_platform	神撃のバハムート			other	-	-	-		mobile game
+115	N	not_game				other	-	-	-		job-change service ad
+116	N	other_platform	イドラ			other	-	-	-		mobile game
+117	N	later_rerelease	ドラゴンクエストV (DS)			other	-	-	-		DS
+118	Y		ドラゴンクエストV 天空の花嫁	エニックス		SFC	L	L	L	copy:SCENARIO YUJI HORII;copy:MUSIC KOICHI SUGIYAMA	platform not shown in these frames; judged SFC because imagery matches #121 (titled Super Famicom 1992); live-action boy in turban in profile, figure silhouetted in bright doorway, girl in hood; staff credits superimposed
+119	N	other_platform	ドラゴンクエストV (PS2)			other	-	-	-		PlayStation 2 version
+120	N	other_platform	ドラゴンクエストV (PS2)			other	-	-	-	date:3月25日(木)発売	PlayStation 2 version
+121	Y		ドラゴンクエストV 天空の花嫁	エニックス	1992	SFC	L	G	L	publogo	windowboxed; f1 boy in turban in profile with faint ENIX text; f2 game screen with dialogue window「ビアンカ『あら？ あの明りは なにかしら？』」; f3 girl in hood (same shot as #118 f3); same campaign as #118 (15s)
+122	N	later_rerelease	ドラゴンクエストV (DS)			other	-	-	-		DS
+123	N	later_rerelease	ドラゴンクエストVII (3DS)			other	-	-	-		3DS
+124	N	later_rerelease	ドラゴンクエストVI (DS)			other	-	-	-		DS
+125	Y		ドラゴンクエストVI 幻の大地	エニックス		SFC	L	A?	E	price:価格11,400円(税別);copy:DQを超えるのは、DQだけ;copy:好評発売中	f1 costumed actors running through forest; f2 aerial view of floating/map-like landscape with tiny figures on foreground ledge (rendered or miniature composite, unclear); f3 title logo card over clouds
+126	Y		ドラゴンクエストVI 幻の大地			SFC	A?	A	E	sfclogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ	f1 dark speckled starfield with small SFC logo; f2 large rendered (CG-looking) blue slime on black; f3 title logo card; no people
+127	Y		ドラゴンクエストVI 幻の大地			SFC	A?	A	E	sfclogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ	dup_of:#126 (title calls it a one-day-only CM); starfield, rendered slime with open mouth, title card
+128	N	later_rerelease	ドラゴンクエストVI (DS)			other	-	-	-		DS
+129	Y		ドラゴンクエストVI 幻の大地	エニックス		SFC	L	E	E	publogo;price:価格11,400円(税別);date:12月9日(土)発売;copy:DQを超えるのは、DQだけ	f1 three costumed actors looking upward (warm light); f2 ENIX logo on black; f3 title logo card over clouds; same campaign as #125
+130	Y		ドラゴンクエストIII そして伝説へ…			SFC	L	L	L		windowboxed, soft; costumed actors: f1 hero-like figure with headband and sword shot from below, f2 figure among torches/flames, f3 dark-haired person in profile
+131	Y		ドラゴンクエストIII そして伝説へ…	エニックス		SFC	L	L?	E	date:12月6日(金)発売;price:価格8,700円(税別)	windowboxed, broadcast clock overlay; f1 costumed young woman with claw weapon in green jungle; f2 small figure before large waterfall cliffs (live vs. composite unclear); f3 title logo card over clouds
+132	N	other_platform	ドラゴンクエストIII			FC	-	-	-		old-style DQIII sword logo and white-hat priest imagery identical to #135 (titled Famicom version); f1 heavy video noise
+133	Y		ドラゴンクエストIII そして伝説へ…	エニックス		SFC	L	E	L	price:価格8,700円(税別);copy:好評発売中	letterboxed, uploader text watermarks in corners; f1/f3 costumed young woman with claw weapon in jungle (same as #131 f1); f2 title logo card
+134	N	other_platform	ドラゴンクエストIII (GBC)	エニックス		GB	-	-	-		Game Boy Color version
+135	N	other_platform	ドラゴンクエストIII			FC	-	-	-		Famicom version per title
+136	Y		ドラゴンクエストIII そして伝説へ…	エニックス	1996	SFC	L	L	E	price:価格8,700円(税別);copy:好評発売中	soft VHS; f1 costumed hero with sword against clouds; f2 white-haired person with necklace on patterned (carpet-like) object against sky; f3 title logo card over clouds
+137	U	unclear	ドラゴンクエストIII	エニックス		unknown	L	L	E?	publogo;copy:そして伝説へ…	no platform in title or frames; white-hat priest actor is the same imagery as #132/#135 (Famicom version), so probably FC 1988, not SFC; f3 vertical copy and エニックス logo over dark footage
+138	Y		アクトレイザー			SFC	P?	L	L?	copy:ACTION;copy:CREATION	f1 monochrome shot of statues/temple figures (looks like models or stills) with ACTION text super; f2 real clouds/sky with CREATION text super; f3 full-frame fire/explosion; no people
+139	Y		アクトレイザー		1990	SFC	L	L	L?	copy:ACTION;copy:CREATION	f1 erupting lava/sparks at night with ACTION super; f2 real clouds/sky with CREATION super; f3 full-frame fire; same CM as #138 (different sample points); no people
+140	Y		アクトレイザー	エニックス		SFC	L	L	E	publogo;copy:ACTION;copy:CREATION	windowboxed; dup_of:#139; f1 lava eruption with ACTION super; f2 clouds with CREATION super; f3 ENIX logo on black
+141	Y		アクトレイザー	エニックス	1990	SFC	L	E	E	publogo;copy:ACTION	windowboxed; 33s, probably two spots joined (ENIX logo at both f2 and f3); f1 lava eruption with ACTION super; f2-f3 ENIX logo on black
+142	Y		アクトレイザー	エニックス		SFC	G	L	E?	publogo;copy:CREATION	windowboxed; f1 game action-stage screen with status bar; f2 real clouds with CREATION super; f3 very dark frame with faint ENIX logo (fading)
+143	Y		天地創造	エニックス	1995	SFC	E	A?	E	publogo;sfclogo;date:'95年 秋発売;copy:アクションRPG;copy:ENIX INFORMATION	f1 ENIX INFORMATION text card; f2 cracked pale egg/sphere on black (rendered-looking, could be physical object); f3 title logo over rendered landscape; no people
+144	Y		天地創造	エニックス	1995	SFC	A?	A	E	sfclogo;date:'95年10月20日発売;price:価格11,800円(税別);copy:アクションRPG	f1 pot/vessel-like object on orange ground (rendered-looking); f2 rendered barren mountain terrain; f3 title logo card over landscape; no people
+145	Y		天地創造	エニックス	1995	SFC	A?	G?	E	sfclogo;date:'95年 秋発売;copy:アクションRPG	f1 pale egg/sphere on black (as #143 f2); f2 pseudo-3D scrolling landscape with sky, looks like in-game world-map view; f3 title logo card; no people
+146	Y		スターオーシャン	エニックス		SFC	G	E	G?	price:価格8,500円(税別);copy:SFC最後のオリジナルRPG;copy:好評発売中	f1 game battle screen (large insect-like enemy, party sprites); f2 title logo card on starfield; f3 pixel-art scene of dome/planet over rocky terrain (in-game cutscene look); no people
+147	Y		スターオーシャン	エニックス	1996	SFC	L?	G	E	publogo	f1 dark shot of two figures with a torch/flame (appears live action, very dark); f2 game battle screen (same as #146 f1); f3 ENIX logo on black
+148	N	later_rerelease	スターオーシャン1 First Departure			other	-	-	-		PSP remake
+149	N	other_platform	スターオーシャン ブルースフィア	エニックス		GB	-	-	-		GB
+150	N	other_platform	スターオーシャン セカンドストーリー			PS	-	-	-	date:7·30 ON SALE	PS
