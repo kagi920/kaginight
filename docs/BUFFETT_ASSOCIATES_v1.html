@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>バフェット調査 v1</title>
+<style>
+:root{--bg:#f6f4ee;--fg:#1c2230;--mut:#5d6677;--rule:#d8d3c4;--card:#fff;--acc:#8a6a1c;--ok:#1f6b45;--warn:#8a5a00;--ng:#9b2c2c;--hit:#ffe58a}
+@media (prefers-color-scheme:dark){:root{--bg:#050914;--fg:#dbe3f2;--mut:#93a0b8;--rule:#232c40;--card:#0c1322;--acc:#e8d6a8;--ok:#6fd0a0;--warn:#e8c06a;--ng:#f09a9a;--hit:#6b5410}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.85 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+header{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--rule);padding:12px 16px}
+header div{max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0;flex:1 1 220px}
+#q{flex:2 1 240px;min-width:0;padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}
+#n{color:var(--mut);font-size:.85rem;min-width:5em;text-align:right}
+main{max-width:900px;margin:0 auto;padding:8px 16px 80px}
+section{border-bottom:1px solid var(--rule);padding:18px 0}
+h2{font-size:1.05rem;margin:0 0 8px;color:var(--acc)}
+h3{font-size:.95rem;margin:16px 0 4px}
+p,ul,ol{margin:6px 0}ul,ol{padding-left:1.3em}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:560px}
+th,td{border:1px solid var(--rule);padding:7px 9px;vertical-align:top;text-align:left}
+th{background:var(--card)}
+code{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.88em;word-break:break-all}
+a{color:var(--acc);word-break:break-all}
+.ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}.ng{color:var(--ng);font-weight:700}
+.meta{color:var(--mut);font-size:.85rem}
+blockquote{margin:6px 0;padding:4px 12px;border-left:3px solid var(--rule);color:var(--mut);font-size:.9rem}
+mark{background:var(--hit);color:inherit;border-radius:2px}
+[hidden]{display:none}
+</style>
+</head>
+<body>
+<header><div>
+<h1>バフェット「誰といるか」調査と鍵山喬一への適用 v1</h1>
+<input id="q" type="search" placeholder="検索（打つたびに絞り込み）" aria-label="この文書を検索" autocomplete="off">
+<span id="n" aria-live="polite"></span>
+</div></header>
+<main>
+
+<section>
+<h2>0. この文書について</h2>
+<p class="meta">作成 2026-11-14 ／ きっかけ: Instagram の投稿（outlierjapan「結局、誰といるかなのだ」）の画像 ／ 版 v1</p>
+<p>投稿が引くバフェットの発言を出典まで遡り、言ったこと・言っていないことを分けたうえで、鍵山喬一の活動に当てはめ直す。</p>
+<p>区分は 4 つ。<span class="ok">報道で一致</span>＝複数の報道（CNBC・Fortune・Benzinga・CNN/Money など）の検索結果で同じ言い回しが確かめられた。<span class="warn">書き起こし・単一報道のみ</span>＝第三者の書き起こしや要約、または 1 社の報道だけで確かめた。<span class="warn">言い回しが違う</span>＝趣旨はあるが、広まっている言い方と記録の言い方が違う。<span class="ng">未確認</span>＝二次情報しか見つからなかった。どの区分も、この環境からは記事本文を直接開けなかった（ホスト名が解決できない）ので、原文・映像との突き合わせはしていない。</p>
+</section>
+
+<section>
+<h2>1. 結論</h2>
+<ol>
+<li><b>投稿の中身はおおむね正しい。</b>2025-05-03 の株主総会で、若い出席者の「人生の教訓を」という質問に、バフェットは投資ではなく付き合う相手の話で答えた（報道で一致）。</li>
+<li><b>この話は 2025 年が初出ではない。</b>原型は 2004 年の総会で 14 歳の少年に言った「自分より行いの良い人と付き合え。その方向へ流れていく」。2004 年と 2025 年に、言い回しを変えて同じ趣旨を述べている。</li>
+<li><b>バフェットの「優れた人」は、稼ぐ人でも有名な人でもなく、<em>行い</em>の良い人。</b>2004 年は “behavior”、2025 年は「稼いでいる人を見つけて真似するより」、2025-11-10 の感謝祭の手紙は「偉大さは金・評判・権力では生まれない」。三つとも同じ線上にある。</li>
+<li><b>投稿の最後の一文「環境ではなく選択として見る」は、投稿者のまとめ。</b>バフェットの言葉としては見つからない。バフェット自身はむしろ「毎回正しく選べるとは思うな」と、選択の限界を先に言っている。</li>
+<li><b>鍵山喬一への当てはめ:</b> 問いは「誰と付き合うか」より先に「<b>誰の行いの方向へ流れたいか</b>」。そして 2025 年の手紙の「ヒーローを選べ」は、会えない相手でも選べることを含む。詳しくは 6 章。</li>
+</ol>
+</section>
+
+<section>
+<h2>2. 2025-05-03 株主総会での発言</h2>
+<p class="meta">場所: ネブラスカ州オマハ ／ 午前の質疑 ／ 質問者: 若い出席者（報道によりマサチューセッツから来た若い株主）／ 同じ総会でバフェットは年末での CEO 退任とグレッグ・エイベルの後任を表明（エイベルは 2026-01-01 付で CEO）</p>
+<h3>2.1 付き合う相手は「とてつもなく大事」<span class="ok">報道で一致</span></h3>
+<blockquote>“Who you associate with is enormously important. Don't expect that you'll make every decision right on that, but you are going to have your life progress in the general direction of the people that you work with, that you admire, that become your friends.”（CNBC の引用）</blockquote>
+<p>Fortune と Benzinga は “Who you associate with is just enormously important, and don't expect you'll make every decision right on that” と書く。前半の言い回しが少し違うが、趣旨は同じ。</p>
+<h3>2.2 「バークシャーの 1 万分の 1 の規模でも」<span class="warn">書き起こし・単一報道のみ</span></h3>
+<p>ここ数年で亡くなった友人たちに触れ、彼らは「バークシャーの 1 万分の 1 の規模の仕事を一緒にやるとしても、選ぶような人たちだった」と話した。書き起こしによって “one-ten-thousandth” と “ten-thousandth” の揺れがある。名前は報道の検索結果からは確かめていない（未確認）。</p>
+<h3>2.3 「もっと良くなりたいと思わせてくれる人」<span class="warn">書き起こし・単一報道のみ</span></h3>
+<p>そういう人たちは「自分を今より良くしたいと思わせる」。だから自分より優れた人の方へ人を向かわせる、という趣旨。</p>
+<h3>2.4 「稼いでいる人を見つけて真似する」より<span class="warn">言い回しが違う</span></h3>
+<p>要約では「質の高い人に囲まれるほうが、大金を稼ぐ人を見つけて真似しようとするより良い人生になる」。英語の要約で使われている語は “copy”。投稿の「真似する」はこれの訳。正確な原文は未確認。</p>
+<h3>2.5 「学べる賢い人と付き合う」「お金が要らなくてもやりたいことを探す」<span class="ng">未確認</span></h3>
+<p>二次の要約（個人のブログ・ニュースレター）にはあるが、主要報道の検索結果では原文の言い回しを確かめられなかった。趣旨としては、バフェットが長年言ってきた「お金が要らなくても就く仕事を選べ」系の助言と一致する（4.2）。</p>
+<h3>2.6 初任給を気にするな<span class="warn">書き起こし・単一報道のみ</span>（CNBC の見出し）</h3>
+<p>CNBC の見出しは「若い人へ: 初任給を気にするな」。本文の文脈は開けておらず未確認。</p>
+</section>
+
+<section>
+<h2>3. 原型: 2004 年の総会</h2>
+<p class="meta">2004-05-01 オマハ ／ 質問者: カリフォルニアの 14 歳、ジャスティン・ファン（Justin Fong）／ 出典: CNN/Money 2004-05-03、Jason Zweig</p>
+<blockquote>“Hang out with people whose behavior is better than yours, and then you'll drift in the right direction.”（CNN/Money の引用。Fortune は末尾を “in that direction” と書く）</blockquote>
+<p>マンガーがすかさず足した一言（CNN/Money）:</p>
+<blockquote>“If this gives you a little temporary unpopularity with your peer group, the hell with 'em.”</blockquote>
+<ul>
+<li><b>“behavior”（行い）が基準</b>で、地位・収入・才能ではない。</li>
+<li>バフェットは「良い」を定義していない（報道の注記）。ネットに出回る「読書習慣のある人」などの条件は、後のコラムニストの解釈。</li>
+<li>マンガーの一言は、<b>選ぶことには周りから浮くコストがある</b>と先に認めている。</li>
+<li>よく引かれる短い形 “It's better to hang out with people better than you.” は、この総会の発言を縮めたもの。出典を The Motley Fool とする編集記事もあるが、二次情報。</li>
+</ul>
+</section>
+
+<section>
+<h2>4. 関連する発言</h2>
+<h3>4.1 ゲイツとの対談<span class="ng">未確認</span></h3>
+<p>コロンビア大学でのゲイツとの公開対談で「付き合う人の方向へ進む。だから自分より優れた人と付き合うことが大事」と言った、という記事がある（Barchart）。年と原文は確かめていない。</p>
+<h3>4.2 タップダンスで出勤する<span class="warn">言い回しが違う</span></h3>
+<p>「毎日タップダンスで出勤している」は本人の常套句で、Carol Loomis 編『Tap Dancing to Work』（2012）の書名にもなっている。広まっている「愛する人たちと働く（people I love）」の言い方は見つからず、見つかったのは「好きな人たちとだけ働く（people I like）」（Inc.、日付なし）。85 歳時点の発言として HuffPost が引いている（2015 年ごろ）。</p>
+<h3>4.3 2025-11-10 感謝祭の手紙<span class="ok">報道で一致</span></h3>
+<p>年次報告の執筆と総会の質疑から退くと告げた手紙。結びの助言が、この話の完成形になっている。</p>
+<blockquote>“Choose your heroes very carefully and then emulate them. You will never be perfect, but you can always be better.”</blockquote>
+<blockquote>“Greatness does not come about through accumulating great amounts of money, great amounts of publicity or great power in government.”</blockquote>
+<blockquote>“Decide what you would like your obituary to say and live the life to deserve it.”（直前に “Don't count on a newsroom mix-up:” と続く）</blockquote>
+<p>ほかに、親切は「コストはかからないが値がつけられない」、黄金律（自分がされたいように人にせよ）は「宗教を持つかどうかに関係なく、行いの指針としてこれに勝るものはない」。「偉大さは人を助けることから生まれる」という一文はブログの言い換えで、原文としては未確認。</p>
+</section>
+
+<section>
+<h2>5. 投稿（outlierjapan）との照合</h2>
+<div class="tw"><table>
+<tr><th>投稿の記述</th><th>照合</th></tr>
+<tr><td>2025 年 5 月、オマハの年次株主総会の質疑</td><td><span class="ok">一致</span> 2025-05-03、午前の質疑</td></tr>
+<tr><td>「いい質問だ。若い頃の自分が思いつきたかった」</td><td><span class="ng">未確認</span> 検索結果に出てこない</td></tr>
+<tr><td>「誰と付き合うかは、とてつもなく大事」</td><td><span class="ok">一致</span> “enormously important”</td></tr>
+<tr><td>毎回正しい選択ができるとは期待するな</td><td><span class="ok">一致</span></td></tr>
+<tr><td>一緒に働き、尊敬し、友人になった人たちの方向へ進む</td><td><span class="ok">一致</span> “work with / admire / become your friends”</td></tr>
+<tr><td>亡くなった友人たち＝1 万分の 1 の規模でも選ぶ人</td><td><span class="warn">書き起こしのみ</span>（言い回しは書き起こしで揺れる）</td></tr>
+<tr><td>お金を稼いでいる人を見つけて真似する道と比べた</td><td><span class="warn">趣旨は一致</span> 英語の要約では “copy”</td></tr>
+<tr><td>かなり歳を取るまで本当には分からない</td><td><span class="ng">未確認</span></td></tr>
+<tr><td>学べる賢い人と付き合う／お金が要らなくてもやりたいことを探す</td><td><span class="ng">未確認</span> 二次要約のみ。趣旨は長年の持論と一致</td></tr>
+<tr><td>付き合う相手を、環境ではなく選択として見る</td><td><span class="warn">投稿者のまとめ</span> バフェットの言葉ではない</td></tr>
+</table></div>
+</section>
+
+<section>
+<h2>6. 鍵山喬一への適用（まとめなおし）</h2>
+<p class="meta">前提に使う事実は、公開している PROFILE の範囲だけ: 埼玉県出身、1998 年ごろから都内のライブハウスで叩きはじめ、cocobat・JUDGEMENT・アーバンギャルドを経て、多くのアーティストのサポートドラマー。XR ドラマー。KAGI NIGHT 主催（2022 Shibuya B.Y.G ＋ Beat Wave、2026-07-17 unravel tokyo）。</p>
+
+<h3>6.1 「誰と」より先に「誰の行いの方向へ」</h3>
+<p>バフェットの基準は一貫して<b>行い</b>（behavior）で、稼ぎ・知名度ではない。鍵山さんに当てはめると、見るのは「その人と組むと仕事が増えるか」ではなく「その人の叩き方・作り方・人への接し方の方向へ、自分が流れていきたいか」。流れる方向は、時間を使った相手で決まる（2.1）。</p>
+
+<h3>6.2 「1 万分の 1 テスト」</h3>
+<p>2025 年の言葉をそのまま判定法にする。<b>規模が 1 万分の 1 でも、この人とやりたいか。</b>小さなライブ、note の 1 本、KAGI ROOM の最初の 1 回。小さい仕事で選べる相手だけが、大きくなったときに残る。逆に、規模や報酬が理由で選んだ相手は、規模が縮むと消える。</p>
+
+<h3>6.3 ヒーローは会えなくても選べる</h3>
+<p>2025-11 の手紙は「付き合え」ではなく「<b>ヒーローを選び、真似よ</b>」と言っている。真似る相手は同じ部屋にいなくてよい。ホームページのクラゲは holtsetio の aurelia（MIT ライセンス）のコードを読み込んで移植したもので、これは会ったことのない作り手の行いの方向へ流れた実例。オープンソースと記録映像は、バフェットの時代より「ヒーローを選ぶ」範囲を広げている。</p>
+
+<h3>6.4 他人の部屋と自分の部屋</h3>
+<p>バフェットの言葉には、言われていない前提がある。<b>その部屋の方向を誰が決めているか。</b>サポートで入る場では、方向は部屋の主が決める。腕は上がるが、作品の向きは自分の側に積み上がりにくい。主催する場（KAGI NIGHT）では、方向を自分が決め、6.2 のテストで人を選んで入れられる。マンガーの言う「一時的に浮く」コスト（3 章）は、自分の部屋を建てるときにいちばん大きくなる。</p>
+
+<h3>6.5 「お金が要らなくても」は無償の基準ではない</h3>
+<p>タップダンスの話（4.2）の中身は「好きなことを、好きな人たちと」で、ただ働きの勧めではない。ドラムはすでに長く続けている活動なので、次の課題は好きなことを探すことではなく、<b>続けるための対価と条件をはっきりさせること</b>（報酬・担当範囲・クレジット・約束）。</p>
+
+<h3>6.6 偉大さの定義を KAGI NIGHT に当てる</h3>
+<p>手紙は偉大さを金・評判・権力から切り離した（4.3）。鍵山さんの側から言い換えると、<b>自分が優れた人に付き合ってもらう</b>だけでなく、<b>KAGI NIGHT を、来た人が「もっと良くなりたい」と思って帰る場にする</b>ことが、同じ原理の反対側になる。選ぶ側から、選ばれる場をつくる側へ。</p>
+
+<h3>6.7 AI はどこに置くか</h3>
+<p>いま長く一緒に作業している相手には AI も含まれる。バフェットの物差し（流れる方向は一緒にいる相手で決まる）をそのまま当てると、AI に向きを決めさせれば出てくるものは平均値に寄る。下の判定表で AI は「実現に関わるか」には合格するが、「演奏を尊重するか」「往復が成立するか」には合格しない（叩いている内容を体で受け取れず、自分から返すものもない）。AI は部屋の住人ではなく、部屋を建てる職人として置き、浮いた時間を人に使う。※この節は AI（Claude）が書いている。AI が AI の置き場所を論じているので、人の目で一度確かめること。</p>
+
+<h3>6.8 死亡記事テスト</h3>
+<p>「死亡記事に何と書かれたいかを決め、それに値する生き方をせよ」（4.3）。KAGI NIGHT の告知や note の自己紹介を書くときの、いちばん上の基準にできる。</p>
+</section>
+
+<section>
+<h2>7. 判定表（制作と仕事に使う時間を誰に寄せるか）</h2>
+<div class="tw"><table>
+<tr><th>見る点</th><th>バフェットの根拠</th><th>鍵山喬一にとっての具体例</th></tr>
+<tr><td>行いの方向へ流れたいか</td><td>2004 “behavior is better than yours”</td><td>叩き方・作り方・人への接し方に見習いたい点がある</td></tr>
+<tr><td>1 万分の 1 でも組みたいか</td><td>2025 亡くなった友人たちの話</td><td>小さなライブや note 1 本でも一緒にやりたい</td></tr>
+<tr><td>もっと良くなりたいと思わせるか</td><td>2025 “make you want to be better”</td><td>会ったあとに練習や制作をしたくなる</td></tr>
+<tr><td>演奏を尊重するか</td><td>（鍵山向けに足した基準）</td><td>機材の珍しさだけでなく、叩いている内容に関心を持つ</td></tr>
+<tr><td>実現に関わるか</td><td>（同上）</td><td>「面白い」で終わらず、練習・制作・出演で具体的に動く</td></tr>
+<tr><td>異論を言えるか</td><td>（解釈）マンガーという相手の存在</td><td>良くない部分を、理由と改善案まで含めて言う</td></tr>
+<tr><td>対等に扱うか</td><td>黄金律（2025-11 の手紙）</td><td>報酬・担当範囲・クレジット・約束を曖昧にしない</td></tr>
+<tr><td>往復が成立するか</td><td>（鍵山向けに足した基準）</td><td>その人と何が進んだか、自分が何を返せたか</td></tr>
+</table></div>
+<p>使い方の注意: この表は相手を裁く道具ではない。「今うまくいかないのは周りが悪いから」とは読まない。バフェット自身が「毎回正しく選べるとは思うな」と先に言っている。楽しい友人関係はそのまま大切にし、制作と仕事に使う時間の配分にだけ使う。</p>
+</section>
+
+<section>
+<h2>8. 限界と未確認</h2>
+<ul>
+<li>記事本文（CNBC・Fortune・Benzinga・HuffPost・Berkshire Hathaway の公式ページ）は、この環境からホスト名が解決できず直接開けなかった。2〜4 章の「報道で一致」は、検索結果に出た引用が複数の報道で一致したものに限っている。外に出す文章で英語の原文を引くときは、Berkshire の公式映像（CNBC の配信）か Business Wire の 2025-11-10 リリースで確かめてから使う。</li>
+<li>2025 年の総会で名前が挙がった「亡くなった友人たち」が誰かは確かめていない。</li>
+<li>6 章は解釈で、バフェットの言葉ではない。</li>
+<li>鍵山さんの私的な経歴・収入にかかわる話は、台帳の決まり（職・収入・健康などの私的情報をリポジトリに書かない）に従い、この文書に入れていない。</li>
+</ul>
+</section>
+
+<section>
+<h2>9. 出典（検索で確かめたもの）</h2>
+<ul>
+<li>CNBC 2025-05-06 “Warren Buffett to young people: Don't worry about your starting salary” <a href="https://www.cnbc.com/2025/05/06/warren-buffett-to-young-people-dont-worry-about-your-starting-salary.html">cnbc.com</a></li>
+<li>Fortune 2025-05-03 “Warren Buffett has this advice for young investors” <a href="https://fortune.com/2025/05/03/warren-buffett-advice-young-investors-life-lessons-berkshire-hathaway-annual-meeting">fortune.com</a></li>
+<li>Benzinga 2025-05 “Who you associate with is just enormously important” <a href="https://www.benzinga.com/news/25/05/45185944/warren-buffett-shares-surprising-advice-for-young-investors-and-its-not-about-stocks-who-you-associate-with-is-just-enormously-important">benzinga.com</a></li>
+<li>Fortune 2025-12-31 “Hang out with people better than you” <a href="https://fortune.com/2025/12/31/warren-buffett-career-advice-for-young-professionals-hang-out-with-people-better-than-you/">fortune.com</a></li>
+<li>2025 総会の書き起こし（第三者） <a href="https://steadycompounding.com/transcript/brk-2025/">steadycompounding.com</a> ／ <a href="https://www.brownadvisory.com/sites/default/files/2025-10/Berkshire-Hathaway-2025-Annual-Meeting.pdf">brownadvisory.com（PDF）</a></li>
+<li>CNN/Money 2004-05-03 総会の質疑 <a href="https://money.cnn.com/2004/05/03/pf/buffett_qanda/">money.cnn.com</a> ／ Jason Zweig “The Higher Wisdom of Warren” <a href="https://jasonzweig.com/the-higher-wisdom-of-warren/?nb=1">jasonzweig.com</a></li>
+<li>CBS News「グレッグ・エイベルとは」 <a href="https://www.cbsnews.com/amp/news/greg-abel-berkshire-hathaway-warren-buffett-successor">cbsnews.com</a> ／ Kiplinger <a href="https://www.kiplinger.com/investing/warren-buffett-to-step-down-from-berkshire-hathaway">kiplinger.com</a></li>
+<li>Berkshire Hathaway 2025-11-10 リリース（感謝祭の手紙） <a href="https://www.businesswire.com/news/home/20251110088190/en/Berkshire-Hathaway-Inc.-News-Release">businesswire.com</a> ／ CNBC Make It 2025-11-10 <a href="https://www.cnbc.com/make-it/2025/11/10/warren-buffett-top-advice-for-successful-life.html">cnbc.com</a></li>
+<li>HuffPost “Warren Buffett's Career Advice Is Pure Gold” <a href="https://www.huffpost.com/entry/warren-buffett-reveals-why-hell-never-retire_n_561fbd1ce4b028dd7ea6d1c9">huffpost.com</a> ／ Inc. <a href="https://www.inc.com/marcel-schwantes/it-took-warren-buffett-2-sentences-to-teach-best-career-lesson-you-will-hear-today.html">inc.com</a></li>
+<li>Barchart（ゲイツとの対談への言及） <a href="https://www.barchart.com/story/news/31788192/warren-buffetts-critical-advice-for-those-struggling-with-success-and-personal-growth-hang-out-with-people-better-than-you">barchart.com</a></li>
+</ul>
+</section>
+
+</main>
+<script>
+(function(){
+  var q=document.getElementById('q'),n=document.getElementById('n'),secs=[].slice.call(document.querySelectorAll('main section'));
+  var orig=secs.map(function(s){return s.innerHTML;});
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  function mark(node,re){
+    if(node.nodeType===3){
+      var m=re.exec(node.data); re.lastIndex=0;
+      if(!m)return;
+      var rest=node.splitText(m.index); rest.data=rest.data.slice(m[0].length);
+      var k=document.createElement('mark'); k.textContent=m[0]; node.parentNode.insertBefore(k,rest); mark(rest,re);
+    }else if(node.nodeType===1&&node.tagName!=='MARK'){[].slice.call(node.childNodes).forEach(function(c){mark(c,re);});}
+  }
+  function run(){
+    var words=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),hit=0;
+    secs.forEach(function(s,i){
+      s.innerHTML=orig[i];
+      var t=s.textContent.toLowerCase(),ok=words.every(function(w){return t.indexOf(w)>=0;});
+      s.hidden=!ok; if(!ok)return; hit++;
+      words.forEach(function(w){mark(s,new RegExp(esc(w),'i'));});
+    });
+    n.textContent=words.length?hit+' / '+secs.length+' 章':'';
+  }
+  q.addEventListener('input',run);
+})();
+</script>
+</body>
+</html>
