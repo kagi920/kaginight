@@ -1,0 +1,66 @@
+--- live/index.html	2026-11-17 03:21:19.019392802 +0000
++++ site/index.html	2026-11-17 03:57:53.423523244 +0000
+@@ -401,8 +401,9 @@
+ function kick(){if(!on)return;var t=ctx.currentTime+0.01;cycleStart=t;lastKick=t;kickSound(t);chordIdx=(chordIdx+1)%CH.length;pad(chordIdx,t);nextTick=t+1.25;nextArp=t+0.3125;}
+ function hit(){if(!on)return;hitSound(ctx.currentTime+0.005);}
+ function start(){unlock();if(!ctx)init();on=true;hookResume();if(ctx.state!=='running'){var p=ctx.resume();if(p&&p.catch)p.catch(function(){});}master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setValueAtTime(master.gain.value,ctx.currentTime);master.gain.linearRampToValueAtTime(0.62,ctx.currentTime+0.35);kick();if(!timer)timer=setInterval(schedule,100);}
++function quiet(b){if(!ctx||!on)return;var t0=ctx.currentTime;master.gain.cancelScheduledValues(t0);master.gain.setValueAtTime(master.gain.value,t0);master.gain.setTargetAtTime(b?0:0.62,t0+(b?0.35:0),b?0.15:0.4);}   /* b: 引っ込める（着地の一打を聞かせてから） */
+ function stop(){relock();if(!ctx)return;on=false;master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(0,ctx.currentTime,0.6);if(timer){clearInterval(timer);timer=null;}}
+-return { start:start, stop:stop, toggle:function(){on?stop():start();}, kick:kick, hit:hit, isOn:function(){return on;}, state:function(){return ctx?ctx.state:'none';} };
++return { start:start, stop:stop, toggle:function(){on?stop():start();}, kick:kick, hit:hit, quiet:quiet, isOn:function(){return on;}, state:function(){return ctx?ctx.state:'none';} };
+ })();
+ /* KAGI NIGHT point-cloud engine (raw WebGL1, ES5). One medusa whose points are the nine keys blended.
+    Bell motion after holtsetio/aurelia (MIT): a sinusoidally contracting hemisphere whose contraction
+@@ -573,12 +574,21 @@
+ var FOV0=0.95,lens=0,lensV=0,echoA=0,parX=0,parY=0,ema=16.7,hiN=0,loN=0,tier=0,NE=MOB?2:3;
+ /* 一分の不在: 90 秒見た人にだけ一度、主役が塵に解けて消え、戻る */
+ var gone=0,goneT=-1,goneDone=false,seenT=0,GONE_AFTER=(function(){var g=parseFloat(new URLSearchParams(location.search).get('gone'));return g>0?g:90;})();
+-/* 合図: 金の鍵を 3 回続けて叩く（間隔 140〜900 ms、ほぼ均等）。夜が息を止め、主役の素材が変わる: 0 元 → 1 赤い糸 → 2 緑の糸の鍵 → 3 塵 → 0 */
++/* 合図: 金の鍵を 3 回続けて叩く（間隔 140〜900 ms、ほぼ均等）。夜が息を止め、主役の素材が変わる: 0 元 → 1 赤い糸 → 2 緑の糸の鍵 → 3 塵 → 4 にっこり → 0 */
+ var taps=[];function knock(now){taps.push(now);if(taps.length>3)taps.shift();if(taps.length<3)return false;var a=taps[1]-taps[0],b=taps[2]-taps[1];if(a<140||a>900||b<140||b>900)return false;var r=a/b;if(r<0.5||r>2.0)return false;taps=[];return true;}
+-var MAT=(function(){var s=new URLSearchParams(location.search).get('mat');return s==='thread'?1:s==='key'?2:s==='dust'?3:0;})(),matT=0,dustT=0,ansT=-1,breath=0;
+-var verEl=document.getElementById(pre+'ver'),verBase=verEl?verEl.textContent:'';function showMat(){if(verEl)verEl.textContent=verBase+(MAT===1?' · 糸':MAT===2?' · 鍵':MAT===3?' · 塵':'');}showMat();
+-function answer(){ansT=performance.now();document.documentElement.classList.add('known');try{localStorage.setItem('kn_known','1');}catch(e){}}
+-function answerNow(){var ph0=(2.1*0.2)%1;for(var i=0;i<med.length;i++){var m=med[i];m.off=((ph0-simT*0.2)%1+1)%1;m.charge=1;}simT=2.1;lastCycle=Math.floor(simT*0.2-0.875);lensV+=7.0;echoA=1;hit=1;if(window.KN_AUDIO){KN_AUDIO.kick();KN_AUDIO.hit();}MAT=(MAT+1)%4;showMat();}
++var MAT=(function(){var s=new URLSearchParams(location.search).get('mat');return s==='thread'?1:s==='key'?2:s==='dust'?3:s==='smile'?4:0;})(),matT=0,dustT=0,ansT=-1,breath=0;
++var verEl=document.getElementById(pre+'ver'),verBase=verEl?verEl.textContent:'';function showMat(){if(verEl)verEl.textContent=verBase+(MAT===1?' · 糸':MAT===2?' · 鍵':MAT===3?' · 塵':MAT===4?' · にっこり':'');}showMat();
++/* 5 段目 にっこり: 主役がにっこりクラゲの動画に変わる。動画の音は SOUND が ON の時だけ出し、そのあいだ夜の音を引っ込める。
++   再生が始まるまで（失敗した時も）主役は消さない。横長の画面では縦の動画を中央に置き、左右をぼかす */
++var smileT=0,smileV=null,smileOK=false,smileNoSound=false,smileGone=false;
++function smileFit(){if(!smileV)return;var wide=innerWidth>innerHeight*0.72,w=wide?innerHeight*0.5625:innerWidth,st=smileV.style,mk=wide?'linear-gradient(to right,transparent,#000 14%,#000 86%,transparent)':'none';st.width=w+'px';st.left=((innerWidth-w)/2)+'px';st.webkitMaskImage=mk;st.maskImage=mk;}
++function smileMake(){if(smileV)return;smileV=document.createElement('video');smileV.src='media/smile/smile.mp4';smileV.loop=true;smileV.muted=true;smileV.playsInline=true;smileV.setAttribute('playsinline','');smileV.preload='auto';smileV.setAttribute('aria-hidden','true');smileV.style.cssText='position:fixed;top:0;left:0;width:100%;height:100%;object-fit:cover;pointer-events:none;opacity:0';smileV.addEventListener('playing',function(){smileOK=true;});smileV.addEventListener('pause',function(){smileOK=false;});canvas.parentNode.insertBefore(smileV,canvas.nextSibling);smileFit();addEventListener('resize',smileFit);}
++function smileSound(stage){if(!smileV)return;var on=stage&&!smileNoSound&&!smileGone&&!!(window.KN_AUDIO&&KN_AUDIO.isOn());smileV.muted=!on;if(window.KN_AUDIO&&KN_AUDIO.quiet)KN_AUDIO.quiet(on);}
++function smileArm(){smileMake();smileNoSound=false;var p=smileV.play();smileV.pause();if(p&&p.catch)p.catch(function(){});}   /* 3 回目の一打の中で、この動画の再生を許してもらう（音は出さない） */
++function smilePlay(){smileMake();try{smileV.currentTime=0.9;}catch(e){}smileSound(true);var p=smileV.play();if(p&&p.catch)p.catch(function(){if(MAT!==4)return;smileNoSound=true;smileSound(true);var q=smileV.play();if(q&&q.catch)q.catch(function(){});});}
++if(MAT===4)smilePlay();
++function answer(){if(MAT===3)smileArm();else if(MAT===4)smileSound(false);ansT=performance.now();document.documentElement.classList.add('known');try{localStorage.setItem('kn_known','1');}catch(e){}}
++function answerNow(){var ph0=(2.1*0.2)%1;for(var i=0;i<med.length;i++){var m=med[i];m.off=((ph0-simT*0.2)%1+1)%1;m.charge=1;}simT=2.1;lastCycle=Math.floor(simT*0.2-0.875);lensV+=7.0;echoA=1;hit=1;if(window.KN_AUDIO){KN_AUDIO.kick();KN_AUDIO.hit();}MAT=(MAT+1)%5;showMat();if(MAT===4)smilePlay();else smileSound(false);}
+ try{if(localStorage.getItem('kn_known'))document.documentElement.classList.add('known');}catch(e){}
+ window.KN_TEST={cam:function(){return {yawOff:yawOff,pitch:pitch,dist:dist};},knock:function(ts){taps=[];var r=false;for(var i=0;i<ts.length;i++)r=knock(ts[i])||r;return r;},gone:function(){return gone;},taps:function(){return taps.length;},breath:function(){return breath;},mat:function(){return MAT;}};
+ function fovNow(){return FOV0*(1+lens*0.55);}
+@@ -614,7 +624,7 @@
+ function strike(){if(gone>0.5||ansT>=0)return;hit=1;simT=2.1;med[0].charge=1;lensV+=3.2;echoA=1;if(window.KN_AUDIO)KN_AUDIO.hit();lastCycle=Math.floor(simT*0.2-0.875);if(knock(performance.now()))answer();}   // phase jumps to just before the contraction
+ window.KN_PULSE=function(k){if(gone>0.5||ansT>=0)return;k=k||0.5;hit=Math.max(hit,k);med[0].charge=Math.max(med[0].charge||0,k);echoA=Math.max(echoA,k*0.5);lensV+=k*0.9;};
+ var hitBtn=document.getElementById(pre+'hit');if(hitBtn)hitBtn.addEventListener('click',strike);
+-var sndBtn=document.getElementById(pre+'snd');if(sndBtn)sndBtn.addEventListener('click',function(){if(!window.KN_AUDIO)return;KN_AUDIO.toggle();var onn=KN_AUDIO.isOn();sndBtn.textContent='SOUND · '+(onn?'ON':'OFF');sndBtn.setAttribute('aria-pressed',onn?'true':'false');var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);var hint=document.getElementById(pre+'sndhint');if(onn&&ios){if(!hint){hint=document.createElement('div');hint.id=pre+'sndhint';hint.style.cssText='position:absolute;z-index:4;max-width:220px;padding:.45rem .7rem;border:1px solid rgba(236,233,226,.14);border-radius:10px;background:rgba(12,12,18,.75);color:#ece9e2;font:500 .68rem/1.6 "Noto Sans JP",sans-serif;letter-spacing:.06em;pointer-events:none';sndBtn.parentNode.appendChild(hint);}var r=sndBtn.getBoundingClientRect(),pr=sndBtn.parentNode.getBoundingClientRect();hint.style.left=(r.left-pr.left)+'px';hint.style.top=(r.bottom-pr.top+8)+'px';hint.textContent='鳴らない時は、本体横のスイッチ（マナー）を OFF にして音量を上げる';hint.style.display='block';clearTimeout(hint._t);hint._t=setTimeout(function(){hint.style.display='none';},7000);}else if(hint){hint.style.display='none';}});
++var sndBtn=document.getElementById(pre+'snd');if(sndBtn)sndBtn.addEventListener('click',function(){if(!window.KN_AUDIO)return;KN_AUDIO.toggle();smileNoSound=false;if(MAT===4&&smileV&&smileV.paused)smilePlay();else smileSound(MAT===4);var onn=KN_AUDIO.isOn();sndBtn.textContent='SOUND · '+(onn?'ON':'OFF');sndBtn.setAttribute('aria-pressed',onn?'true':'false');var ios=/iP(hone|ad|od)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);var hint=document.getElementById(pre+'sndhint');if(onn&&ios){if(!hint){hint=document.createElement('div');hint.id=pre+'sndhint';hint.style.cssText='position:absolute;z-index:4;max-width:220px;padding:.45rem .7rem;border:1px solid rgba(236,233,226,.14);border-radius:10px;background:rgba(12,12,18,.75);color:#ece9e2;font:500 .68rem/1.6 "Noto Sans JP",sans-serif;letter-spacing:.06em;pointer-events:none';sndBtn.parentNode.appendChild(hint);}var r=sndBtn.getBoundingClientRect(),pr=sndBtn.parentNode.getBoundingClientRect();hint.style.left=(r.left-pr.left)+'px';hint.style.top=(r.bottom-pr.top+8)+'px';hint.textContent='鳴らない時は、本体横のスイッチ（マナー）を OFF にして音量を上げる';hint.style.display='block';clearTimeout(hint._t);hint._t=setTimeout(function(){hint.style.display='none';},7000);}else if(hint){hint.style.display='none';}});
+ var splitEl=document.getElementById(pre+'split');if(splitEl)splitEl.addEventListener('input',function(e){splitT=e.target.value/100;});
+ /* ---------- matrices ---------- */
+ function persp(f,asp,n,fa){var t=1/Math.tan(f/2);return[t/asp,0,0,0,0,t,0,0,0,0,(fa+n)/(n-fa),-1,0,0,2*fa*n/(n-fa),0];}
+@@ -641,6 +651,7 @@
+   if(goneT>=0){var ge=(now-goneT)/1000;if(ge<2.5)gone=ge/2.5;else if(ge<30.5)gone=1;else if(ge<33.9)gone=1-(ge-30.5)/3.4;else{gone=0;goneT=-1;goneDone=true;strike();}}
+   if(ansT>=0){var ae=(now-ansT)/1000;if(ae<0.55){breath=Math.max(0,Math.min(1,ae/0.12));}else{breath=0;ansT=-1;answerNow();}}else{breath=0;}
+   matT+=((MAT===1?1:0)-matT)*(1-Math.exp(-dt/0.6));dustT+=((MAT===3?1:0)-dustT)*(1-Math.exp(-dt/1.4));
++  smileT+=((MAT===4&&smileOK?1:0)-smileT)*(1-Math.exp(-dt/0.8));if(smileV){smileV.style.opacity=(smileT*(1-gone)*(1-(window.KN_DIS||0))).toFixed(3);if(MAT!==4&&ansT<0&&smileT<0.01&&!smileV.paused)smileV.pause();var sg=gone>0.5;if(sg!==smileGone){smileGone=sg;smileSound(MAT===4);}}
+   gl.bindFramebuffer(gl.FRAMEBUFFER,FB.scene.f);gl.viewport(0,0,canvas.width,canvas.height);
+   gl.disable(gl.BLEND);gl.useProgram(bprog);gl.uniform1f(BU.uTime,t%628.3185);gl.uniform1f(BU.uAsp,asp);quad(bprog,bloc);
+   gl.enable(gl.BLEND);bindPoints();
+@@ -663,7 +674,7 @@
+     if(mm.hero&&echoA>0.02&&tier===0&&gone<0.01){var fw=[-V[2],-V[6],-V[10]];gl.blendFunc(gl.SRC_ALPHA,gl.ONE);gl.uniform1f(U.uCharge,0.0);
+       for(var ei=NE;ei>=1;ei--){var em=mm.mat.slice(0),es=Math.exp(-ei*0.12);for(var q=0;q<12;q++)em[q]*=es;em[12]+=fw[0]*ei*0.35;em[13]+=fw[1]*ei*0.35;em[14]+=fw[2]*ei*0.35;
+         gl.uniformMatrix4fv(U.uModel,false,em);gl.uniform1f(U.uPhase,mm.ph-ei*0.5);gl.uniform1f(U.uDim,0.42*echoA*Math.exp(-ei*0.4));gl.uniform1f(U.uGlow,0.5);gl.drawArrays(gl.POINTS,0,NB);}}
+-    gl.uniform1f(U.uIntro,mm.hero?Math.min(intro,1-gone,1-0.72*dustT,1-(window.KN_DIS||0)):intro);var isKey=mm.hero&&MAT===2;gl.uniform1f(U.uKey,isKey?1.0:0.0);gl.uniform1f(U.uKeyF,isKey?1.0:0.0);
++    gl.uniform1f(U.uIntro,mm.hero?Math.min(intro,1-gone,1-0.72*dustT,1-smileT,1-(window.KN_DIS||0)):intro);var isKey=mm.hero&&MAT===2;gl.uniform1f(U.uKey,isKey?1.0:0.0);gl.uniform1f(U.uKeyF,isKey?1.0:0.0);
+     gl.uniformMatrix4fv(U.uModel,false,mm.mat);gl.uniform1f(U.uPhase,mm.ph);gl.uniform1f(U.uDim,(mm.hero?1.0:0.55)*(1.0-0.88*breath));gl.uniform1f(U.uCharge,mm.charge);
+     if(mm.hero&&matT>0.02){gl.uniform1f(U.uThread,1.0);gl.uniform1f(U.uGlow,1.0);gl.uniform1f(U.uDim,matT*(1.0-0.88*breath));gl.blendFunc(gl.SRC_ALPHA,gl.ONE);
+       gl.drawArrays(gl.LINE_STRIP,0,900);for(var tk=0;tk<TN;tk++)gl.drawArrays(gl.LINE_STRIP,OT+tk*TL,TL);for(var ak=0;ak<4;ak++)gl.drawArrays(gl.LINE_STRIP,OA+ak*AR,130);
