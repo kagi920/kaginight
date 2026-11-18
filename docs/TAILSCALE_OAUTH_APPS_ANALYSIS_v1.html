@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Tailscale OAuth apps 解析 v1</title>
+<style>
+:root{--bg:#f6f4ee;--fg:#1c2230;--mut:#5d6677;--rule:#d8d3c4;--card:#fff;--acc:#8a6a1c;--ok:#1f6b45;--warn:#8a5a00;--ng:#9b2c2c;--hit:#ffe58a}
+@media (prefers-color-scheme:dark){:root{--bg:#050914;--fg:#dbe3f2;--mut:#93a0b8;--rule:#232c40;--card:#0c1322;--acc:#e8d6a8;--ok:#6fd0a0;--warn:#e8c06a;--ng:#f09a9a;--hit:#6b5410}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.85 "Hiragino Sans","Noto Sans JP",system-ui,sans-serif}
+header{position:sticky;top:0;z-index:2;background:var(--bg);border-bottom:1px solid var(--rule);padding:12px 16px}
+header div{max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+h1{font-size:1.05rem;margin:0;flex:1 1 220px}
+#q{flex:2 1 240px;min-width:0;padding:9px 12px;border:1px solid var(--rule);border-radius:8px;background:var(--card);color:var(--fg);font:inherit}
+#n{color:var(--mut);font-size:.85rem;min-width:5em;text-align:right}
+main{max-width:900px;margin:0 auto;padding:8px 16px 80px}
+section{border-bottom:1px solid var(--rule);padding:18px 0}
+h2{font-size:1.05rem;margin:0 0 8px;color:var(--acc)}
+h3{font-size:.95rem;margin:16px 0 4px}
+p,ul,ol{margin:6px 0}ul,ol{padding-left:1.3em}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:560px}
+th,td{border:1px solid var(--rule);padding:7px 9px;vertical-align:top;text-align:left}
+th{background:var(--card)}
+code{background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:0 4px;font-size:.88em;word-break:break-all}
+a{color:var(--acc);word-break:break-all}
+.ok{color:var(--ok);font-weight:700}.warn{color:var(--warn);font-weight:700}.ng{color:var(--ng);font-weight:700}
+.meta{color:var(--mut);font-size:.85rem}
+blockquote{margin:6px 0;padding:4px 12px;border-left:3px solid var(--rule);color:var(--mut);font-size:.9rem}
+mark{background:var(--hit);color:inherit;border-radius:2px}
+[hidden]{display:none}
+</style>
+</head>
+<body>
+<header><div>
+<h1>Tailscale OAuth apps 解析 v1</h1>
+<input id="q" type="search" placeholder="検索（打つたびに絞り込み）" aria-label="この文書を検索" autocomplete="off">
+<span id="n" aria-live="polite"></span>
+</div></header>
+<main>
+
+<section>
+<h2>0. この文書について</h2>
+<p class="meta">作成 2026-11-18 ／ 対象 Tailscale の「OAuth apps」 ／ 版 v1</p>
+<p>鍵山喬一の依頼「全てのチャットでこれ使っているものを、この内容を解析して、必要であればセキュリティとともに解析して、入れてください」に対する解析。読んだのは Tailscale 公式の 4 ページ（2026-11-18 に取得）。</p>
+<ul>
+<li><a href="https://tailscale.com/docs/features/oauth-apps">OAuth apps</a>（Last validated: Oct 16, 2026）</li>
+<li><a href="https://tailscale.com/docs/features/oauth-apps/device-provisioning">Device provisioning with OAuth apps</a>（Last validated Oct 15, 2026）</li>
+<li><a href="https://tailscale.com/docs/oauth">OAuth on Tailscale</a>（Last validated Jun 30, 2026）</li>
+<li><a href="https://tailscale.com/docs/features/oauth-clients">OAuth clients</a>（Last validated Jun 30, 2026）</li>
+</ul>
+<p>区分は 3 つ。<span class="ok">公式</span>＝上のページに書いてあること。<span class="warn">考察</span>＝ページの記述から Claude が導いた判断（公式の文言ではない）。<span class="ng">未確認</span>＝上の 4 ページに書かれておらず、確かめていないこと。</p>
+</section>
+
+<section>
+<h2>1. 結論</h2>
+<ol>
+<li><span class="ok">公式</span> OAuth apps は、社内ツールが<b>個々のユーザーの代理として</b> tailnet を操作するための仕組み。OAuth 2.0 の authorization code flow（RFC 6749 4.1 節）を使い、Tailscale が出す同意画面でユーザーが承認する。アクセス制御・監査ログ・台数の枠は、共有のサービス ID ではなく<b>同意した本人</b>に掛かる。</li>
+<li><span class="ok">公式</span> いま案内されている使い道は 1 つ: <b>デバイスの登録</b>（scope は <code>auth_keys:create:once</code>）。同意 1 回で使い切りの auth key が 1 つ出る。</li>
+<li><span class="ok">公式</span> OAuth clients とは別物。clients は client credentials flow で、人のいない自動化向け・タグ所有。apps は人が同意する・ユーザー所有。</li>
+<li><span class="warn">考察</span> kaginight リポジトリには Tailscale を使っている箇所がない（2026-11-18 に <code>tailscale|tailnet|TS_AUTHKEY|tskey|TS_OAUTH</code> を大文字小文字を区別せず全ファイル検索して 0 件）。調べたのはこのリポジトリだけで、ほかのチャット・ほかのリポジトリ・クラウド環境の設定は調べていない（未確認）。「入れる」が何を指すかも鍵山に確認していない。今回入れたのはこの解析文書だけ。</li>
+<li><span class="warn">考察</span> OAuth apps が効くのは「複数の人がいる tailnet で、誰のデバイスかを 1 台ずつ本人に結びつけたい」場面。利用者が 1 人の tailnet では利点が小さく、client secret を保管しコールバックを受ける仕組みを持つ負担のほうが大きい。AI のチャットやクラウドの作業環境を tailnet につなぐ用途には、本人の全権限が乗る OAuth apps より、タグで権限を絞れる方式（OAuth clients、タグ付き auth key）のほうが最小権限にしやすい。</li>
+</ol>
+</section>
+
+<section>
+<h2>2. 仕組み（公式の記述）</h2>
+<p><span class="ok">公式</span> 2 段構え。管理者が Tailscale API で OAuth app を作り（手順 1〜2）、開発者が自分のツールに認可の流れを実装する（手順 3〜6）。</p>
+<div class="tw"><table>
+<tr><th>手順</th><th>だれが</th><th>内容</th></tr>
+<tr><td>1 作成</td><td>管理者</td><td><code>POST https://api.tailscale.com/api/v2/tailnet/-/oauth-apps</code>。項目は <code>name</code>、<code>redirectUris</code>、<code>scopes</code>（<code>auth_keys:create:once</code>）、任意で <code>allowedNodeAttributes</code>（<code>custom:</code> で始まるものだけ）。応答に <code>id</code> と <code>clientSecret</code>（形は <code>tskey-app-&lt;clientID&gt;-&lt;secret&gt;</code>）。secret は作成時にしか返らず、後から取り出せない。</td></tr>
+<tr><td>2 確認</td><td>管理者</td><td><code>GET …/tailnet/-/oauth-apps/&lt;app の id&gt;</code> で scope と redirect URI を確かめる。</td></tr>
+<tr><td>3 認可 URL</td><td>ツール</td><td><code>https://login.tailscale.com/a/oauth_authorize</code> に <code>client_id</code>、<code>redirect_uri</code>（登録したものと完全一致）、<code>scope</code>、<code>state</code>（推測できない一意の値。CSRF 対策）、<code>response_type=code</code> を付ける。</td></tr>
+<tr><td>4 同意</td><td>ユーザー</td><td>承認すると <code>redirect_uri?code=…&amp;state=…</code> に戻る。拒否すると <code>?error=access_denied</code>。ツールは先に <code>state</code> の一致を確かめる。</td></tr>
+<tr><td>5 交換</td><td>ツール</td><td><code>POST https://api.tailscale.com/api/v2/oauth/token</code> に <code>grant_type=authorization_code</code>、<code>code</code>、<code>client_id</code>、<code>client_secret</code>、<code>redirect_uri</code>（手順 3 と同じ値）。<code>allowedNodeAttributes</code> を使うなら <code>node_attributes</code> をカンマ区切りで渡す。応答は <code>access_token</code>、<code>token_type: Bearer</code>、<code>expires_in: 3600</code>。</td></tr>
+<tr><td>6 登録</td><td>ツール</td><td>access token がそのまま auth key になる（別の API 呼び出しは不要）。<code>tailscale up --auth-key=&lt;access-token&gt;</code>。</td></tr>
+</table></div>
+<h3>トークンの性質</h3>
+<ul>
+<li><span class="ok">公式</span> refresh token は返らない。</li>
+<li><span class="ok">公式</span> 有効期限は 1 時間（3600 秒）で、変更できない。</li>
+<li><span class="ok">公式</span> 使い切り。期限内でも、最初に成功した使用のあとは拒否される。</li>
+<li><span class="ok">公式</span> デバイスを 1 台足すたびに、ユーザーは同意画面をもう一度通る。</li>
+</ul>
+<h3>登録されたデバイス</h3>
+<ul>
+<li><span class="ok">公式</span> 同意したユーザーの身元をそのまま引き継ぐ。そのユーザーを指すアクセス制御の規則が適用され、監査ログはそのユーザーに帰属し、そのユーザーの台数枠を消費する。管理コンソールではそのユーザーのデバイスとして出る。</li>
+<li><span class="ok">公式</span> 許可リストに入れた <code>custom:</code> 属性をデバイスに付けられ、device posture の条件や grants から参照して「どう登録されたデバイスか」でアクセスを分けられる。</li>
+</ul>
+</section>
+
+<section>
+<h2>3. 必要なものと制限（公式の記述）</h2>
+<ul>
+<li><span class="ok">公式</span> tailnet の Owner か Admin の役割。</li>
+<li><span class="ok">公式</span> OAuth app を API で作るための、admin scope を持つ API access token。</li>
+<li><span class="ok">公式</span> OAuth app と、それを通して承認する全ユーザーが同じ tailnet に属すること。別の tailnet のユーザーは使えない。</li>
+<li><span class="ok">公式</span> 実装する人に、authorization code grant の知識と、HTTP リダイレクトとトークン交換を扱えること。標準の OAuth ライブラリが少ない手直しで使えるとされている。</li>
+<li><span class="ok">公式</span> 同意画面は Tailscale が出すもので、見た目を変えられない。</li>
+</ul>
+</section>
+
+<section>
+<h2>4. OAuth apps と OAuth clients の違い</h2>
+<div class="tw"><table>
+<tr><th>観点</th><th>OAuth apps（authorization code）</th><th>OAuth clients（client credentials）</th></tr>
+<tr><td>デバイスの所有</td><td>ユーザー所有</td><td>タグ所有</td></tr>
+<tr><td>身元</td><td>同意した個人</td><td>サービス ID（タグ）</td></tr>
+<tr><td>アクセス制御</td><td>ユーザーの規則</td><td>タグの規則</td></tr>
+<tr><td>監査ログ</td><td>個人に帰属</td><td>タグ／サービスに帰属</td></tr>
+<tr><td>台数枠</td><td>承認したユーザー</td><td>タグ</td></tr>
+<tr><td>人の関与</td><td>毎回、同意画面</td><td>なし（人がいなくても動く）</td></tr>
+<tr><td>作り方</td><td>API（admin scope の API access token）</td><td>管理コンソールの Trust credentials ページ</td></tr>
+<tr><td>secret の持続（<span class="warn">考察</span>）</td><td>secret＋ユーザーの同意＋code が揃って 1 回分</td><td>secret だけで 1 時間のトークンを何度でも取れる</td></tr>
+</table></div>
+<p class="meta"><span class="ok">公式</span> 上 5 行は公式の比較表。「人の関与」「作り方」の 2 行は 2 つのページの記述を並べたもの。最後の 1 行は記述から導いたまとめで、公式の文言ではない。</p>
+<p><span class="ok">公式</span> OAuth clients の注意: 作ったユーザーが tailnet から外れても、その OAuth client は動き続けてトークンを出し続ける。OAuth client から作る auth key は必ずタグ付き。access token は 1 時間で、変更できない。</p>
+</section>
+
+<section>
+<h2>5. セキュリティの解析</h2>
+<h3>5.1 設計として強い点</h3>
+<ul>
+<li><span class="ok">公式</span> 共有の auth key やタグの auth key から、ユーザーごとの承認に移す用途が挙げられている。どのデバイスも承認した本人までたどれる。</li>
+<li><span class="warn">考察</span> client secret が漏れても、それだけではデバイスを足せない。ユーザーの同意と、その同意で出た code が要る。OAuth clients の secret（単独でトークンが取れる）より、漏れたときの被害が小さい。</li>
+<li><span class="warn">考察</span> トークンが 1 時間・使い切り・refresh なしなので、盗まれても使える窓が狭い。先に正規の登録に使われていれば無効。</li>
+<li><span class="warn">考察</span> scope が auth key 1 個の作成に限られ、このトークンで tailnet の設定（ACL、DNS など）を読む・書くことは、読んだページの範囲では案内されていない。</li>
+</ul>
+<h3>5.2 気をつける点（この状況で、こうすると、こうなる）</h3>
+<div class="tw"><table>
+<tr><th>状況</th><th>こうすると</th><th>こうなる</th><th>対策</th></tr>
+<tr><td>OAuth app を作る段</td><td>admin scope の API access token を長い期限のまま残す・チャットや履歴に貼る</td><td>このトークンは OAuth app より強い。漏れると tailnet の管理操作に使われる</td><td>チャットに貼らない。期限を短くする・済んだら失効させるのが望ましいが、期限を選べるか・失効できるかは未確認</td></tr>
+<tr><td>client secret の置き場</td><td>ブラウザに配る JavaScript、公開リポジトリ、静的サイトに入れる</td><td>誰でも読める。漏れた secret を止める手順（削除・失効・作り直し）は未確認</td><td>公開されない場所だけに置く。静的サイト（GitHub Pages など）単体では持てない。redirect URI に <code>http://localhost</code> を登録できるかは未確認で、登録できない場合は交換を行うサーバー側の部品が要る</td></tr>
+<tr><td>コールバック</td><td><code>state</code> を確かめずに code を交換する</td><td>CSRF。攻撃者の用意した code を被害者のツールに通される</td><td>公式どおり、推測できない <code>state</code> を毎回作り、戻りで一致を確かめる</td></tr>
+<tr><td>コールバック</td><td>code や token が URL・アクセスログ・Referer・画面に残る</td><td>access token を使用前に読まれると、本人の身元でデバイスを 1 台足される。code だけを読まれても、交換には client secret が要るので登録はできない（code と secret の両方が漏れた場合は成り立つ）</td><td>HTTPS のみ。code は受け取ってすぐ交換。ログから query を落とす。コールバックのページに外部の読み込みを置かない</td></tr>
+<tr><td>登録</td><td><code>tailscale up --auth-key=…</code> をシェル履歴やプロセス一覧に残す</td><td>同じ機械の他の利用者に見える（使用後は無効だが、使用前に読まれると先に使われる）</td><td>発行したらすぐ使う。共有の機械では打たない</td></tr>
+<tr><td>同意する人が Owner／Admin</td><td>その人の身元でデバイスを足す</td><td>デバイスはその人のアクセス制御をそのまま受ける。届く範囲がその人と同じになる</td><td><code>custom:</code> 属性を付け、grants／device posture で「この経路で登録されたデバイス」の届く先を絞る。絞りたいならタグ所有（OAuth clients）を選ぶ</td></tr>
+<tr><td>AI のチャット／クラウド作業環境を tailnet につなぐ</td><td>OAuth apps で本人所有のデバイスとして登録する</td><td>その環境から、本人が届く機械すべてに届く。環境が乗っ取られたとき（読み込んだ文書に仕込まれた指示など）の被害が本人の全範囲になる</td><td>使い捨て・タグ付き・届く先を 1 つに絞った登録にする。OAuth apps は「誰のものか」を記録する仕組みで、権限を狭める仕組みではない</td></tr>
+<tr><td>redirect URI</td><td>広い・古い・使っていない URI を登録したままにする</td><td>その URI を握った者が code を受け取れる（secret がなければ交換はできないが、守りが 1 枚減る）</td><td>使う 1 本だけを登録する。照合は完全一致</td></tr>
+</table></div>
+<p class="meta"><span class="warn">考察</span> この表は「こうなる」「対策」とも Claude の判断。<code>state</code> の確認と secret の安全な保管だけは公式ページにも書かれている。</p>
+<h3>5.3 未確認（読んだ 4 ページに書かれていないこと）</h3>
+<ul>
+<li><span class="ng">未確認</span> PKCE（<code>code_challenge</code>）に対応しているか。</li>
+<li><span class="ng">未確認</span> OAuth app の削除・失効・secret の作り直しの手順（API の一覧は読んでいない）。</li>
+<li><span class="ng">未確認</span> 使える料金プラン、公開段階（alpha／beta など）。読んだページにその表示は見つからなかった。</li>
+<li><span class="ng">未確認</span> authorization code の有効時間、redirect URI に <code>http://localhost</code> を登録できるか、回数の制限。</li>
+<li><span class="ng">未確認</span> この経路で登録したデバイスの鍵の期限、ephemeral にできるか。</li>
+<li><span class="ng">未確認</span> 鍵山が tailnet を持っているか、持っている場合の現状（利用者数、ACL、既存の auth key や OAuth client）。この環境からは見えない。</li>
+<li><span class="ng">未確認</span> kaginight リポジトリ以外（ほかのチャット、ほかのリポジトリ、クラウド環境の設定）で Tailscale が使われているか。この作業からは見えず、調べていない。</li>
+<li><span class="ng">未確認</span> 依頼の「入れてください」が、Tailscale を使っている箇所への導入を指すのか、全チャットで読まれる指示への書き入れを指すのか。鍵山に確認が要る。指示ファイル（<code>CLAUDE.md</code> など）には何も足していない。</li>
+<li><span class="ng">未確認</span> admin scope の API access token の期限を選べるか・失効できるか。</li>
+</ul>
+</section>
+
+<section>
+<h2>6. 入れるかどうかの判断</h2>
+<div class="tw"><table>
+<tr><th>場面</th><th>向く方式</th><th>理由</th></tr>
+<tr><td>複数の人がいて、各自のデバイスを本人に結びつけて登録させたい</td><td>OAuth apps</td><td><span class="ok">公式</span> の用途そのもの</td></tr>
+<tr><td>人のいない自動化（CI、サーバーの自動登録）</td><td>OAuth clients</td><td><span class="ok">公式</span> 人がいなくても動く。タグ所有</td></tr>
+<tr><td>利用者が 1 人で、自分の機械を足すだけ</td><td>通常のログイン</td><td><span class="warn">考察</span> 結びつける相手が自分しかいない。コールバックを受ける仕組みと secret を持つ負担に見合わない</td></tr>
+<tr><td>AI の作業環境を一時的につなぐ</td><td>タグ付き・使い捨ての登録</td><td><span class="warn">考察</span> 届く先をタグの規則で絞れる。5.2 の 7 行目</td></tr>
+</table></div>
+<h3>実際に OAuth app を作る場合に要るもの</h3>
+<ol>
+<li>tailnet の Owner／Admin としての操作（admin scope の API access token の発行）。Claude はこのトークンを持っていないし、チャットで受け取らない。</li>
+<li>コールバックを受ける URL と、client secret を公開されない場所で持つ部品（<code>http://localhost</code> で済むかは未確認）。kaginight リポジトリにはその部品がない。</li>
+<li>OAuth app の作成は tailnet への外向きの操作なので、台帳 O-07 のとおり鍵山の明示の一言があってから。</li>
+</ol>
+<p>今回は作成していない。</p>
+</section>
+
+</main>
+<script>
+(function(){
+  var q=document.getElementById('q'),n=document.getElementById('n'),secs=[].slice.call(document.querySelectorAll('main section'));
+  var orig=secs.map(function(s){return s.innerHTML;});
+  function esc(s){return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');}
+  function mark(node,re){
+    if(node.nodeType===3){
+      var m=re.exec(node.data); re.lastIndex=0;
+      if(!m)return;
+      var rest=node.splitText(m.index); rest.data=rest.data.slice(m[0].length);
+      var k=document.createElement('mark'); k.textContent=m[0]; node.parentNode.insertBefore(k,rest); mark(rest,re);
+    }else if(node.nodeType===1&&node.tagName!=='MARK'){[].slice.call(node.childNodes).forEach(function(c){mark(c,re);});}
+  }
+  function run(){
+    var words=q.value.trim().toLowerCase().split(/\s+/).filter(Boolean),hit=0;
+    secs.forEach(function(s,i){
+      s.innerHTML=orig[i];
+      var t=s.textContent.toLowerCase(),ok=words.every(function(w){return t.indexOf(w)>=0;});
+      s.hidden=!ok; if(!ok)return; hit++;
+      words.forEach(function(w){mark(s,new RegExp(esc(w),'i'));});
+    });
+    n.textContent=words.length?hit+' / '+secs.length+' 章':'';
+  }
+  q.addEventListener('input',run);
+})();
+</script>
+</body>
+</html>
