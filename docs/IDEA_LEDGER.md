@@ -35,6 +35,7 @@
 - 商品検索 App を入れるか（GOODS を一覧ページにするため）
 - ONLINE / LIVE の参加 URL、KAGI ROOM の開く日と中身
 - note 第 2・3 回の 20 分インタビュー
+- （見送り 2026-11-18）Tailscale の OAuth apps はまだ入れない。鍵山「まだ入れないかな。今んとこ鍵山しか使ってないから、覚えとくだけにしよう」。補足（鍵山の発言ではない）: 利点が出るのは tailnet を複数の人で使うとき。そうなったら改めて鍵山に聞く。解析は `docs/TAILSCALE_OAUTH_APPS_ANALYSIS_v1.html`
 
 ## 4. やらないと決めたこと
 
