@@ -9,7 +9,7 @@ description: KAGI NIGHT（XR Drummer 鍵山喬一）のホームページ・BASE
 
 | 面 | 場所 | 役割 |
 |---|---|---|
-| 独自 HP | https://kagi920.github.io/kaginight/ （repo kagi920/kaginight、`index.html` 1 枚） | 名刺。クラゲ＋音＋5 つの扉 |
+| 独自 HP | https://kaginight.pages.dev/ （2026-10-17 に移転。本体のソースは repo kagi920/kaginight には無い。旧 URL https://kagi920.github.io/kaginight/ は repo の `index.html` が新 URL へ転送する） | 名刺。クラゲ＋音＋5 つの扉 |
 | BASE | https://kaginight.base.shop/ （HTML編集 App のテーマに差し込み） | 物販。同じクラゲを `kn-` 接頭辞で埋め込む |
 | note | https://note.com/kagi03 （表示名 鍵山喬一、ID kagi03。Instagram も kagi03） | 有料記事で稼ぐ。HP の KEY シートからリンク済み。記事は「技術」より「鍵山が何をしているか」を書く |
 | グッズ | 受注生産・在庫ゼロ（BASE の印刷 App か SUZURI） | 作る前に必ず鍵山に絵柄と販売先を確認 |
